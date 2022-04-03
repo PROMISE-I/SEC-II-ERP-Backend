@@ -16,4 +16,5 @@
 <img src="https://seec-homework.oss-cn-shanghai.aliyuncs.com/201250185-查看经营历程表系统顺序图.png" alt="查看经营历程表系统顺序图" style="zoom:70%;" />
 
 ### 销售模块的概念类图
-![]()
+<img src="https://seec-homework.oss-cn-shanghai.aliyuncs.com/201250181-class-diagram.png" alt="class-diagram" style="zoom:80%;" />
+
