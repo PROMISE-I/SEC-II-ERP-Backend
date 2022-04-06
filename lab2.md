@@ -11,7 +11,7 @@
 
 ## 用例图
 
-![系统用例图v1.4](ERP%E7%94%A8%E4%BE%8B%E6%8F%8F%E8%BF%B0.assets/201250172-ERP%E7%B3%BB%E7%BB%9F%E7%94%A8%E4%BE%8B%E5%9B%BEv1.4.png)
+![系统用例图v1.4](https://seec-homework.oss-cn-shanghai.aliyuncs.com/201250172-ERP系统用例图v1.4.png)
 
 ## 用例描述
 
