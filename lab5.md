@@ -248,22 +248,25 @@ ERP 系统采用前端 Vue 框架、后端 Springboot 框架，使用 Mybatis �
 | 需要的服务（需接口） |
 | -------------------- |
 
-| 服务名                                                       | 服务                                                     |
-| ------------------------------------------------------------ | -------------------------------------------------------- |
-| createCustomer(CustomerPO customerPO)                        | 在数据库中插入一个新的CustomerPO                         |
-| CustomerDao.updateById(CustomerPO customerPO)                | 更新一个 CustomerPO                                      |
-| CustomerDao.findById(String Id)                              | 返回指定 Id 的 CustomerPO                                |
-| CustomerDao.deleteById(String Id)                            | 删除指定 Id 的 CustomerPO                                |
-| RestockSheetDao.getLatest()                                  | 获得最近的上一个 restockSheetPO 用于计算编号             |
-| RestockSheetDao.save(RestockSheetPO toSave)                  | 向数据库中插入一个 RestockSheetPO                        |
-| RestockSheetDao.saveContent(List\<WarehouseInputSheetContentPO > warehouseInputSheetContentPO) | 向数据库中插入一些WarehouseInputSheetContentPO           |
-| SalesSheetDao.getLatest()                                    | 获得最近的上一个 SalesSheetPO 用于计算编号               |
-| SalesSheetDao.save(SalesSheetPO toSave)                      | 向数据库插入一个 SalesSheetPO                            |
-| SalesSheetDao.findAllByOperatorByFromTimeByToTime(String operator, Date fromTime, Date toTime) | 按操作员和时间区间查找返回许多SalesSheetPO               |
-| SalesReturnedGoodsSheetDao.getLatest()                       | 获得最近的上一个 SalesReturnedGoodsSheetPO 用于计算编号  |
-| SalesReturnedGoodsSheetDao.save(SalesReturnedGoodsSheetPO toSave) | 向数据库中插入一个 SalesReturnedGoodsSheetPO             |
-| SalesReturnedGoodsSheetDao.saveContent(List\<WarehouseInputSheetContentPO> warehouseInputSheetContentPO) | 向数据库中插入一些 WarehouseInputSheetContentPO          |
-| SalesReturnedGoodsSheetDao.findAllByOperatorByFromTimeByToTime(String operator, Date fromTime, Date toTime) | 按操作员和时间区间查找返回许多 SalesReturnedGoodsSheetPO |
+| 服务名                                                       | 服务                                                      |
+| ------------------------------------------------------------ | --------------------------------------------------------- |
+| createCustomer(CustomerPO customerPO)                        | 在数据库中插入一个新的CustomerPO                          |
+| CustomerDao.updateById(CustomerPO customerPO)                | 更新一个 CustomerPO                                       |
+| CustomerDao.findById(String Id)                              | 返回指定 Id 的 CustomerPO                                 |
+| CustomerDao.deleteById(String Id)                            | 删除指定 Id 的 CustomerPO                                 |
+| RestockSheetDao.getLatest()                                  | 获得最近的上一个 restockSheetPO 用于计算编号              |
+| RestockSheetDao.save(RestockSheetPO toSave)                  | 向数据库中插入一个 RestockSheetPO                         |
+| RestockSheetDao.saveContent(List\<WarehouseInputSheetContentPO > warehouseInputSheetContentPO) | 向数据库中插入一些WarehouseInputSheetContentPO            |
+| SalesSheetDao.getLatest()                                    | 获得最近的上一个 SalesSheetPO 用于计算编号                |
+| SalesSheetDao.save(SalesSheetPO toSave)                      | 向数据库插入一个 SalesSheetPO                             |
+| SalesSheetDao.findAllByOperatorByFromTimeByToTime(String operator, Date fromTime, Date toTime) | 按操作员和时间区间查找返回许多SalesSheetPO                |
+| SalesReturnedGoodsSheetDao.getLatest()                       | 获得最近的上一个 SalesReturnedGoodsSheetPO 用于计算编号   |
+| SalesReturnedGoodsSheetDao.save(SalesReturnedGoodsSheetPO toSave) | 向数据库中插入一个 SalesReturnedGoodsSheetPO              |
+| SalesReturnedGoodsSheetDao.saveContent(List\<WarehouseInputSheetContentPO> warehouseInputSheetContentPO) | 向数据库中插入一些 WarehouseInputSheetContentPO           |
+| SalesReturnedGoodsSheetDao.findAllByOperatorByFromTimeByToTime(String operator, Date fromTime, Date toTime) | 按操作员和时间区间查找返回许多 SalesReturnedGoodsSheetPO  |
+| RestockReturnedGoodsSheetDao.getLatest()                     | 获得最近的上一个 RestockReturnedGoodsSheetPO 用于计算编号 |
+| RestockReturnedGoodsSheetDao.save(RestockReturnedGoodsSheetPO toSave) | 向数据库插入一个 RestockReturnedGoodsSheetPO              |
+| RestockReturnedGoodsSheetDao.saveContent(List\<WarehouseOutputSheetContentPO> warehouseOutputSheetContentPO) | 向数据库中插入一些 WarehouseOutputSheetContentPO          |
 
 ### 5.4 数据层的分解
 
