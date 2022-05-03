@@ -177,11 +177,93 @@ ERP 系统采用前端 Vue 框架、后端 Springboot 框架，使用 Mybatis �
 
 #### 5.3.1 业务逻辑层模块的职责
 
+<div align = "center"><b>业务逻辑模块的职责<b></div>
 
+| 模块        | 职责                             |
+| ----------- | -------------------------------- |
+| WarehouseBL | 负责实现库存管理界面所需要的服务 |
+| SalesBL     | 负责实现销售界面所需要的服务。   |
 
 #### 5.3.2 业务逻辑层模块的接口规范
 
+<div align = "center"><b>WarehouseBL模块的接口规范<b></div>
 
+| 提供的服务（供接口） |
+| :------------------: |
+
+
+| <span style="display:inline-block;width:70px">接口名称</span> | <span style="display:inline-block;width:150px">语法</span>   | <span style="white-space:nowrap;">前置条件&emsp;&emsp;</span> | <span style="white-space:nowrap;">后置条件&emsp;&emsp;</span> |
+| :----------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| CategoryServiceImpl.createCategory                           | public CategoryVO createCategory(Integer parentId, String name) | 需要新增一个商品分类                                         | 增加新增的商品分类信息                                       |
+| CategoryServiceImpl.queryAllCategory                         | public List\<CategoryVO\> queryAllCategory()                 | 需要查询商品分类                                             | 返回所有的商品分类                                           |
+| CategoryServiceImpl.updateCategory                           | public CategoryVO updateCategory(Integer id, String name)    | 需要更新商品分类                                             | 更新商品分类信息                                             |
+| CategoryServiceImpl.deleteCategory                           | public void deleteCategory(Integer id)                       | 需要删除一个商品分类                                         | 删除指定 Id 的商品分类                                       |
+| ProductServiceImpl.createProduct                             | public ProductInfoVO createProduct(CreateProductVO inputVO） | 需要新增一个商品                                             | 增加新增的商品信息                                           |
+| ProductServiceImpl.updateProduct                             | public ProductInfoVO updateProduct(ProductInfoVO productInfoVO) | 需要更新商品信息                                             | 更新指定的商品信息                                           |
+| ProductServiceImpl.queryAllProduct                           | public List\<ProductInfoVO\> queryAllProduct()               | 需要查询商品信息                                             | 返回所有商品信息                                             |
+| ProductServiceImpl.deleteById                                | public void deleteById(String id)                            | 需要删除商品信息                                             | 删除指定 Id 的商品信息                                       |
+| WarehouseServiceImpl.productWarehousing                      | public void productWarehousing(WarehouseInputFormVO warehouseInputFormVO) | 需要入库商品                                                 | 更新库存中的商品信息(增加库存)                               |
+
+| 需要的服务(需接口) |
+| :----------------: |
+
+| 服务名                                                       | 服务                                       |
+| ------------------------------------------------------------ | ------------------------------------------ |
+| CategoryDao.findByCategoryId(Integer categoryId)             | 根据 Id 得到 CategoryPO 对象               |
+| CategoryDao.createCategory(CategoryPO categoryPO)            | 向数据库中插入 CategoryPO对象              |
+| CategoryDao.updateById(CategoryPO categoryPO)                | 更新数据库中的 CategoryPO 对象             |
+| CategoryDao.findAll()                                        | 查询所有 CategoryPO 对象                   |
+| CategoryDao.deleteById(Integer id)                           | 删除数据库中指定 Id 的CategotyPO对象       |
+| ProductDao.createProduct(ProductPO productPO)                | 向数据库中插入 ProductPO 对象              |
+| ProductDao.updateById(ProductPO productPO)                   | 更新数据库中的 ProductPO 对象              |
+| ProductDao.findById(String id)                               | 根据 Id 查找 ProductPO 对象                |
+| ProductDao.findAll()                                         | 查询所有 ProductPO 对象                    |
+| ProductDao.deleteById(String id)                             | 删除数据库中指定 Id 的 ProductDao 对象     |
+| WarehouseDao.saveBatch(List\<WarehousePO\> warehousePOList)  | 向数据库中插入一批 WarehousePO 对象        |
+| WarehouseDao.deductQuantity(WarehousePO warehousePO)         | 减少一批商品的库存数量                     |
+| WarehouseDao.findAllNotZeroByPidSortedByBatchId(String pid)  | 按 pid 查询一批商品，按 batchId 排序       |
+| WarehouseInputSheetDao.getLatest()                           | 查询最近一条入库单(WarehouseInputSheetPO)  |
+| WarehouseInputSheetDao.save(WarehouseInputSheetPO toSave)    | 存入一条入库单记录(WarehouseInputSheetPO)  |
+| WarehouseInputSheetDao.saveBatch(List\<WarehouseInputSheetContentPO> warehouseInputListPOSheetContent) | 把入库单上的具体内容存入数据库             |
+| WarehouseOutputSheetDao.getLatest()                          | 查询最近一条出库单(WarehouseOutputSheetPO) |
+| WarehouseOutputSheetDao.save(WarehouseOutputSheetPO toSave)  | 存入一条出库单记录(WarehouseOutputSheetPO) |
+| WarehouseOutputSheetDao.saveBatch(List\<WarehouseOutputSheetContentPO> warehouseOutputListPOSheetContent) | 把出库单上的具体内容存入数据库             |
+
+<div align = "center"><b>SalesBL模块的职责<b></div>
+
+| 提供的服务（供接口） |
+| :------------------: |
+
+| <span style="display:inline-block;width:70px">接口名称</span> | <span style="display:inline-block;width:200px">语法</span>   | <span style="display:inline-block;width:100px">前置条件</span> | <span style="display:inline-block;width:150px">后置条件</span> |
+| :----------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| CustomerServiceImpl.createCustomer                           | public CustomerVO createCustomer(CustomernfoVO customerInfoVO) | 新增一个客户                                                 | 增加新增的客户信息                                           |
+| CustomerServiceImpl.updateCustomer                           | public CustomerVO updateCustomer(CustomerInfoVO customerInfoVO) | 需要更新客户信息                                             | 更新客户信息                                                 |
+| CustomerServiceImpl.deleteCustomer                           | public void deleteCustomer(CustomerInfoVO customerInfoVO)    | 需要删除一个客户                                             | 删除和关键字段信息匹配的客户的信息                           |
+| CustomerServiceImpl.getLargestInPeriod                       | public CustomerVO getLargestInPeriod(Date startDate, Date endDate) | 需要查询交易                                                 | 返回 startDate - endDate 日期内交易额最大的客户              |
+| SalesServiceImpl.deliverGoods                                | public SalesSheetVO deliverGoods(SalesSheetInfoVO salesSheetInfoVO) | 需要出货                                                     | 更新本次出货涉及的库存和客户信息                             |
+| SalesServiceImpl.returnGoods                                 | public SalesReturnedGoodsSheetVO returnGoods(SalesReturnedGoodsSheetInfoVO salesReturnedGoodsInfoVO) | (顾客)需要退货                                               | 更新本次退货涉及到的客户和库存信息                           |
+| SalesServiceImpl.restock                                     | public RestockSheetVO  restock(RestockSheetInfoVO restockSheetInfoVO) | 需要进货                                                     | 更新库存信息                                                 |
+| SalesServiceImpl.returnStock                                 | public RestockReturnedGoodsSheetVO returnStock(RestockReturnedGoodsSheetInfoVO restockReturnedGoodsSheetInfoVO) | 需要退货(给供应商)                                           | 更新库存信息                                                 |
+
+| 需要的服务（需接口） |
+| -------------------- |
+
+| 服务名                                                       | 服务                                                     |
+| ------------------------------------------------------------ | -------------------------------------------------------- |
+| createCustomer(CustomerPO customerPO)                        | 在数据库中插入一个新的CustomerPO                         |
+| CustomerDao.updateById(CustomerPO customerPO)                | 更新一个 CustomerPO                                      |
+| CustomerDao.findById(String Id)                              | 返回指定 Id 的 CustomerPO                                |
+| CustomerDao.deleteById(String Id)                            | 删除指定 Id 的 CustomerPO                                |
+| RestockSheetDao.getLatest()                                  | 获得最近的上一个 restockSheetPO 用于计算编号             |
+| RestockSheetDao.save(RestockSheetPO toSave)                  | 向数据库中插入一个 RestockSheetPO                        |
+| RestockSheetDao.saveContent(List\<WarehouseInputSheetContentPO > warehouseInputSheetContentPO) | 向数据库中插入一些WarehouseInputSheetContentPO           |
+| SalesSheetDao.getLatest()                                    | 获得最近的上一个 SalesSheetPO 用于计算编号               |
+| SalesSheetDao.save(SalesSheetPO toSave)                      | 向数据库插入一个 SalesSheetPO                            |
+| SalesSheetDao.findAllByOperatorByFromTimeByToTime(String operator, Date fromTime, Date toTime) | 按操作员和时间区间查找返回许多SalesSheetPO               |
+| SalesReturnedGoodsSheetDao.getLatest()                       | 获得最近的上一个 SalesReturnedGoodsSheetPO 用于计算编号  |
+| SalesReturnedGoodsSheetDao.save(SalesReturnedGoodsSheetPO toSave) | 向数据库中插入一个 SalesReturnedGoodsSheetPO             |
+| SalesReturnedGoodsSheetDao.saveContent(List\<WarehouseInputSheetContentPO> warehouseInputSheetContentPO) | 向数据库中插入一些 WarehouseInputSheetContentPO          |
+| SalesReturnedGoodsSheetDao.findAllByOperatorByFromTimeByToTime(String operator, Date fromTime, Date toTime) | 按操作员和时间区间查找返回许多 SalesReturnedGoodsSheetPO |
 
 ### 5.4 数据层的分解
 
