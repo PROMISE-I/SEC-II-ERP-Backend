@@ -13,7 +13,7 @@ import java.util.Date;
 @Builder
 public class WarehouseOutputSheetPO {
     /**
-     * CKD + 日期 + index = 入库单编号
+     * CKD + 日期 + index = 出库单编号
      */
     private String id;
     /**
