@@ -4,7 +4,7 @@
 
 | 学号      | 姓名   | 工作内容                                   |
 | --------- | ------ | ------------------------------------------ |
-| 201250172 | 熊丘桓 |                                            |
+| 201250172 | 熊丘桓 | 完成逻辑视角和开发包图                     |
 | 201250127 | 蔡之恒 |                                            |
 | 201250185 | 王福森 | 完成接口视角的数据层的分解和信息视角的编写 |
 | 201250181 | 孙立帆 |                                            |
@@ -39,13 +39,63 @@
 
 ## 3. 逻辑视角
 
+ERP 系统中，选择了分层体系结构风格，将系统分为三层（展示层、业务逻辑层、数据层）能够很好地示意整个高层抽象。展示层包含 GUI 页面的实现，业务逻辑层包含业务逻辑处理的实现，数据层负责数据的持久化和访问。分层体系结构的逻辑视角和逻辑设计方案如下图所示。
 
+![参照体系结构风格的包图表达逻辑视角](https://seec-homework.oss-cn-shanghai.aliyuncs.com/201250172-参照体系结构风格的包图表达逻辑视角.png)
+
+![软件体系结构逻辑设计方案](lab5/201250172-%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%A1%88.png)
 
 ## 4. 组合视角
 
 ### 4.1 开发包图
 
+ERP 系统最终开发包设计如下表所示。
 
+| 开发包               | 依赖的其他包                                                 |
+| -------------------- | ------------------------------------------------------------ |
+| mainui               | inventoryui, salesui, financeui, hrui, clientui, approvalui, strategyui, vo |
+| inventoryui          | inventoryblservice, 界面类库包, vo                           |
+| inventoryblservice   |                                                              |
+| inventorybl          | inventoryblservice, inventorydataservice, po, utilitybl, salesbl |
+| inventorydataservice |                                                              |
+| inventorydata        | inventorydataservice, databaseutility                        |
+| salesui              | salesblservice, 界面类库包, vo                               |
+| salesblservice       |                                                              |
+| salesbl              | salesblservice, salesdataservice, po, utilitybl              |
+| salesdataservice     |                                                              |
+| salesdata            | salesdataservice, databaseutility                            |
+| financeui            | financeblservice, 界面类库包, vo                             |
+| financeblservice     |                                                              |
+| financebl            | financeblservice, financedataservice, po, utilitybl, salesbl |
+| financedataservice   |                                                              |
+| financedata          | financedataservice, databaseutility                          |
+| hrui                 | hrblservice, 界面类库包, vo                                  |
+| hrblservice          |                                                              |
+| hrbl                 | hrblservice, hrdataservice, po, utilitybl, financebl         |
+| hrdataservice        |                                                              |
+| hrdata               | hrdataservice, databaseutility                               |
+| clientui             | clientblservice, 界面类库包, vo                              |
+| clientblservice      |                                                              |
+| clientbl             | clientblservice, clientdataservice, po, utilitybl, salesbl   |
+| clientdataservice    |                                                              |
+| clientdata           | clientdataservice, databaseutility                           |
+| approvalui           | approvalblservice, 界面类库包, vo                            |
+| approvalblservice    |                                                              |
+| approvalbl           | approvalblservice, approvaldataservice, po, utilitybl, inventorybl, salesbl, financebl |
+| approvaldataservice  |                                                              |
+| approvaldata         | approvaldataservice, databaseutility                         |
+| strategyui           | strategyblservice, 界面类库包, vo                            |
+| strategyblservice    |                                                              |
+| strategybl           | strategyblservice, strategydataservice, po, utilitybl        |
+| strategydataservice  |                                                              |
+| strategydata         | strategydataservice, databaseutility                         |
+| vo                   |                                                              |
+| po                   |                                                              |
+| databaseutility      |                                                              |
+
+​		ERP 系统开发包图如下图所示。
+
+![ERP系统开发包图](lab5/201250172-ERP%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E5%8C%85%E5%9B%BE.png)
 
 ### 4.2 运行时进程图
 
