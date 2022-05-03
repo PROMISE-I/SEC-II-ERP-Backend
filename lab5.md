@@ -246,11 +246,11 @@ ERP 系统采用前端 Vue 框架、后端 Springboot 框架，使用 Mybatis �
 | SalesServiceImpl.returnStock                                 | public RestockReturnedGoodsSheetVO returnStock(RestockReturnedGoodsSheetInfoVO restockReturnedGoodsSheetInfoVO) | 需要退货(给供应商)                                           | 更新库存信息                                                 |
 
 | 需要的服务（需接口） |
-| -------------------- |
+| :------------------: |
 
 | 服务名                                                       | 服务                                                      |
 | ------------------------------------------------------------ | --------------------------------------------------------- |
-| createCustomer(CustomerPO customerPO)                        | 在数据库中插入一个新的CustomerPO                          |
+| CustomerDao.createCustomer(CustomerPO customerPO)            | 在数据库中插入一个新的CustomerPO                          |
 | CustomerDao.updateById(CustomerPO customerPO)                | 更新一个 CustomerPO                                       |
 | CustomerDao.findById(String Id)                              | 返回指定 Id 的 CustomerPO                                 |
 | CustomerDao.deleteById(String Id)                            | 删除指定 Id 的 CustomerPO                                 |
