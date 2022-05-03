@@ -21,8 +21,6 @@
 
 ### 1.2 词汇表
 
-// TODO
-
 | 词汇名称 | 词汇含义                                 | 备注  |
 |------|--------------------------------------|-----|
 | ERP  | 企业资源计划（Enterprise Resource Planning） | ... |
@@ -61,7 +59,7 @@ ERP 系统采用前端 Vue 框架、后端 Springboot 框架，使用 Mybatis �
 
 部署图如下。
 
-// TODO：加上部署图
+![部署图](https://seec-homework.oss-cn-shanghai.aliyuncs.com/201250127-ERP部署图.jpg)
 
 ## 5. 接口视角
 
@@ -69,7 +67,7 @@ ERP 系统采用前端 Vue 框架、后端 Springboot 框架，使用 Mybatis �
 
 服务端模块的视图如下图所示，服务端各层的职责分别如下表所示。
 
-// TODO：加上服务器模块视图
+![服务器模块视图](https://seec-homework.oss-cn-shanghai.aliyuncs.com/201250127-服务端模块视图.jpg)
 
 | 层           | 职责                   |
 |-------------|----------------------|
@@ -81,28 +79,49 @@ ERP 系统采用前端 Vue 框架、后端 Springboot 框架，使用 Mybatis �
 
 每一层只是使用下方直接接触的层。层与层之间仅仅是通过接口的调用来完成的。层之间调用的接口如下表所示。
 
-// TODO：层之间调用的接口
-
-| 接口    | 服务调用方 | 服务提供方 |
-|-------|-------|------|
-| # TBD | 用户界面层 | 业务逻辑层 |
-| # TBD | 业务逻辑层 | 数据层  |
+| 接口                                                                                                                                                                                                       | 服务调用方 | 服务提供方 |
+|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------|------|
+| # TBD                                                                                                                                                                                                    | 用户界面层 | 业务逻辑层 |
+| CategoryDao <br> ProductDao <br> WarehouseDao <br> WarehouseInputSheetDao <br> WarehouseOutputSheetDao <br> CustomerDao <br> RestockSheetDao <br> RestockReturnedGoodsSheetDao <br> SalesSheetDao <br> SalesReturnedGoodsSheetDao  | 业务逻辑层 | 数据层  |
 
 ### 5.2 用户界面的分解
 
-// TODO：
+根据需求，系统存在 25 个界面，分别为登陆界面、库存管理人员主界面、进货销售人员主界面、财务人员主界面、人力资源人员主界面、总经理主界面、商品分类管理、商品管理、库存界面、库存查看、库存盘点、单据界面、制订单据、审批单据、客户管理、客户查询、账户管理、查询界面、查询销售明细表、查询经营历程表、查询经营情况表、期初建账、日志查询、员工管理、促销策略。界面跳转如下图所示。
+
+![界面跳转图](https://seec-homework.oss-cn-shanghai.aliyuncs.com/201250127-用户界面跳转.jpg)
+
+用户界面类如下图所示。
+
+![用户界面类图](https://seec-homework.oss-cn-shanghai.aliyuncs.com/201250127-用户界面类.png)
 
 #### 5.2.1 用户界面层模块的职责
 
-// TODO
+下表为用户界面层模块的职责。
+
+| 模块        | 职责                     |
+|-----------|------------------------|
+| MainFrame | 界面 Frame，负责界面的显示的界面的跳转 |
 
 #### 5.2.2 用户界面层的接口规范
 
-// TODO
+下表为用户界面层的接口规范。
+
+| 接口名称                           | 语法                             | 前置条件 | 后置条件      |
+|--------------------------------|--------------------------------|------|-----------|
+| Mainframe.init | Mainframe.init(Strings[] args) | 无    | 正确显示Frame |
+
+用户界面层需要的服务接口如下表所示。
+
+// # TBD
+
+| 服务名                                 | 服务                |
+|-------------------------------------|-------------------|
+| businesslogicservice.LoginBLService | 登录界面的业务逻辑接口       |
+| businesslogicservice.*BLService     | 每个界面都有一个响应的业务逻辑接口 |
 
 #### 5.2.3 用户界面模块设计原理
 
-// TODO
+用户界面利用 Vue 框架设计和实现。
 
 ### 5.3 业务逻辑层的分解
 
@@ -119,8 +138,6 @@ ERP 系统采用前端 Vue 框架、后端 Springboot 框架，使用 Mybatis �
 数据层主要给业务逻辑层提供数据访问服务，包括对于持久化数据的增、删、改、查。Inventory业务逻辑、Sales业务逻辑需要的服务有CategoryDao、ProductDao、UserDao、WarehouseDao、WarehouseInputSheetDao、WarehouseOutputSheetDao、CustomerDao、RestockReturnedGoodsSheetDao、RestockSheetDao、SalesReturnedGoodsSheetDao、SalesSheetDao接口提供。在ERP系统中采用数据库来进行持久化数据的保存，借助Mybatis框架和Mapper映射文件完成数据层的具体实现。数据层模块的描述具体如下图所示。
 
 ![数据层模块的描述](https://seec-homework.oss-cn-shanghai.aliyuncs.com/201250185-数据层模块的描述.png)
-
-
 
 #### 5.4.1 数据层模块的职责
 
