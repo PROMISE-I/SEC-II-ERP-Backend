@@ -33,9 +33,9 @@
 
 ERP 系统中，选择了分层体系结构风格，将系统分为三层（展示层、业务逻辑层、数据层）能够很好地示意整个高层抽象。展示层包含 GUI 页面的实现，业务逻辑层包含业务逻辑处理的实现，数据层负责数据的持久化和访问。分层体系结构的逻辑视角和逻辑设计方案如下图所示。
 
-![参照体系结构风格的包图表达逻辑视角](lab5/201250172-%E5%8F%82%E7%85%A7%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E9%A3%8E%E6%A0%BC%E7%9A%84%E5%8C%85%E5%9B%BE%E8%A1%A8%E8%BE%BE%E9%80%BB%E8%BE%91%E8%A7%86%E8%A7%92.png)
+![参照体系结构风格的包图表达逻辑视角](https://seec-homework.oss-cn-shanghai.aliyuncs.com/201250172-参照体系结构风格的包图表达逻辑视角.png)
 
-![软件体系结构逻辑设计方案](lab5/201250172-%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%A1%88.png)
+![软件体系结构逻辑设计方案](https://seec-homework.oss-cn-shanghai.aliyuncs.com/201250172-软件体系结构逻辑设计方案.png)
 
 ## 4. 组合视角
 
@@ -87,7 +87,7 @@ ERP 系统最终开发包设计如下表所示。
 
 ​		ERP 系统开发包图如下图所示。
 
-![ERP系统开发包图](lab5/201250172-ERP%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E5%8C%85%E5%9B%BE.png)
+![ERP系统开发包图](https://seec-homework.oss-cn-shanghai.aliyuncs.com/201250172-ERP系统开发包图.png)
 
 ### 4.2 运行时进程图
 
