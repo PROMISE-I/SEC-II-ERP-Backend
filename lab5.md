@@ -129,10 +129,10 @@ ERP 系统采用前端 Vue 框架、后端 Springboot 框架，使用 Mybatis �
 
 每一层只是使用下方直接接触的层。层与层之间仅仅是通过接口的调用来完成的。层之间调用的接口如下表所示。
 
-| 接口                                                                                                                                                                                                       | 服务调用方 | 服务提供方 |
-|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------|------|
-| # TBD                                                                                                                                                                                                    | 用户界面层 | 业务逻辑层 |
-| CategoryDao <br> ProductDao <br> WarehouseDao <br> WarehouseInputSheetDao <br> WarehouseOutputSheetDao <br> CustomerDao <br> RestockSheetDao <br> RestockReturnedGoodsSheetDao <br> SalesSheetDao <br> SalesReturnedGoodsSheetDao  | 业务逻辑层 | 数据层  |
+| 接口                                                                                                                                                                                                                             | 服务调用方 | 服务提供方 |
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------|------|
+| CategoryServiceImpl <br> ProductServiceImpl <br> WarehouseServiceimpl <br> ...                                                                                                                                                 | 用户界面层 | 业务逻辑层 |
+| CategoryDao <br> ProductDao <br> WarehouseDao <br> WarehouseInputSheetDao <br> WarehouseOutputSheetDao <br> CustomerDao <br> RestockSheetDao <br> RestockReturnedGoodsSheetDao <br> SalesSheetDao <br> SalesReturnedGoodsSheetDao | 业务逻辑层 | 数据层  |
 
 ### 5.2 用户界面的分解
 
@@ -150,7 +150,7 @@ ERP 系统采用前端 Vue 框架、后端 Springboot 框架，使用 Mybatis �
 
 | 模块        | 职责                     |
 |-----------|------------------------|
-| MainFrame | 界面 Frame，负责界面的显示的界面的跳转 |
+| MainFrame | 界面 Frame，负责界面的显示和界面的跳转 |
 
 #### 5.2.2 用户界面层的接口规范
 
@@ -162,12 +162,12 @@ ERP 系统采用前端 Vue 框架、后端 Springboot 框架，使用 Mybatis �
 
 用户界面层需要的服务接口如下表所示。
 
-// # TBD
-
-| 服务名                                 | 服务                |
-|-------------------------------------|-------------------|
-| businesslogicservice.LoginBLService | 登录界面的业务逻辑接口       |
-| businesslogicservice.*BLService     | 每个界面都有一个响应的业务逻辑接口 |
+| 服务名                            | 服务            |
+|--------------------------------|---------------|
+| CategoryServiceImpl.getUIInfo  | 取得商品分类的 UI 内容 |
+| ProductServiceImpl.getUIInfo   | 取得商品信息的 UI 内容 |
+| WarehouseServiceImpl.getUIInfo | 取得库存信息的 UI 内容 |
+| ...（库存和销售模块中未实现的接口）            | ...           |
 
 #### 5.2.3 用户界面模块设计原理
 
@@ -192,17 +192,20 @@ ERP 系统采用前端 Vue 框架、后端 Springboot 框架，使用 Mybatis �
 | :------------------: |
 
 
-| <span style="display:inline-block;width:70px">接口名称</span> | <span style="display:inline-block;width:150px">语法</span>   | <span style="white-space:nowrap;">前置条件&emsp;&emsp;</span> | <span style="white-space:nowrap;">后置条件&emsp;&emsp;</span> |
-| :----------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| CategoryServiceImpl.createCategory                           | public CategoryVO createCategory(Integer parentId, String name) | 需要新增一个商品分类                                         | 增加新增的商品分类信息                                       |
-| CategoryServiceImpl.queryAllCategory                         | public List\<CategoryVO\> queryAllCategory()                 | 需要查询商品分类                                             | 返回所有的商品分类                                           |
-| CategoryServiceImpl.updateCategory                           | public CategoryVO updateCategory(Integer id, String name)    | 需要更新商品分类                                             | 更新商品分类信息                                             |
-| CategoryServiceImpl.deleteCategory                           | public void deleteCategory(Integer id)                       | 需要删除一个商品分类                                         | 删除指定 Id 的商品分类                                       |
-| ProductServiceImpl.createProduct                             | public ProductInfoVO createProduct(CreateProductVO inputVO） | 需要新增一个商品                                             | 增加新增的商品信息                                           |
-| ProductServiceImpl.updateProduct                             | public ProductInfoVO updateProduct(ProductInfoVO productInfoVO) | 需要更新商品信息                                             | 更新指定的商品信息                                           |
-| ProductServiceImpl.queryAllProduct                           | public List\<ProductInfoVO\> queryAllProduct()               | 需要查询商品信息                                             | 返回所有商品信息                                             |
-| ProductServiceImpl.deleteById                                | public void deleteById(String id)                            | 需要删除商品信息                                             | 删除指定 Id 的商品信息                                       |
-| WarehouseServiceImpl.productWarehousing                      | public void productWarehousing(WarehouseInputFormVO warehouseInputFormVO) | 需要入库商品                                                 | 更新库存中的商品信息(增加库存)                               |
+| <span style="display:inline-block;width:70px">接口名称</span> | <span style="display:inline-block;width:150px">语法</span>                  | <span style="white-space:nowrap;">前置条件&emsp;&emsp;</span> | <span style="white-space:nowrap;">后置条件&emsp;&emsp;</span> |
+|:----------------------------------------------------------|---------------------------------------------------------------------------|-----------------------------------------------------------|-----------------------------------------------------------|
+| CategoryServiceImpl.createCategory                        | public CategoryVO createCategory(Integer parentId, String name)           | 需要新增一个商品分类                                                | 增加新增的商品分类信息                                               |
+| CategoryServiceImpl.queryAllCategory                      | public List\<CategoryVO\> queryAllCategory()                              | 需要查询商品分类                                                  | 返回所有的商品分类                                                 |
+| CategoryServiceImpl.updateCategory                        | public CategoryVO updateCategory(Integer id, String name)                 | 需要更新商品分类                                                  | 更新商品分类信息                                                  |
+| CategoryServiceImpl.deleteCategory                        | public void deleteCategory(Integer id)                                    | 需要删除一个商品分类                                                | 删除指定 Id 的商品分类                                             |
+| CategoryServiceImpl.getUIInfo                             | public String[] getUIInfo(String[] args)                                  | 需要获取 UI 界面内容                                              | 返回所需的 UI 内容                                               |
+| ProductServiceImpl.createProduct                          | public ProductInfoVO createProduct(CreateProductVO inputVO）               | 需要新增一个商品                                                  | 增加新增的商品信息                                                 |
+| ProductServiceImpl.updateProduct                          | public ProductInfoVO updateProduct(ProductInfoVO productInfoVO)           | 需要更新商品信息                                                  | 更新指定的商品信息                                                 |
+| ProductServiceImpl.queryAllProduct                        | public List\<ProductInfoVO\> queryAllProduct()                            | 需要查询商品信息                                                  | 返回所有商品信息                                                  |
+| ProductServiceImpl.deleteById                             | public void deleteById(String id)                                         | 需要删除商品信息                                                  | 删除指定 Id 的商品信息                                             |
+| ProductServiceImpl.getUIInfo                              | public String[] getUIInfo(String[] args)                                  | 需要获取 UI 界面内容                                              | 返回所需的 UI 内容                                               |
+| WarehouseServiceImpl.productWarehousing                   | public void productWarehousing(WarehouseInputFormVO warehouseInputFormVO) | 需要入库商品                                                    | 更新库存中的商品信息(增加库存)                                          |
+| WarehouseServiceImpl.getUIInfo                            | public String[] getUIInfo(String[] args)                                  | 需要获取 UI 界面内容                                              | 返回所需的 UI 内容                                         |
 
 | 需要的服务(需接口) |
 | :----------------: |
