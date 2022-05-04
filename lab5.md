@@ -175,6 +175,8 @@ ERP 系统采用前端 Vue 框架、后端 Springboot 框架，使用 Mybatis �
 
 ### 5.3 业务逻辑层的分解
 
+
+
 #### 5.3.1 业务逻辑层模块的职责
 
 <div align = "center"><b>业务逻辑模块的职责<b></div>
@@ -239,7 +241,7 @@ ERP 系统采用前端 Vue 框架、后端 Springboot 框架，使用 Mybatis �
 
 | <span style="display:inline-block;width:70px">接口名称</span> | <span style="display:inline-block;width:200px">语法</span>   | <span style="display:inline-block;width:100px">前置条件</span> | <span style="display:inline-block;width:150px">后置条件</span> |
 | :----------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| CustomerServiceImpl.createCustomer                           | public CustomerVO createCustomer(CustomernfoVO customerInfoVO) | 新增一个客户                                                 | 增加新增的客户信息                                           |
+| CustomerServiceImpl.createCustomer                           | public CustomerVO createCustomer(CustomerInfoVO customerInfoVO) | 新增一个客户                                                 | 增加新增的客户信息                                           |
 | CustomerServiceImpl.updateCustomer                           | public CustomerVO updateCustomer(CustomerInfoVO customerInfoVO) | 需要更新客户信息                                             | 更新客户信息                                                 |
 | CustomerServiceImpl.deleteCustomer                           | public void deleteCustomer(CustomerInfoVO customerInfoVO)    | 需要删除一个客户                                             | 删除和关键字段信息匹配的客户的信息                           |
 | CustomerServiceImpl.getLargestInPeriod                       | public CustomerVO getLargestInPeriod(Date startDate, Date endDate) | 需要查询交易                                                 | 返回 startDate - endDate 日期内交易额最大的客户              |
