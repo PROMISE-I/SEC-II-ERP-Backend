@@ -175,7 +175,9 @@ ERP 系统采用前端 Vue 框架、后端 Springboot 框架，使用 Mybatis �
 
 ### 5.3 业务逻辑层的分解
 
+业务逻辑层包括多个针对界面的业务逻辑处理对象。例如, SalesServiceImpl 对象负责处理销售界面的部分业务逻辑；ProductServiceImpl 负责处理库存界面的部分业务逻辑。业务逻辑层的设计图如下所示: 
 
+![](https://seec-homework.oss-cn-shanghai.aliyuncs.com/201250181-logicalServiceDesc.png)
 
 #### 5.3.1 业务逻辑层模块的职责
 
@@ -247,8 +249,8 @@ ERP 系统采用前端 Vue 框架、后端 Springboot 框架，使用 Mybatis �
 | CustomerServiceImpl.getLargestInPeriod                       | public CustomerVO getLargestInPeriod(Date startDate, Date endDate) | 需要查询交易                                                 | 返回 startDate - endDate 日期内交易额最大的客户              |
 | SalesServiceImpl.deliverGoods                                | public SalesSheetVO deliverGoods(SalesSheetInfoVO salesSheetInfoVO) | 需要出货                                                     | 更新本次出货涉及的库存和客户信息                             |
 | SalesServiceImpl.returnGoods                                 | public SalesReturnedGoodsSheetVO returnGoods(SalesReturnedGoodsSheetInfoVO salesReturnedGoodsInfoVO) | (顾客)需要退货                                               | 更新本次退货涉及到的客户和库存信息                           |
-| SalesServiceImpl.restock                                     | public RestockSheetVO  restock(RestockSheetInfoVO restockSheetInfoVO) | 需要进货                                                     | 更新库存信息                                                 |
-| SalesServiceImpl.returnStock                                 | public RestockReturnedGoodsSheetVO returnStock(RestockReturnedGoodsSheetInfoVO restockReturnedGoodsSheetInfoVO) | 需要退货(给供应商)                                           | 更新库存信息                                                 |
+| StockServiceImpl.restock                                     | public RestockSheetVO  restock(RestockSheetInfoVO restockSheetInfoVO) | 需要进货                                                     | 更新库存信息                                                 |
+| StockServiceImpl.returnStock                                 | public RestockReturnedGoodsSheetVO returnStock(RestockReturnedGoodsSheetInfoVO restockReturnedGoodsSheetInfoVO) | 需要退货(给供应商)                                           | 更新库存信息                                                 |
 
 | 需要的服务（需接口） |
 | :------------------: |
