@@ -106,7 +106,7 @@ public class PayMoneyServiceImpl implements PayMoneyService {
                 //单据审核通过，修改公司对客户的应付数据（减少payable）
                 PayMoneySheetPO payMoneySheet = payMoneyDao.findOneById(payMoneySheetId);
                 CustomerPO customer = customerService.findCustomerById(payMoneySheet.getCustomer());
-                customer.setReceivable(customer.getPayable().subtract(payMoneySheet.getTotalAmount()));
+                customer.setPayable(customer.getPayable().subtract(payMoneySheet.getTotalAmount()));
                 customerService.updateCustomer(customer);
             }
         }
