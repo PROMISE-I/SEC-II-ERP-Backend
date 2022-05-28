@@ -8,6 +8,7 @@ import com.nju.edu.erp.model.po.finance.ReceiveMoneySheetPO;
 import com.nju.edu.erp.model.vo.finance.ReceiveMoneySheetVO;
 import com.nju.edu.erp.model.po.finance.ReceiveMoneyTransferListPO;
 import com.nju.edu.erp.model.vo.finance.ReceiveMoneyTransferListVO;
+import com.nju.edu.erp.service.BankAccountService;
 import com.nju.edu.erp.service.CustomerService;
 import com.nju.edu.erp.service.ReceiveMoneyService;
 import com.nju.edu.erp.utils.IdGenerator;
@@ -28,10 +29,13 @@ public class ReceiveMoneyServiceImpl implements ReceiveMoneyService {
 
     CustomerService customerService;
 
+    BankAccountService bankAccountService;
+
     @Autowired
-    public ReceiveMoneyServiceImpl(ReceiveMoneyDao receiveMoneyDao, CustomerService customerService) {
+    public ReceiveMoneyServiceImpl(ReceiveMoneyDao receiveMoneyDao, CustomerService customerService, BankAccountService bankAccountService) {
         this.receiveMoneyDao = receiveMoneyDao;
         this.customerService = customerService;
+        this.bankAccountService = bankAccountService;
     }
 
     @Override
@@ -113,6 +117,11 @@ public class ReceiveMoneyServiceImpl implements ReceiveMoneyService {
                 CustomerPO customer = customerService.findCustomerById(receiveMoneySheet.getCustomer());
                 customer.setReceivable(customer.getReceivable().subtract(receiveMoneySheet.getTotalAmount()));
                 customerService.updateCustomer(customer);
+                //增加银行账户的余额
+                List<ReceiveMoneyTransferListPO> transferLists = receiveMoneyDao.findTransferListByReceiveMoneySheetId(receiveMoneySheetId);
+                for (ReceiveMoneyTransferListPO transferList : transferLists) {
+                    bankAccountService.incomeAtAccountId(transferList.getBankAccountId(), transferList.getAmount());
+                }
             }
         }
     }
