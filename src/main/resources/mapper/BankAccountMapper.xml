@@ -13,7 +13,13 @@
     </update>
     <update id="spendAtAccountId">
         update bank_account
-        set amount = amount - #{actualSalary}
+        set amount = amount - #{amount}
+        where id = #{companyBankAccountId}
+    </update>
+
+    <update id="incomeAtAccountId">
+        update bank_account
+        set amount = amount + #{amount}
         where id = #{companyBankAccountId}
     </update>
 
