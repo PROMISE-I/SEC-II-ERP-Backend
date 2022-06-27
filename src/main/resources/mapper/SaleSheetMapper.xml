@@ -51,6 +51,10 @@
         limit 1;
     </select>
 
+    <select id="findAllByState" resultType="com.nju.edu.erp.model.po.SaleSheetPO">
+        select * from sale_sheet where state = #{state}
+    </select>
+
     <resultMap id="CustomerPurchaseAmountPO" type="com.nju.edu.erp.model.po.CustomerPurchaseAmountPO">
         <result column="total_final_amount" property="totalFinalAmount"></result>
         <association property="customerPO" javaType="CustomerPO" >
