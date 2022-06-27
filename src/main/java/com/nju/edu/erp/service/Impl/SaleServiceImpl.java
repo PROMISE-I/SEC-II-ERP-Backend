@@ -62,6 +62,36 @@ public class SaleServiceImpl implements SaleService {
         // TODO
         // 需要持久化销售单（SaleSheet）和销售单content（SaleSheetContent），其中总价或者折后价格的计算需要在后端进行
         // 需要的service和dao层相关方法均已提供，可以不用自己再实现一遍
+        SaleSheetPO saleSheetPO = new SaleSheetPO();
+        BeanUtils.copyProperties(saleSheetVO, saleSheetPO);
+
+        saleSheetPO.setOperator(userVO.getName());
+        saleSheetPO.setCreateTime(new Date());
+        SaleSheetPO latest = saleSheetDao.getLatestSheet();
+        String id = IdGenerator.generateSheetId(latest == null? null : latest.getId(), "XSD");
+        saleSheetPO.setId(id);
+        saleSheetPO.setState(SaleSheetState.PENDING_LEVEL_1);
+        BigDecimal totalAmount = BigDecimal.ZERO;
+        List<SaleSheetContentPO> saleSheetContentPOList = new ArrayList<>();
+        for (SaleSheetContentVO saleSheetContentVO : saleSheetVO.getSaleSheetContent()) {
+            SaleSheetContentPO saleSheetContentPO = new SaleSheetContentPO();
+            BeanUtils.copyProperties(saleSheetContentVO, saleSheetContentPO);
+            saleSheetContentPO.setSaleSheetId(id);
+            BigDecimal unitPrice = saleSheetContentVO.getUnitPrice();
+            if (unitPrice == null) {
+                ProductPO productPO = productDao.findById(saleSheetContentVO.getPid());
+                unitPrice = productPO.getPurchasePrice();
+                saleSheetContentPO.setUnitPrice(unitPrice);
+            }
+            saleSheetContentPO.setTotalPrice(unitPrice.multiply(BigDecimal.valueOf(saleSheetContentPO.getQuantity())));
+            saleSheetContentPOList.add(saleSheetContentPO);
+            totalAmount = totalAmount.add(saleSheetContentPO.getTotalPrice());
+        }
+
+        saleSheetDao.saveBatchSheetContent(saleSheetContentPOList);
+        BigDecimal finalAmount = totalAmount.multiply(saleSheetPO.getDiscount()).subtract(saleSheetPO.getVoucherAmount());
+        saleSheetPO.setFinalAmount(finalAmount);
+        saleSheetDao.saveSheet(saleSheetPO);
     }
 
     @Override
