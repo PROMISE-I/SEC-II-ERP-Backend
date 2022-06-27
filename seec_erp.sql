@@ -13,7 +13,9 @@
 
  Date: 24/05/2022 01:11:23
 */
+drop database `seec_erp`;
 create database `seec_erp`;
+use `seec_erp`;
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
