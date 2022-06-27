@@ -9,8 +9,6 @@ import com.nju.edu.erp.model.vo.ProductInfoVO;
 import com.nju.edu.erp.model.vo.Sale.SaleSheetContentVO;
 import com.nju.edu.erp.model.vo.Sale.SaleSheetVO;
 import com.nju.edu.erp.model.vo.UserVO;
-import com.nju.edu.erp.model.vo.purchase.PurchaseSheetContentVO;
-import com.nju.edu.erp.model.vo.purchase.PurchaseSheetVO;
 import com.nju.edu.erp.model.vo.warehouse.WarehouseOutputFormContentVO;
 import com.nju.edu.erp.model.vo.warehouse.WarehouseOutputFormVO;
 import com.nju.edu.erp.service.CustomerService;
@@ -144,6 +142,58 @@ public class SaleServiceImpl implements SaleService {
                  4. 新建出库草稿
             2. 一级审批状态不能直接到审批完成状态； 二级审批状态不能回到一级审批状态
          */
+        if (state.equals(SaleSheetState.FAILURE)) {
+            SaleSheetPO saleSheetPO = saleSheetDao.findSheetById(saleSheetId);
+            if (saleSheetPO.getState() == SaleSheetState.SUCCESS) throw new RuntimeException("状态更新失败");
+            int effectLines = saleSheetDao.updateSheetState(saleSheetId, state);
+            if (effectLines == 0) throw new RuntimeException("状态更新失败");
+        } else {
+            SaleSheetState prevState;
+            if (state.equals(SaleSheetState.SUCCESS)) {
+                prevState = SaleSheetState.PENDING_LEVEL_2;
+            } else if (state.equals(SaleSheetState.PENDING_LEVEL_2)) {
+                prevState = SaleSheetState.PENDING_LEVEL_1;
+            } else {
+                throw new RuntimeException("状态更新失败");
+            }
+            int effectLines = saleSheetDao.updateSheetStateOnPrev(saleSheetId, prevState, state);
+            if (effectLines == 0) throw new RuntimeException("状态更新失败");
+            if (state.equals(SaleSheetState.SUCCESS)) {
+                //审批成功
+                //1. 更新商品表(recentRp)
+                //2. 更新客户表(receivable)
+                //3. 新建出库草稿
+                List<SaleSheetContentPO> saleSheetContentPOS = saleSheetDao.findContentBySheetId(saleSheetId);
+                List<WarehouseOutputFormContentVO> warehouseOutputFormContentVOS = new ArrayList<>();
+
+                for (SaleSheetContentPO saleSheetContentPO : saleSheetContentPOS) {
+                    ProductInfoVO productInfoVO = new ProductInfoVO();
+                    productInfoVO.setId(saleSheetContentPO.getPid());
+                    productInfoVO.setRecentRp(saleSheetContentPO.getUnitPrice());
+                    productService.updateProduct(productInfoVO);
+
+                    WarehouseOutputFormContentVO woContentVO = new WarehouseOutputFormContentVO();
+                    woContentVO.setSalePrice(saleSheetContentPO.getUnitPrice());
+                    woContentVO.setQuantity(saleSheetContentPO.getQuantity());
+                    woContentVO.setRemark(saleSheetContentPO.getRemark());
+                    woContentVO.setPid(saleSheetContentPO.getPid());
+                    warehouseOutputFormContentVOS.add(woContentVO);
+                }
+
+                //更新客户列表(receivable)
+                SaleSheetPO saleSheetPO = saleSheetDao.findSheetById(saleSheetId);
+                CustomerPO customer = customerDao.findOneById(saleSheetPO.getSupplier());
+                customer.setReceivable(customer.getReceivable().add(saleSheetPO.getFinalAmount()));
+                customerService.updateCustomer(customer);
+
+                //新建出库草稿
+                WarehouseOutputFormVO warehouseOutputFormVO = new WarehouseOutputFormVO();
+                warehouseOutputFormVO.setOperator(null);// 暂时不填操作人(确认草稿单的时候填写)
+                warehouseOutputFormVO.setSaleSheetId(saleSheetId);
+                warehouseOutputFormVO.setList(warehouseOutputFormContentVOS);
+                warehouseService.productOutOfWarehouse(warehouseOutputFormVO);
+            }
+        }
     }
 
     /**
