@@ -89,6 +89,7 @@ public class SaleServiceImpl implements SaleService {
         }
 
         saleSheetDao.saveBatchSheetContent(saleSheetContentPOList);
+        saleSheetPO.setRawTotalAmount(totalAmount);
         BigDecimal finalAmount = totalAmount.multiply(saleSheetPO.getDiscount()).subtract(saleSheetPO.getVoucherAmount());
         saleSheetPO.setFinalAmount(finalAmount);
         saleSheetDao.saveSheet(saleSheetPO);
