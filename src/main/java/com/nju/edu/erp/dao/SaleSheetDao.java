@@ -78,4 +78,12 @@ public interface SaleSheetDao {
      * @return
      */
     CustomerPurchaseAmountPO getMaxAmountCustomerOfSalesmanByTime(String salesman, Date beginTime,Date endTime);
+
+
+    /**
+     * 根据状态返回销售单
+     * @Param 销售单状态
+     * @return 销售单列表
+     */
+    List<SaleSheetPO> findAllByState(SaleSheetState state);
 }
