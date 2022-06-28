@@ -48,7 +48,7 @@
     <select id="findAllBatchIdBySaleReturnsSheetId" resultType="java.lang.Integer">
         select wosc.batch_id
         from sale_returns_sheet srs, warehouse_output_sheet wos, warehouse_output_sheet_content wosc
-        where srs.id = #{saleReturnsSheetId} and srs.sale_sheet_id = wos.sale_sheet_id and wos.id = wosc.woid
+        where srs.id = #{saleReturnsSheetId} and srs.sale_sheet_id = wos.sale_sheet_id and wos.id = wosc.wo_id
     </select>
 
 
