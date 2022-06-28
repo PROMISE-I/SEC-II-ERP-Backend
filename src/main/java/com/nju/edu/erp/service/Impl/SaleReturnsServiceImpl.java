@@ -84,7 +84,19 @@ public class SaleReturnsServiceImpl implements SaleReturnsService {
             totalAmount = totalAmount.add(sContentPO.getTotalPrice());
         }
         saleReturnsSheetDao.saveBatch(sRContentPOList);
+
         saleReturnsSheetPO.setRawTotalAmount(totalAmount);
+        SaleSheetPO saleSheetPO = saleSheetDao.findSheetById(saleReturnsSheetPO.getSaleSheetId());
+        saleReturnsSheetPO.setDiscount(saleSheetPO.getDiscount());
+        saleReturnsSheetPO.setVoucherAmount(saleSheetPO.getVoucherAmount()
+                .multiply(saleReturnsSheetPO.getRawTotalAmount())
+                .divide(saleSheetPO.getRawTotalAmount())
+        );
+        saleReturnsSheetPO.setFinalAmount(saleReturnsSheetPO.getRawTotalAmount()
+                .subtract(saleReturnsSheetPO.getVoucherAmount())
+                .multiply(saleReturnsSheetPO.getDiscount())
+        );
+
         saleReturnsSheetDao.save(saleReturnsSheetPO);
     }
 
@@ -149,8 +161,7 @@ public class SaleReturnsServiceImpl implements SaleReturnsService {
             if (state.equals(SaleReturnsSheetState.SUCCESS)) {
                 // TODO 审批完成, 修改一系列状态
                 // 销售退货单id， 关联的销售单id 【   销售退货单id->销售单id->出库单id->好多批次id】
-                SaleReturnsSheetPO saleReturnsSheetPO = saleReturnsSheetDao.findOneById(saleReturnsSheetId);
-                SaleSheetPO saleSheetPO = saleSheetDao.findSheetById(saleReturnsSheetPO.getSaleSheetId());
+                SaleSheetPO saleSheetPO = saleSheetDao.findSheetById(saleReturnsSheet.getSaleSheetId());
                 List<SaleReturnsSheetContentPO> saleReturnsSheetContentPOS = saleReturnsSheetDao.findContentBySaleReturnsSheetId(saleReturnsSheetId);
 
                 List<Integer> batchIds = saleReturnsSheetDao.findAllBatchIdBySaleReturnsSheetId(saleReturnsSheetId);
@@ -193,19 +204,10 @@ public class SaleReturnsServiceImpl implements SaleReturnsService {
                 }
 
                 // 【销售退货单id & 销售单id -> 客户receivable减去已经收了的钱】
-                saleReturnsSheetPO.setDiscount(saleSheetPO.getDiscount());
-                saleReturnsSheetPO.setVoucherAmount(saleSheetPO.getVoucherAmount()
-                        .multiply(saleReturnsSheet.getRawTotalAmount())
-                        .divide(saleSheetPO.getRawTotalAmount())
-                );
-                saleReturnsSheetPO.setFinalAmount(saleReturnsSheetPO.getRawTotalAmount()
-                        .subtract(saleReturnsSheetPO.getVoucherAmount())
-                        .multiply(saleReturnsSheetPO.getDiscount())
-                );
                 Integer supplier = saleSheetPO.getSupplier();
                 CustomerPO customer = customerService.findCustomerById(supplier);
 
-                customer.setReceivable(customer.getReceivable().subtract(saleReturnsSheetPO.getFinalAmount()));
+                customer.setReceivable(customer.getReceivable().subtract(saleReturnsSheet.getFinalAmount()));
                 customerService.updateCustomer(customer);
             }
 
