@@ -44,6 +44,10 @@ public class SaleReturnsSheetVO {
      */
     private BigDecimal voucherAmount;
     /**
+     * 折让后退款的总额
+     */
+    private BigDecimal finalAmount;
+    /**
      * 单据状态
      */
     private SaleReturnsSheetState state;
