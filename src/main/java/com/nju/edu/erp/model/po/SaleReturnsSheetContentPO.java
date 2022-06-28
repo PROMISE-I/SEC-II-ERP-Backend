@@ -19,7 +19,7 @@ public class SaleReturnsSheetContentPO {
     /**
      * 销售退货单id
      */
-    private String saleReturnSheetId;
+    private String saleReturnsSheetId;
     /**
      * 商品id
      */
