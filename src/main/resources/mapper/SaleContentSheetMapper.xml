@@ -13,7 +13,7 @@
     <insert id="saveBatch">
         insert into sale_returns_sheet_content (id ,sale_returns_sheet_id, pid, quantity, unit_price, total_price, remark) values
         <foreach collection="list" item="item" index="index" separator=",">
-            (#{item.id}, #{item.saleReturnsSheetId}, #{item.id}, #{item.quantity}, #{item.unitPrice}, #{item.totalPrice}, #{item.remark})
+            (#{item.id}, #{item.saleReturnsSheetId}, #{item.pid}, #{item.quantity}, #{item.unitPrice}, #{item.totalPrice}, #{item.remark})
         </foreach>
     </insert>
 
