@@ -320,8 +320,8 @@ INSERT INTO `user` VALUES (6, '67', '123456', 'GM');
 INSERT INTO `user` VALUES (7, 'xiaoshou', '123456', 'SALE_STAFF');
 INSERT INTO `user` VALUES (8, 'Leone', '123456', 'GM');
 INSERT INTO `user` VALUES (9, 'xiaoshoujingli', '123456', 'SALE_MANAGER');
-INSERT INTO `user` VALUES (9, 'slf', '123456', 'HR');
-INSERT INTO `user` VALUES (9, 'wfs', '123456', 'FINANCIAL_STAFF');
+INSERT INTO `user` VALUES (10, 'slf', '123456', 'HR');
+INSERT INTO `user` VALUES (11, 'wfs', '123456', 'FINANCIAL_STAFF');
 
 -- ----------------------------
 -- Table structure for warehouse

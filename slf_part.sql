@@ -73,6 +73,8 @@ INSERT INTO staff_user VALUES (6, 6);
 INSERT INTO staff_user VALUES (7, 7);
 INSERT INTO staff_user VALUES (8, 8);
 INSERT INTO staff_user VALUES (9, 9);
+INSERT INTO staff_user VALUES (10, 10);
+INSERT INTO staff_user VALUES (11, 11);
 
 drop table if exists present_info;
 CREATE TABLE present_info (
