@@ -47,9 +47,6 @@ public class SaleReturnsServiceImpl implements SaleReturnsService {
         this.warehouseDao = warehouseDao;
     }
 
-    @Autowired
-
-
     /**
      * 制定销售退货单
      * @param userVO 制定单据人员
