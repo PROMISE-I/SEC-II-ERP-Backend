@@ -204,6 +204,38 @@ INSERT INTO `purchase_sheet_content` VALUES (60, 'JHD-20220524-00002', '00000000
 INSERT INTO `purchase_sheet_content` VALUES (61, 'JHD-20220524-00002', '0000000000400001', 400, 2700.00, 1080000.00, NULL);
 
 -- ----------------------------
+-- Table structure for sale_returns_sheet_content
+-- ----------------------------
+DROP TABLE IF EXISTS `sale_returns_sheet_content`;
+CREATE TABLE `sale_returns_sheet_content`  (
+   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增id',
+   `sale_returns_sheet_id` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '销售退货单id',
+   `pid` char(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品id',
+   `quantity` int(11) NULL DEFAULT NULL COMMENT '数量',
+   `total_price` decimal(10, 2) NULL DEFAULT NULL COMMENT '该商品的总金额',
+   `unit_price` decimal(10, 2) NULL DEFAULT NULL COMMENT '该商品的单价',
+   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
+   PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 0 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for sale_returns_sheet
+-- ----------------------------
+DROP TABLE IF EXISTS `sale_returns_sheet`;
+CREATE TABLE `sale_returns_sheet`  (
+   `id` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '销售退货单id',
+   `sale_sheet_id` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '关联的销售单id',
+   `operator` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '操作员',
+   `raw_total_amount` decimal(10, 2) NULL DEFAULT NULL COMMENT '折让前退货总额',
+   `discount` decimal(10, 2) NULL DEFAULT NULL COMMENT '折扣',
+   `voucher_amount` decimal(10, 2) NULL DEFAULT NULL COMMENT '使用代金卷总额',
+   `final_amount` decimal(10, 2) NULL DEFAULT NULL COMMENT '退货的总金额',
+   `state` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '单据状态',
+   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注'
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
 -- Table structure for sale_sheet
 -- ----------------------------
 DROP TABLE IF EXISTS `sale_sheet`;
