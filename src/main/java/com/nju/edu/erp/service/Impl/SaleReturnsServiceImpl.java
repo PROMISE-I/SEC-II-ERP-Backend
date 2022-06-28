@@ -161,7 +161,6 @@ public class SaleReturnsServiceImpl implements SaleReturnsService {
             if (state.equals(SaleReturnsSheetState.SUCCESS)) {
                 // TODO 审批完成, 修改一系列状态
                 // 销售退货单id， 关联的销售单id 【   销售退货单id->销售单id->出库单id->好多批次id】
-                SaleSheetPO saleSheetPO = saleSheetDao.findSheetById(saleReturnsSheet.getSaleSheetId());
                 List<SaleReturnsSheetContentPO> saleReturnsSheetContentPOS = saleReturnsSheetDao.findContentBySaleReturnsSheetId(saleReturnsSheetId);
 
                 List<Integer> batchIds = saleReturnsSheetDao.findAllBatchIdBySaleReturnsSheetId(saleReturnsSheetId);
@@ -204,6 +203,7 @@ public class SaleReturnsServiceImpl implements SaleReturnsService {
                 }
 
                 // 【销售退货单id & 销售单id -> 客户receivable减去已经收了的钱】
+                SaleSheetPO saleSheetPO = saleSheetDao.findSheetById(saleReturnsSheet.getSaleSheetId());
                 Integer supplier = saleSheetPO.getSupplier();
                 CustomerPO customer = customerService.findCustomerById(supplier);
 
