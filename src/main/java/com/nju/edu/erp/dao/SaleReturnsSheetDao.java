@@ -3,9 +3,13 @@ package com.nju.edu.erp.dao;
 import com.nju.edu.erp.enums.sheetState.SaleReturnsSheetState;
 import com.nju.edu.erp.model.po.SaleReturnsSheetContentPO;
 import com.nju.edu.erp.model.po.SaleReturnsSheetPO;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Mapper
+@Repository
 public interface SaleReturnsSheetDao {
     /**
      * 获取最近一条销售退货单

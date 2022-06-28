@@ -16,13 +16,16 @@ import com.nju.edu.erp.service.ProductService;
 import com.nju.edu.erp.service.SaleReturnsService;
 import com.nju.edu.erp.utils.IdGenerator;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.*;
 
+@Service
 public class SaleReturnsServiceImpl implements SaleReturnsService {
 
     SaleReturnsSheetDao saleReturnsSheetDao;
@@ -34,6 +37,17 @@ public class SaleReturnsServiceImpl implements SaleReturnsService {
     CustomerService customerService;
 
     WarehouseDao warehouseDao;
+
+    @Autowired
+    public SaleReturnsServiceImpl(SaleReturnsSheetDao saleReturnsSheetDao, ProductService productService, SaleSheetDao saleSheetDao, CustomerService customerService, WarehouseDao warehouseDao) {
+        this.saleReturnsSheetDao = saleReturnsSheetDao;
+        this.productService = productService;
+        this.saleSheetDao = saleSheetDao;
+        this.customerService = customerService;
+        this.warehouseDao = warehouseDao;
+    }
+
+    @Autowired
 
 
     /**
