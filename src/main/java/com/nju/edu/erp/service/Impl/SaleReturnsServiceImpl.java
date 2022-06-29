@@ -13,7 +13,6 @@ import com.nju.edu.erp.service.CustomerService;
 import com.nju.edu.erp.service.ProductService;
 import com.nju.edu.erp.service.SaleReturnsService;
 import com.nju.edu.erp.utils.IdGenerator;
-import jdk.internal.vm.compiler.collections.Pair;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -163,10 +162,10 @@ public class SaleReturnsServiceImpl implements SaleReturnsService {
                 for (SaleReturnsSheetContentPO sRSContentPO : saleReturnsSheetContentPOS) {
                     String pid = sRSContentPO.getPid();
                     Integer quantity = sRSContentPO.getQuantity();
-                    List<Pair<Integer, Integer>> batchIdAndQuantities = saleReturnsSheetDao.findAllBatchIdAndQuantityBySaleReturnsSheetIdAndPid(saleReturnsSheetId, pid);
-                    for (Pair<Integer, Integer> batchIdAndQuantity : batchIdAndQuantities) {
-                        Integer batchId = batchIdAndQuantity.getLeft();
-                        Integer quantityInThisBatch = batchIdAndQuantity.getRight();
+                    List<WarehouseOutputSheetContentPO> batchIdAndQuantities = saleReturnsSheetDao.findAllWarehouseOutputSheetContentBySaleReturnsSheetIdAndPid(saleReturnsSheetId, pid);
+                    for (WarehouseOutputSheetContentPO woscPO : batchIdAndQuantities) {
+                        Integer batchId = woscPO.getBatchId();
+                        Integer quantityInThisBatch = woscPO.getQuantity();
                         WarehousePO warehousePO = warehouseDao.findOneByPidAndBatchId(pid, batchId);
                         if(warehousePO == null) throw new RuntimeException("单据发生错误！请联系管理员！");
                         if (quantity <= quantityInThisBatch) {

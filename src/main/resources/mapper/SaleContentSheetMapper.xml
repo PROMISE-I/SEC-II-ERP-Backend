@@ -45,8 +45,8 @@
         select * from sale_returns_sheet_content where sale_returns_sheet_id = #{saleReturnsSheetId}
     </select>
 
-    <select id="findAllBatchIdAndQuantityBySaleReturnsSheetIdAndPid" resultType="java.lang.Integer">
-        select wosc.batch_id, wosc.quantity
+    <select id="findAllWarehouseOutputSheetContentBySaleReturnsSheetIdAndPid" resultType="com.nju.edu.erp.model.po.WarehouseOutputSheetContentPO">
+        select wosc.*
         from sale_returns_sheet srs, warehouse_output_sheet wos, warehouse_output_sheet_content wosc
         where srs.id = #{saleReturnsSheetId} and
               srs.sale_sheet_id = wos.sale_sheet_id and
