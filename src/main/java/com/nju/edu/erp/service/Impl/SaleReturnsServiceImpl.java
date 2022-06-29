@@ -1,10 +1,8 @@
 package com.nju.edu.erp.service.Impl;
 
-import ch.qos.logback.core.joran.action.AppenderRefAction;
 import com.nju.edu.erp.dao.SaleReturnsSheetDao;
 import com.nju.edu.erp.dao.SaleSheetDao;
 import com.nju.edu.erp.dao.WarehouseDao;
-import com.nju.edu.erp.dao.WarehouseOutputSheetDao;
 import com.nju.edu.erp.enums.sheetState.SaleReturnsSheetState;
 import com.nju.edu.erp.model.po.*;
 import com.nju.edu.erp.model.vo.ProductInfoVO;
@@ -15,10 +13,9 @@ import com.nju.edu.erp.service.CustomerService;
 import com.nju.edu.erp.service.ProductService;
 import com.nju.edu.erp.service.SaleReturnsService;
 import com.nju.edu.erp.utils.IdGenerator;
+import jdk.internal.vm.compiler.collections.Pair;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.support.BeanDefinitionBuilder;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -93,8 +90,8 @@ public class SaleReturnsServiceImpl implements SaleReturnsService {
                 .divide(saleSheetPO.getRawTotalAmount())
         );
         saleReturnsSheetPO.setFinalAmount(saleReturnsSheetPO.getRawTotalAmount()
-                .subtract(saleReturnsSheetPO.getVoucherAmount())
                 .multiply(saleReturnsSheetPO.getDiscount())
+                .subtract(saleReturnsSheetPO.getVoucherAmount())
         );
 
         saleReturnsSheetDao.save(saleReturnsSheetPO);
@@ -163,43 +160,33 @@ public class SaleReturnsServiceImpl implements SaleReturnsService {
                 // 销售退货单id， 关联的销售单id 【   销售退货单id->销售单id->出库单id->好多批次id】
                 List<SaleReturnsSheetContentPO> saleReturnsSheetContentPOS = saleReturnsSheetDao.findContentBySaleReturnsSheetId(saleReturnsSheetId);
 
-                List<Integer> batchIds = saleReturnsSheetDao.findAllBatchIdBySaleReturnsSheetId(saleReturnsSheetId);
-
                 for (SaleReturnsSheetContentPO sRSContentPO : saleReturnsSheetContentPOS) {
                     String pid = sRSContentPO.getPid();
                     Integer quantity = sRSContentPO.getQuantity();
-                    Integer totalQuantity = 0;
-                    List<WarehousePO> warehousePOS = new ArrayList<>();
-                    for (Integer batchId : batchIds) {
+                    List<Pair<Integer, Integer>> batchIdAndQuantities = saleReturnsSheetDao.findAllBatchIdAndQuantityBySaleReturnsSheetIdAndPid(saleReturnsSheetId, pid);
+                    for (Pair<Integer, Integer> batchIdAndQuantity : batchIdAndQuantities) {
+                        Integer batchId = batchIdAndQuantity.getLeft();
+                        Integer quantityInThisBatch = batchIdAndQuantity.getRight();
                         WarehousePO warehousePO = warehouseDao.findOneByPidAndBatchId(pid, batchId);
-                        totalQuantity += warehousePO.getQuantity();
-                        warehousePOS.add(warehousePO);
-                    }
-                    if (totalQuantity >= quantity) {
-                        int index = 0;
-                        while (quantity > 0) {
-                            WarehousePO warehousePO = warehousePOS.get(index);
-                            if (warehousePO.getQuantity() >= quantity) {
-                                warehousePO.setQuantity(quantity);
-                                warehouseDao.deductQuantity(warehousePO);
-                                ProductInfoVO productInfoVO = productService.getOneProductByPid(pid);
-                                productInfoVO.setQuantity(productInfoVO.getQuantity() - quantity);
-                                productService.updateProduct(productInfoVO);
-                                quantity = 0;
-                            } else {
-                                warehousePO.setQuantity(warehousePO.getQuantity());
-                                warehouseDao.deductQuantity(warehousePO);
-                                ProductInfoVO productInfoVO = productService.getOneProductByPid(pid);
-                                productInfoVO.setQuantity(productInfoVO.getQuantity() - warehousePO.getQuantity());
-                                productService.updateProduct(productInfoVO);
-                                quantity -= warehousePO.getQuantity();
-                            }
-                            index++;
+                        if(warehousePO == null) throw new RuntimeException("单据发生错误！请联系管理员！");
+                        if (quantity <= quantityInThisBatch) {
+                            warehousePO.setQuantity(quantity);
+                            warehouseDao.addQuantity(warehousePO);
+                            ProductInfoVO productInfoVO = productService.getOneProductByPid(pid);
+                            productInfoVO.setQuantity(productInfoVO.getQuantity() + quantity);
+                            productService.updateProduct(productInfoVO);
+                            quantity = 0;
+                            break;
+                        } else {
+                            warehousePO.setQuantity(quantityInThisBatch);
+                            warehouseDao.addQuantity(warehousePO);
+                            ProductInfoVO productInfoVO = productService.getOneProductByPid(pid);
+                            productInfoVO.setQuantity(productInfoVO.getQuantity() + quantityInThisBatch);
+                            productService.updateProduct(productInfoVO);
+                            quantity -= quantityInThisBatch;
                         }
-                    } else {
-                        saleReturnsSheetDao.updateState(saleReturnsSheetId, SaleReturnsSheetState.FAILURE);
-                        throw new RuntimeException("商品数量不足！审批失败！");
                     }
+                    if (quantity > 0) throw new RuntimeException("退货商品数量超出所购！审批失败！");
                 }
 
                 // 【销售退货单id & 销售单id -> 客户receivable减去已经收了的钱】
