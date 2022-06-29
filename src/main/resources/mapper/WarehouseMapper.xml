@@ -13,6 +13,10 @@
         where batch_id = #{batchId} and pid = #{pid};
     </update>
 
+    <update id="addQuantity" parameterType="WarehousePO">
+        update warehouse set quantity = (quantity + #{quantity})
+        where batch_id = #{batchId} and pid = #{pid};
+    </update>
 
 
     <select id="findAllNotZeroByPidSortedByBatchId" resultType="com.nju.edu.erp.model.po.WarehousePO">
