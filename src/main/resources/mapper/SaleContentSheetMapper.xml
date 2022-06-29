@@ -45,10 +45,14 @@
         select * from sale_returns_sheet_content where sale_returns_sheet_id = #{saleReturnsSheetId}
     </select>
 
-    <select id="findAllBatchIdBySaleReturnsSheetId" resultType="java.lang.Integer">
-        select wosc.batch_id
+    <select id="findAllBatchIdAndQuantityBySaleReturnsSheetIdAndPid" resultType="java.lang.Integer">
+        select wosc.batch_id, wosc.quantity
         from sale_returns_sheet srs, warehouse_output_sheet wos, warehouse_output_sheet_content wosc
-        where srs.id = #{saleReturnsSheetId} and srs.sale_sheet_id = wos.sale_sheet_id and wos.id = wosc.wo_id
+        where srs.id = #{saleReturnsSheetId} and
+              srs.sale_sheet_id = wos.sale_sheet_id and
+              wos.id = wosc.wo_id and
+              wosc.pid = #{pid}
+        order by wosc.sale_price
     </select>
 
 
