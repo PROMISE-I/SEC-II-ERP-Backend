@@ -86,7 +86,7 @@ public class SaleReturnsServiceImpl implements SaleReturnsService {
         saleReturnsSheetPO.setDiscount(saleSheetPO.getDiscount());
         saleReturnsSheetPO.setVoucherAmount(saleSheetPO.getVoucherAmount()
                 .multiply(saleReturnsSheetPO.getRawTotalAmount())
-                .divide(saleSheetPO.getRawTotalAmount())
+                .divide(saleSheetPO.getRawTotalAmount(), 2, BigDecimal.ROUND_DOWN)
         );
         saleReturnsSheetPO.setFinalAmount(saleReturnsSheetPO.getRawTotalAmount()
                 .multiply(saleReturnsSheetPO.getDiscount())
