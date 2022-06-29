@@ -3,10 +3,12 @@ package com.nju.edu.erp.dao;
 import com.nju.edu.erp.enums.sheetState.SaleReturnsSheetState;
 import com.nju.edu.erp.model.po.SaleReturnsSheetContentPO;
 import com.nju.edu.erp.model.po.SaleReturnsSheetPO;
+import jdk.internal.vm.compiler.collections.Pair;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 @Repository
@@ -79,5 +81,5 @@ public interface SaleReturnsSheetDao {
      * @param saleReturnsSheetId
      * @return
      */
-    List<Integer> findAllBatchIdBySaleReturnsSheetId(String saleReturnsSheetId);
+    List<Pair<Integer, Integer>> findAllBatchIdAndQuantityBySaleReturnsSheetIdAndPid(String saleReturnsSheetId, String pid);
 }
