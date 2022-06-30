@@ -22,4 +22,8 @@ public interface CustomerService {
 
 
     CustomerPO findCustomerById(Integer supplier);
+
+    void addCustomer(CustomerPO customerPO);
+
+    void deleteOne(int id);
 }

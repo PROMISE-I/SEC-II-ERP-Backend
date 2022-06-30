@@ -1,5 +1,6 @@
 package com.nju.edu.erp.model.po;
 
+import com.nju.edu.erp.model.vo.CustomerVO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,6 +12,21 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Builder
 public class CustomerPO { // 客户PO
+    public CustomerPO(CustomerVO customerVO){
+        CustomerPO customerPO = this;
+        customerPO.setPayable(customerVO.getPayable());
+        customerPO.setReceivable(customerVO.getReceivable());
+        customerPO.setAddress(customerVO.getAddress());
+        customerPO.setEmail(customerVO.getEmail());
+        customerPO.setLevel(customerVO.getLevel());
+        customerPO.setName(customerVO.getName());
+        customerPO.setPhone(customerVO.getPhone());
+        customerPO.setZipcode(customerVO.getZipcode());
+        customerPO.setLineOfCredit(customerVO.getLineOfCredit());
+        customerPO.setOperator(customerVO.getOperator());
+        customerPO.setType(customerVO.getType());
+        customerPO.setId(customerVO.getId());
+    }
     /**
      * 编号
      * */
