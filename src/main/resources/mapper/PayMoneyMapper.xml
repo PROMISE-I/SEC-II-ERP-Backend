@@ -2,39 +2,49 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.nju.edu.erp.dao.finance.PayMoneyDao">
     <insert id="save">
-
+        insert into pay_money_sheet (id, customer, operator, total_amount, state, create_time) values
+        (#{id}, #{customer}, #{operator}, #{totalAmount}, #{state}, #{createTime})
     </insert>
 
     <insert id="saveBatch">
-
+        insert into pay_money_transfer_list (id, pay_money_sheet_id, bank_account_id, amount, remark) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.id}, #{item.payMoneySheetId}, #{item.bankAcountId}, #{item.amount}, #{item.remark})
+        </foreach>
     </insert>
 
     <update id="updateState">
-
+        update pay_money_sheet
+        set state = #{state}
+        where id = #{payMoneySheetId}
     </update>
 
     <update id="updateStateV2">
-
+        update pay_money_sheet
+        set state = #{state}
+        where id = #{payMoneySheetId} and
+            state = #{prevState}
     </update>
 
     <select id="getLatest" resultType="com.nju.edu.erp.model.po.finance.PayMoneySheetPO">
-
+        select * from pay_money_sheet
+        order by id desc limit 0, 1
     </select>
 
     <select id="findAll" resultType="com.nju.edu.erp.model.po.finance.PayMoneySheetPO">
-
+        select * from pay_money_sheet
     </select>
 
     <select id="finaAllByState" resultType="com.nju.edu.erp.model.po.finance.PayMoneySheetPO">
-
+        select * from pay_money_sheet where state = #{state}
     </select>
 
     <select id="findTransferListByPayMoneySheetId"
             resultType="com.nju.edu.erp.model.po.finance.PayMoneyTransferListPO">
-
+        select * from pay_money_transfer_list where pay_money_sheet_id = #{payMoneySheetId}
     </select>
 
     <select id="findOneById" resultType="com.nju.edu.erp.model.po.finance.PayMoneySheetPO">
-
+        select * from pay_money_sheet where id = #{id}
     </select>
 </mapper>
