@@ -9,6 +9,21 @@ CREATE TABLE `bank_account`  (
      PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
+
+-- ----------------------------
+-- Table structure for receive_money_transfer_list
+-- ----------------------------
+DROP TABLE IF EXISTS `receive_money_transfer_list`;
+CREATE TABLE `receive_money_transfer_list`  (
+    `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增id',
+    `receive_money_sheet_id` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '收款单id',
+    `bank_account_id` int(11) NULL DEFAULT NULL COMMENT '银行账户id',
+    `amount` decimal(10, 2) NULL DEFAULT NULL COMMENT '转账总额',
+    `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
+    PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 0 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+
 -- ----------------------------
 -- Table structure for receive_money_sheet
 -- ----------------------------
