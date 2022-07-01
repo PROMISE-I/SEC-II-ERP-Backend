@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class TransferListPO {
+public class ReceiveMoneyTransferListPO {
 
     /**
      * 自增id
