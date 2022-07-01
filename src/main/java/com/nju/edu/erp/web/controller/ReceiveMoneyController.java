@@ -4,18 +4,20 @@ import com.nju.edu.erp.auth.Authorized;
 import com.nju.edu.erp.enums.Role;
 import com.nju.edu.erp.enums.sheetState.ReceiveMoneySheetState;
 import com.nju.edu.erp.model.vo.UserVO;
+import com.nju.edu.erp.model.vo.finance.ReceiveMoneySheetVO;
+import com.nju.edu.erp.service.ReceiveMoneyService;
 import com.nju.edu.erp.web.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/receiveMoney")
-public class ReceiveMoneySheet {
+public class ReceiveMoneyController {
 
     private final ReceiveMoneyService receiveMoneyService;
 
     @Autowired
-    public ReceiveMoneySheet(ReceiveMoneyService receiveMoneyService) {
+    public ReceiveMoneyController(ReceiveMoneyService receiveMoneyService) {
         this.receiveMoneyService = receiveMoneyService;
     }
 
