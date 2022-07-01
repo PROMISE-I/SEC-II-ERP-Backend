@@ -27,8 +27,8 @@ public interface BankAccountService {
 
     /**
      * 通过模糊查找查询所有
-     * @param ambiguousName
-     * @return
+     * @param ambiguousName 模糊的名称
+     * @return 银行账户
      */
     List<BankAccountVO> findBankAccountByAmbiguousName(String ambiguousName);
 }
