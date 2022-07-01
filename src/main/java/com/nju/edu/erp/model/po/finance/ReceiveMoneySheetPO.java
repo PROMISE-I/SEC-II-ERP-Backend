@@ -1,4 +1,4 @@
-package com.nju.edu.erp.model.vo.finance;
+package com.nju.edu.erp.model.po.finance;
 
 import com.nju.edu.erp.enums.sheetState.ReceiveMoneySheetState;
 import lombok.AllArgsConstructor;
@@ -7,13 +7,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.util.List;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ReceiveMoneySheetVO {
+public class ReceiveMoneySheetPO {
 
     /**
      * 收款单单据编号（格式为：SKD-yyyyMMdd-xxxxx）, 新建单据时前端传null
@@ -41,7 +41,7 @@ public class ReceiveMoneySheetVO {
     private ReceiveMoneySheetState state;
 
     /**
-     * 转账列表
+     * 创建时间
      */
-    private List<TransferListVO> transferList;
+    private Date createTime;
 }
