@@ -1,4 +1,4 @@
-package com.nju.edu.erp.web.controller.finance;
+package com.nju.edu.erp.web.controller;
 
 import com.nju.edu.erp.auth.Authorized;
 import com.nju.edu.erp.enums.Role;
