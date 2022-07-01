@@ -16,7 +16,7 @@ public interface ReceiveMoneyService {
     void makeReceiveMoneySheet(UserVO userVO, ReceiveMoneySheetVO receiveMoneySheetVO);
 
     /**
-     * 根据状态查看收款单
+     * 根据状态查看收款单(state == null 则获取所有收款单)
      * @param state 收款单状态
      */
     List<ReceiveMoneySheetVO> getReceiveMoneySheetByState(ReceiveMoneySheetState state);
