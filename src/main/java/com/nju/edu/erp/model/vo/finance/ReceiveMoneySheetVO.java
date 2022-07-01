@@ -43,5 +43,5 @@ public class ReceiveMoneySheetVO {
     /**
      * 转账列表
      */
-    private List<TransferListVO> transferList;
+    private List<ReceiveMoneyTransferListVO> transferList;
 }

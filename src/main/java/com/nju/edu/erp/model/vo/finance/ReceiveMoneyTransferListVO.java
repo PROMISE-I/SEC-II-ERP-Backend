@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class TransferListVO {
+public class ReceiveMoneyTransferListVO {
 
     /**
      * 自增id, 新建单据时前端传null
