@@ -13,12 +13,12 @@ import org.springframework.stereotype.Component;
 @Builder
 public class SaleIODetailFilterConditionVO {
     /**
-     * 开始日期字符串
+     * 开始日期字符串，格式 "yyyy-MM-dd HH:mm:ss"
      */
     private String beginDateStr;
 
     /**
-     * 结束日期字符串
+     * 结束日期字符串，格式 "yyyy-MM-dd HH:mm:ss"
      */
     private String endDateStr;
 
