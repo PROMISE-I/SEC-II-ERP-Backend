@@ -12,6 +12,7 @@ import com.nju.edu.erp.service.CustomerService;
 import com.nju.edu.erp.service.PayMoneyService;
 import com.nju.edu.erp.utils.IdGenerator;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,6 +27,12 @@ public class PayMoneyServiceImpl implements PayMoneyService {
     PayMoneyDao payMoneyDao;
 
     CustomerService customerService;
+
+    @Autowired
+    public PayMoneyServiceImpl(PayMoneyDao payMoneyDao, CustomerService customerService) {
+        this.payMoneyDao = payMoneyDao;
+        this.customerService = customerService;
+    }
 
     @Override
     @Transactional
