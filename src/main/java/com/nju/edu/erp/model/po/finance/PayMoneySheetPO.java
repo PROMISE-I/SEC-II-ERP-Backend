@@ -1,6 +1,6 @@
 package com.nju.edu.erp.model.po.finance;
 
-import com.nju.edu.erp.enums.sheetState.ReceiveMoneySheetState;
+import com.nju.edu.erp.enums.sheetState.PayMoneySheetState;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -37,7 +37,7 @@ public class PayMoneySheetPO {
     /**
      * 单据状态，新建单据时前端传null
      */
-    private ReceiveMoneySheetState state;
+    private PayMoneySheetState state;
 
     /**
      * 创建时间
