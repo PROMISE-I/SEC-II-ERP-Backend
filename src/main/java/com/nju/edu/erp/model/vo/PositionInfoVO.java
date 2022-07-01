@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-
 public class PositionInfoVO {
     public PositionInfoVO(PositionInfoPO positionInfoPO){
         this.title = positionInfoPO.getTitle();
