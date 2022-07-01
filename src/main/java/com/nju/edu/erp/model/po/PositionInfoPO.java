@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -28,11 +30,11 @@ public class PositionInfoPO {
     /**
      * 基本工资
      */
-    Integer baseSalary;
+    BigDecimal baseSalary;
     /**
      * 岗位工资
      */
-    Integer specialSalary;
+    BigDecimal specialSalary;
     /**
      * 岗位级别
      */
@@ -48,5 +50,5 @@ public class PositionInfoPO {
     /**
      * 扣税
      */
-    Integer tax;
+    BigDecimal tax;
 }
