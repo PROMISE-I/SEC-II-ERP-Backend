@@ -9,7 +9,6 @@ CREATE TABLE `bank_account`  (
      PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
-
 -- ----------------------------
 -- Table structure for receive_money_transfer_list
 -- ----------------------------
@@ -22,7 +21,6 @@ CREATE TABLE `receive_money_transfer_list`  (
     `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
     PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 0 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
 
 -- ----------------------------
 -- Table structure for receive_money_sheet
