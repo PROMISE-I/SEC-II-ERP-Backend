@@ -3,19 +3,23 @@
 <mapper namespace="com.nju.edu.erp.dao.bankAccount.BankAccountDao">
 
     <insert id="addBankAccount">
-
+        insert into bank_account (name, amount) values (#{name}, #{amount})
     </insert>
 
     <update id="updateBankAccount">
-
+        update bank_account
+        set name = #{name}
+        where id = #{bankAccountId}
     </update>
 
     <delete id="deleteBankAccount">
-
+        delete from bank_account
+        where id = #{bankAccountId}
     </delete>
 
     <select id="findBankAccountByAmbiguousName"
             resultType="com.nju.edu.erp.model.po.bankAccount.BankAccountPO">
-
+        select * from bank_account
+        where name like #{ambiguousName}
     </select>
 </mapper>
