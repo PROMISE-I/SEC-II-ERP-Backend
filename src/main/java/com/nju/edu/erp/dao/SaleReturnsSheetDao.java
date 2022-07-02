@@ -1,9 +1,7 @@
 package com.nju.edu.erp.dao;
 
 import com.nju.edu.erp.enums.sheetState.SaleReturnsSheetState;
-import com.nju.edu.erp.model.po.SaleReturnsSheetContentPO;
-import com.nju.edu.erp.model.po.SaleReturnsSheetPO;
-import com.nju.edu.erp.model.po.WarehouseOutputSheetContentPO;
+import com.nju.edu.erp.model.po.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -81,4 +79,11 @@ public interface SaleReturnsSheetDao {
      * @return
      */
     List<WarehouseOutputSheetContentPO> findAllWarehouseOutputSheetContentBySaleReturnsSheetIdAndPid(String saleReturnsSheetId, String pid);
+
+    /**
+     * 查看销售明细表：根据筛选条件选择销售退货单对应的销售明细
+     * @param condition 筛选条件
+     * @return 销售退货单对应的销售明细
+     */
+    List<SaleIODetailPO> getSaleReturnsDetailByCondition(SaleIODetailFilterConditionPO condition);
 }
