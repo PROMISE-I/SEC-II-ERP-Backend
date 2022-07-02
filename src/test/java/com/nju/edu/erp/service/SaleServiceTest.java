@@ -7,9 +7,11 @@ import com.nju.edu.erp.dao.WarehouseOutputSheetDao;
 import com.nju.edu.erp.enums.Role;
 import com.nju.edu.erp.enums.sheetState.SaleSheetState;
 import com.nju.edu.erp.enums.sheetState.WarehouseOutputSheetState;
+import com.nju.edu.erp.model.po.SaleIODetailPO;
 import com.nju.edu.erp.model.po.SaleSheetContentPO;
 import com.nju.edu.erp.model.po.SaleSheetPO;
 import com.nju.edu.erp.model.po.WarehouseOutputSheetPO;
+import com.nju.edu.erp.model.vo.sale.SaleIODetailFilterConditionVO;
 import com.nju.edu.erp.model.vo.sale.SaleSheetContentVO;
 import com.nju.edu.erp.model.vo.sale.SaleSheetVO;
 import com.nju.edu.erp.model.vo.UserVO;
@@ -22,6 +24,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -196,5 +199,20 @@ public class SaleServiceTest { // 该测试为集成测试，需要用到数据�
         WarehouseOutputSheetPO draftSheet = draftSheets.get(0);
         Assertions.assertNotNull(draftSheet);
         Assertions.assertEquals("XSD-20220524-00003",draftSheet.getSaleSheetId());
+    }
+
+    @Test
+    @Transactional
+    @Rollback(value = true)
+    public void getSaleDetailByCondition() throws ParseException {
+        SaleIODetailFilterConditionVO saleIODetailFilterConditionVO = SaleIODetailFilterConditionVO.builder()
+                .beginDateStr("2022-05-23 00:00:00")
+                .endDateStr("2022-05-24 00:00:00")
+                .customer(2)
+                .productName("戴尔电脑")
+                .salesman("xiaoshoujingli")
+                .build();
+        List<SaleIODetailPO> res = saleService.getSaleDetailByCondition(saleIODetailFilterConditionVO);
+        System.out.println(res);
     }
 }
