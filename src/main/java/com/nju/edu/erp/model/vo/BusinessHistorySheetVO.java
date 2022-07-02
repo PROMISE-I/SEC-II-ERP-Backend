@@ -24,5 +24,4 @@ public class BusinessHistorySheetVO {
      * 单据内容
      */
     Object sheetObject;
-
 }
