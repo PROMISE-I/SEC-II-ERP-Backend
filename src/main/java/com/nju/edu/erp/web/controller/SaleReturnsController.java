@@ -4,11 +4,14 @@ import com.nju.edu.erp.auth.Authorized;
 import com.nju.edu.erp.enums.Role;
 import com.nju.edu.erp.enums.sheetState.SaleReturnsSheetState;
 import com.nju.edu.erp.model.vo.UserVO;
+import com.nju.edu.erp.model.vo.sale.SaleIODetailFilterConditionVO;
 import com.nju.edu.erp.model.vo.saleReturns.SaleReturnsSheetVO;
 import com.nju.edu.erp.service.SaleReturnsService;
 import com.nju.edu.erp.web.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.text.ParseException;
 
 @RestController
 @RequestMapping(path = "/sale-returns")
@@ -71,5 +74,11 @@ public class SaleReturnsController {
     @GetMapping(value = "/sheet-show")
     public Response showSheetByState(@RequestParam(value = "state", required = false) SaleReturnsSheetState state)  {
         return Response.buildSuccess(saleReturnsService.getSaleReturnsSheetByState(state));
+    }
+
+    @Authorized(roles = {Role.FINANCIAL_STAFF, Role.GM, Role.ADMIN})
+    @PostMapping(value = "/saleReturnsDetail")
+    public Response getSaleReturnsDetailByCondition(@RequestBody SaleIODetailFilterConditionVO condition) throws ParseException {
+        return Response.buildSuccess(saleReturnsService.getSaleReturnsDetailByCondition(condition));
     }
 }
