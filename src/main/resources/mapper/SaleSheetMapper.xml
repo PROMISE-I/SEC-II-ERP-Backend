@@ -66,7 +66,7 @@
               ss.create_time &lt;= #{endDate} and
               p.name = #{productName} and
               ss.supplier = #{customer} and
-              ss.salesman = #{salesman} and
+              ss.salesman = #{salesman}
     </select>
 
     <resultMap id="CustomerPurchaseAmountPO" type="com.nju.edu.erp.model.po.CustomerPurchaseAmountPO">
