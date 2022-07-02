@@ -20,10 +20,9 @@ public class OperateSheetServiceImpl implements OperateSheetService {
     @Override
     public BigDecimal calculateFinalIncome(String begin, String end) {
         BigDecimal finalSaleIncome = operateSheetDao.findSaleIncome(begin, end);
-        BigDecimal productIncome = operateSheetDao.findProductIncome(begin, end);
         BigDecimal saleReturnCost = operateSheetDao.findSaleReturnCost(begin, end);
 
-        return finalSaleIncome.add(productIncome).subtract(saleReturnCost);
+        return finalSaleIncome.subtract(saleReturnCost);
     }
 
     @Override
@@ -35,8 +34,8 @@ public class OperateSheetServiceImpl implements OperateSheetService {
     public BigDecimal calculateCost(String begin, String end) {
         BigDecimal humanResourceCost = operateSheetDao.findHumanResourceCost(begin, end);
         BigDecimal productPresentCost = operateSheetDao.findProductPresentCost(begin, end);
-        BigDecimal saleCost = operateSheetDao.findPurchaseCost(begin, end);
-
+        BigDecimal saleCost = operateSheetDao.findPurchaseCost(begin, end).
+                subtract(operateSheetDao.findPurchaseReturnCost(begin, end));
         return humanResourceCost.add(productPresentCost).add(saleCost);
     }
 

@@ -5,26 +5,21 @@
     <select id="findSaleIncome" resultType="java.math.BigDecimal">
         select SUM(final_amount)
         from sale_sheet
-        where TO_DAYS(create_time) BETWEEN TO_DAYS(#{`begin`}) AND TO_DAYS(#{`end`})
+        where TO_DAYS(create_time) BETWEEN TO_DAYS(#{begin}) AND TO_DAYS(#{end})
         and state = '审批完成'
     </select>
 
     <select id="findPurchaseCost" resultType="java.math.BigDecimal">
         select SUM(ps.total_amount)
         from purchase_sheet ps
-        where id not in (
-            select purchase_sheet_id
-            from purchase_returns_sheet prs
-            where prs.state = '审批完成'
-            and TO_DAYS(create_time) between TO_DAYS(#{`begin`}) and TO_DAYS(#{`end`})
-            )
+        where TO_DAYS(ps.create_time) between TO_DAYS(#{begin}) and TO_DAYS(#{end})
         and ps.state = '审批完成'
     </select>
 
     <select id="findSaleReturnCost" resultType="java.math.BigDecimal">
         select SUM(final_amount)
         from sale_returns_sheet
-        where TO_DAYS(create_time) BETWEEN TO_DAYS(#{`begin}) AND TO_DAYS(#{`end`})
+        where TO_DAYS(create_time) BETWEEN TO_DAYS(#{begin}) AND TO_DAYS(#{end})
         and state = '审批完成'
     </select>
 
@@ -44,14 +39,13 @@
             from sale_returns_sheet srs
             where srs.state = '审批完成'
             )
-        and TO_DAYS(create_time) between TO_DAYS(#{`begin`}) and TO_DAYS(#{`end`})
+        and TO_DAYS(create_time) between TO_DAYS(#{begin}) and TO_DAYS(#{end})
+        and ss.state = '审批完成'
     </select>
-
-    <select id="findProductIncome" resultType="java.math.BigDecimal">
-        select SUM(prs.total_amount - ps.total_amount)
-        from purchase_sheet ps, purchase_returns_sheet prs
-        where ps.id = prs.purchase_sheet_id and ps.state = prs.state
-        and ps.state = '审批完成'
-        and TO_DAYS(create_time) between TO_DAYS(#{`begin`}) and TO_DAYS(#{`end`})
+    <select id="findPurchaseReturnCost" resultType="java.math.BigDecimal">
+        select SUM(total_amount)
+        from purchase_returns_sheet
+        where TO_DAYS(create_time) between TO_DAYS(#{begin}) and TO_DAYS(#{end})
+        and state = '审批完成'
     </select>
 </mapper>

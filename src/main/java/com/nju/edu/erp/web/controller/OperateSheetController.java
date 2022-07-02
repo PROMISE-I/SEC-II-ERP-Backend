@@ -4,9 +4,7 @@ import com.nju.edu.erp.model.vo.OperateSheetVO;
 import com.nju.edu.erp.service.OperateSheetService;
 import com.nju.edu.erp.web.Response;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/operate-sheet")
@@ -19,7 +17,7 @@ public class OperateSheetController {
     }
 
     @GetMapping("/show")
-    public Response showSheet(String begin, String end){
+    public Response showSheet(@RequestParam("begin") String begin, @RequestParam("end") String end){
         OperateSheetVO operateSheetVO = new OperateSheetVO();
 
         operateSheetVO.setBeginDateStr(begin);
@@ -29,6 +27,6 @@ public class OperateSheetController {
         operateSheetVO.setCost(operateSheetService.calculateCost(begin, end));
         operateSheetVO.setProfit(operateSheetService.calculateProfit(begin, end));
 
-        return Response.buildSuccess();
+        return Response.buildSuccess(operateSheetVO);
     }
 }
