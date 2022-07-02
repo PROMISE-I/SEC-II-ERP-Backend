@@ -21,21 +21,17 @@ public class OperateSheetVO {
      */
     String endDateStr;
     /**
-     * 销售收入: 折让后总额
+     * 折让后总额
      */
-    BigDecimal saleIncome;
+    BigDecimal finalIncome;
     /**
-     * 商品收入: 进货退货差价
+     * 折让金额
      */
-    BigDecimal productIncome;
+    BigDecimal discountedAmount;
     /**
-     * 销售成本
+     * 总支出
      */
-    BigDecimal saleCost;
-    /**
-     * 商品成本：报损（应该不考虑），赠出
-     */
-    BigDecimal productCost;
+    BigDecimal cost;
     /**
      * 利润
      */
