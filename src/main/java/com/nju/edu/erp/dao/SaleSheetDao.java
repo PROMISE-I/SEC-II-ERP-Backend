@@ -2,9 +2,7 @@ package com.nju.edu.erp.dao;
 
 
 import com.nju.edu.erp.enums.sheetState.SaleSheetState;
-import com.nju.edu.erp.model.po.SaleSheetContentPO;
-import com.nju.edu.erp.model.po.SaleSheetPO;
-import com.nju.edu.erp.model.po.CustomerPurchaseAmountPO;
+import com.nju.edu.erp.model.po.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -86,4 +84,11 @@ public interface SaleSheetDao {
      * @return 销售单列表
      */
     List<SaleSheetPO> findAllByState(SaleSheetState state);
+
+    /**
+     * 查看销售明细表：根据筛选条件选择销售单对应的销售明细
+     * @param condition 筛选条件
+     * @return 销售单对应的销售明细
+     */
+    List<SaleIODetailPO> getSaleDetailByCondition(SaleIODetailFilterConditionPO condition);
 }

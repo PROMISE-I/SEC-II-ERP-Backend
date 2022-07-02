@@ -6,6 +6,7 @@ import com.nju.edu.erp.dao.SaleSheetDao;
 import com.nju.edu.erp.enums.sheetState.SaleSheetState;
 import com.nju.edu.erp.model.po.*;
 import com.nju.edu.erp.model.vo.ProductInfoVO;
+import com.nju.edu.erp.model.vo.sale.SaleIODetailFilterConditionVO;
 import com.nju.edu.erp.model.vo.sale.SaleSheetContentVO;
 import com.nju.edu.erp.model.vo.sale.SaleSheetVO;
 import com.nju.edu.erp.model.vo.UserVO;
@@ -240,5 +241,17 @@ public class SaleServiceImpl implements SaleService {
         }
         sVO.setSaleSheetContent(saleSheetContentVOList);
         return sVO;
+    }
+
+    @Override
+    public List<SaleIODetailPO> getSaleDetailByCondition(SaleIODetailFilterConditionVO condition) throws ParseException{
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SaleIODetailFilterConditionPO conditionPO = new SaleIODetailFilterConditionPO();
+
+        BeanUtils.copyProperties(condition, conditionPO);
+        conditionPO.setBeginDate(dateFormat.parse(condition.getBeginDateStr()));
+        conditionPO.setEndDate(dateFormat.parse(condition.getEndDateStr()));
+
+        return saleSheetDao.getSaleDetailByCondition(conditionPO);
     }
 }
