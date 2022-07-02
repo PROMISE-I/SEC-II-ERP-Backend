@@ -14,11 +14,14 @@ public interface OperateSheetDao {
 
     public BigDecimal findPurchaseCost(@Param("begin") String begin, @Param("end") String end);
 
-    public BigDecimal findPurchaseReturnIncome(@Param("begin") String begin, @Param("end") String end);
+    public BigDecimal findProductIncome(@Param("begin") String begin, @Param("end") String end);
+
+    public BigDecimal findDiscountedAmount(@Param("begin") String begin, @Param("end") String end);
 
     public BigDecimal findSaleReturnCost(@Param("begin") String begin, @Param("end") String end);
 
     public BigDecimal findProductPresentCost(@Param("begin") String begin, @Param("end") String end);
 
     public BigDecimal findHumanResourceCost(@Param("begin") String begin, @Param("end") String end);
+
 }
