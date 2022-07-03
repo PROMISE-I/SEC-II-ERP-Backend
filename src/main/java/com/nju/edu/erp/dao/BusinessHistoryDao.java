@@ -5,6 +5,8 @@ import com.nju.edu.erp.model.po.PurchaseReturnsSheetPO;
 import com.nju.edu.erp.model.po.PurchaseSheetPO;
 import com.nju.edu.erp.model.po.SaleReturnsSheetPO;
 import com.nju.edu.erp.model.po.SaleSheetPO;
+import com.nju.edu.erp.model.po.finance.PayMoneySheetPO;
+import com.nju.edu.erp.model.po.finance.ReceiveMoneySheetPO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -25,7 +27,12 @@ public interface BusinessHistoryDao {
     public List<PurchaseReturnsSheetPO> findAllPurchaseReturnsSheetByInterval(@Param("begin") String begin, @Param("end") String end);
 
     //财务类
-    //TODO: ADD INTERFACES
+
+    public List<PayMoneySheetPO> findAllPayMoneySheetByInterval(@Param("begin") String begin, @Param("end") String end);
+
+    public List<ReceiveMoneySheetPO> findAllReceiveMoneySheetByInterval(@Param("begin") String begin, @Param("end") String end);
+
+    //TODO: ADD INTERFACE FOR SALARY SHEET
     //库存类
-    //TODO: ADD INTERFACES
+    //TODO: ADD INTERFACES FOR PRESENT SHEET
 }

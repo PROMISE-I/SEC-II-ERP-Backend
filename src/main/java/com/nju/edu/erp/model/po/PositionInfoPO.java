@@ -1,5 +1,6 @@
 package com.nju.edu.erp.model.po;
 
+import com.nju.edu.erp.enums.Role;
 import com.nju.edu.erp.model.vo.PositionInfoVO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,7 +26,7 @@ public class PositionInfoPO {
     /**
      * 岗位名称
      */
-    String title;
+    Role title;
 
     /**
      * 基本工资
