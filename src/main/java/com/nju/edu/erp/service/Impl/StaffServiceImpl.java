@@ -1,6 +1,7 @@
 package com.nju.edu.erp.service.Impl;
 
 import com.nju.edu.erp.dao.StaffDao;
+import com.nju.edu.erp.enums.Role;
 import com.nju.edu.erp.model.po.StaffPO;
 import com.nju.edu.erp.service.StaffService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +35,10 @@ public class StaffServiceImpl implements StaffService {
     @Override
     public int updateOne(StaffPO staffPO) {
         return staffDao.updateOne(staffPO);
+    }
+
+    @Override
+    public Role getRoleByEmployeeId(int employeeId) {
+        return staffDao.getRoleByEmployeeId(employeeId);
     }
 }
