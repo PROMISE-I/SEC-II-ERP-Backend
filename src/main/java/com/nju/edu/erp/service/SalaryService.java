@@ -32,4 +32,11 @@ public interface SalaryService {
      * @param employeeId 员工id
      */
     Date getLatestDateByEmployeeId(int employeeId);
+
+    /**
+     * 审批工资单
+     * @param salarySheetId 工资单单据编号
+     * @param state 修改后的状态
+     */
+    void approval(String salarySheetId, SalarySheetState state);
 }
