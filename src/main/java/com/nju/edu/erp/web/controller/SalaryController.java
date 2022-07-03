@@ -3,6 +3,7 @@ package com.nju.edu.erp.web.controller;
 import com.nju.edu.erp.auth.Authorized;
 import com.nju.edu.erp.enums.Role;
 import com.nju.edu.erp.enums.sheetState.SalarySheetState;
+import com.nju.edu.erp.service.SalaryService;
 import com.nju.edu.erp.web.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,8 +36,8 @@ public class SalaryController {
                                     @RequestParam(value = "bankAccountId") int bankAccountId) {
         Date today = new Date();
         //根据制定时间检查
-        if ()
-        return Response.buildSuccess(salaryService.makeSalarySheet(employeeId, bankAccountId));
+        salaryService.makeSalarySheet(employeeId, bankAccountId);
+        return Response.buildSuccess();
     }
 
     /**
