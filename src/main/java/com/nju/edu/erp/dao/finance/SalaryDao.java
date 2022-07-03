@@ -35,7 +35,7 @@ public interface SalaryDao {
      * 按状态查询所有工资单
      * @return 工资单列表
      */
-    List<SalarySheetPO> findAllSheetByState();
+    List<SalarySheetPO> findAllSheetByState(SalarySheetState state);
 
     /**
      * 根据员工id查找最近一个工资单
