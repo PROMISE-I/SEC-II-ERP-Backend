@@ -1,5 +1,6 @@
 package com.nju.edu.erp.dao;
 
+import com.nju.edu.erp.enums.Role;
 import com.nju.edu.erp.model.po.StaffPO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -17,4 +18,6 @@ public interface StaffDao {
     public List<StaffPO> findAll();
 
     public int updateOne(StaffPO staffPO);
+
+    Role getRoleByEmployeeId(int employeeId);
 }
