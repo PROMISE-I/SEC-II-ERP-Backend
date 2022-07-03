@@ -18,7 +18,7 @@ NJU-ERP 系统是为某民营企业开发的企业资源计划（ERP）系统，
 
 ### 参考文献
 
-1. IEEE 标准
+1. IEEE830-1998
 2. NJU-ERP 系统用例文档v1
 
 ## 总体描述
@@ -172,7 +172,6 @@ TODO：修改编号
 3. 销售单编号为：XSD-yyyyMMdd-xxxxx，后五位从 1 开始编号
 4. 销售退货单编号为：XSTHD-yyyyMMdd-xxxxx，后五位从 1 开始编号
 5. 收款单编号为：SKD-yyyyMMdd-xxxxx，后五位从 1 开始编号
-6. 现金费用单编号为：XJFYD-yyyyMMdd-xxxxx，后五位从 1 开始编号
 
 #### 其他需求
 
