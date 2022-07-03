@@ -1,4 +1,4 @@
-package com.nju.edu.erp.model.po.finance;
+package com.nju.edu.erp.model.vo.finance;
 
 import com.nju.edu.erp.enums.sheetState.SalarySheetState;
 import lombok.AllArgsConstructor;
@@ -13,10 +13,9 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class SalarySheetPO {
-
+public class SalarySheetVO {
     /**
-     * 工资单编号，格式："GZD-yyyyMM-sid"
+     * 工资单编号，格式："GZD-yyyyMM-sid", 前端传入null
      */
     private String id;
 
@@ -26,37 +25,37 @@ public class SalarySheetPO {
     private Integer staffId;
 
     /**
-     * 员工姓名
+     * 员工姓名, 前端传入null
      */
     private String staffName;
 
     /**
-     * 员工账户id
+     * 员工账户id，前端传入null
      */
     private Integer staffBankAccountId;
 
     /**
-     * 应发工资
+     * 应发工资，前端传入null
      */
     private BigDecimal rawSalary;
 
     /**
-     * 扣除税款
+     * 扣除税款，前端传入null
      */
     private BigDecimal tax;
 
     /**
-     * 实发金额
+     * 实发金额，前端传入null
      */
     private BigDecimal actualSalary;
 
     /**
-     * 单据状态
+     * 单据状态，前端传入null
      */
     private SalarySheetState state;
 
     /**
-     * 单据创建时间
+     * 单据创建时间，前端传入null
      */
     private Date createTime;
 }
