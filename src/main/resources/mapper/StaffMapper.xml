@@ -24,6 +24,10 @@
         select * from staff
     </select>
 
+    <select id="getStaffById" resultType="com.nju.edu.erp.model.po.StaffPO">
+        select * from staff where id = #{staffId}
+    </select>
+
 
     <resultMap id="StaffPO" type="com.nju.edu.erp.model.po.StaffPO">
         <result column="id" property="id"></result>

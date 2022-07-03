@@ -15,4 +15,6 @@ public interface StaffService {
     public int updateOne(StaffPO staffPO);
 
     Role getRoleByEmployeeId(int employeeId);
+
+    String getNameByStaffId(int staffId);
 }

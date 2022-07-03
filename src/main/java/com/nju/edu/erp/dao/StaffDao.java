@@ -19,5 +19,5 @@ public interface StaffDao {
 
     public int updateOne(StaffPO staffPO);
 
-    Role getRoleByEmployeeId(int employeeId);
+    StaffPO getStaffById(int staffId);
 }

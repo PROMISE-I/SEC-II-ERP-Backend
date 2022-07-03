@@ -39,6 +39,13 @@ public class StaffServiceImpl implements StaffService {
 
     @Override
     public Role getRoleByEmployeeId(int employeeId) {
-        return staffDao.getRoleByEmployeeId(employeeId);
+        StaffPO staff = staffDao.getStaffById(employeeId);
+        return staff.getPosition();
+    }
+
+    @Override
+    public String getNameByStaffId(int staffId) {
+        StaffPO staff = staffDao.getStaffById(staffId);
+        return staff.getName();
     }
 }
