@@ -4,6 +4,8 @@ import com.nju.edu.erp.auth.Authorized;
 import com.nju.edu.erp.enums.Role;
 import com.nju.edu.erp.enums.sheetState.SalarySheetState;
 import com.nju.edu.erp.service.SalaryService;
+import com.nju.edu.erp.service.StaffService;
+import com.nju.edu.erp.utils.DateHelper;
 import com.nju.edu.erp.web.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,9 +22,12 @@ public class SalaryController {
 
     private final SalaryService salaryService;
 
+    private final StaffService staffService;
+
     @Autowired
-    public SalaryController(SalaryService salaryService) {
+    public SalaryController(SalaryService salaryService, StaffService staffService) {
         this.salaryService = salaryService;
+        this.staffService = staffService;
     }
 
     /**
@@ -34,10 +39,36 @@ public class SalaryController {
     @GetMapping("/sheet-make")
     public Response makeSalarySheet(@RequestParam(value = "employeeId") int employeeId,
                                     @RequestParam(value = "bankAccountId") int bankAccountId) {
-        Date today = new Date();
-        //根据制定时间检查
-        salaryService.makeSalarySheet(employeeId, bankAccountId);
-        return Response.buildSuccess();
+        Role employeeRole = staffService.getRoleByEmployeeId(employeeId);
+        if (employeeRole == Role.GM) {
+            //总经理一年制定一次工资单
+            if (DateHelper.isGMSalaryDay()) {
+                Date today = new Date();
+                Date latest = salaryService.getLatestDateByEmployeeId(employeeId);
+                if (DateHelper.isSameAboveMonth(latest, today)) {
+                    salaryService.makeSalarySheet(employeeId, bankAccountId);
+                    return Response.buildSuccess();
+                } else {
+                    return Response.buildFailed("B00000", "今年总经理工资单已经制定！");
+                }
+            } else {
+                return Response.buildFailed("B00001", "本月非制定总经理工资单的月份！");
+            }
+        } else {
+            //非总经理每月制定一次工资单
+            if (DateHelper.isSalaryDay()) {
+                Date today = new Date();
+                Date latest = salaryService.getLatestDateByEmployeeId(employeeId);
+                if (DateHelper.isSameAboveMonth(latest, today)) {
+                    salaryService.makeSalarySheet(employeeId, bankAccountId);
+                    return Response.buildSuccess();
+                } else {
+                    return Response.buildFailed("B00002", "本月该员工的工资单已经制定！");
+                }
+            } else {
+                return Response.buildFailed("B00003", "本日非制定非总经理工资单的日期！");
+            }
+        }
     }
 
     /**
