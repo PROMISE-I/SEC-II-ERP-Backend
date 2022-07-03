@@ -24,4 +24,10 @@ public class IdGenerator {
             return prefix + "-" + today + "-" + String.format("%05d", 0);
         }
     }
+
+    public static String generateSalarySheetId(int staffId) { // "GZD-202202-{staffId}"
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMM");
+        String today = dateFormat.format(new Date());
+        return "GZD" + "-" + today + "-" + staffId;
+    }
 }
