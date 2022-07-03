@@ -33,10 +33,12 @@ public class SalaryController {
     /**
      * 制定工资单
      * @param employeeId 员工id
+     * @param bankAccountId 员工银行账户id
      */
     @Authorized(roles = {Role.HR, Role.GM, Role.ADMIN})
     @GetMapping("/sheet-make")
-    public Response makeSalarySheet(@RequestParam(value = "employeeId") int employeeId) {
+    public Response makeSalarySheet(@RequestParam(value = "employeeId") int employeeId,
+                                    @RequestParam(value = "bankAccountId") int bankAccountId) {
         Role employeeRole = staffService.getRoleByEmployeeId(employeeId);
         if (employeeRole == Role.GM) {
             //总经理一年制定一次工资单
@@ -44,7 +46,7 @@ public class SalaryController {
                 Date today = new Date();
                 Date latest = salaryService.getLatestDateByEmployeeId(employeeId);
                 if (DateHelper.isSameAboveMonth(latest, today)) {
-                    salaryService.makeSalarySheet(employeeId);
+                    salaryService.makeSalarySheet(employeeId, bankAccountId);
                     return Response.buildSuccess();
                 } else {
                     return Response.buildFailed("B00000", "今年总经理工资单已经制定！");
@@ -58,7 +60,7 @@ public class SalaryController {
                 Date today = new Date();
                 Date latest = salaryService.getLatestDateByEmployeeId(employeeId);
                 if (DateHelper.isSameAboveMonth(latest, today)) {
-                    salaryService.makeSalarySheet(employeeId);
+                    salaryService.makeSalarySheet(employeeId, bankAccountId);
                     return Response.buildSuccess();
                 } else {
                     return Response.buildFailed("B00002", "本月该员工的工资单已经制定！");
