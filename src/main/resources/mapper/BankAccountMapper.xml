@@ -11,6 +11,11 @@
         set name = #{name}
         where id = #{bankAccountId}
     </update>
+    <update id="spendAtAccountId">
+        update bank_account
+        set amount = amount - #{actualSalary}
+        where id = #{companyBankAccountId}
+    </update>
 
     <delete id="deleteBankAccount">
         delete from bank_account
@@ -21,5 +26,9 @@
             resultType="com.nju.edu.erp.model.po.bankAccount.BankAccountPO">
         select * from bank_account
         where name like #{ambiguousName}
+    </select>
+
+    <select id="getAmountByAccountId" resultType="java.math.BigDecimal">
+        select amount from bank_account where id = #{companyBankAccountId}
     </select>
 </mapper>
