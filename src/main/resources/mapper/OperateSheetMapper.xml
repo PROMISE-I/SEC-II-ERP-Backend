@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nju.edu.erp.dao.OperateSheetDao">
+
+    <select id="findSaleIncome" resultType="java.math.BigDecimal">
+        select SUM(final_amount)
+        from sale_sheet
+        where TO_DAYS(create_time) BETWEEN TO_DAYS(#{begin}) AND TO_DAYS(#{end})
+        and state = '审批完成'
+    </select>
+
+    <select id="findPurchaseCost" resultType="java.math.BigDecimal">
+        select SUM(ps.total_amount)
+        from purchase_sheet ps
+        where TO_DAYS(ps.create_time) between TO_DAYS(#{begin}) and TO_DAYS(#{end})
+        and ps.state = '审批完成'
+    </select>
+
+    <select id="findSaleReturnCost" resultType="java.math.BigDecimal">
+        select SUM(final_amount)
+        from sale_returns_sheet
+        where TO_DAYS(create_time) BETWEEN TO_DAYS(#{begin}) AND TO_DAYS(#{end})
+        and state = '审批完成'
+    </select>
+
+    <select id="findHumanResourceCost" resultType="java.math.BigDecimal">
+        select 0
+    </select>
+
+    <select id="findProductPresentCost" resultType="java.math.BigDecimal">
+        select 0
+    </select>
+
+    <select id="findDiscountedAmount" resultType="java.math.BigDecimal">
+        select SUM(raw_total_amount - final_amount)
+        from sale_sheet ss
+        where id not in (
+            select sale_sheet_id
+            from sale_returns_sheet srs
+            where srs.state = '审批完成'
+            )
+        and TO_DAYS(create_time) between TO_DAYS(#{begin}) and TO_DAYS(#{end})
+        and ss.state = '审批完成'
+    </select>
+    <select id="findPurchaseReturnCost" resultType="java.math.BigDecimal">
+        select SUM(total_amount)
+        from purchase_returns_sheet
+        where TO_DAYS(create_time) between TO_DAYS(#{begin}) and TO_DAYS(#{end})
+        and state = '审批完成'
+    </select>
+</mapper>
