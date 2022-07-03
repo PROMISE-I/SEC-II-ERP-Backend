@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nju.edu.erp.dao.finance.SalaryDao">
+
+    <insert id="saveSheet">
+        insert into salary_sheet (id, staff_id, staff_name, company_bank_account_id, raw_salary, tax, actual_salary, state, create_time)
+        values (#{id}, #{staffId}, #{staffName}, #{companyBankAccountId}, #{rawSalary}, #{tax}, #{actualSalary}, #{state}, #{createTime})
+    </insert>
+
+    <update id="updateSheetState">
+        update salary_sheet set state = #{state}
+        where id = #{salarySheetId}
+    </update>
+
+    <update id="updateSheetStateOnPrev">
+        update salary_sheet set state = #{state}
+        where id = #{salarySheetId} and state = #{prevState}
+    </update>
+
+    <select id="findSheetByEmployeeIdAndDate" resultType="com.nju.edu.erp.model.po.finance.SalarySheetPO">
+        select * from salary_sheet
+        where staff_id = #{employeeId} and
+              MONTH(create_time) = MONTH(#{date}) and YEAR(create_time) = YEAR(#{date})
+    </select>
+
+    <select id="findAllSheet" resultType="com.nju.edu.erp.model.po.finance.SalarySheetPO">
+        select * from salary_sheet
+    </select>
+
+    <select id="findAllSheetByState" resultType="com.nju.edu.erp.model.po.finance.SalarySheetPO">
+        select * from salary_sheet
+        where state = #{state}
+    </select>
+
+    <select id="findLatestByEmployeeId" resultType="com.nju.edu.erp.model.po.finance.SalarySheetPO">
+        select * from salary_sheet
+        where staff_id = #{employeeId}
+        order by create_time desc
+        limit 0, 1
+    </select>
+
+    <select id="findSheetById" resultType="com.nju.edu.erp.model.po.finance.SalarySheetPO">
+        select * from salary_sheet
+        where id = #{salarySheetId}
+    </select>
+</mapper>
