@@ -11,9 +11,8 @@ public interface SalaryService {
     /**
      * 制定工资单
      * @param employeeId 员工id
-     * @param bankAccountId 员工银行账户id
      */
-    void makeSalarySheet(int employeeId, int bankAccountId);
+    void makeSalarySheet(int employeeId);
 
     /**
      * 根据员工id返回当月的薪资
