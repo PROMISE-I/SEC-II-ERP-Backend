@@ -1,10 +1,13 @@
 package com.nju.edu.erp.service.Impl;
 
 import com.nju.edu.erp.enums.sheetState.SalarySheetState;
+import com.nju.edu.erp.model.po.StaffPO;
 import com.nju.edu.erp.model.po.finance.SalarySheetPO;
 import com.nju.edu.erp.model.vo.finance.SalarySheetVO;
 import com.nju.edu.erp.service.BankAccountService;
 import com.nju.edu.erp.service.SalaryService;
+import com.nju.edu.erp.service.StaffService;
+import com.nju.edu.erp.utils.IdGenerator;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,9 +24,24 @@ public class SalaryServiceImpl implements SalaryService {
 
     private final BankAccountService bankAccountService;
 
+    private final StaffService staffService;
+
     @Override
     @Transactional
-    public void makeSalarySheet(int employeeId) {
+    public void makeSalarySheet(int employeeId, int companyBankAccountId) {
+        SalarySheetPO salarySheet = new SalarySheetPO();
+        String employeeName = staffService.getNameByStaffId(employeeId);
+
+        String id = IdGenerator.generateSalarySheetId(employeeId);
+        salarySheet.setId(id);
+        salarySheet.setStaffId(employeeId);
+        salarySheet.setStaffName(employeeName);
+        salarySheet.setCompanyBankAccountId(companyBankAccountId);
+        salarySheet.setRawSalary();
+        salarySheet.setTax();
+        salarySheet.setActualSalary();
+        salarySheet.setState(SalarySheetState.PENDING_LEVEL_1);
+        salarySheet.setCreateTime(new Date());
 
     }
 
@@ -89,7 +107,12 @@ public class SalaryServiceImpl implements SalaryService {
                 Integer companyBankAccountId = salarySheetPO.getCompanyBankAccountId();
                 BigDecimal actualSalary = salarySheetPO.getActualSalary();
 
-                bankAccountService.spendAtAccountId(companyBankAccountId, actualSalary);
+                BigDecimal amount = bankAccountService.getAmountByAccountId(companyBankAccountId);
+                if (amount.compareTo(actualSalary) >= 0) {
+                    bankAccountService.spendAtAccountId(companyBankAccountId, actualSalary);
+                } else {
+                    throw new RuntimeException("公司账户余额不足，审批失败");
+                }
             }
         }
     }
