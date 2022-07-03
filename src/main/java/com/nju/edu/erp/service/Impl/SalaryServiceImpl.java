@@ -1,7 +1,7 @@
 package com.nju.edu.erp.service.Impl;
 
+import com.nju.edu.erp.dao.finance.SalaryDao;
 import com.nju.edu.erp.enums.sheetState.SalarySheetState;
-import com.nju.edu.erp.model.po.StaffPO;
 import com.nju.edu.erp.model.po.finance.SalarySheetPO;
 import com.nju.edu.erp.model.vo.finance.SalarySheetVO;
 import com.nju.edu.erp.service.BankAccountService;
@@ -9,6 +9,7 @@ import com.nju.edu.erp.service.SalaryService;
 import com.nju.edu.erp.service.StaffService;
 import com.nju.edu.erp.utils.IdGenerator;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,28 +27,40 @@ public class SalaryServiceImpl implements SalaryService {
 
     private final StaffService staffService;
 
+    @Autowired
+    public SalaryServiceImpl(SalaryDao salaryDao, BankAccountService bankAccountService, StaffService staffService) {
+        this.salaryDao = salaryDao;
+        this.bankAccountService = bankAccountService;
+        this.staffService = staffService;
+    }
+
     @Override
     @Transactional
     public void makeSalarySheet(int employeeId, int companyBankAccountId) {
         SalarySheetPO salarySheet = new SalarySheetPO();
         String employeeName = staffService.getNameByStaffId(employeeId);
+        //TODO 薪酬制定方案
+        BigDecimal rawSalary = BigDecimal.ZERO;
+        BigDecimal tax = BigDecimal.ZERO;
+        BigDecimal actualSalary = rawSalary.subtract(tax);
 
         String id = IdGenerator.generateSalarySheetId(employeeId);
         salarySheet.setId(id);
         salarySheet.setStaffId(employeeId);
         salarySheet.setStaffName(employeeName);
         salarySheet.setCompanyBankAccountId(companyBankAccountId);
-        salarySheet.setRawSalary();
-        salarySheet.setTax();
-        salarySheet.setActualSalary();
+        salarySheet.setRawSalary(rawSalary);
+        salarySheet.setTax(tax);
+        salarySheet.setActualSalary(actualSalary);
         salarySheet.setState(SalarySheetState.PENDING_LEVEL_1);
         salarySheet.setCreateTime(new Date());
 
+        salaryDao.saveSheet(salarySheet);
     }
 
     @Override
     public BigDecimal getSalaryByEmployeeId(int employeeId) {
-        Date date;
+        Date date = new Date();
         SalarySheetPO sheet = salaryDao.findSheetByEmployeeIdAndDate(employeeId, date);
         if (sheet == null) {
             //TODO 计算本月的薪资
@@ -64,7 +77,7 @@ public class SalaryServiceImpl implements SalaryService {
         if (state == null) {
             all = salaryDao.findAllSheet();
         } else {
-            all = salaryDao.findAllSheetByState();
+            all = salaryDao.findAllSheetByState(state);
         }
 
         for (SalarySheetPO salarySheetPO : all) {
@@ -118,6 +131,6 @@ public class SalaryServiceImpl implements SalaryService {
     }
 
     private BigDecimal calculateRawSalary() {
-
+        return BigDecimal.ZERO;
     }
 }
