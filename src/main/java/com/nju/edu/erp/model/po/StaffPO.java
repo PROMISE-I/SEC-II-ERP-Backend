@@ -1,5 +1,6 @@
 package com.nju.edu.erp.model.po;
 
+import com.nju.edu.erp.enums.Role;
 import com.nju.edu.erp.model.vo.StaffVO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -40,7 +41,7 @@ public class StaffPO {
     /**
      * 职位
      */
-    String position;
+    Role position;
     /**
      * 工资账户余额
      */
