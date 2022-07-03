@@ -3,6 +3,8 @@ package com.nju.edu.erp.service;
 import com.nju.edu.erp.enums.sheetState.SalarySheetState;
 import com.nju.edu.erp.model.vo.finance.SalarySheetVO;
 
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 public interface SalaryService {
@@ -17,11 +19,17 @@ public interface SalaryService {
      * 根据员工id返回当月的薪资
      * @param employeeId 员工id
      */
-    int getSalaryByEmployeeId(int employeeId);
+    BigDecimal getSalaryByEmployeeId(int employeeId);
 
     /**
      * 根据状态返回相应的工资单
      * @param state 工资单状态
      */
     List<SalarySheetVO> getSalarySheetByState(SalarySheetState state);
+
+    /**
+     * 根据员工id获得最近一次工资单的日期
+     * @param employeeId 员工id
+     */
+    Date getLatestDateByEmployeeId(int employeeId);
 }
