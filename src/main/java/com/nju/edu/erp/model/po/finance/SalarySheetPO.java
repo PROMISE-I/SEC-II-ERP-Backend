@@ -31,9 +31,9 @@ public class SalarySheetPO {
     private String staffName;
 
     /**
-     * 员工账户id
+     * 公司银行账号编号
      */
-    private Integer staffBankAccountId;
+    private Integer companyBankAccountId;
 
     /**
      * 应发工资

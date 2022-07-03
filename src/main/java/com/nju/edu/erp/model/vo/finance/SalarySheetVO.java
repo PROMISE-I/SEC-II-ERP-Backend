@@ -30,9 +30,9 @@ public class SalarySheetVO {
     private String staffName;
 
     /**
-     * 员工账户id，前端传入null
+     * 公司银行账号编号
      */
-    private Integer staffBankAccountId;
+    private Integer companyBankAccountId;
 
     /**
      * 应发工资，前端传入null
