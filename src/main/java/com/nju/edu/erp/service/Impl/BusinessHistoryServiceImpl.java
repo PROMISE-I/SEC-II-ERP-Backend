@@ -7,6 +7,7 @@ import com.nju.edu.erp.model.po.SaleReturnsSheetPO;
 import com.nju.edu.erp.model.po.SaleSheetPO;
 import com.nju.edu.erp.model.po.finance.PayMoneySheetPO;
 import com.nju.edu.erp.model.po.finance.ReceiveMoneySheetPO;
+import com.nju.edu.erp.model.po.finance.SalarySheetPO;
 import com.nju.edu.erp.model.vo.BusinessHistorySheetVO;
 import com.nju.edu.erp.service.BusinessHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class BusinessHistoryServiceImpl implements BusinessHistoryService {
     }
 
     @Override
-    public List<BusinessHistorySheetVO> findALl(String begin, String end) {
+    public List<BusinessHistorySheetVO> findAll(String begin, String end) {
         List<BusinessHistorySheetVO> businessHistorySheetVOList = new ArrayList<>();
 
         //销售类
@@ -43,8 +44,10 @@ public class BusinessHistoryServiceImpl implements BusinessHistoryService {
         //财务类
         List<PayMoneySheetPO> payMoneySheetPOList = businessHistoryDao.findAllPayMoneySheetByInterval(begin, end);
         List<ReceiveMoneySheetPO> receiveMoneySheetPOList = businessHistoryDao.findAllReceiveMoneySheetByInterval(begin, end);
+        List<SalarySheetPO> salarySheetPOList = businessHistoryDao.findAllSalarySheetByInterval(begin, end);
         copy(businessHistorySheetVOList, payMoneySheetPOList, "pay-money");
         copy(businessHistorySheetVOList, receiveMoneySheetPOList, "receive-money");
+        copy(businessHistorySheetVOList, salarySheetPOList, "salary");
 
         //库存类
 

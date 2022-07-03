@@ -7,6 +7,7 @@ import com.nju.edu.erp.model.po.SaleReturnsSheetPO;
 import com.nju.edu.erp.model.po.SaleSheetPO;
 import com.nju.edu.erp.model.po.finance.PayMoneySheetPO;
 import com.nju.edu.erp.model.po.finance.ReceiveMoneySheetPO;
+import com.nju.edu.erp.model.po.finance.SalarySheetPO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -32,7 +33,7 @@ public interface BusinessHistoryDao {
 
     public List<ReceiveMoneySheetPO> findAllReceiveMoneySheetByInterval(@Param("begin") String begin, @Param("end") String end);
 
-    //TODO: ADD INTERFACE FOR SALARY SHEET
+    public List<SalarySheetPO> findAllSalarySheetByInterval(@Param("begin") String begin, @Param("end") String end);
     //库存类
     //TODO: ADD INTERFACES FOR PRESENT SHEET
 }
