@@ -88,4 +88,40 @@ public class SalaryController {
     public Response showSheetByState(@RequestParam(value = "state") SalarySheetState state) {
         return Response.buildSuccess(salaryService.getSalarySheetByState(state));
     }
+
+    /**
+     * 人力资源人员审批
+     * @param salarySheetId 工资单id
+     * @param state 修改后的状态("审批失败"/"待二级审批")
+     */
+    @Authorized(roles = {Role.HR, Role.ADMIN})
+    @GetMapping("/first-approval")
+    public Response firstApproval(@RequestParam(value = "salarySheetId") String salarySheetId,
+                                  @RequestParam(value = "state") SalarySheetState state) {
+        if (state.equals(SalarySheetState.FAILURE) || state.equals(SalarySheetState.PENDING_LEVEL_2)) {
+            salaryService.approval(salarySheetId, state);
+            return Response.buildSuccess();
+        } else {
+            return Response.buildFailed("000000", "操作失败");
+        }
+    }
+
+    /**
+     * 总经理审批
+     * @param salarySheetId 工资单id
+     * @param state 修改后的状态("审批失败"/"审批完成")
+     */
+    @Authorized (roles = {Role.GM, Role.ADMIN})
+    @GetMapping(value = "/second-approval")
+    public Response secondApproval(@RequestParam(value = "salarySheetId") String salarySheetId,
+                                   @RequestParam(value = "state") SalarySheetState state) {
+        if (state.equals(SalarySheetState.FAILURE) || state.equals(SalarySheetState.SUCCESS)) {
+            salaryService.approval(salarySheetId, state);
+            return Response.buildSuccess();
+        } else {
+            return Response.buildFailed("000000", "操作失败");
+        }
+    }
+
+
 }
