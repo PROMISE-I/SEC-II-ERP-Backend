@@ -10,12 +10,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
-
-    /**
-     * 枚举类的转换器工厂
-     */
-    @Override
-    public void addFormatters(FormatterRegistry registry) {
-        registry.addConverterFactory(new StringValueToEnumConverterFactory());
-    }
+	
+	/**
+	 * 枚举类的转换器工厂
+	 */
+	@Override
+	public void addFormatters(FormatterRegistry registry) {
+		registry.addConverterFactory(new StringValueToEnumConverterFactory());
+	}
 }

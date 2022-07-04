@@ -27,40 +27,40 @@ import java.util.stream.Collectors;
 @Configuration
 @Order(1)
 public class AuthAspect {
-
-    private final UserService userService;
-
-    private final JwtConfig jwtConfig;
-
-    @Autowired
-    public AuthAspect(UserService userService, JwtConfig jwtConfig) {
-        this.userService = userService;
-        this.jwtConfig = jwtConfig;
-    }
-
-    @Before(value = "execution(public * com.nju.edu.erp.web.controller.*.*(..)) && @annotation(authorized)")
-    public void authCheck(JoinPoint joinPoint, Authorized authorized) {
-        try {
-            HttpServletRequest httpServletRequest = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
-            String token = Optional.ofNullable(httpServletRequest.getHeader("Authorization")).
-                    orElseThrow(() -> new MyServiceException("A0002", "用户未获得第三方登录授权"));
-            UserVO user = userService.auth(token);
-
-            // 判断切面方法是否包含当前token对应的角色
-            if (!Arrays.stream(authorized.roles()).collect(Collectors.toList()).contains(user.getRole())) {
-                throw new MyServiceException("A0003", "访问未授权");
-            } else {
-                // 将token的对象赋值给切面方法的user参数
-                Object[] objects = joinPoint.getArgs();
-                for (Object o : objects) {
-                    if (o instanceof UserVO) {
-                        BeanUtils.copyProperties(user, o);
-                        break;
-                    }
-                }
-            }
-        }catch (MyServiceException e) {
-            throw new MyServiceException("A0004", "认证失败");
-        }
-    }
+	
+	private final UserService userService;
+	
+	private final JwtConfig jwtConfig;
+	
+	@Autowired
+	public AuthAspect(UserService userService, JwtConfig jwtConfig) {
+		this.userService = userService;
+		this.jwtConfig = jwtConfig;
+	}
+	
+	@Before(value = "execution(public * com.nju.edu.erp.web.controller.*.*(..)) && @annotation(authorized)")
+	public void authCheck(JoinPoint joinPoint, Authorized authorized) {
+		try {
+			HttpServletRequest httpServletRequest = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
+			String token = Optional.ofNullable(httpServletRequest.getHeader("Authorization")).
+					orElseThrow(() -> new MyServiceException("A0002", "用户未获得第三方登录授权"));
+			UserVO user = userService.auth(token);
+			
+			// 判断切面方法是否包含当前token对应的角色
+			if (!Arrays.stream(authorized.roles()).collect(Collectors.toList()).contains(user.getRole())) {
+				throw new MyServiceException("A0003", "访问未授权");
+			} else {
+				// 将token的对象赋值给切面方法的user参数
+				Object[] objects = joinPoint.getArgs();
+				for (Object o : objects) {
+					if (o instanceof UserVO) {
+						BeanUtils.copyProperties(user, o);
+						break;
+					}
+				}
+			}
+		} catch (MyServiceException e) {
+			throw new MyServiceException("A0004", "认证失败");
+		}
+	}
 }

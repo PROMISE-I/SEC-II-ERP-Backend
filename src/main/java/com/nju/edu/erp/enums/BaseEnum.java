@@ -9,10 +9,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * 对应的转换逻辑写在了 handlers/convertors中, 并在WebMvcConfig和 application.yml->mybatis->typeHandlersPackage进行了配置
  */
 public interface BaseEnum<E extends Enum<?>, T> {
-    /**
-     * 获取枚举的值
-     * @return 枚举的值
-     */
-    @JsonValue
-    T getValue();
+	/**
+	 * 获取枚举的值
+	 *
+	 * @return 枚举的值
+	 */
+	@JsonValue
+	T getValue();
 }

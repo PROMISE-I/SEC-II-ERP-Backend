@@ -2,6 +2,7 @@ package com.nju.edu.erp.enums.sheetState;
 
 import com.nju.edu.erp.enums.BaseEnum;
 
+// 入库单状态
 public enum WarehouseInputSheetState implements BaseEnum<WarehouseInputSheetState, String> {
 
     DRAFT("草稿"), // 待仓库管理员确认

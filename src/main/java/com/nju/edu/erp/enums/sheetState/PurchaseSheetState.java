@@ -2,6 +2,7 @@ package com.nju.edu.erp.enums.sheetState;
 
 import com.nju.edu.erp.enums.BaseEnum;
 
+// 进货单状态
 public enum PurchaseSheetState implements BaseEnum<PurchaseSheetState, String> {
 
     PENDING_LEVEL_1("待一级审批"), // 待销售经理审批
