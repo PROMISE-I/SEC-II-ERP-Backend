@@ -7,6 +7,7 @@ import com.nju.edu.erp.enums.sheetState.SaleReturnsSheetState;
 import com.nju.edu.erp.model.po.*;
 import com.nju.edu.erp.model.vo.ProductInfoVO;
 import com.nju.edu.erp.model.vo.UserVO;
+import com.nju.edu.erp.model.vo.sale.SaleIODetailFilterConditionVO;
 import com.nju.edu.erp.model.vo.saleReturns.SaleReturnsSheetContentVO;
 import com.nju.edu.erp.model.vo.saleReturns.SaleReturnsSheetVO;
 import com.nju.edu.erp.service.CustomerService;
@@ -19,6 +20,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Service
@@ -199,5 +203,17 @@ public class SaleReturnsServiceImpl implements SaleReturnsService {
 
         }
 
+    }
+
+    @Override
+    public List<SaleIODetailPO> getSaleReturnsDetailByCondition(SaleIODetailFilterConditionVO condition) throws ParseException {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SaleIODetailFilterConditionPO conditionPO = new SaleIODetailFilterConditionPO();
+
+        BeanUtils.copyProperties(condition, conditionPO);
+        conditionPO.setBeginDate(dateFormat.parse(condition.getBeginDateStr()));
+        conditionPO.setEndDate(dateFormat.parse(condition.getEndDateStr()));
+
+        return saleReturnsSheetDao.getSaleReturnsDetailByCondition(conditionPO);
     }
 }

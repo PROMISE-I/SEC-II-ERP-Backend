@@ -2,10 +2,13 @@ package com.nju.edu.erp.service;
 
 import com.nju.edu.erp.enums.sheetState.SaleSheetState;
 import com.nju.edu.erp.model.po.CustomerPurchaseAmountPO;
+import com.nju.edu.erp.model.po.SaleIODetailPO;
+import com.nju.edu.erp.model.vo.sale.SaleIODetailFilterConditionVO;
 import com.nju.edu.erp.model.vo.sale.SaleSheetVO;
 import com.nju.edu.erp.model.vo.UserVO;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 import java.util.List;
 
 @Service
@@ -47,4 +50,11 @@ public interface SaleService {
      * @return 销售单全部信息
      */
     SaleSheetVO getSaleSheetById(String saleSheetId);
+
+    /**
+     * 查看销售明细表：根据筛选条件选择销售单对应的销售明细
+     * @param condition 筛选条件
+     * @return 销售单对应的销售明细
+     */
+    List<SaleIODetailPO> getSaleDetailByCondition(SaleIODetailFilterConditionVO condition) throws ParseException;
 }

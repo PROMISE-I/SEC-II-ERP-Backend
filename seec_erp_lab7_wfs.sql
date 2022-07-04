@@ -62,3 +62,20 @@ CREATE TABLE `pay_money_sheet`  (
     `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
     PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for salary_sheet
+-- ----------------------------
+DROP TABLE IF EXISTS `salary_sheet`;
+CREATE TABLE `salary_sheet`  (
+    `id` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '工资单单据编号（格式为：GZD-yyyyMM-{staffId}',
+    `staff_id` int(11) NULL DEFAULT NULL COMMENT '员工编号',
+    `staff_name` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '员工姓名',
+    `company_bank_account_id` int(11) NULL DEFAULT NULL COMMENT '公司银行账号编号',
+    `raw_salary` decimal(10, 2) NULL DEFAULT NULL COMMENT '应发工资',
+    `tax` decimal(10, 2) NULL DEFAULT NULL COMMENT '扣除税款',
+    `actual_salary` decimal(10, 2) NULL DEFAULT NULL COMMENT '实发金额',
+    `state` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '单据状态',
+    `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+    PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;

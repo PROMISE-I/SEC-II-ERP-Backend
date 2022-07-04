@@ -4,6 +4,7 @@ import com.nju.edu.erp.model.po.bankAccount.BankAccountPO;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Mapper
@@ -35,4 +36,18 @@ public interface BankAccountDao {
      * @return 银行账户
      */
     List<BankAccountPO> findBankAccountByAmbiguousName(String ambiguousName);
+
+    /**
+     * 从银行账户播走一笔前
+     * @param companyBankAccountId 银行账户id
+     * @param actualSalary 金额数
+     */
+    void spendAtAccountId(Integer companyBankAccountId, BigDecimal actualSalary);
+
+    /**
+     * 查询账户id的余额
+     * @param companyBankAccountId 账户id
+     * @return 账户余额
+     */
+    BigDecimal getAmountByAccountId(Integer companyBankAccountId);
 }

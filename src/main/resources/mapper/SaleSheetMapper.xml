@@ -55,6 +55,20 @@
         select * from sale_sheet where state = #{state}
     </select>
 
+    <select id="getSaleDetailByCondition" resultType="com.nju.edu.erp.model.po.SaleIODetailPO">
+        select ss.create_time as create_time, p.name as product_name,
+               p.type as product_type, ssc.quantity as quantity,
+               ssc.unit_price as unit_price, ssc.total_price as total_amount
+        from sale_sheet ss, sale_sheet_content ssc, product p
+        where ss.id = ssc.sale_sheet_id and
+              ssc.pid = p.id and
+              ss.create_time &gt;= #{beginDate}  and
+              ss.create_time &lt;= #{endDate} and
+              p.name = #{productName} and
+              ss.supplier = #{customer} and
+              ss.salesman = #{salesman}
+    </select>
+
     <resultMap id="CustomerPurchaseAmountPO" type="com.nju.edu.erp.model.po.CustomerPurchaseAmountPO">
         <result column="total_final_amount" property="totalFinalAmount"></result>
         <association property="customerPO" javaType="CustomerPO" >

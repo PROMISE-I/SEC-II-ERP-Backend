@@ -5,12 +5,15 @@ import com.nju.edu.erp.auth.Authorized;
 import com.nju.edu.erp.enums.Role;
 import com.nju.edu.erp.enums.sheetState.SaleSheetState;
 import com.nju.edu.erp.model.po.CustomerPurchaseAmountPO;
+import com.nju.edu.erp.model.vo.sale.SaleIODetailFilterConditionVO;
 import com.nju.edu.erp.model.vo.sale.SaleSheetVO;
 import com.nju.edu.erp.model.vo.UserVO;
 import com.nju.edu.erp.service.SaleService;
 import com.nju.edu.erp.web.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.text.ParseException;
 
 @RestController
 @RequestMapping(path = "/sale")
@@ -28,7 +31,7 @@ public class SaleController {
      */
     @Authorized (roles = {Role.SALE_STAFF, Role.SALE_MANAGER, Role.GM, Role.ADMIN})
     @PostMapping(value = "/sheet-make")
-    public Response makePurchaseOrder(UserVO userVO, @RequestBody SaleSheetVO saleSheetVO)  {
+    public Response makeSaleOrder(UserVO userVO, @RequestBody SaleSheetVO saleSheetVO)  {
         saleService.makeSaleSheet(userVO, saleSheetVO);
         return Response.buildSuccess();
     }
@@ -97,6 +100,17 @@ public class SaleController {
     @GetMapping(value = "/find-sheet")
     public Response findBySheetId(@RequestParam(value = "id") String id)  {
         return Response.buildSuccess(saleService.getSaleSheetById(id));
+    }
+
+    /**
+     * 查看销售明细表：根据筛选条件选择销售单对应的销售明细
+     * @param condition 筛选条件
+     * @return 销售单对应的销售明细
+     */
+    @Authorized(roles = {Role.FINANCIAL_STAFF, Role.GM, Role.ADMIN})
+    @PostMapping(value = "/saleDetail")
+    public Response getSaleDetailByCondition(@RequestBody SaleIODetailFilterConditionVO condition) throws ParseException {
+        return Response.buildSuccess(saleService.getSaleDetailByCondition(condition));
     }
 
 }

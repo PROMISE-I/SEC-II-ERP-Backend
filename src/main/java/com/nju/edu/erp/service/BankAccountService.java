@@ -2,6 +2,7 @@ package com.nju.edu.erp.service;
 
 import com.nju.edu.erp.model.vo.bankAccount.BankAccountVO;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface BankAccountService {
@@ -31,4 +32,18 @@ public interface BankAccountService {
      * @return 银行账户
      */
     List<BankAccountVO> findBankAccountByAmbiguousName(String ambiguousName);
+
+    /**
+     * 从银行账户播走一笔前
+     * @param companyBankAccountId 银行账户id
+     * @param actualSalary 金额数
+     */
+    void spendAtAccountId(Integer companyBankAccountId, BigDecimal actualSalary);
+
+    /**
+     * 查询账户id的余额
+     * @param companyBankAccountId 账户id
+     * @return 账户余额
+     */
+    BigDecimal getAmountByAccountId(Integer companyBankAccountId);
 }

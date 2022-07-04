@@ -8,6 +8,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,6 +51,16 @@ public class BankAccountServiceImpl implements BankAccountService {
         }
 
         return res;
+    }
+
+    @Override
+    public void spendAtAccountId(Integer companyBankAccountId, BigDecimal actualSalary) {
+        bankAccountDao.spendAtAccountId(companyBankAccountId, actualSalary);
+    }
+
+    @Override
+    public BigDecimal getAmountByAccountId(Integer companyBankAccountId) {
+        return bankAccountDao.getAmountByAccountId(companyBankAccountId);
     }
 
 }

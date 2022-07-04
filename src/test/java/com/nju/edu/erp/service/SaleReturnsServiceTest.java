@@ -6,10 +6,12 @@ import com.nju.edu.erp.dao.WarehouseDao;
 import com.nju.edu.erp.enums.Role;
 import com.nju.edu.erp.enums.sheetState.SaleReturnsSheetState;
 import com.nju.edu.erp.enums.sheetState.SaleSheetState;
+import com.nju.edu.erp.model.po.SaleIODetailPO;
 import com.nju.edu.erp.model.po.SaleReturnsSheetPO;
 import com.nju.edu.erp.model.po.SaleSheetPO;
 import com.nju.edu.erp.model.po.WarehousePO;
 import com.nju.edu.erp.model.vo.UserVO;
+import com.nju.edu.erp.model.vo.sale.SaleIODetailFilterConditionVO;
 import com.nju.edu.erp.model.vo.sale.SaleSheetContentVO;
 import com.nju.edu.erp.model.vo.sale.SaleSheetVO;
 import com.nju.edu.erp.model.vo.saleReturns.SaleReturnsSheetContentVO;
@@ -23,6 +25,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -193,6 +196,21 @@ public class SaleReturnsServiceTest {
 
         List<WarehousePO> affectOfWarehouse2 = warehouseDao.findAll();
         System.out.println("pending");
+    }
+
+    @Test
+    @Transactional
+    @Rollback(value = true)
+    public void getSaleReturnsDetailByCondition() throws ParseException {
+        SaleIODetailFilterConditionVO saleIODetailFilterConditionVO = SaleIODetailFilterConditionVO.builder()
+                .beginDateStr("2022-07-03 00:00:00")
+                .endDateStr("2023-01-01 00:00:00")
+                .productName("小米手机")
+                .salesman("xiaoshoujingli")
+                .customer(2)
+                .build();
+        List<SaleIODetailPO> all = saleReturnsService.getSaleReturnsDetailByCondition(saleIODetailFilterConditionVO);
+        System.out.println(all);
     }
 
 }
