@@ -27,7 +27,7 @@ public class PayMoneyController {
      */
     @Authorized(roles = {Role.FINANCIAL_STAFF, Role.GM, Role.ADMIN})
     @PostMapping("/sheet-make")
-    public Response makePayMoneySheet(UserVO userVO, PayMoneySheetVO payMoneySheetVO) {
+    public Response makePayMoneySheet(UserVO userVO, @RequestBody PayMoneySheetVO payMoneySheetVO) {
         payMoneyService.makePayMoneySheet(userVO, payMoneySheetVO);
         return Response.buildSuccess();
     }
