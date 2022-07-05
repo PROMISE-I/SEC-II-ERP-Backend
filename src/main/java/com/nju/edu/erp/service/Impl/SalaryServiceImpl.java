@@ -8,6 +8,7 @@ import com.nju.edu.erp.service.BankAccountService;
 import com.nju.edu.erp.service.SalaryService;
 import com.nju.edu.erp.service.StaffService;
 import com.nju.edu.erp.utils.IdGenerator;
+import com.nju.edu.erp.utils.TaxCalculator;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,7 +42,7 @@ public class SalaryServiceImpl implements SalaryService {
         String employeeName = staffService.getNameByStaffId(employeeId);
         //TODO 薪酬制定方案
         BigDecimal rawSalary = BigDecimal.ZERO;
-        BigDecimal tax = BigDecimal.ZERO;
+        BigDecimal tax = TaxCalculator.calculateTax(rawSalary);
         BigDecimal actualSalary = rawSalary.subtract(tax);
 
         String id = IdGenerator.generateSalarySheetId(employeeId);
