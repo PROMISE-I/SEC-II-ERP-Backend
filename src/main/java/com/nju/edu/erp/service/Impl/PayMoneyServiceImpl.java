@@ -66,31 +66,14 @@ public class PayMoneyServiceImpl implements PayMoneyService {
 
     @Override
     public List<PayMoneySheetVO> getPayMoneySheetByState(PayMoneySheetState state) {
-        List<PayMoneySheetVO> res = new ArrayList<>();
         List<PayMoneySheetPO> all;
-
         if (state == null) {
             all = payMoneyDao.findAll();
         } else {
             all = payMoneyDao.finaAllByState(state);
         }
 
-        for (PayMoneySheetPO po : all) {
-            PayMoneySheetVO vo = new PayMoneySheetVO();
-            BeanUtils.copyProperties(po, vo);
-
-            List<PayMoneyTransferListPO> transferLists = payMoneyDao.findTransferListByPayMoneySheetId(po.getId());
-            List<PayMoneyTransferListVO> vos = new ArrayList<>();
-            for (PayMoneyTransferListPO p : transferLists) {
-                PayMoneyTransferListVO v = new PayMoneyTransferListVO();
-                BeanUtils.copyProperties(p, v);
-                vos.add(v);
-            }
-
-            vo.setTransferList(vos);
-            res.add(vo);
-        }
-        return res;
+        return getPayMoneySheetVOS(all);
     }
 
     @Override
@@ -123,5 +106,32 @@ public class PayMoneyServiceImpl implements PayMoneyService {
                 customerService.updateCustomer(customer);
             }
         }
+    }
+
+    @Override
+    public List<PayMoneySheetVO> findAllSheets() {
+        List<PayMoneySheetPO> allSheets = payMoneyDao.findAll();
+        return getPayMoneySheetVOS(allSheets);
+    }
+
+    private List<PayMoneySheetVO> getPayMoneySheetVOS(List<PayMoneySheetPO> allSheets) {
+        List<PayMoneySheetVO> res = new ArrayList<>();
+
+        for (PayMoneySheetPO po : allSheets) {
+            PayMoneySheetVO vo = new PayMoneySheetVO();
+            BeanUtils.copyProperties(po, vo);
+
+            List<PayMoneyTransferListPO> transferLists = payMoneyDao.findTransferListByPayMoneySheetId(po.getId());
+            List<PayMoneyTransferListVO> vos = new ArrayList<>();
+            for (PayMoneyTransferListPO p : transferLists) {
+                PayMoneyTransferListVO v = new PayMoneyTransferListVO();
+                BeanUtils.copyProperties(p, v);
+                vos.add(v);
+            }
+
+            vo.setTransferList(vos);
+            res.add(vo);
+        }
+        return res;
     }
 }
