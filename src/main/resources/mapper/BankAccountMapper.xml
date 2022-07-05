@@ -8,7 +8,7 @@
 
     <update id="updateBankAccount">
         update bank_account
-        set name = #{name}
+        set name = #{newBankAccountName}
         where id = #{bankAccountId}
     </update>
     <update id="spendAtAccountId">
