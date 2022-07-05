@@ -123,5 +123,11 @@ public class SalaryController {
         }
     }
 
-
+    /**
+     * 获得所有工资单
+     */
+    @GetMapping("/get-all-salary-sheets")
+    public Response findAllSalarySheet() {
+        return Response.buildSuccess(salaryService.findAllSalarySheets());
+    }
 }

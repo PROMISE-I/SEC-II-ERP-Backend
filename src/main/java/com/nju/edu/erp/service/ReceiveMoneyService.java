@@ -27,4 +27,10 @@ public interface ReceiveMoneyService {
      * @param state 修改后的状态
      */
     void approval(String receiveMoneySheetId, ReceiveMoneySheetState state);
+
+    /**
+     * 获得所有收款单
+     * @return 收款单列表
+     */
+    List<ReceiveMoneySheetVO> findAllSheet();
 }

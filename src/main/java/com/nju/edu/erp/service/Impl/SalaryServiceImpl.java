@@ -72,7 +72,6 @@ public class SalaryServiceImpl implements SalaryService {
 
     @Override
     public List<SalarySheetVO> getSalarySheetByState(SalarySheetState state) {
-        List<SalarySheetVO> res = new ArrayList<>();
         List<SalarySheetPO> all;
         if (state == null) {
             all = salaryDao.findAllSheet();
@@ -80,12 +79,7 @@ public class SalaryServiceImpl implements SalaryService {
             all = salaryDao.findAllSheetByState(state);
         }
 
-        for (SalarySheetPO salarySheetPO : all) {
-            SalarySheetVO salarySheetVO = new SalarySheetVO();
-            BeanUtils.copyProperties(salarySheetPO, salarySheetVO);
-            res.add(salarySheetVO);
-        }
-        return res;
+        return getSalarySheetVOS(all);
     }
 
     @Override
@@ -130,7 +124,23 @@ public class SalaryServiceImpl implements SalaryService {
         }
     }
 
+    @Override
+    public List<SalarySheetVO> findAllSalarySheets() {
+        List<SalarySheetPO> allSheets = salaryDao.findAllSheet();
+        return getSalarySheetVOS(allSheets);
+    }
+
     private BigDecimal calculateRawSalary() {
         return BigDecimal.ZERO;
+    }
+
+    private List<SalarySheetVO> getSalarySheetVOS(List<SalarySheetPO> sheets) {
+        List<SalarySheetVO> res = new ArrayList<>();
+        for (SalarySheetPO salarySheetPO : sheets) {
+            SalarySheetVO salarySheetVO = new SalarySheetVO();
+            BeanUtils.copyProperties(salarySheetPO, salarySheetVO);
+            res.add(salarySheetVO);
+        }
+        return res;
     }
 }

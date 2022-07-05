@@ -27,4 +27,10 @@ public interface PayMoneyService {
      * @param state 修改后的状态
      */
     void approval(String payMoneySheetId, PayMoneySheetState state);
+
+    /**
+     * 获取所有的付款单
+     * @return 付款单列表
+     */
+    List<PayMoneySheetVO> findAllSheets();
 }

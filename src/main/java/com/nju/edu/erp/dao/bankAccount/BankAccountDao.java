@@ -50,4 +50,16 @@ public interface BankAccountDao {
      * @return 账户余额
      */
     BigDecimal getAmountByAccountId(Integer companyBankAccountId);
+
+    /**
+     * 查询对应id的银行账户
+     * @param bankAccountId 公司银行账户id
+     * @return 银行账户
+     */
+    BankAccountPO findBankAccountById(Integer bankAccountId);
+
+    /**
+     * 查询所有银行账户
+     */
+    List<BankAccountPO> findAll();
 }

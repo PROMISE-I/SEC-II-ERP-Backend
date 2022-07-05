@@ -3,9 +3,14 @@ package com.nju.edu.erp.dao.finance;
 import com.nju.edu.erp.enums.sheetState.ReceiveMoneySheetState;
 import com.nju.edu.erp.model.po.finance.ReceiveMoneySheetPO;
 import com.nju.edu.erp.model.po.finance.ReceiveMoneyTransferListPO;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
+@Mapper
+@Repository
 public interface ReceiveMoneyDao {
 
     /**

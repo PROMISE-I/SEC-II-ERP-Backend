@@ -8,7 +8,7 @@
 
     <update id="updateBankAccount">
         update bank_account
-        set name = #{name}
+        set name = #{newBankAccountName}
         where id = #{bankAccountId}
     </update>
     <update id="spendAtAccountId">
@@ -30,5 +30,13 @@
 
     <select id="getAmountByAccountId" resultType="java.math.BigDecimal">
         select amount from bank_account where id = #{companyBankAccountId}
+    </select>
+
+    <select id="findBankAccountById" resultType="com.nju.edu.erp.model.po.bankAccount.BankAccountPO">
+        select * from bank_account where id = #{bankAccountId}
+    </select>
+
+    <select id="findAll" resultType="com.nju.edu.erp.model.po.bankAccount.BankAccountPO">
+        select * from bank_account
     </select>
 </mapper>

@@ -38,4 +38,10 @@ public interface SalaryService {
      * @param state 修改后的状态
      */
     void approval(String salarySheetId, SalarySheetState state);
+
+    /**
+     * 获得所有工资单
+     * @return 工资单列表
+     */
+    List<SalarySheetVO> findAllSalarySheets();
 }

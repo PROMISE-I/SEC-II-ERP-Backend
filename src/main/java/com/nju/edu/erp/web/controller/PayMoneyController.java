@@ -74,4 +74,12 @@ public class PayMoneyController {
             return Response.buildFailed("000000", "操作失败");
         }
     }
+
+    /**
+     * 获取所有的付款单
+     */
+    @GetMapping("/find-all-sheets")
+    public Response findAllSheets() {
+        return Response.buildSuccess(payMoneyService.findAllSheets());
+    }
 }
