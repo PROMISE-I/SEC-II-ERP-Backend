@@ -62,4 +62,21 @@ public class BankAccountController {
     public Response findBankAccount(@RequestParam String ambiguousName) {
         return Response.buildSuccess(bankAccountService.findBankAccountByAmbiguousName(ambiguousName));
     }
+
+    /**
+     * 查询对应id的银行账户
+     * @param bankAccountId 公司银行账户id
+     */
+    @GetMapping("/findAccountById")
+    public Response findAccountById(@RequestParam Integer bankAccountId) {
+        return Response.buildSuccess(bankAccountService.findAccountById(bankAccountId));
+    }
+
+    /**
+     * 查询所有银行账户
+     */
+    @GetMapping("findAllAccount")
+    public Response findAll() {
+        return Response.buildSuccess(bankAccountService.findAllAccount());
+    }
 }

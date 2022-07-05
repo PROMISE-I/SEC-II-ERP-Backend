@@ -43,14 +43,7 @@ public class BankAccountServiceImpl implements BankAccountService {
     public List<BankAccountVO> findBankAccountByAmbiguousName(String ambiguousName) {
         List<BankAccountPO> accounts = bankAccountDao.findBankAccountByAmbiguousName(ambiguousName);
 
-        List<BankAccountVO> res = new ArrayList<>();
-        for (BankAccountPO account : accounts) {
-            BankAccountVO bankAccountVO = new BankAccountVO();
-            BeanUtils.copyProperties(account, bankAccountVO);
-            res.add(bankAccountVO);
-        }
-
-        return res;
+        return getBankAccountVOS(accounts);
     }
 
     @Override
@@ -61,6 +54,34 @@ public class BankAccountServiceImpl implements BankAccountService {
     @Override
     public BigDecimal getAmountByAccountId(Integer companyBankAccountId) {
         return bankAccountDao.getAmountByAccountId(companyBankAccountId);
+    }
+
+    @Override
+    public BankAccountVO findAccountById(Integer bankAccountId) {
+        BankAccountPO account = bankAccountDao.findBankAccountById(bankAccountId);
+        BankAccountVO res = new BankAccountVO();
+
+        BeanUtils.copyProperties(account, res);
+
+        return res;
+    }
+
+    @Override
+    public List<BankAccountVO> findAllAccount() {
+        List<BankAccountPO> allAccount = bankAccountDao.findAll();
+        return getBankAccountVOS(allAccount);
+    }
+
+    private List<BankAccountVO> getBankAccountVOS(List<BankAccountPO> allAccount) {
+        List<BankAccountVO> res = new ArrayList<>();
+
+        for (BankAccountPO accountPO : allAccount) {
+            BankAccountVO accountVO = new BankAccountVO();
+            BeanUtils.copyProperties(accountPO, accountVO);
+            res.add(accountVO);
+        }
+
+        return res;
     }
 
 }
