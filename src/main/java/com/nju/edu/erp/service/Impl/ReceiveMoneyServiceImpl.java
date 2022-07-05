@@ -12,6 +12,7 @@ import com.nju.edu.erp.service.CustomerService;
 import com.nju.edu.erp.service.ReceiveMoneyService;
 import com.nju.edu.erp.utils.IdGenerator;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,6 +27,12 @@ public class ReceiveMoneyServiceImpl implements ReceiveMoneyService {
     ReceiveMoneyDao receiveMoneyDao;
 
     CustomerService customerService;
+
+    @Autowired
+    public ReceiveMoneyServiceImpl(ReceiveMoneyDao receiveMoneyDao, CustomerService customerService) {
+        this.receiveMoneyDao = receiveMoneyDao;
+        this.customerService = customerService;
+    }
 
     @Override
     @Transactional
@@ -59,31 +66,14 @@ public class ReceiveMoneyServiceImpl implements ReceiveMoneyService {
 
     @Override
     public List<ReceiveMoneySheetVO> getReceiveMoneySheetByState(ReceiveMoneySheetState state) {
-        List<ReceiveMoneySheetVO> res = new ArrayList<>();
         List<ReceiveMoneySheetPO> all;
-
         if (state == null) {
             all = receiveMoneyDao.findAll();
         } else {
             all = receiveMoneyDao.finaAllByState(state);
         }
 
-        for (ReceiveMoneySheetPO po : all) {
-            ReceiveMoneySheetVO vo = new ReceiveMoneySheetVO();
-            BeanUtils.copyProperties(po, vo);
-
-            List<ReceiveMoneyTransferListPO> transferLists = receiveMoneyDao.findTransferListByReceiveMoneySheetId(po.getId());
-            List<ReceiveMoneyTransferListVO> vos = new ArrayList<>();
-            for (ReceiveMoneyTransferListPO p : transferLists) {
-                ReceiveMoneyTransferListVO v = new ReceiveMoneyTransferListVO();
-                BeanUtils.copyProperties(p, v);
-                vos.add(v);
-            }
-
-            vo.setTransferList(vos);
-            res.add(vo);
-        }
-        return res;
+        return getReceiveMoneySheetVOS(all);
     }
 
     /**
@@ -121,5 +111,33 @@ public class ReceiveMoneyServiceImpl implements ReceiveMoneyService {
                 customerService.updateCustomer(customer);
             }
         }
+    }
+
+    @Override
+    public List<ReceiveMoneySheetVO> findAllSheet() {
+        List<ReceiveMoneySheetPO> allSheets = receiveMoneyDao.findAll();
+        return getReceiveMoneySheetVOS(allSheets);
+    }
+
+    private List<ReceiveMoneySheetVO> getReceiveMoneySheetVOS(List<ReceiveMoneySheetPO> allSheets) {
+        List<ReceiveMoneySheetVO> res = new ArrayList<>();
+
+        for (ReceiveMoneySheetPO po : allSheets) {
+            ReceiveMoneySheetVO vo = new ReceiveMoneySheetVO();
+            BeanUtils.copyProperties(po, vo);
+
+            List<ReceiveMoneyTransferListPO> transferLists = receiveMoneyDao.findTransferListByReceiveMoneySheetId(po.getId());
+            List<ReceiveMoneyTransferListVO> vos = new ArrayList<>();
+            for (ReceiveMoneyTransferListPO p : transferLists) {
+                ReceiveMoneyTransferListVO v = new ReceiveMoneyTransferListVO();
+                BeanUtils.copyProperties(p, v);
+                vos.add(v);
+            }
+
+            vo.setTransferList(vos);
+            res.add(vo);
+        }
+
+        return res;
     }
 }

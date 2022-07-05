@@ -75,4 +75,12 @@ public class ReceiveMoneyController {
             return Response.buildFailed("000000", "操作失败");
         }
     }
+
+    /**
+     * 获取所有的收款单
+     */
+    @GetMapping("find-all-sheets")
+    public Response findAllSheets() {
+        return Response.buildSuccess(receiveMoneyService.findAllSheet());
+    }
 }
