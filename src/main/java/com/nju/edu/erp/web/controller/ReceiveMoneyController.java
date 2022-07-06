@@ -28,7 +28,7 @@ public class ReceiveMoneyController {
      */
     @Authorized(roles = {Role.FINANCIAL_STAFF, Role.GM, Role.ADMIN})
     @PostMapping("/sheet-make")
-    public Response makeReceiveMoneySheet(UserVO userVO, ReceiveMoneySheetVO receiveMoneySheetVO) {
+    public Response makeReceiveMoneySheet(UserVO userVO, @RequestBody ReceiveMoneySheetVO receiveMoneySheetVO) {
         receiveMoneyService.makeReceiveMoneySheet(userVO, receiveMoneySheetVO);
         return Response.buildSuccess();
     }

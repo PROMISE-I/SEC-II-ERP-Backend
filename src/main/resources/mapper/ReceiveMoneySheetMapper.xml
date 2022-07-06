@@ -9,7 +9,7 @@
     <insert id="saveBatch" useGeneratedKeys="true" keyProperty="id">
         insert into receive_money_transfer_list (id, receive_money_sheet_id, bank_account_id, amount, remark) values
         <foreach collection="list" item="item" index="index" separator=",">
-            (#{item.id}, #{item.receiveMoneySheetId}, #{item.bankAcountId}, #{item.amount}, #{item.remark})
+            (#{item.id}, #{item.receiveMoneySheetId}, #{item.bankAccountId}, #{item.amount}, #{item.remark})
         </foreach>
     </insert>
 
