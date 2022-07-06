@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.nju.edu.erp.dao.StaffDao">
 
-    <insert id="createStaff">
+    <insert id="createStaff" keyProperty="id" useGeneratedKeys="true">
     insert into staff(`name`, gender, birthday, phone, position )
     values (#{name}, #{gender}, #{birthday}, #{phone}, #{position})
     </insert>

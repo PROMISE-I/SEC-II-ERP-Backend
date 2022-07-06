@@ -17,4 +17,6 @@ public interface StaffService {
     Role getRoleByEmployeeId(int employeeId);
 
     String getNameByStaffId(int staffId);
+
+    StaffPO findStaffByUserId(Integer userId);
 }

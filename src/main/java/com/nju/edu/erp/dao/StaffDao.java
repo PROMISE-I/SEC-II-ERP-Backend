@@ -20,4 +20,6 @@ public interface StaffDao {
     public int updateOne(StaffPO staffPO);
 
     StaffPO getStaffById(int staffId);
+
+
 }
