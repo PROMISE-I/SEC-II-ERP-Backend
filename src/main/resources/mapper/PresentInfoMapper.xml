@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nju.edu.erp.dao.promotion.PresentInfoDao">
+    <insert id="insertOne">
+        insert into present_info (level, product_id, quantity)
+        values (#{level}, #{productId}, #{quantity})
+    </insert>
+    <update id="updateOne">
+        update present_info set product_id = #{productId},
+                                quantity = #{quantity}
+        where id = #{id}
+    </update>
+
+
+    <select id="findAll" resultType="com.nju.edu.erp.model.po.promotion.PresentInfoPO">
+        select * from present_info
+    </select>
+</mapper>

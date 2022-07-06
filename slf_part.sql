@@ -49,4 +49,29 @@ CREATE TABLE staff_user (
     FOREIGN KEY (staff_id) REFERENCES staff(id) on delete cascade
 );
 
+drop table if exists present_info;
+CREATE TABLE present_info (
+    id INT AUTO_INCREMENT PRIMARY KEY ,
+    level INT NOT NULL,
+    product_id VARCHAR(255) NOT NULL,
+    quantity INT NOT NULL
+);
+
+drop table if exists promotion;
+CREATE TABLE promotion (
+    id INT AUTO_INCREMENT PRIMARY KEY ,
+    level INT NOT NULL,
+    discount DECIMAL(10, 2) DEFAULT 0,
+    coupon DECIMAL(10, 2) DEFAULT 0,
+    begin VARCHAR(255) NOT NULL,
+    end VARCHAR(255) NOT NULL
+);
+
+INSERT INTO promotion (level, discount, coupon, begin, end)
+VALUES (1, 0.80, 200, '2002-09-09', '2022-09-09');
+INSERT INTO present_info (level, product_id, quantity)
+VALUES (1, '0000000000400000', 1);
+INSERT INTO present_info (level, product_id, quantity)
+VALUES (1, '0000000000400001', 2);
+
 
