@@ -70,5 +70,17 @@
               ss.salesman = #{salesman}
     </select>
 
+    <select id="getSaleReturnsDetailByRange" resultType="com.nju.edu.erp.model.po.SaleIODetailPO">
+        select srs.create_time as create_time, p.name as product_name,
+               p.type as product_type, srsc.quantity as quantity,
+               srsc.unit_price as unit_price, srsc.total_price as total_amount
+        from sale_sheet ss, sale_returns_sheet srs, sale_returns_sheet_content srsc, product p
+        where ss.id = srs.sale_sheet_id and
+            srsc.sale_returns_sheet_id = srs.id and
+            srsc.pid = p.id and
+            srs.create_time &gt;= #{beginDate} and
+            srs.create_time &lt;= #{endDate}
+    </select>
+
 
 </mapper>

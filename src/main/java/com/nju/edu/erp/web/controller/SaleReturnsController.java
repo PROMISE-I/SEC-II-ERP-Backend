@@ -76,9 +76,27 @@ public class SaleReturnsController {
         return Response.buildSuccess(saleReturnsService.getSaleReturnsSheetByState(state));
     }
 
+    /**
+     * 查看销售明细表：根据筛选条件选择销售退货单对应的销售明细
+     * @param condition 筛选条件
+     * @return 销售退货单对应的销售明细
+     */
     @Authorized(roles = {Role.FINANCIAL_STAFF, Role.GM, Role.ADMIN})
     @PostMapping(value = "/saleReturnsDetail")
     public Response getSaleReturnsDetailByCondition(@RequestBody SaleIODetailFilterConditionVO condition) throws ParseException {
         return Response.buildSuccess(saleReturnsService.getSaleReturnsDetailByCondition(condition));
+    }
+
+    /**
+     * 查看销售明细表：根据时间区间选择销售退货单对应的销售明细
+     * @param beginTimeStr 开始时间字符串
+     * @param endTimeStr 结束时间字符串
+     * @return 销售退货单对应的销售明细
+     */
+    @Authorized(roles = {Role.FINANCIAL_STAFF, Role.GM, Role.ADMIN})
+    @GetMapping(value = "/saleReturnsDetail-byRange")
+    public Response getSaleReturnsDetailByRange(@RequestParam(value = "beginTimeStr") String beginTimeStr,
+                                                @RequestParam(value = "endTimeStr") String endTimeStr) throws ParseException {
+        return Response.buildSuccess(saleReturnsService.getSaleReturnsDetailByRange(beginTimeStr, endTimeStr));
     }
 }

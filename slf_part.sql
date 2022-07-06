@@ -29,6 +29,19 @@ CREATE TABLE staff(
     balance decimal(10,2 ) DEFAULT 0
 );
 
+-- ----------------------------
+-- Records of staff
+-- ----------------------------
+INSERT INTO staff VALUES (0, 'seecoder', 'male', '1990-01-01', '12345678901', 'INVENTORY_MANAGER', 0);
+INSERT INTO staff VALUES (0, 'uncln', 'female', '1990-01-02', '12345678902', 'INVENTORY_MANAGER', 0);
+INSERT INTO staff VALUES (0, 'kucun', 'male', '1990-01-01', '12345678903', 'INVENTORY_MANAGER', 0);
+INSERT INTO staff VALUES (0, 'zxr', 'male', '1990-01-03', '12345678904', 'SALE_MANAGER', 0);
+INSERT INTO staff VALUES (0, '67', 'male', '1990-01-04', '12345678905', 'GM', 0);
+INSERT INTO staff VALUES (0, 'xiaoshou', 'female', '1990-01-05', '12345678906', 'SALE_STAFF', 0);
+INSERT INTO staff VALUES (0, 'Leone', 'male', '1990-01-06', '12345678907', 'GM', 0);
+INSERT INTO staff VALUES (0, 'xiaoshoujingli', 'female', '1990-01-07', '12345678908', 'SALE_MANAGER', 0);
+
+
 drop table if exists staff_user;
 CREATE TABLE staff_user (
     staff_id INT(11) NOT NULL,

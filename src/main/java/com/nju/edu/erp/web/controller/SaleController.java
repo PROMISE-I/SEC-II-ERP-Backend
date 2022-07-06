@@ -113,4 +113,17 @@ public class SaleController {
         return Response.buildSuccess(saleService.getSaleDetailByCondition(condition));
     }
 
+    /**
+     * 查看销售明细表：根据时间区间选择销售单对应的销售明细
+     * @param beginTimeStr 开始时间字符串
+     * @param endTimeStr 结束时间字符串
+     * @return 销售单对应的销售明细
+     */
+    @Authorized(roles = {Role.FINANCIAL_STAFF, Role.GM, Role.ADMIN})
+    @GetMapping(value = "/saleDetail-byRange")
+    public Response getSaleDetailByRange(@RequestParam(value = "beginTimeStr") String beginTimeStr,
+                                         @RequestParam(value = "endTimeStr") String endTimeStr) throws ParseException {
+        return Response.buildSuccess(saleService.getSaleDetailByRange(beginTimeStr, endTimeStr));
+    }
+
 }

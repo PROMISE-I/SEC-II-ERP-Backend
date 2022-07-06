@@ -79,3 +79,38 @@ CREATE TABLE `salary_sheet`  (
     `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
     PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+
+
+-- ----------------------------
+-- Table structure for salary_calculate_type
+-- ----------------------------
+DROP TABLE IF EXISTS `salary_calculate_type`;
+CREATE TABLE `salary_calculate_type`  (
+     `id` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '自增主键',
+     `type` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '薪资计算方式类型',
+     PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of salary_calculate_type
+-- ----------------------------
+INSERT INTO salary_calculate_type VALUES (0, '普通员工薪资计算');
+INSERT INTO salary_calculate_type VALUES (1, '提成员工薪资计算');
+INSERT INTO salary_calculate_type VALUES (2, '管理员工薪资计算');
+
+-- ----------------------------
+-- Table structure for salary_send_type
+-- ----------------------------
+DROP TABLE IF EXISTS `salary_send_type`;
+CREATE TABLE `salary_send_type`  (
+   `id` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '自增主键',
+   `type` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '薪资发放方式类型',
+   PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of salary_send_type
+-- ----------------------------
+INSERT INTO salary_send_type VALUES (0, '每月发放');
+INSERT INTO salary_send_type VALUES (1, '每年发放');
