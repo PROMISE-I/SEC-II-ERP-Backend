@@ -9,12 +9,16 @@
         where level = #{level}
     </update>
 
-    <select id="findAll" resultType="com.nju.edu.erp.model.po.promotion.LevelPromotionStrategyPO">
+    <select id="findAll" resultType="com.nju.edu.erp.model.po.promotion.LevelPromotionStrategyPO" resultMap="LevelPromotionPO">
         select * from promotion
     </select>
 
-    <select id="findByLevel" resultType="com.nju.edu.erp.model.po.promotion.LevelPromotionStrategyPO">
+    <select id="findByLevel" resultType="com.nju.edu.erp.model.po.promotion.LevelPromotionStrategyPO" resultMap="LevelPromotionPO">
         select * from promotion
         where level = #{level}
     </select>
+    <resultMap id="LevelPromotionPO" type="com.nju.edu.erp.model.po.promotion.LevelPromotionStrategyPO">
+        <id column="begin" property="beginDate"></id>
+        <id column="end" property="endDate"></id>
+    </resultMap>
 </mapper>

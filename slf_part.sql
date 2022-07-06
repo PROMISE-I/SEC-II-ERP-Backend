@@ -67,4 +67,11 @@ CREATE TABLE promotion (
     end VARCHAR(255) NOT NULL
 );
 
+INSERT INTO promotion (level, discount, coupon, begin, end)
+VALUES (1, 0.80, 200, '2002-09-09', '2022-09-09');
+INSERT INTO present_info (level, product_id, quantity)
+VALUES (1, '0000000000400000', 1);
+INSERT INTO present_info (level, product_id, quantity)
+VALUES (1, '0000000000400001', 2);
+
 

@@ -12,4 +12,6 @@ public interface PresentInfoDao {
     List<PresentInfoPO> findAll();
 
     int updateOne(PresentInfoPO presentInfoPO);
+
+    int insertOne(PresentInfoPO presentInfoPO);
 }

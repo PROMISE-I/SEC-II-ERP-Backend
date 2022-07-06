@@ -57,7 +57,8 @@ public class LevelPromotionServiceImpl implements LevelPromotionService {
         LevelPromotionStrategyPO levelPromotionStrategyPO = new LevelPromotionStrategyPO(levelPromotionStrategyVO);
         List<PresentInfoPO> lst = levelPromotionStrategyVO.getPresentInfoList();
         for(PresentInfoPO pip : lst){
-            presentInfoDao.updateOne(pip);
+            if(pip.getId() == null)presentInfoDao.insertOne(pip);
+            else presentInfoDao.updateOne(pip);
         }
         levelStrategyDao.updateOne(levelPromotionStrategyPO);
     }
