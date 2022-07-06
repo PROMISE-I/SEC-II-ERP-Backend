@@ -1,5 +1,7 @@
 package com.nju.edu.erp.model.vo;
 
+import com.nju.edu.erp.enums.SalaryCalculateType;
+import com.nju.edu.erp.enums.SalarySendType;
 import com.nju.edu.erp.enums.Role;
 import com.nju.edu.erp.model.po.PositionInfoPO;
 import lombok.AllArgsConstructor;
@@ -43,11 +45,11 @@ public class PositionInfoVO {
     /**
      * 薪资计算方式
      */
-    String salaryCalculateMethod;
+    SalaryCalculateType salaryCalculateMethod;
     /**
      * 薪资发放方式
      */
-    String salaryPaymentMethod;
+    SalarySendType salaryPaymentMethod;
     /**
      * 扣税
      */

@@ -2,6 +2,8 @@ package com.nju.edu.erp.enums.handlers;
 
 import com.nju.edu.erp.enums.BaseEnum;
 import com.nju.edu.erp.enums.CustomerType;
+import com.nju.edu.erp.enums.SalaryCalculateType;
+import com.nju.edu.erp.enums.SalarySendType;
 import com.nju.edu.erp.enums.sheetState.*;
 import org.apache.ibatis.type.MappedTypes;
 
@@ -13,7 +15,8 @@ import org.apache.ibatis.type.MappedTypes;
         WarehouseOutputSheetState.class, CustomerType.class,
         SaleSheetState.class, PurchaseReturnsSheetState.class,
         SaleReturnsSheetState.class, PayMoneySheetState.class,
-        ReceiveMoneySheetState.class, SalarySheetState.class})
+        ReceiveMoneySheetState.class, SalarySheetState.class,
+        SalaryCalculateType.class, SalarySendType.class})
 public class SysEnumTypeHandler<E extends Enum<E> & BaseEnum> extends BaseEnumTypeHandler<E> {
     /**
      * 设置配置文件设置的转换类以及枚举类内容，供其他方法更便捷高效的实现
