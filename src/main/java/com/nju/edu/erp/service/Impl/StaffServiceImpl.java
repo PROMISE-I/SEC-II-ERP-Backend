@@ -9,6 +9,7 @@ import com.nju.edu.erp.service.StaffService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -54,5 +55,12 @@ public class StaffServiceImpl implements StaffService {
     public String getNameByStaffId(int staffId) {
         StaffPO staff = staffDao.getStaffById(staffId);
         return staff.getName();
+    }
+
+    @Override
+    public void addBalanceByStaffId(BigDecimal amount, int staffId) {
+        StaffPO staff = staffDao.getStaffById(staffId);
+        staff.setBalance(staff.getBalance().add(amount));
+        staffDao.updateOne(staff);
     }
 }
