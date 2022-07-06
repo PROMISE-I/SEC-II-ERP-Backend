@@ -25,7 +25,7 @@ public class BusinessHistoryController {
     @GetMapping("/show")
     public Response showSheet(@RequestParam("begin") String begin, @RequestParam("end") String end){
 
-        List<BusinessHistorySheetVO> lst = businessHistoryService.findALl(begin, end);
+        List<BusinessHistorySheetVO> lst = businessHistoryService.findAll(begin, end);
 
         return Response.buildSuccess(lst);
     }
