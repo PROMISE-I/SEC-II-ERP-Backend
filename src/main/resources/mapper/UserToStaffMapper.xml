@@ -11,4 +11,10 @@
         from staff_user
         where user_id = #{userId}
     </select>
+
+    <select id="findUserIdByStaffId" resultType="java.lang.Integer">
+        select user_id
+        from staff_user
+        where staff_id = #{staffId}
+    </select>
 </mapper>

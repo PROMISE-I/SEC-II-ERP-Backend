@@ -4,6 +4,7 @@ package com.nju.edu.erp.dao;
 import com.nju.edu.erp.model.po.User;
 import com.nju.edu.erp.model.vo.UserVO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -15,4 +16,6 @@ public interface UserDao {
     int createUser(User user);
 
     User findByUsername(String username);
+
+    int deleteById(@Param("id") Integer id);
 }

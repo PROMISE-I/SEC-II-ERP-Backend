@@ -10,6 +10,8 @@ public interface UserToStaffDao {
 
     public Integer findStaffIdByUserId(@Param("userId") Integer userId);
 
+    public Integer findUserIdByStaffId(@Param("staffId") Integer staffId);
+
     public void insertRecord(@Param("userId") Integer userId, @Param("staffId") Integer staffId);
 
 }

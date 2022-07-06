@@ -41,8 +41,12 @@ public class StaffServiceImpl implements StaffService {
     }
 
     @Override
+    @Transactional
     public int deleteStaffById(Integer staffId) {
-        return staffDao.deleteOneById(staffId);
+        int userId = userToStaffDao.findUserIdByStaffId(staffId);
+        userDao.deleteById(userId);
+        int affected = staffDao.deleteOneById(staffId);
+        return affected;
     }
 
     @Override

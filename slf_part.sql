@@ -33,8 +33,7 @@ drop table if exists staff_user;
 CREATE TABLE staff_user (
     staff_id INT(11) NOT NULL,
     user_id INT NOT NULL,
-    FOREIGN KEY (staff_id) REFERENCES staff(id),
-    FOREIGN KEY (user_id) REFERENCES user(id)
+    FOREIGN KEY (staff_id) REFERENCES staff(id) on delete cascade
 );
 
 
