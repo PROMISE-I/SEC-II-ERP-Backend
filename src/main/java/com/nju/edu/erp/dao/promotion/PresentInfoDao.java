@@ -10,4 +10,6 @@ import java.util.List;
 @Repository
 public interface PresentInfoDao {
     List<PresentInfoPO> findAll();
+
+    int updateOne(PresentInfoPO presentInfoPO);
 }

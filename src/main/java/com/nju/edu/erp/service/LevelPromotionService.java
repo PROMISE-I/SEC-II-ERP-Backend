@@ -8,4 +8,8 @@ public interface LevelPromotionService {
 
     List<LevelPromotionStrategyVO> findAll();
 
+    List<LevelPromotionStrategyVO> findByLevel(Integer level);
+
+    void updateOne(LevelPromotionStrategyVO levelPromotionStrategyVO);
+
 }

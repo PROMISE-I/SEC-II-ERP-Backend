@@ -8,6 +8,7 @@ import com.nju.edu.erp.model.vo.promotion.LevelPromotionStrategyVO;
 import com.nju.edu.erp.service.LevelPromotionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,37 @@ public class LevelPromotionServiceImpl implements LevelPromotionService {
     public List<LevelPromotionStrategyVO> findAll() {
         List<LevelPromotionStrategyPO> levelPromotionStrategyPOList = levelStrategyDao.findAll();
         List<PresentInfoPO> presentInfoPOList = presentInfoDao.findAll();
+
+        return match(levelPromotionStrategyPOList, presentInfoPOList);
+    }
+
+    /**
+     * 返回某个级别的促销策略
+     * @param level
+     * @return 某个级别的促销策略列表
+     */
+    @Override
+    public List<LevelPromotionStrategyVO> findByLevel(Integer level) {
+
+        List<LevelPromotionStrategyPO> levelPromotionStrategyPOList = levelStrategyDao.findByLevel(level);
+
+        List<PresentInfoPO> presentInfoPOList = presentInfoDao.findAll();
+
+        return match(levelPromotionStrategyPOList, presentInfoPOList);
+    }
+
+    @Transactional
+    @Override
+    public void updateOne(LevelPromotionStrategyVO levelPromotionStrategyVO) {
+        LevelPromotionStrategyPO levelPromotionStrategyPO = new LevelPromotionStrategyPO(levelPromotionStrategyVO);
+        List<PresentInfoPO> lst = levelPromotionStrategyVO.getPresentInfoList();
+        for(PresentInfoPO pip : lst){
+            presentInfoDao.updateOne(pip);
+        }
+        levelStrategyDao.updateOne(levelPromotionStrategyPO);
+    }
+
+    private List<LevelPromotionStrategyVO> match(List<LevelPromotionStrategyPO> levelPromotionStrategyPOList, List<PresentInfoPO> presentInfoPOList){
         List<LevelPromotionStrategyVO> levelPromotionStrategyVOList = new ArrayList<>();
         //遍历每个级别的促销策略
         for (LevelPromotionStrategyPO lpsp : levelPromotionStrategyPOList){
