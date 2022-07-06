@@ -216,4 +216,13 @@ public class SaleReturnsServiceImpl implements SaleReturnsService {
 
         return saleReturnsSheetDao.getSaleReturnsDetailByCondition(conditionPO);
     }
+
+    @Override
+    public List<SaleIODetailPO> getSaleReturnsDetailByRange(String beginTimeStr, String endTimeStr) throws ParseException {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date beginDate = dateFormat.parse(beginTimeStr);
+        Date endDate = dateFormat.parse(endTimeStr);
+
+        return saleReturnsSheetDao.getSaleReturnsDetailByRange(beginDate, endDate);
+    }
 }

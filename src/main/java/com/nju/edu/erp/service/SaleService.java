@@ -57,4 +57,12 @@ public interface SaleService {
      * @return 销售单对应的销售明细
      */
     List<SaleIODetailPO> getSaleDetailByCondition(SaleIODetailFilterConditionVO condition) throws ParseException;
+
+    /**
+     * 查看销售明细表：根据时间区间选择销售单对应的销售明细
+     * @param beginTimeStr 开始时间字符串
+     * @param endTimeStr 结束时间字符串
+     * @return 销售单对应的销售明细
+     */
+    List<SaleIODetailPO> getSaleDetailByRange(String beginTimeStr, String endTimeStr) throws ParseException;
 }

@@ -91,4 +91,12 @@ public interface SaleSheetDao {
      * @return 销售单对应的销售明细
      */
     List<SaleIODetailPO> getSaleDetailByCondition(SaleIODetailFilterConditionPO condition);
+
+    /**
+     * 查看销售明细表：根据时间区间选择销售单对应的销售明细
+     * @param beginDate 开始时间
+     * @param endDate 结束时间
+     * @return 销售单对应的销售明细
+     */
+    List<SaleIODetailPO> getSaleDetailByRange(Date beginDate, Date endDate);
 }
