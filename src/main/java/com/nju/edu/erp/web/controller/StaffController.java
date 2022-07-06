@@ -70,12 +70,12 @@ public class StaffController {
     }
 
     /**
-     * 根据用户 Id 来查找员工
-     * @param userId
+     * 根据 Id 来查找员工
+     * @param staffId
      * @return staff 对象
      */
     @GetMapping("/findById")
-    public Response findByUserId(@RequestParam Integer userId){
-        return Response.buildSuccess(staffService.findStaffByUserId(userId));
+    public Response findById(@RequestParam Integer staffId){
+        return Response.buildSuccess(staffService.findStaffById(staffId));
     }
 }

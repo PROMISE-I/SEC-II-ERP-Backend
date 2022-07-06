@@ -2,6 +2,7 @@ package com.nju.edu.erp.service.Impl;
 
 import com.nju.edu.erp.dao.finance.SalaryDao;
 import com.nju.edu.erp.enums.sheetState.SalarySheetState;
+import com.nju.edu.erp.model.po.StaffPO;
 import com.nju.edu.erp.model.po.finance.SalarySheetPO;
 import com.nju.edu.erp.model.vo.finance.SalarySheetVO;
 import com.nju.edu.erp.service.BankAccountService;
@@ -118,6 +119,7 @@ public class SalaryServiceImpl implements SalaryService {
                 BigDecimal amount = bankAccountService.getAmountByAccountId(companyBankAccountId);
                 if (amount.compareTo(actualSalary) >= 0) {
                     bankAccountService.spendAtAccountId(companyBankAccountId, actualSalary);
+                    staffService.addBalanceByStaffId(actualSalary, salarySheetPO.getStaffId());
                 } else {
                     throw new RuntimeException("公司账户余额不足，审批失败");
                 }
