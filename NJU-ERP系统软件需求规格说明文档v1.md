@@ -178,7 +178,7 @@ TODO：默认数据
 
 #### 数据格式要求
 
-TODO：修改编号
+TODO：数据格式完善
 
 1. 进货单编号为：JHD-yyyyMMdd-xxxxx，后五位从 1 开始编号。
 2. 进货退货单编号为：JHTHD-yyyyMMdd-xxxxx，后五位从 1 开始编号。
