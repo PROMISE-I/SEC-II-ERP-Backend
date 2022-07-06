@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -75,5 +76,12 @@ public class StaffServiceImpl implements StaffService {
     public StaffPO findStaffById(Integer staffId) {
 
         return staffDao.getStaffById(staffId);
+    }
+
+    @Override
+    public void addBalanceByStaffId(BigDecimal amount, int staffId) {
+        StaffPO staff = staffDao.getStaffById(staffId);
+        staff.setBalance(staff.getBalance().add(amount));
+        staffDao.updateOne(staff);
     }
 }

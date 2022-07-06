@@ -5,6 +5,7 @@ import com.nju.edu.erp.model.po.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Mapper
@@ -86,4 +87,12 @@ public interface SaleReturnsSheetDao {
      * @return 销售退货单对应的销售明细
      */
     List<SaleIODetailPO> getSaleReturnsDetailByCondition(SaleIODetailFilterConditionPO condition);
+
+    /**
+     * 查看销售明细表：根据时间区间选择销售退货单对应的销售明细
+     * @param beginDate 开始时间
+     * @param endDate 结束时间
+     * @return 销售退货单对应的销售明细
+     */
+    List<SaleIODetailPO> getSaleReturnsDetailByRange(Date beginDate, Date endDate);
 }
