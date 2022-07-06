@@ -18,5 +18,5 @@ public interface StaffService {
 
     String getNameByStaffId(int staffId);
 
-    StaffPO findStaffByUserId(Integer userId);
+    StaffPO findStaffById(Integer staffId);
 }

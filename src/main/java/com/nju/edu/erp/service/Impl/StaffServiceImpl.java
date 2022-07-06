@@ -68,8 +68,7 @@ public class StaffServiceImpl implements StaffService {
     }
 
     @Override
-    public StaffPO findStaffByUserId(Integer userId) {
-        Integer staffId = userToStaffDao.findStaffIdByUserId(userId);
+    public StaffPO findStaffById(Integer staffId) {
 
         return staffDao.getStaffById(staffId);
     }
