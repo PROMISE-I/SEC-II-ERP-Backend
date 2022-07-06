@@ -6,7 +6,6 @@ CREATE TABLE attendance(
     PRIMARY KEY (staff_id, `date`)
 );
 
-
 # 岗位信息：名称，基本工资、岗位工资、岗位级别、薪资计算方式、薪资发放方式、扣税信息。
 drop table if exists position;
 CREATE TABLE position (
