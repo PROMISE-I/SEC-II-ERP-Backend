@@ -83,11 +83,12 @@
     </select>
 
     <select id="getTotalSaleReturnsAmountByMonthAndYearAndSalesman" resultType="java.math.BigDecimal">
-        select sum(raw_total_amount) from sale_returns_sheet
-        where salesman = #{salesman} and
-            YEAR(create_time) = #{year} and
-            MONTH(create_time) = #{month} and
-            state = '审批完成'
+        select sum(srs.raw_total_amount) from sale_returns_sheet srs, sale_sheet ss
+        where srs.sale_sheet_id = ss.id and
+              ss.salesman = #{salesman} and
+              YEAR(srs.create_time) = #{year} and
+          MONTH(srs.create_time) = #{month} and
+          srs.state = '审批完成'
     </select>
 
 
