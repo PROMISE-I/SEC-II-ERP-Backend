@@ -19,6 +19,8 @@ use `seec_erp`;
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
+drop table if exists staff_user;
+
 -- ----------------------------
 -- Table structure for category
 -- ----------------------------

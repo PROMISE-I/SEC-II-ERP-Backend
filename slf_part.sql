@@ -29,6 +29,7 @@ INSERT INTO position VALUES ('HR', 6000, 2, 15000, '普通员工薪资计算', '
 INSERT INTO position VALUES ('GM', 20000, 5, 100000, '管理员工薪资计算', '每年发放', 0.3);
 
 
+drop table if exists staff_user;
 drop table if exists staff;
 CREATE TABLE staff(
     `id` int(11) PRIMARY KEY AUTO_INCREMENT,
