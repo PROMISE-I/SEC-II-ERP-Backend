@@ -36,15 +36,18 @@ public class SalaryServiceImpl implements SalaryService {
 
     private final SaleService saleService;
 
+    private final SaleReturnsService saleReturnsService;
+
     private final AttendanceService attendanceService;
 
     @Autowired
-    public SalaryServiceImpl(SalaryDao salaryDao, BankAccountService bankAccountService, StaffService staffService, PositionService positionService, SaleService saleService, AttendanceService attendanceService) {
+    public SalaryServiceImpl(SalaryDao salaryDao, BankAccountService bankAccountService, StaffService staffService, PositionService positionService, SaleService saleService, SaleReturnsService saleReturnsService, AttendanceService attendanceService) {
         this.salaryDao = salaryDao;
         this.bankAccountService = bankAccountService;
         this.staffService = staffService;
         this.positionService = positionService;
         this.saleService = saleService;
+        this.saleReturnsService = saleReturnsService;
         this.attendanceService = attendanceService;
     }
 
@@ -158,12 +161,15 @@ public class SalaryServiceImpl implements SalaryService {
         int year = DateHelper.getYearInLastMonth();
         int month = DateHelper.getMonthInLastMonth();
         String salesman = staff.getName();
+        BigDecimal saleAmount = saleService.getTotalSaleAmountByMonthAndYearAndSalesman(year, month, salesman);
+        BigDecimal saleReturnsAmount = saleReturnsService.getTotalSaleReturnsAmountByMonthAndYearAndSalesman(year, month, salesman);
+        BigDecimal checkInTimeMonthly = BigDecimal.valueOf(attendanceService.getAttendanceTime(staffId, year, month));
 
         staffInfo.setBasicSalary(position.getBaseSalary());
         staffInfo.setSpecialSalary(position.getSpecialSalary());
         staffInfo.setSalaryCalculateMethod(position.getSalaryCalculateMethod());
-        staffInfo.setTotalSaleAmount(saleService.getTotalSaleAmountByMonthAndYearAndSalesman(year, month, salesman));
-        staffInfo.setCheckInTimeMonthly(BigDecimal.valueOf(attendanceService.getAttendanceTime(staffId, year, month)));
+        staffInfo.setTotalSaleAmount(saleAmount.subtract(saleReturnsAmount));
+        staffInfo.setCheckInTimeMonthly(checkInTimeMonthly);
 
         return staffInfo;
     }
