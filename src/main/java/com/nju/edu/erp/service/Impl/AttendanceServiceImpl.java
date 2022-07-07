@@ -24,4 +24,9 @@ public class AttendanceServiceImpl implements AttendanceService {
         //根据日期和员工号查询的结果不为 null 则说明已经打卡成功
         return attendanceDao.findByDayAndStaff(attendanceRecordPO) != null;
     }
+
+    @Override
+    public int getAttendanceTime(int staffId, int year, int month) {
+        return attendanceDao.getAttendanceTime(staffId, year, month);
+    }
 }

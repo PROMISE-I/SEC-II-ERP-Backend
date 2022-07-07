@@ -12,6 +12,13 @@
         where staff_id = #{staffId} and `date` = #{date}
     </select>
 
+    <select id="getAttendanceTime" resultType="java.lang.Integer">
+        select COUNT(*) from attendance
+        where staff_id = #{staffId} and
+              YEAR(date) = #{year} and
+              MONTH(date) = #{month}
+    </select>
+
 
     <resultMap id="AttendanceRecordPO" type="com.nju.edu.erp.model.po.AttendanceRecordPO">
         <result column="staff_id" property="staffId"></result>
