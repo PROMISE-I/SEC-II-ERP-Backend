@@ -228,6 +228,7 @@ public class SaleReturnsServiceImpl implements SaleReturnsService {
 
     @Override
     public BigDecimal getTotalSaleReturnsAmountByMonthAndYearAndSalesman(int year, int month, String salesman) {
-        return saleReturnsSheetDao.getTotalSaleReturnsAmountByMonthAndYearAndSalesman(year, month, salesman);
+        BigDecimal saleReturnsAmount = saleReturnsSheetDao.getTotalSaleReturnsAmountByMonthAndYearAndSalesman(year, month, salesman);
+        return saleReturnsAmount == null ? BigDecimal.ZERO : saleReturnsAmount;
     }
 }
