@@ -3,6 +3,7 @@ package com.nju.edu.erp.service.Impl;
 import com.auth0.jwt.interfaces.Claim;
 import com.nju.edu.erp.config.JwtConfig;
 import com.nju.edu.erp.dao.UserDao;
+import com.nju.edu.erp.dao.UserToStaffDao;
 import com.nju.edu.erp.enums.Role;
 import com.nju.edu.erp.exception.MyServiceException;
 import com.nju.edu.erp.model.po.User;
@@ -22,13 +23,15 @@ import java.util.Map;
 public class UserServiceImpl implements UserService {
 
     private final UserDao userDao;
+    private final UserToStaffDao userToStaffDao;
 
     private final JwtConfig jwtConfig;
 
     @Autowired
-    public UserServiceImpl(UserDao userDao, JwtConfig jwtConfig) {
+    public UserServiceImpl(UserDao userDao, JwtConfig jwtConfig, UserToStaffDao userToStaffDao) {
         this.userDao = userDao;
         this.jwtConfig = jwtConfig;
+        this.userToStaffDao = userToStaffDao;
     }
 
 
@@ -38,9 +41,12 @@ public class UserServiceImpl implements UserService {
         if (null == user ) {
             throw new MyServiceException("A0000", "用户名或密码错误");
         }
+        Integer userId = user.getId();
+        Integer staffId = userToStaffDao.findStaffIdByUserId(userId);
         Map<String, String> authToken = new HashMap<>();
         String token = jwtConfig.createJWT(user);
         authToken.put("token", token);
+        authToken.put("staffId", String.valueOf(staffId));
         return authToken;
     }
 

@@ -13,7 +13,7 @@ import java.util.List;
 public interface PositionDao {
     public PositionInfoPO findOneByTitle(@Param("title") Role title);
 
-    public List<String> findAll();
+    public List<PositionInfoPO> findAll();
 
     public int updateOne(PositionInfoPO positionInfoPO);
 }

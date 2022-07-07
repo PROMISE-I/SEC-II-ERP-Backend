@@ -17,8 +17,8 @@
         select * from position
         where title = #{title}
     </select>
-    <select id="findAll" resultType="java.lang.String">
-        select title from position
+    <select id="findAll" resultType="com.nju.edu.erp.model.po.PositionInfoPO">
+        select * from position
     </select>
 
 
