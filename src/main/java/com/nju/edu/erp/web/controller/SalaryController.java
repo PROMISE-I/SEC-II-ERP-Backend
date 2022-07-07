@@ -53,7 +53,7 @@ public class SalaryController {
                 //总经理一年制定一次工资单，每年制定的是去年的工资单
                 Date today = new Date();
                 Date latest = salaryService.getLatestDateByEmployeeId(employeeId);
-                if (DateHelper.isSameYear(latest, today)) {
+                if (latest == null || DateHelper.isSameYear(latest, today)) {
                     salaryService.makeSalarySheet(employeeId, bankAccountId);
                     return Response.buildSuccess();
                 } else {
@@ -63,7 +63,7 @@ public class SalaryController {
                 //非总经理每月制定一次工资单，每年制定的是去年的工资单
                 today = new Date();
                 latest = salaryService.getLatestDateByEmployeeId(employeeId);
-                if (DateHelper.isSameYearAndMonth(latest, today)) {
+                if (latest == null || DateHelper.isSameYearAndMonth(latest, today)) {
                     salaryService.makeSalarySheet(employeeId, bankAccountId);
                     return Response.buildSuccess();
                 } else {

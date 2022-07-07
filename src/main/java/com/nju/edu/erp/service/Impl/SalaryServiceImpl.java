@@ -104,7 +104,7 @@ public class SalaryServiceImpl implements SalaryService {
     @Override
     public Date getLatestDateByEmployeeId(int employeeId) {
         SalarySheetPO sheet = salaryDao.findLatestByEmployeeId(employeeId);
-        return sheet.getCreateTime();
+        return sheet == null ? null : sheet.getCreateTime();
     }
 
     @Override
