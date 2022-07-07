@@ -263,4 +263,10 @@ public class SaleServiceImpl implements SaleService {
 
         return saleSheetDao.getSaleDetailByRange(beginDate, endDate);
     }
+
+    @Override
+    public BigDecimal getTotalSaleAmountByMonthAndYearAndSalesman(Integer year, Integer month, String salesman) {
+        BigDecimal totalSaleAmount =  saleSheetDao.getTotalSaleAmountByMonthAndYearAndSalesman(year, month, salesman);
+        return totalSaleAmount == null ? BigDecimal.ZERO : totalSaleAmount;
+    }
 }

@@ -79,6 +79,14 @@
             ss.create_time &lt;= #{endDate}
     </select>
 
+    <select id="getTotalSaleAmountByMonthAndYearAndSalesman" resultType="java.math.BigDecimal">
+        select sum(raw_total_amount) from sale_sheet
+        where salesman = #{salesman} and
+              YEAR(create_time) = #{year} and
+              MONTH(create_time) = #{month} and
+              state = '审批完成'
+    </select>
+
     <resultMap id="CustomerPurchaseAmountPO" type="com.nju.edu.erp.model.po.CustomerPurchaseAmountPO">
         <result column="total_final_amount" property="totalFinalAmount"></result>
         <association property="customerPO" javaType="CustomerPO" >
