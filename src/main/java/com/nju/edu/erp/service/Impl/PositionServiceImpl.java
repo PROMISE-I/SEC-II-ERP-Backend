@@ -1,6 +1,7 @@
 package com.nju.edu.erp.service.Impl;
 
 import com.nju.edu.erp.dao.PositionDao;
+import com.nju.edu.erp.enums.Role;
 import com.nju.edu.erp.model.po.PositionInfoPO;
 import com.nju.edu.erp.service.PositionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ public class PositionServiceImpl implements PositionService {
     }
 
     @Override
-    public PositionInfoPO findOneByTitle(String title) {
+    public PositionInfoPO findOneByTitle(Role title) {
         return positionDao.findOneByTitle(title);
     }
 

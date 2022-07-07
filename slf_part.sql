@@ -18,6 +18,18 @@ CREATE TABLE position (
     tax DECIMAL(10, 2) NOT NULL DEFAULT 0 COMMENT '扣税'
 );
 
+-- ----------------------------
+-- Records of position
+-- ----------------------------
+INSERT INTO position VALUES ('SALE_STAFF', 5000, 1, 10000, '提成员工薪资计算', '每月发放', 0.1);
+INSERT INTO position VALUES ('SALE_MANAGER', 10000, 3, 40000, '提成员工薪资计算', '每月发放', 0.3);
+INSERT INTO position VALUES ('INVENTORY_MANAGER', 5000, 1, 15000, '普通员工薪资计算', '每月发放', 0.15);
+INSERT INTO position VALUES ('FINANCIAL_STAFF', 5000, 1, 15000, '普通员工薪资计算', '每月发放', 0.15);
+INSERT INTO position VALUES ('HR', 6000, 2, 15000, '普通员工薪资计算', '每月发放', 0.15);
+INSERT INTO position VALUES ('GM', 20000, 5, 100000, '管理员工薪资计算', '每年发放', 0.3);
+
+
+drop table if exists staff_user;
 drop table if exists staff;
 CREATE TABLE staff(
     `id` int(11) PRIMARY KEY AUTO_INCREMENT,

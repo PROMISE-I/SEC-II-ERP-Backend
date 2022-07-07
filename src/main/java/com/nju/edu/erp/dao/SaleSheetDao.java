@@ -6,6 +6,7 @@ import com.nju.edu.erp.model.po.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -99,4 +100,12 @@ public interface SaleSheetDao {
      * @return 销售单对应的销售明细
      */
     List<SaleIODetailPO> getSaleDetailByRange(Date beginDate, Date endDate);
+
+    /**
+     * 返回相同年份和月份的某个销售员的销售总额
+     * @param year 年份
+     * @param month 月份
+     * @return 销售总额
+     */
+    BigDecimal getTotalSaleAmountByMonthAndYearAndSalesman(Integer year, Integer month, String salesman);
 }

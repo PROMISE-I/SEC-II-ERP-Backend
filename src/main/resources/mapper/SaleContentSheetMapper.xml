@@ -82,5 +82,13 @@
             srs.create_time &lt;= #{endDate}
     </select>
 
+    <select id="getTotalSaleReturnsAmountByMonthAndYearAndSalesman" resultType="java.math.BigDecimal">
+        select sum(raw_total_amount) from sale_returns_sheet
+        where salesman = #{salesman} and
+            YEAR(create_time) = #{year} and
+            MONTH(create_time) = #{month} and
+            state = '审批完成'
+    </select>
+
 
 </mapper>
