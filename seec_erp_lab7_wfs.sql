@@ -87,7 +87,7 @@ CREATE TABLE `salary_sheet`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `salary_calculate_type`;
 CREATE TABLE `salary_calculate_type`  (
-     `id` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '自增主键',
+     `id` int(11) NOT NULL COMMENT '自增主键',
      `type` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '薪资计算方式类型',
      PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
@@ -104,7 +104,7 @@ INSERT INTO salary_calculate_type VALUES (2, '管理员工薪资计算');
 -- ----------------------------
 DROP TABLE IF EXISTS `salary_send_type`;
 CREATE TABLE `salary_send_type`  (
-   `id` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '自增主键',
+   `id` int(11) COMMENT '自增主键',
    `type` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '薪资发放方式类型',
    PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
@@ -114,3 +114,14 @@ CREATE TABLE `salary_send_type`  (
 -- ----------------------------
 INSERT INTO salary_send_type VALUES (0, '每月发放');
 INSERT INTO salary_send_type VALUES (1, '每年发放');
+
+-- ----------------------------
+-- Table structure for year_end_awards
+-- ----------------------------
+DROP TABLE IF EXISTS `year_end_awards`;
+CREATE TABLE `year_end_awards`  (
+    `staff_id` int(11) NOT NULL COMMENT '员工编号',
+    `year` int(11) NOT NULL COMMENT '年份',
+    `amount` decimal(10, 2) NULL DEFAULT NULL COMMENT '年终奖总额',
+     PRIMARY KEY (`staff_id`, `year`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
