@@ -2,12 +2,15 @@ package com.nju.edu.erp.service.Impl;
 
 import com.nju.edu.erp.dao.finance.SalaryDao;
 import com.nju.edu.erp.enums.sheetState.SalarySheetState;
+import com.nju.edu.erp.model.po.PositionInfoPO;
 import com.nju.edu.erp.model.po.StaffPO;
 import com.nju.edu.erp.model.po.finance.SalarySheetPO;
 import com.nju.edu.erp.model.vo.finance.SalarySheetVO;
-import com.nju.edu.erp.service.BankAccountService;
-import com.nju.edu.erp.service.SalaryService;
-import com.nju.edu.erp.service.StaffService;
+import com.nju.edu.erp.service.*;
+import com.nju.edu.erp.service.Impl.strategy.salary.calculate.FactorySalaryCalculateStrategy;
+import com.nju.edu.erp.service.Impl.strategy.salary.calculate.SalaryCalculateStrategy;
+import com.nju.edu.erp.service.Impl.strategy.salary.calculate.StaffInfo;
+import com.nju.edu.erp.utils.DateHelper;
 import com.nju.edu.erp.utils.IdGenerator;
 import com.nju.edu.erp.utils.TaxCalculator;
 import org.springframework.beans.BeanUtils;
@@ -29,11 +32,20 @@ public class SalaryServiceImpl implements SalaryService {
 
     private final StaffService staffService;
 
+    private final PositionService positionService;
+
+    private final SaleService saleService;
+
+    private final AttendanceService attendanceService;
+
     @Autowired
-    public SalaryServiceImpl(SalaryDao salaryDao, BankAccountService bankAccountService, StaffService staffService) {
+    public SalaryServiceImpl(SalaryDao salaryDao, BankAccountService bankAccountService, StaffService staffService, PositionService positionService, SaleService saleService, AttendanceService attendanceService) {
         this.salaryDao = salaryDao;
         this.bankAccountService = bankAccountService;
         this.staffService = staffService;
+        this.positionService = positionService;
+        this.saleService = saleService;
+        this.attendanceService = attendanceService;
     }
 
     @Override
@@ -42,7 +54,7 @@ public class SalaryServiceImpl implements SalaryService {
         SalarySheetPO salarySheet = new SalarySheetPO();
         String employeeName = staffService.getNameByStaffId(employeeId);
         //TODO 薪酬制定方案
-        BigDecimal rawSalary = BigDecimal.ZERO;
+        BigDecimal rawSalary = calculateRawSalary(employeeId);
         BigDecimal tax = TaxCalculator.calculateTax(rawSalary);
         BigDecimal actualSalary = rawSalary.subtract(tax);
 
@@ -133,8 +145,27 @@ public class SalaryServiceImpl implements SalaryService {
         return getSalarySheetVOS(allSheets);
     }
 
-    private BigDecimal calculateRawSalary() {
-        return BigDecimal.ZERO;
+    private BigDecimal calculateRawSalary(int staffId) {
+        StaffInfo staffInfo = getStaffInfo(staffId);
+        SalaryCalculateStrategy strategy = FactorySalaryCalculateStrategy.productStrategy(staffInfo);
+        return strategy.calculate();
+    }
+
+    private StaffInfo getStaffInfo(int staffId) {
+        StaffInfo staffInfo = new StaffInfo();
+        StaffPO staff = staffService.findStaffById(staffId);
+        PositionInfoPO position = positionService.findOneByTitle(staff.getPosition());
+        int year = DateHelper.getYearInLastMonth();
+        int month = DateHelper.getMonthInLastMonth();
+        String salesman = staff.getName();
+
+        staffInfo.setBasicSalary(position.getBaseSalary());
+        staffInfo.setSpecialSalary(position.getSpecialSalary());
+        staffInfo.setSalaryCalculateMethod(position.getSalaryCalculateMethod());
+        staffInfo.setTotalSaleAmount(saleService.getTotalSaleAmountByMonthAndYearAndSalesman(year, month, salesman));
+        staffInfo.setCheckInTimeMonthly(BigDecimal.valueOf(attendanceService.getAttendanceTime(staffId, year, month)));
+
+        return staffInfo;
     }
 
     private List<SalarySheetVO> getSalarySheetVOS(List<SalarySheetPO> sheets) {

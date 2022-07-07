@@ -8,6 +8,7 @@ import com.nju.edu.erp.model.vo.sale.SaleSheetVO;
 import com.nju.edu.erp.model.vo.UserVO;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.List;
 
@@ -65,4 +66,12 @@ public interface SaleService {
      * @return 销售单对应的销售明细
      */
     List<SaleIODetailPO> getSaleDetailByRange(String beginTimeStr, String endTimeStr) throws ParseException;
+
+    /**
+     * 返回相同年份和月份的某个销售员的销售总额
+     * @param year 年份
+     * @param month 月份
+     * @return 销售总额
+     */
+    BigDecimal getTotalSaleAmountByMonthAndYearAndSalesman(Integer year, Integer month, String salesman);
 }
