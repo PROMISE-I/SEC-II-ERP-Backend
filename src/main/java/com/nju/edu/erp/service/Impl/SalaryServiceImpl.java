@@ -56,7 +56,7 @@ public class SalaryServiceImpl implements SalaryService {
     public void makeSalarySheet(int employeeId, int companyBankAccountId) {
         SalarySheetPO salarySheet = new SalarySheetPO();
         String employeeName = staffService.getNameByStaffId(employeeId);
-        //TODO 薪酬制定方案
+        //薪酬制定方案
         BigDecimal rawSalary = calculateRawSalary(employeeId);
         BigDecimal tax = TaxCalculator.calculateTax(rawSalary);
         BigDecimal actualSalary = rawSalary.subtract(tax);
@@ -80,8 +80,10 @@ public class SalaryServiceImpl implements SalaryService {
         Date date = new Date();
         SalarySheetPO sheet = salaryDao.findSheetByEmployeeIdAndDate(employeeId, date);
         if (sheet == null) {
-            //TODO 计算本月的薪资
-            return BigDecimal.ZERO;
+            //计算本月的薪资
+            BigDecimal rawSalary = calculateRawSalary(employeeId);
+            BigDecimal tax = TaxCalculator.calculateTax(rawSalary);
+            return rawSalary.subtract(tax);
         } else {
             return sheet.getActualSalary();
         }
