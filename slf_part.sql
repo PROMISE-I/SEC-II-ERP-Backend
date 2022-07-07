@@ -21,6 +21,7 @@ CREATE TABLE position (
 -- ----------------------------
 -- Records of position
 -- ----------------------------
+
 INSERT INTO position VALUES ('SALE_STAFF', 5000, 1, 10000, '提成员工薪资计算', '每月发放', 0.1);
 INSERT INTO position VALUES ('SALE_MANAGER', 10000, 3, 40000, '提成员工薪资计算', '每月发放', 0.3);
 INSERT INTO position VALUES ('INVENTORY_MANAGER', 5000, 1, 15000, '普通员工薪资计算', '每月发放', 0.15);

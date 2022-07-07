@@ -24,7 +24,7 @@ public class PositionServiceImpl implements PositionService {
     }
 
     @Override
-    public List<String> findAll() {
+    public List<PositionInfoPO> findAll() {
         return positionDao.findAll();
     }
 

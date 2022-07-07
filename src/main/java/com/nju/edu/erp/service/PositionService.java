@@ -9,7 +9,7 @@ import java.util.List;
 public interface PositionService {
     public PositionInfoPO findOneByTitle(Role title);
 
-    public List<String> findAll();
+    public List<PositionInfoPO> findAll();
 
     public int updateOne(PositionInfoPO positionInfoPO);
 
