@@ -40,18 +40,18 @@ CREATE TABLE staff(
     position VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
     balance decimal(10,2 ) DEFAULT 0
 );
-
 -- ----------------------------
 -- Records of staff
 -- ----------------------------
-INSERT INTO staff VALUES (0, 'seecoder', '男', '1990-01-01', '12345678901', 'INVENTORY_MANAGER', 0);
-INSERT INTO staff VALUES (0, 'uncln', 'n女', '1990-01-02', '12345678902', 'INVENTORY_MANAGER', 0);
-INSERT INTO staff VALUES (0, 'kucun', '男', '1990-01-01', '12345678903', 'INVENTORY_MANAGER', 0);
-INSERT INTO staff VALUES (0, 'zxr', '男', '1990-01-03', '12345678904', 'SALE_MANAGER', 0);
-INSERT INTO staff VALUES (0, '67', '男', '1990-01-04', '12345678905', 'GM', 0);
-INSERT INTO staff VALUES (0, 'xiaoshou', '女', '1990-01-05', '12345678906', 'SALE_STAFF', 0);
-INSERT INTO staff VALUES (0, 'Leone', '男', '1990-01-06', '12345678907', 'GM', 0);
-INSERT INTO staff VALUES (0, 'xiaoshoujingli', '女', '1990-01-07', '12345678908', 'SALE_MANAGER', 0);
+INSERT INTO staff VALUES (1, 'seecoder', '男', '1990-01-01', '12345678901', 'INVENTORY_MANAGER', 0);
+INSERT INTO staff VALUES (2, 'uncln', '女', '1990-01-02', '12345678902', 'INVENTORY_MANAGER', 0);
+INSERT INTO staff VALUES (3, 'kucun', '男', '1990-01-01', '12345678903', 'INVENTORY_MANAGER', 0);
+INSERT INTO staff VALUES (4, 'sky', '男', '1990-09-02', '12787979', 'ADMIN', 0);
+INSERT INTO staff VALUES (5, 'zxr', '男', '1990-01-03', '12345678904', 'SALE_MANAGER', 0);
+INSERT INTO staff VALUES (6, '67', '男', '1990-01-04', '12345678905', 'GM', 0);
+INSERT INTO staff VALUES (7, 'xiaoshou', '女', '1990-01-05', '12345678906', 'SALE_STAFF', 0);
+INSERT INTO staff VALUES (8, 'Leone', '男', '1990-01-06', '12345678907', 'GM', 0);
+INSERT INTO staff VALUES (9, 'xiaoshoujingli', '女', '1990-01-07', '12345678908', 'SALE_MANAGER', 0);
 
 
 drop table if exists staff_user;
@@ -60,6 +60,16 @@ CREATE TABLE staff_user (
     user_id INT NOT NULL,
     FOREIGN KEY (staff_id) REFERENCES staff(id) on delete cascade
 );
+
+INSERT INTO staff_user VALUES (1, 1);
+INSERT INTO staff_user VALUES (2, 2);
+INSERT INTO staff_user VALUES (3, 3);
+INSERT INTO staff_user VALUES (4, 4);
+INSERT INTO staff_user VALUES (5, 5);
+INSERT INTO staff_user VALUES (6, 6);
+INSERT INTO staff_user VALUES (7, 7);
+INSERT INTO staff_user VALUES (8, 8);
+INSERT INTO staff_user VALUES (9, 9);
 
 drop table if exists present_info;
 CREATE TABLE present_info (
@@ -79,11 +89,5 @@ CREATE TABLE promotion (
     end VARCHAR(255) NOT NULL
 );
 
-INSERT INTO promotion (level, discount, coupon, begin, end)
-VALUES (1, 0.80, 200, '2002-09-09', '2022-09-09');
-INSERT INTO present_info (level, product_id, quantity)
-VALUES (1, '0000000000400000', 1);
-INSERT INTO present_info (level, product_id, quantity)
-VALUES (1, '0000000000400001', 2);
 
 
