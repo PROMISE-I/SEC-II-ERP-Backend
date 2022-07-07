@@ -11,4 +11,6 @@ public interface AttendanceDao {
     public int insertAttendanceRecord(AttendanceRecordPO attendanceRecordPO);
 
     public AttendanceRecordPO findByDayAndStaff(AttendanceRecordPO attendanceRecordPO);
+
+    int getAttendanceTime(int staffId, int year, int month);
 }

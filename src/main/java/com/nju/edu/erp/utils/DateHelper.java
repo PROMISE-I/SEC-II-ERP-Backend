@@ -3,6 +3,7 @@ package com.nju.edu.erp.utils;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.text.spi.DateFormatProvider;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -44,5 +45,17 @@ public class DateHelper {
         int month2 = calendar.get(Calendar.MONTH);
 
         return year1 == year2 && month1 == month2;
+    }
+
+    public static int getYearInLastMonth() {
+        LocalDate today = LocalDate.now();
+        today = today.minusMonths(1);
+        return today.getYear();
+    }
+
+    public static int getMonthInLastMonth() {
+        LocalDate today = LocalDate.now();
+        today = today.minusMonths(1);
+        return today.getMonth().getValue();
     }
 }

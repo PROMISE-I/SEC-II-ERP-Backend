@@ -6,6 +6,7 @@ import com.nju.edu.erp.model.vo.UserVO;
 import com.nju.edu.erp.model.vo.sale.SaleIODetailFilterConditionVO;
 import com.nju.edu.erp.model.vo.saleReturns.SaleReturnsSheetVO;
 
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.List;
 
@@ -47,4 +48,12 @@ public interface SaleReturnsService {
      * @return 销售退货单对应的销售明细
      */
     List<SaleIODetailPO> getSaleReturnsDetailByRange(String beginTimeStr, String endTimeStr) throws ParseException;
+
+    /**
+     * 返回相同年份和月份的某个销售员的销售退货总额
+     * @param year 年份
+     * @param month 月份
+     * @return 销售退货总额
+     */
+    BigDecimal getTotalSaleReturnsAmountByMonthAndYearAndSalesman(int year, int month, String salesman);
 }

@@ -1,5 +1,6 @@
 package com.nju.edu.erp.web.controller;
 
+import com.nju.edu.erp.enums.Role;
 import com.nju.edu.erp.model.po.PositionInfoPO;
 import com.nju.edu.erp.model.vo.PositionInfoVO;
 import com.nju.edu.erp.service.PositionService;
@@ -31,7 +32,7 @@ public class PositionController {
     }
 
     @GetMapping("/findByTitle")
-    public Response findOneByTitle(@RequestParam String title){
+    public Response findOneByTitle(@RequestParam Role title){
         return Response.buildSuccess(positionService.findOneByTitle(title));
     }
 }
