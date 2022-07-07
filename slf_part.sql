@@ -43,14 +43,14 @@ CREATE TABLE staff(
 -- ----------------------------
 -- Records of staff
 -- ----------------------------
-INSERT INTO staff VALUES (0, 'seecoder', '男', '1990-01-01', '12345678901', 'INVENTORY_MANAGER', 0);
-INSERT INTO staff VALUES (0, 'uncln', 'n女', '1990-01-02', '12345678902', 'INVENTORY_MANAGER', 0);
-INSERT INTO staff VALUES (0, 'kucun', '男', '1990-01-01', '12345678903', 'INVENTORY_MANAGER', 0);
-INSERT INTO staff VALUES (0, 'zxr', '男', '1990-01-03', '12345678904', 'SALE_MANAGER', 0);
-INSERT INTO staff VALUES (0, '67', '男', '1990-01-04', '12345678905', 'GM', 0);
-INSERT INTO staff VALUES (0, 'xiaoshou', '女', '1990-01-05', '12345678906', 'SALE_STAFF', 0);
-INSERT INTO staff VALUES (0, 'Leone', '男', '1990-01-06', '12345678907', 'GM', 0);
-INSERT INTO staff VALUES (0, 'xiaoshoujingli', '女', '1990-01-07', '12345678908', 'SALE_MANAGER', 0);
+INSERT INTO staff VALUES (0, 'seecoder', 'male', '1990-01-01', '12345678901', 'INVENTORY_MANAGER', 0);
+INSERT INTO staff VALUES (0, 'uncln', 'female', '1990-01-02', '12345678902', 'INVENTORY_MANAGER', 0);
+INSERT INTO staff VALUES (0, 'kucun', 'male', '1990-01-01', '12345678903', 'INVENTORY_MANAGER', 0);
+INSERT INTO staff VALUES (0, 'zxr', 'male', '1990-01-03', '12345678904', 'SALE_MANAGER', 0);
+INSERT INTO staff VALUES (0, '67', 'male', '1990-01-04', '12345678905', 'GM', 0);
+INSERT INTO staff VALUES (0, 'xiaoshou', 'female', '1990-01-05', '12345678906', 'SALE_STAFF', 0);
+INSERT INTO staff VALUES (0, 'Leone', 'male', '1990-01-06', '12345678907', 'GM', 0);
+INSERT INTO staff VALUES (0, 'xiaoshoujingli', 'female', '1990-01-07', '12345678908', 'SALE_MANAGER', 0);
 
 
 drop table if exists staff_user;
@@ -84,5 +84,3 @@ INSERT INTO present_info (level, product_id, quantity)
 VALUES (1, '0000000000400000', 1);
 INSERT INTO present_info (level, product_id, quantity)
 VALUES (1, '0000000000400001', 2);
-
-
