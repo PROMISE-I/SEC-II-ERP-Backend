@@ -4,16 +4,14 @@ import com.nju.edu.erp.auth.Authorized;
 import com.nju.edu.erp.enums.Role;
 import com.nju.edu.erp.enums.sheetState.SalarySheetState;
 import com.nju.edu.erp.model.po.PositionInfoPO;
+import com.nju.edu.erp.model.vo.finance.SalarySheetVO;
 import com.nju.edu.erp.service.PositionService;
 import com.nju.edu.erp.service.SalaryService;
 import com.nju.edu.erp.service.StaffService;
 import com.nju.edu.erp.utils.DateHelper;
 import com.nju.edu.erp.web.Response;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 
@@ -35,6 +33,17 @@ public class SalaryController {
         this.salaryService = salaryService;
         this.staffService = staffService;
         this.positionService = positionService;
+    }
+
+    /**
+     * 红冲功能的单据制定
+     * @param salarySheetVO 单据内容
+     */
+    @Authorized(roles = {Role.HR, Role.GM, Role.ADMIN})
+    @PostMapping("/red-ink-offset-sheet-make")
+    public Response makeSalarySheet(@RequestBody SalarySheetVO salarySheetVO) {
+        salaryService.redInkOffsetSheetMake(salarySheetVO);
+        return Response.buildSuccess();
     }
 
     /**
