@@ -6,33 +6,44 @@
         select *
         from sale_sheet
         where TO_DAYS(create_time) between TO_DAYS(#{begin}) and TO_DAYS(#{end})
+        and operator = #{operator} and supplier = #{customer}
     </select>
     <select id="findAllSaleReturnsSheetByInterval" resultType="com.nju.edu.erp.model.po.SaleReturnsSheetPO">
         select *
         from sale_returns_sheet
         where TO_DAYS(create_time) between TO_DAYS(#{begin}) and TO_DAYS(#{end})
+        and operator = #{operator}
+        and sale_sheet_id in (
+            select id from sale_sheet
+            where supplier = #{customer}
+            )
     </select>
     <select id="findAllPurchaseSheetByInterval" resultType="com.nju.edu.erp.model.po.PurchaseSheetPO">
         select *
         from purchase_sheet
         where TO_DAYS(create_time) between TO_DAYS(#{begin}) and TO_DAYS(#{end})
+        and operator = #{operator}
     </select>
     <select id="findAllPurchaseReturnsSheetByInterval"
             resultType="com.nju.edu.erp.model.po.PurchaseReturnsSheetPO">
         select *
         from purchase_returns_sheet
         where TO_DAYS(create_time) between TO_DAYS(#{begin}) and TO_DAYS(#{end})
+        and operator = #{operator}
     </select>
     <select id="findAllPayMoneySheetByInterval" resultType="com.nju.edu.erp.model.po.finance.PayMoneySheetPO">
         select *
         from pay_money_sheet
         where TO_DAYS(create_time) between TO_DAYS(#{begin}) and TO_DAYS(#{end})
+        and customer = #{customer} and operator = #{operator}
     </select>
     <select id="findAllReceiveMoneySheetByInterval"
             resultType="com.nju.edu.erp.model.po.finance.ReceiveMoneySheetPO">
         select *
         from receive_money_sheet
         where TO_DAYS(create_time) between TO_DAYS(#{begin}) and TO_DAYS(#{end})
+        and customer = #{customer} and operator = #{operator}
+
     </select>
     <select id="findAllSalarySheetByInterval" resultType="com.nju.edu.erp.model.po.finance.SalarySheetPO">
         select *
