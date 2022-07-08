@@ -28,5 +28,5 @@ public class StaffSalaryCalculateStrategy {
      */
     public BigDecimal calculate() {
         return basicSalary.add(postSalary);
-    };
+    }
 }
