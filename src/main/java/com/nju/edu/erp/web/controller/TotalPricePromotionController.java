@@ -38,19 +38,6 @@ public class TotalPricePromotionController {
     }
 
     /**
-     * 更新一个总价促销策略
-     * @param userVO
-     * @param totalPricePromotionVO
-     * @return
-     */
-    @Authorized(roles = {Role.GM, Role.ADMIN})
-    @PostMapping("/promotion-update")
-    public Response updatePromotion(UserVO userVO, @RequestBody TotalPricePromotionVO totalPricePromotionVO) {
-        totalPricePromotionService.updatePromotion(userVO, totalPricePromotionVO);
-        return Response.buildSuccess();
-    }
-
-    /**
      * 返回所有总价促销策略
      * @return
      */

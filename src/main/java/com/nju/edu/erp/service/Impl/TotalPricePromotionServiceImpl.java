@@ -57,11 +57,6 @@ public class TotalPricePromotionServiceImpl implements TotalPricePromotionServic
     }
 
     @Override
-    public void updatePromotion(UserVO userVO, TotalPricePromotionVO totalPricePromotionVO) {
-
-    }
-
-    @Override
     public List<TotalPricePromotionVO> findAll() {
         List<TotalPricePromotionPO> totalPricePromotionPOS = totalPricePromotionDao.findAll();
         List<TotalPricePromotionVO> res = new ArrayList<>();

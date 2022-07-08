@@ -18,13 +18,6 @@ public interface TotalPricePromotionService {
     void makePromotion(UserVO userVO, TotalPricePromotionVO totalPricePromotionVO);
 
     /**
-     * 更新一个总价的促销策略
-     * @param userVO
-     * @param totalPricePromotionVO
-     */
-    void updatePromotion(UserVO userVO, TotalPricePromotionVO totalPricePromotionVO);
-
-    /**
      * 获取所有总价的促销策略
      * @return
      */
