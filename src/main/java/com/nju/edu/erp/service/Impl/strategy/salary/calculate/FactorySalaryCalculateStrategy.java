@@ -8,11 +8,11 @@ import java.math.BigDecimal;
  */
 public class FactorySalaryCalculateStrategy {
 
-    public static SalaryCalculateStrategy productStrategy(StaffInfo staffInfo) {
+    public static StaffSalaryCalculateStrategy productStrategy(StaffInfo staffInfo) {
         switch(staffInfo.getSalaryCalculateMethod()) {
             case PLAIN_STAFF_PAY:
-                return new PlainStaffCalculateStrategy(staffInfo.getBasicSalary(), staffInfo.getSpecialSalary(),
-                        staffInfo.getCheckInTimeMonthly(), BigDecimal.ZERO, BigDecimal.ZERO);
+                return new CheckInStaffSalaryCalculateStrategy(staffInfo.getBasicSalary(), staffInfo.getSpecialSalary(),
+                        staffInfo.getCheckInTimeMonthly());
             case COMMISSION_STAFF_PAY:
                 return new SaleStaffCalculateStrategy(staffInfo.getBasicSalary(), staffInfo.getSpecialSalary(),
                         staffInfo.getCheckInTimeMonthly(), staffInfo.getTotalSaleAmount(), BigDecimal.valueOf(0.3));

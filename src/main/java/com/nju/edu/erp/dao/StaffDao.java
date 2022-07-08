@@ -22,4 +22,5 @@ public interface StaffDao {
     StaffPO getStaffById(int staffId);
 
 
+    List<StaffPO> findAllExceptGM();
 }

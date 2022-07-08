@@ -23,4 +23,6 @@ public interface StaffService {
     StaffPO findStaffById(Integer staffId);
 
     void addBalanceByStaffId(BigDecimal amount, int staffId);
+
+    List<StaffPO> findAllExceptGM();
 }
