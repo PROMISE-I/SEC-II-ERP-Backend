@@ -44,35 +44,35 @@ public class BusinessHistoryServiceImpl implements BusinessHistoryService {
         List<BusinessHistorySheetVO> businessHistorySheetVOList = new ArrayList<>();
         String begin = businessHistoryQueryVO.getBegin();
         String end = businessHistoryQueryVO.getEnd();
-        String operator = businessHistoryQueryVO.getOperator();
+        String salesman = businessHistoryQueryVO.getSalesman();
         Integer customer = businessHistoryQueryVO.getCustomer();
         String type = businessHistoryQueryVO.getType();
         //销售类
         if("sale".equals(type)){
-            List<SaleSheetPO> lst = businessHistoryDao.findAllSaleSheetByInterval(begin, end, operator, customer);
+            List<SaleSheetPO> lst = businessHistoryDao.findAllSaleSheetByInterval(begin, end, salesman, customer);
             handleSaleSheet(businessHistorySheetVOList,lst);
 
         }else if("sale-returns".equals(type)){
-            List<SaleReturnsSheetPO> lst = businessHistoryDao.findAllSaleReturnsSheetByInterval(begin, end, operator, customer);
+            List<SaleReturnsSheetPO> lst = businessHistoryDao.findAllSaleReturnsSheetByInterval(begin, end, salesman, customer);
             handleSaleReturns(businessHistorySheetVOList, lst);
         }
         //进货类
         else if("purchase".equals(type)){
-            List<PurchaseSheetPO> lst = businessHistoryDao.findAllPurchaseSheetByInterval(begin, end, operator);
+            List<PurchaseSheetPO> lst = businessHistoryDao.findAllPurchaseSheetByInterval(begin, end);
             handlePurchase(businessHistorySheetVOList, lst);
         }else if("purchase-returns".equals(type)){
-            List<PurchaseReturnsSheetPO> lst = businessHistoryDao.findAllPurchaseReturnsSheetByInterval(begin, end, operator);
+            List<PurchaseReturnsSheetPO> lst = businessHistoryDao.findAllPurchaseReturnsSheetByInterval(begin, end);
             handlePurchaseReturns(businessHistorySheetVOList, lst);
         }
         //财务类
         else if("pay".equals(type)){
-            List<PayMoneySheetPO> lst = businessHistoryDao.findAllPayMoneySheetByInterval(begin, end, operator, customer);
+            List<PayMoneySheetPO> lst = businessHistoryDao.findAllPayMoneySheetByInterval(begin, end, customer);
             for(PayMoneySheetPO pmsp: lst){
                 BusinessHistorySheetVO businessHistorySheetVO = new BusinessHistorySheetVO("pay", pmsp);
                 businessHistorySheetVOList.add(businessHistorySheetVO);
             }
         }else if("receive".equals(type)){
-            List<ReceiveMoneySheetPO> lst = businessHistoryDao.findAllReceiveMoneySheetByInterval(begin, end, operator, customer);
+            List<ReceiveMoneySheetPO> lst = businessHistoryDao.findAllReceiveMoneySheetByInterval(begin, end, customer);
             for(ReceiveMoneySheetPO rmsp: lst){
                 BusinessHistorySheetVO businessHistorySheetVO = new BusinessHistorySheetVO("receive", rmsp);
                 businessHistorySheetVOList.add(businessHistorySheetVO);

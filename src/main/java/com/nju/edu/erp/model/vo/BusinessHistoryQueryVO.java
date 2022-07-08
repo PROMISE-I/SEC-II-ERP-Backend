@@ -19,9 +19,9 @@ public class BusinessHistoryQueryVO {
      */
     String end;
     /**
-     * 操作员
+     * 业务员
      */
-    String operator;
+    String salesman;
     /**
      * 顾客
      */
