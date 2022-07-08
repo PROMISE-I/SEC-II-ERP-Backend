@@ -148,7 +148,7 @@ DROP TABLE IF EXISTS `total_price_promotion_content`;
 CREATE TABLE `total_price_promotion_content`(
     `id`                       int(11) NOT NULL COMMENT '自增主键',
     `total_price_promotion_id` varchar(31)  CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '总价促销策略的编号',
-    `pid`                      int(11) NULL DEFAULT NULL COMMENT '商品编号',
+    `pid`                      varchar(31)  CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品编号',
     `quantity`                 int(11) NULL DEFAULT NULL COMMENT '数量',
     `unit_price`               decimal(10, 2) NULL DEFAULT NULL COMMENT '单价',
     `total_price`              decimal(10, 2) NULL DEFAULT NULL COMMENT '金额',
