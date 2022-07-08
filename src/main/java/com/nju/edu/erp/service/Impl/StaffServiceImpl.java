@@ -84,4 +84,9 @@ public class StaffServiceImpl implements StaffService {
         staff.setBalance(staff.getBalance().add(amount));
         staffDao.updateOne(staff);
     }
+
+    @Override
+    public List<StaffPO> findAllExceptGM() {
+        return staffDao.findAllExceptGM();
+    }
 }

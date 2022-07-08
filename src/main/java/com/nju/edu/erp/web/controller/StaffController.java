@@ -44,6 +44,15 @@ public class StaffController {
     }
 
     /**
+     *
+     * @return
+     */
+    @GetMapping("/finAllExceptGM")
+    public Response findAllExceptGM() {
+       return Response.buildSuccess(staffService.findAllExceptGM());
+    }
+
+    /**
      * 更新员工信息
      * @param staffVO
      * @return

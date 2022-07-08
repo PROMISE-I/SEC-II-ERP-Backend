@@ -28,6 +28,10 @@
         select * from staff where id = #{staffId}
     </select>
 
+    <select id="findAllExceptGM" resultType="com.nju.edu.erp.model.po.StaffPO">
+        select * from staff where position &lt;&gt; 'GM'
+    </select>
+
 
     <resultMap id="StaffPO" type="com.nju.edu.erp.model.po.StaffPO">
         <result column="id" property="id"></result>
