@@ -150,6 +150,17 @@ public class SalaryServiceImpl implements SalaryService {
         return getSalarySheetVOS(allSheets);
     }
 
+    @Override
+    public void redInkOffsetSheetMake(SalarySheetVO salarySheetVO) {
+        SalarySheetPO toSave = new SalarySheetPO();
+
+        BeanUtils.copyProperties(salarySheetVO, toSave);
+        toSave.setState(SalarySheetState.PENDING_LEVEL_1);
+        toSave.setCreateTime(new Date());
+
+        salaryDao.saveSheet(toSave);
+    }
+
     private BigDecimal calculateRawSalary(int staffId) {
         StaffInfo staffInfo = getStaffInfo(staffId);
         SalaryCalculateStrategy strategy = FactorySalaryCalculateStrategy.productStrategy(staffInfo);

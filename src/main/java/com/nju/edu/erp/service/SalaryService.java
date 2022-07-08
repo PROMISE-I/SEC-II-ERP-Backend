@@ -44,4 +44,10 @@ public interface SalaryService {
      * @return 工资单列表
      */
     List<SalarySheetVO> findAllSalarySheets();
+
+    /**
+     * 红冲功能的工资单单据制定
+     * @param salarySheetVO 工资单内容
+     */
+    void redInkOffsetSheetMake(SalarySheetVO salarySheetVO);
 }
