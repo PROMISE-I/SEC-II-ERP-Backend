@@ -24,7 +24,10 @@
     </select>
 
     <select id="findHumanResourceCost" resultType="java.math.BigDecimal">
-        select 0
+        select SUM(raw_salary)
+        from salary_sheet
+        where TO_DAYS(create_time) between TO_DAYS(#{begin}) and TO_DAYS(#{end})
+        and state = '审批完成'
     </select>
 
     <select id="findProductPresentCost" resultType="java.math.BigDecimal">

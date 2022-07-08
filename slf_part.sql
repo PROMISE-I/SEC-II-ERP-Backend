@@ -43,14 +43,15 @@ CREATE TABLE staff(
 -- ----------------------------
 -- Records of staff
 -- ----------------------------
-INSERT INTO staff VALUES (0, 'seecoder', '男', '1990-01-01', '12345678901', 'INVENTORY_MANAGER', 0);
-INSERT INTO staff VALUES (0, 'uncln', 'n女', '1990-01-02', '12345678902', 'INVENTORY_MANAGER', 0);
-INSERT INTO staff VALUES (0, 'kucun', '男', '1990-01-01', '12345678903', 'INVENTORY_MANAGER', 0);
-INSERT INTO staff VALUES (0, 'zxr', '男', '1990-01-03', '12345678904', 'SALE_MANAGER', 0);
-INSERT INTO staff VALUES (0, '67', '男', '1990-01-04', '12345678905', 'GM', 0);
-INSERT INTO staff VALUES (0, 'xiaoshou', '女', '1990-01-05', '12345678906', 'SALE_STAFF', 0);
-INSERT INTO staff VALUES (0, 'Leone', '男', '1990-01-06', '12345678907', 'GM', 0);
-INSERT INTO staff VALUES (0, 'xiaoshoujingli', '女', '1990-01-07', '12345678908', 'SALE_MANAGER', 0);
+INSERT INTO staff VALUES (1, 'seecoder', '男', '1990-01-01', '12345678901', 'INVENTORY_MANAGER', 0);
+INSERT INTO staff VALUES (2, 'uncln', '女', '1990-01-02', '12345678902', 'INVENTORY_MANAGER', 0);
+INSERT INTO staff VALUES (3, 'kucun', '男', '1990-01-01', '12345678903', 'INVENTORY_MANAGER', 0);
+INSERT INTO staff VALUES (4, 'sky', '男', '1990-09-02', '12787979', 'ADMIN', 0);
+INSERT INTO staff VALUES (5, 'zxr', '男', '1990-01-03', '12345678904', 'SALE_MANAGER', 0);
+INSERT INTO staff VALUES (6, '67', '男', '1990-01-04', '12345678905', 'GM', 0);
+INSERT INTO staff VALUES (7, 'xiaoshou', '女', '1990-01-05', '12345678906', 'SALE_STAFF', 0);
+INSERT INTO staff VALUES (8, 'Leone', '男', '1990-01-06', '12345678907', 'GM', 0);
+INSERT INTO staff VALUES (9, 'xiaoshoujingli', '女', '1990-01-07', '12345678908', 'SALE_MANAGER', 0);
 
 
 drop table if exists staff_user;
@@ -87,4 +88,22 @@ CREATE TABLE promotion (
     begin VARCHAR(255) NOT NULL,
     end VARCHAR(255) NOT NULL
 );
+
+drop table if exists combinatorial_discount;
+CREATE TABLE combinatorial_discount (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    product_one_id VARCHAR(255) NOT NULL,
+    product_two_id VARCHAR(255) NOT NULL,
+    discount_amount DECIMAL(10, 2) NOT NULL DEFAULT 0,
+    begin VARCHAR(255) NOT NULL ,
+    end VARCHAR(255) NOT NULL
+);
+INSERT INTO combinatorial_discount(product_one_id, product_two_id, discount_amount, begin, end)
+VALUES ('0000000000500000', '0000000000400001', 1000, '2002-09-09', '2022-09-09');
+INSERT INTO combinatorial_discount(product_one_id, product_two_id, discount_amount, begin, end)
+VALUES ('0000000000500002', '0000000000400001', 2000, '2002-08-09', '2022-09-09');
+INSERT INTO combinatorial_discount(product_one_id, product_two_id, discount_amount, begin, end)
+VALUES ('0000000000400000', '0000000000500002', 1000, '2002-10-09', '2022-11-09');
+
+
 
