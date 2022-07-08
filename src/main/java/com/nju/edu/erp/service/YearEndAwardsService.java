@@ -3,6 +3,7 @@ package com.nju.edu.erp.service;
 import com.nju.edu.erp.model.vo.finance.YearEndAwardsVO;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -35,4 +36,12 @@ public interface YearEndAwardsService {
      * @param year 年份
      */
     boolean hasMade(Integer staffId, Integer year);
+
+    /**
+     * 查询某个员工某年的年终奖
+     * @param staffId 员工id
+     * @param year 年份
+     * @return 年终奖
+     */
+    BigDecimal getYearEndAwardsByStaffId(int staffId, int year);
 }

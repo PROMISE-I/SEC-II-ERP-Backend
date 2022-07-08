@@ -40,8 +40,10 @@ public class SalaryServiceImpl implements SalaryService {
 
     private final AttendanceService attendanceService;
 
+    private final YearEndAwardsService yearEndAwardsService;
+
     @Autowired
-    public SalaryServiceImpl(SalaryDao salaryDao, BankAccountService bankAccountService, StaffService staffService, PositionService positionService, SaleService saleService, SaleReturnsService saleReturnsService, AttendanceService attendanceService) {
+    public SalaryServiceImpl(SalaryDao salaryDao, BankAccountService bankAccountService, StaffService staffService, PositionService positionService, SaleService saleService, SaleReturnsService saleReturnsService, AttendanceService attendanceService, YearEndAwardsService yearEndAwardsService) {
         this.salaryDao = salaryDao;
         this.bankAccountService = bankAccountService;
         this.staffService = staffService;
@@ -49,6 +51,7 @@ public class SalaryServiceImpl implements SalaryService {
         this.saleService = saleService;
         this.saleReturnsService = saleReturnsService;
         this.attendanceService = attendanceService;
+        this.yearEndAwardsService = yearEndAwardsService;
     }
 
     @Override
@@ -57,7 +60,8 @@ public class SalaryServiceImpl implements SalaryService {
         SalarySheetPO salarySheet = new SalarySheetPO();
         String employeeName = staffService.getNameByStaffId(employeeId);
         //薪酬制定方案
-        BigDecimal rawSalary = calculateRawSalary(employeeId);
+        BigDecimal yearEndAwards = getYearEndAwards(employeeId);
+        BigDecimal rawSalary = calculateRawSalary(employeeId).add(yearEndAwards);
         BigDecimal tax = TaxCalculator.calculateTax(rawSalary);
         BigDecimal actualSalary = rawSalary.subtract(tax);
 
@@ -195,5 +199,20 @@ public class SalaryServiceImpl implements SalaryService {
             res.add(salarySheetVO);
         }
         return res;
+    }
+
+    /**
+     * 非1月份制定的工资单调用这个方法返回均为0
+     * @param staffId 员工编号
+     * @return 年终奖金额
+     */
+    private BigDecimal getYearEndAwards(int staffId) {
+        int year = DateHelper.getYearInLastMonth();
+        int month = DateHelper.getMonthInLastMonth();
+        if (month == 12) {
+            return yearEndAwardsService.getYearEndAwardsByStaffId(staffId, year);
+        } else {
+            return BigDecimal.ZERO;
+        }
     }
 }

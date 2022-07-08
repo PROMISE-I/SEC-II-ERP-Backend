@@ -8,6 +8,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,5 +58,11 @@ public class YearEndAwardsServiceImpl implements YearEndAwardsService {
     @Override
     public boolean hasMade(Integer staffId, Integer year) {
         return yearEndAwardsDao.findByStaffIdAndYear(staffId, year) != null;
+    }
+
+    @Override
+    public BigDecimal getYearEndAwardsByStaffId(int staffId, int year) {
+        YearEndAwardsPO yearEndAwardsPO = yearEndAwardsDao.findByStaffIdAndYear(staffId, year);
+        return yearEndAwardsPO == null ? BigDecimal.ZERO : yearEndAwardsPO.getAmount();
     }
 }
