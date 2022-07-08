@@ -94,8 +94,16 @@ CREATE TABLE combinatorial_discount (
     id INT AUTO_INCREMENT PRIMARY KEY,
     product_one_id VARCHAR(255) NOT NULL,
     product_two_id VARCHAR(255) NOT NULL,
-    discount_amount DECIMAL(10, 2) NOT NULL DEFAULT 0
+    discount_amount DECIMAL(10, 2) NOT NULL DEFAULT 0,
+    begin VARCHAR(255) NOT NULL ,
+    end VARCHAR(255) NOT NULL
 );
+INSERT INTO combinatorial_discount(product_one_id, product_two_id, discount_amount, begin, end)
+VALUES ('0000000000500000', '0000000000400001', 1000, '2002-09-09', '2022-09-09');
+INSERT INTO combinatorial_discount(product_one_id, product_two_id, discount_amount, begin, end)
+VALUES ('0000000000500002', '0000000000400001', 2000, '2002-08-09', '2022-09-09');
+INSERT INTO combinatorial_discount(product_one_id, product_two_id, discount_amount, begin, end)
+VALUES ('0000000000400000', '0000000000500002', 1000, '2002-10-09', '2022-11-09');
 
 
 
