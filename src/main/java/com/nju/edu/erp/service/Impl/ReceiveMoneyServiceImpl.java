@@ -43,7 +43,11 @@ public class ReceiveMoneyServiceImpl implements ReceiveMoneyService {
         receiveMoneySheetPO.setOperator(userVO.getName());
         receiveMoneySheetPO.setCreateTime(new Date());
         ReceiveMoneySheetPO latest = receiveMoneyDao.getLatest();
-        String id = IdGenerator.generateSheetId(latest == null ? null : latest.getId(), "SKD");
+        String id = receiveMoneySheetVO.getId();
+        //如果id为null说明是新建单据，否则为红冲或红冲并复制
+        if (id == null) {
+            id = IdGenerator.generateSheetId(latest == null ? null : latest.getId(), "SKD");
+        }
         receiveMoneySheetPO.setId(id);
         receiveMoneySheetPO.setState(ReceiveMoneySheetState.PENDING_LEVEL_1);
 

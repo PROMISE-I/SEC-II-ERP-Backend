@@ -67,7 +67,11 @@ public class PurchaseReturnsServiceImpl implements PurchaseReturnsService {
         purchaseReturnsSheetPO.setOperator(userVO.getName());
         purchaseReturnsSheetPO.setCreateTime(new Date());
         PurchaseReturnsSheetPO latest = purchaseReturnsSheetDao.getLatest();
-        String id = IdGenerator.generateSheetId(latest == null ? null : latest.getId(), "JHTHD");
+        String id = purchaseReturnsSheetVO.getId();
+        //如果id为null说明是新建单据，否则为红冲或红冲并复制
+        if (id == null) {
+            IdGenerator.generateSheetId(latest == null ? null : latest.getId(), "JHTHD");
+        }
         purchaseReturnsSheetPO.setId(id);
         purchaseReturnsSheetPO.setState(PurchaseReturnsSheetState.PENDING_LEVEL_1);
         BigDecimal totalAmount = BigDecimal.ZERO;

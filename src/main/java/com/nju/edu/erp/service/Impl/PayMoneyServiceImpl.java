@@ -43,7 +43,11 @@ public class PayMoneyServiceImpl implements PayMoneyService {
         payMoneySheetPO.setOperator(userVO.getName());
         payMoneySheetPO.setCreateTime(new Date());
         PayMoneySheetPO latest = payMoneyDao.getLatest();
-        String id = IdGenerator.generateSheetId(latest == null ? null : latest.getId(), "FKD");
+        String id = payMoneySheetVO.getId();
+        //如果id为null说明是新建单据，否则为红冲或红冲并复制
+        if (id == null) {
+            id = IdGenerator.generateSheetId(latest == null ? null : latest.getId(), "FKD");
+        }
         payMoneySheetPO.setId(id);
         payMoneySheetPO.setState(PayMoneySheetState.PENDING_LEVEL_1);
 

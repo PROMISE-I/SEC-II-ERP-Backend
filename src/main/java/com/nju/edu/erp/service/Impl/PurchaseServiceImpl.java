@@ -66,7 +66,11 @@ public class PurchaseServiceImpl implements PurchaseService {
         purchaseSheetPO.setOperator(userVO.getName());
         purchaseSheetPO.setCreateTime(new Date());
         PurchaseSheetPO latest = purchaseSheetDao.getLatest();
-        String id = IdGenerator.generateSheetId(latest == null ? null : latest.getId(), "JHD");
+        String id = purchaseSheetVO.getId();
+        //如果id为null说明是新建单据，否则为红冲或红冲并复制
+        if (id == null) {
+            IdGenerator.generateSheetId(latest == null ? null : latest.getId(), "JHD");
+        }
         purchaseSheetPO.setId(id);
         purchaseSheetPO.setState(PurchaseSheetState.PENDING_LEVEL_1);
         BigDecimal totalAmount = BigDecimal.ZERO;
