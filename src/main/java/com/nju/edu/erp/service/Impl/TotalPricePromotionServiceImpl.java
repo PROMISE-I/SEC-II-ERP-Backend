@@ -1,5 +1,6 @@
 package com.nju.edu.erp.service.Impl;
 
+import com.nju.edu.erp.dao.promotion.TotalPricePromotionDao;
 import com.nju.edu.erp.model.po.promotion.TotalPricePromotionContentPO;
 import com.nju.edu.erp.model.po.promotion.TotalPricePromotionPO;
 import com.nju.edu.erp.model.vo.UserVO;
@@ -9,7 +10,7 @@ import com.nju.edu.erp.service.TotalPricePromotionService;
 import com.nju.edu.erp.utils.DateHelper;
 import com.nju.edu.erp.utils.IdGenerator;
 import org.springframework.beans.BeanUtils;
-import org.springframework.context.annotation.Bean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -24,6 +25,11 @@ import java.util.List;
 public class TotalPricePromotionServiceImpl implements TotalPricePromotionService {
 
     private final TotalPricePromotionDao totalPricePromotionDao;
+
+    @Autowired
+    public TotalPricePromotionServiceImpl(TotalPricePromotionDao totalPricePromotionDao) {
+        this.totalPricePromotionDao = totalPricePromotionDao;
+    }
 
     @Override
     public void makePromotion(UserVO userVO, TotalPricePromotionVO totalPricePromotionVO) {
