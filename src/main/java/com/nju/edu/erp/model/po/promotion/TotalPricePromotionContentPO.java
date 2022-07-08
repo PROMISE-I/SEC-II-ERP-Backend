@@ -24,7 +24,7 @@ public class TotalPricePromotionContentPO {
     /**
      * 对应总价促销策略的id
      */
-    private Integer totalPricePromotionId;
+    private String totalPricePromotionId;
 
     /**
      * 商品id

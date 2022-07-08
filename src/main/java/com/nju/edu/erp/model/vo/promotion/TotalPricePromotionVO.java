@@ -20,7 +20,7 @@ public class TotalPricePromotionVO {
     /**
      * 总价促销策略id
      */
-    private Integer id;
+    private String id;
 
     /**
      * 触发此策略的总价阈值
