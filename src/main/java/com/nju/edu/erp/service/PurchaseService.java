@@ -35,8 +35,4 @@ public interface PurchaseService {
      * @return 进货单全部信息
      */
     PurchaseSheetVO getPurchaseSheetById(String purchaseSheetId);
-
-
-
-
 }
