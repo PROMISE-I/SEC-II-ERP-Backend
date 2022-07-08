@@ -125,3 +125,33 @@ CREATE TABLE `year_end_awards`  (
     `amount` decimal(10, 2) NULL DEFAULT NULL COMMENT '年终奖总额',
      PRIMARY KEY (`staff_id`, `year`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for total_price_promotion
+-- ----------------------------
+DROP TBALE IF EXISTS `total_price_promotion`;
+CREATE TABLE `total_price_promotion` (
+    `id` int(11) NOT NULL COMMENT '自增主键',
+    `threshold` decimal(10, 2) NULL DEFAULT NULL COMMENT '总价阈值',
+    `begin_time` datetime(0) NULL DEFAULT NULL COMMENT '开始时间',
+    `end_time` datetime(0) NULL DEFAULT NULL COMMENT '结束时间',
+    `operator`  varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '操作者',
+    `voucher_amount` decimal(10, 2) NULL DEFAULT NULL COMMENT '代金卷额度',
+    `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
+    PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 0 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for total_price_promotion_content
+-- ----------------------------
+DROP TBALE IF EXISTS `total_price_promotion_content`;
+CREATE TABLE `total_price_promotion_content`(
+    `id` int(11) NOT NULL COMMENT '自增主键',
+    `total_price_promotion_id` int(11) NULL DEFAULT NULL '总价促销策略的编号',
+    `pid` int(11) NULL DEFAULT NULL '商品编号',
+    `quantity` int(11) NULL DEFAULT NULL COMMENT '数量',
+    `unit_price` decimal(10, 2) NULL DEFAULT NULL COMMENT '单价',
+    `total_price` decimal(10, 2) NULL DEFAULT NULL COMMENT '金额',
+    `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
+    PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 0 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
