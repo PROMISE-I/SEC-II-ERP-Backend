@@ -48,6 +48,8 @@ NJU-ERP 系统中，选择了分层体系结构风格，将系统分为 3 层（
 
 #### 开发包图
 
+***TODO：修改开发包设计***
+
 NJU-ERP 系统的最终开发包设计如下表所示：
 
 | 开发包               | 依赖的其他包                                                 |
@@ -128,12 +130,12 @@ NJU-ERP 系统前端采用 Vue 框架，后端采用 SpringBoot 框架，使用 
 
 每一层只是使用下方直接接触的层。层与层之间仅仅是通过接口的调用来完成的。层之间调用的接口如下表所示。
 
-TODO：完善下表
+***TODO：完善下表***
 
 | 接口                                                         | 服务调用方 | 服务提供方 |
 | ------------------------------------------------------------ | ---------- | ---------- |
-| CategoryServiceImpl <br> ProductServiceImpl <br> WarehouseServiceimpl <br> ... | 用户界面层 | 业务逻辑层 |
-| CategoryDao <br> ProductDao <br> WarehouseDao <br> WarehouseInputSheetDao <br> WarehouseOutputSheetDao <br> CustomerDao <br> RestockSheetDao <br> RestockReturnedGoodsSheetDao <br> SalesSheetDao <br> SalesReturnedGoodsSheetDao |            |            |
+| CategoryServiceImpl <br />ProductServiceImpl <br />WarehouseServiceimpl <br /> ... | 用户界面层 | 业务逻辑层 |
+| CategoryDao <br /> ProductDao <br /> WarehouseDao <br /> WarehouseInputSheetDao <br /> WarehouseOutputSheetDao <br /> CustomerDao <br /> RestockSheetDao <br /> RestockReturnedGoodsSheetDao <br /> SalesSheetDao <br /> SalesReturnedGoodsSheetDao |            |            |
 
 #### 用户界面层的分解
 
@@ -194,7 +196,7 @@ end
 
 用户界面层需要的服务接口如下表所示。
 
-TODO：完善下表
+***TODO：完善下表***
 
 | 服务名                              | 服务                   |
 | ----------------------------------- | ---------------------- |
@@ -224,11 +226,13 @@ TODO：完善下表
 
 ##### 业务逻辑层模块的接口规范
 
-TODO：完善
+***TODO：完善接口规范***
 
 ###### WarehouseBL 模块的接口规范
 
 提供的服务（供接口）
+
+***TODO：完善下表***
 
 
 | 接口名称                                | 语法                                                         | 前置条件             | 后置条件                       |
@@ -247,6 +251,8 @@ TODO：完善
 | WarehouseServiceImpl.getUIInfo          | public String[] getUIInfo(String[] args)                     | 需要获取 UI 界面内容 | 返回所需的 UI 内容             |
 
 需要的服务(需接口)
+
+***TODO：完善下表***
 
 | 服务名                                                       | 服务                                       |
 | ------------------------------------------------------------ | ------------------------------------------ |
@@ -274,6 +280,8 @@ TODO：完善
 
 提供的服务（供接口）
 
+***TODO：完善下表***
+
 | 接口名称                               | 语法                                                         | 前置条件           | 后置条件                                        |
 | :------------------------------------- | ------------------------------------------------------------ | ------------------ | ----------------------------------------------- |
 | CustomerServiceImpl.createCustomer     | public CustomerVO createCustomer(CustomerInfoVO customerInfoVO) | 新增一个客户       | 增加新增的客户信息                              |
@@ -286,6 +294,8 @@ TODO：完善
 | StockServiceImpl.returnStock           | public RestockReturnedGoodsSheetVO returnStock(RestockReturnedGoodsSheetInfoVO restockReturnedGoodsSheetInfoVO) | 需要退货(给供应商) | 更新库存信息                                    |
 
 需要的服务（需接口）
+
+***TODO：完善下表***
 
 | 服务名                                                       | 服务                                                      |
 | ------------------------------------------------------------ | --------------------------------------------------------- |
@@ -327,6 +337,8 @@ TODO：完善
 ##### 数据层模块的接口规范
 
 数据层模块的接口规范如下表所示。
+
+***TODO：完善下表***
 
 | 接口名称                                                     | 语法                                                         | 前置条件                                          | 后置条件                                            |
 | :----------------------------------------------------------- | ------------------------------------------------------------ | :------------------------------------------------ | :-------------------------------------------------- |
@@ -382,22 +394,60 @@ TODO：完善
 
 #### 数据持久化对象
 
-系统中的PO类就是对应的相关的实体类，ERP系统设计如下PO。
+系统中的 PO 类就是对应的相关的实体类，ERP 系统设计如下 PO。
 
-1. CategoryPO 类包含分类id、分类名、父分类ID、是否为叶节点、商品数量、下一个商品index属性。
-2. ProductPO 类包含商品id、商品名、分类ID、商品型号、商品数量、进价、零售价、最近进价、最近零售价属性。
-3. User 类包含用户ID、用户姓名、用户密码、用户身份属性。
-4. WarehouseInputSheetContentPO 类包含入库商品列表id、入库单编号、商品id、商品数量、单价、出厂日期、备注、来源单据类型、来源单据编号属性。
-5. WarehouseInputSheetPO 类包含入库单编号、批次、操作员、操作时间属性。
-6. WarehouseOutputSheetContentPO 类包含出库商品列表id、商品id、出库单编号、批次、商品数量、单价备注、来源单据类型、来源单据编号属性。
-7. WarehouseOutputSheetPO 类包含出库单编号、操作员、操作时间属性。
-8. WarehousePO 类包含库存id、商品编号、数量、进价、批次、出厂日期属性。
-9. CustomerPO 类包含编号、分类、级别、姓名、电话、地址、邮编、电子邮箱、应收额度、应收、应付、默认业务员属性。
-10. RestockSheetPO 类包含进货单编号、供应商、仓库、操作员、备注、总额合计、操作时间属性。
-11. RestockReturnedGoodsSheetPO 类包含退货单编号、供应商、仓库、操作员、备注、总额合计、操作时间、对应的进货单编号属性。
-12. SalesSheetPO 类包含单据编号、客户、业务员、操作员、仓库、折让前总额、折让、使用代金卷金额、折让后总额、备注、操作时间属性。
-13. SalesReturnedGoodsSheetPO 类包含单据编号、客户、业务员、操作员、仓库、折让前总额、折让、使用代金卷金额、折让后总额、备注、操作时间、对应的销售单编号属性。
+***TODO：完善下表***
+
+| PO 类                         | 描述                                                         |
+| ----------------------------- | ------------------------------------------------------------ |
+| CategoryPO                    | 包含分类 id、分类名、父分类 ID、是否为叶节点、商品数量、下一个商品 index 属性。 |
+| ProductPO                     | 包含商品 id、商品名、分类 ID、商品型号、商品数量、进价、零售价、最近进价、最近零售价属性。 |
+| User                          | 包含用户 ID、用户姓名、用户密码、用户身份属性。              |
+| WarehouseInputSheetContentPO  | 包含入库商品列表 id、入库单编号、商品id、商品数量、单价、出厂日期、备注、来源单据类型、来源单据编号属性。 |
+| WarehouseInputSheetPO         | 包含入库单编号、批次、操作员、操作时间属性。                 |
+| WarehouseOutputSheetContentPO | 包含出库商品列表id、商品id、出库单编号、批次、商品数量、单价备注、来源单据类型、来源单据编号属性。 |
+| WarehouseOutputSheetPO        | 包含出库单编号、操作员、操作时间属性。                       |
+| WarehousePO                   | 包含库存id、商品编号、数量、进价、批次、出厂日期属性。       |
+| CustomerPO                    | 包含编号、分类、级别、姓名、电话、地址、邮编、电子邮箱、应收额度、应收、应付、默认业务员属性。 |
+| RestockSheetPO                | 包含进货单编号、供应商、仓库、操作员、备注、总额合计、操作时间属性。 |
+| RestockReturnedGoodsSheetPO   | 包含退货单编号、供应商、仓库、操作员、备注、总额合计、操作时间、对应的进货单编号属性。 |
+| SalesSheetPO                  | 包含单据编号、客户、业务员、操作员、仓库、折让前总额、折让、使用代金卷金额、折让后总额、备注、操作时间属性。 |
+| SalesReturnedGoodsSheetPO     | 包含单据编号、客户、业务员、操作员、仓库、折让前总额、折让、使用代金卷金额、折让后总额、备注、操作时间、对应的销售单编号属性。 |
 
 #### 数据库表
 
-数据库中包含 Category 表、Product 表、User 表、WarehouseInputSheetContent 表、WarehouseInputSheet 表、WarehouseOutputSheetContent 表、WarehouseOutputSheet 表、Warehouse 表、Customer 表、RestockSheet 表、RestockReturnedGoodsSheet 表、SalesSheet 表、SalesReturnedGoodsSheet 表。
+***TODO：修改下表***
+
+| 表名         | 描述         |
+| ------------ | ------------ |
+| attendence   | 员工打卡签到 |
+| bank_account | 银行账户 |
+| category                       | 商品分类 |
+| customer                       | 客户 |
+| pay_money_sheet                | 付款单 |
+| pay_money_transfer_list        | TODO |
+| position                      | 岗位 |
+| present_info          | 礼物信息 |
+| product                        | 商品 |
+| promotion                      | 促销 |
+| purchase_returns_sheet         | 进货退货单 |
+| purchase_returns_sheet_content | 进货退货单内容 |
+| purchase_sheet                 | 进货单 |
+| purchase_sheet_content         | 进货单内容 |
+| receive_money_sheet            | 收款单 |
+| receive_money_transfer_list    | 收款单内容 |
+| salary_calculate_type          | TODO |
+| salary_send_type               | TODO |
+| salary_sheet                   | 工资单 |
+| sale_returns_sheet             | 销售退货单 |
+| sale_returns_sheet_content     | 销售退货单内容 |
+| sale_sheet                     | 销售单 |
+| sale_sheet_content             | 销售单内容 |
+| staff                          | 员工 |
+| staff_user                     | TODO |
+| user                           | 系统用户 |
+| warehouse                      | 库存 |
+| warehouse_input_sheet          | 入库单 |
+| warehouse_input_sheet_content  | 入库单内容 |
+| warehouse_output_sheet         | 出库单 |
+| warehouse_output_sheet_content | 出库单内容 |
