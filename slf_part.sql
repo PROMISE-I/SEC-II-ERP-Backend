@@ -89,5 +89,13 @@ CREATE TABLE promotion (
     end VARCHAR(255) NOT NULL
 );
 
+drop table if exists combinatorial_discount;
+CREATE TABLE combinatorial_discount (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    product_one_id VARCHAR(255) NOT NULL,
+    product_two_id VARCHAR(255) NOT NULL,
+    discount_amount DECIMAL(10, 2) NOT NULL DEFAULT 0
+);
+
 
 
