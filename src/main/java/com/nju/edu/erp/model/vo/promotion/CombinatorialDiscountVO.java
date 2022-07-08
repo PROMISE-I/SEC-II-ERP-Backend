@@ -1,5 +1,6 @@
 package com.nju.edu.erp.model.vo.promotion;
 
+import com.nju.edu.erp.model.po.promotion.CombinatorialDiscountPO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,7 +12,18 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+/**
+ * 组合商品降价信息的 VO
+ */
 public class CombinatorialDiscountVO {
+    public CombinatorialDiscountVO(CombinatorialDiscountPO combinatorialDiscountPO){
+        this.id = combinatorialDiscountPO.getId();
+        this.productOneId = combinatorialDiscountPO.getProductOneId();
+        this.productTwoId = combinatorialDiscountPO.getProductTwoId();
+        this.discountAmount = combinatorialDiscountPO.getDiscountAmount();
+        this.beginDate = combinatorialDiscountPO.getBeginDate();
+        this.endDate = combinatorialDiscountPO.getEndDate();
+    }
     /**
      * 唯一标识 id
      */
@@ -36,4 +48,12 @@ public class CombinatorialDiscountVO {
      * 折让金额
      */
     BigDecimal discountAmount;
+    /**
+     * 开始日期
+     */
+    String beginDate;
+    /**
+     * 结束日期
+     */
+    String endDate;
 }
