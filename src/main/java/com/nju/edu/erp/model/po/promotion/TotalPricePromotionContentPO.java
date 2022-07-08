@@ -29,7 +29,7 @@ public class TotalPricePromotionContentPO {
     /**
      * 商品id
      */
-    private Integer pid;
+    private String pid;
 
     /**
      * 商品数量

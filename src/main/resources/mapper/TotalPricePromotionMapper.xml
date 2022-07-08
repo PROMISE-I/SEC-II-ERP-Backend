@@ -6,15 +6,18 @@
         values (#{id}, #{threshold}, #{beginTime}, #{endTime}, #{operator}, #{voucherAmount}, #{remark})
     </insert>
 
-    <insert id="saveBatch">
+    <insert id="saveBatch" useGeneratedKeys="true" keyProperty="id">
         insert into total_price_promotion_content (`id`, total_price_promotion_id, pid, quantity, unit_price, total_price, remark) values
         <foreach collection="list" item="item" index="index" separator=",">
-            (#{item,id}, #{item.totalPricePromotionId}, #{item.pid}, #{item.quantity}, #{item.unitPrice}, #{item.totalPrice}, #{item.remark})
+            (#{item.id}, #{item.totalPricePromotionId}, #{item.pid}, #{item.quantity}, #{item.unitPrice}, #{item.totalPrice}, #{item.remark})
         </foreach>
     </insert>
 
     <delete id="deleteById">
         delete from total_price_promotion where `id` = #{id};
+    </delete>
+
+    <delete id="deleteContentById">
         delete from total_price_promotion_content where total_price_promotion_id = #{id};
     </delete>
 
