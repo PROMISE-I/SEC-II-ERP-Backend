@@ -31,8 +31,10 @@ public class YearEndAwardsController {
     @Authorized(roles = {Role.GM, Role.ADMIN})
     @PostMapping("/awards-make")
     public Response makeAwards(UserVO userVO, @RequestBody YearEndAwardsVO yearEndAwardsVO) {
-        if (userVO.getRole().equals(Role.GM)) return Response.buildFailed("C00000", "总经理没有年终奖");
-        else {
+        if (userVO.getRole().equals(Role.GM)) return Response.buildFailed("C00000", "总经理没有年终奖!");
+        else if (yearEndAwardsService.hasMade(yearEndAwardsVO.getStaffId(), yearEndAwardsVO.getYear())){
+            return Response.buildFailed("C00001", "该员工去年已经制定过年终奖了！请不要重复制定");
+        }else {
             yearEndAwardsService.makeYearEndAwards(yearEndAwardsVO);
             return Response.buildSuccess();
         }
