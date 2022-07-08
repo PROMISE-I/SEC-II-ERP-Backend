@@ -65,4 +65,10 @@ public class DateHelper {
         today = today.minusMonths(1);
         return today.getMonth().getValue();
     }
+
+    public static int getLastYear() {
+        LocalDate today = LocalDate.now();
+        today = today.minusYears(1);
+        return today.getYear();
+    }
 }

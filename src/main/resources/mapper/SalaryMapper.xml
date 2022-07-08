@@ -43,4 +43,12 @@
         select * from salary_sheet
         where id = #{salarySheetId}
     </select>
+
+    <select id="findSheetByStaffIdAndYearAndMonth" resultType="com.nju.edu.erp.model.po.finance.SalarySheetPO">
+        select * from salary_sheet
+        where state = '审批完成' and
+              staff_id = #{staffId} and
+              YEAR(create_time) = #{year} and
+              MONTH(create_time) = #{month}
+    </select>
 </mapper>

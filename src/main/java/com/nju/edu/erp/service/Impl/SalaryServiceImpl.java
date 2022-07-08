@@ -165,6 +165,21 @@ public class SalaryServiceImpl implements SalaryService {
         salaryDao.saveSheet(toSave);
     }
 
+    @Override
+    public BigDecimal getTotalAmountBeforeNovember(int staffId) {
+        int year = DateHelper.getLastYear();
+        BigDecimal totalRawAmount = BigDecimal.ZERO;
+
+        for (int month = 2; month <= 12; month++) {
+            SalarySheetPO sheet = salaryDao.findSheetByStaffIdAndYearAndMonth(staffId, year, month);
+            if (sheet != null) {
+                totalRawAmount = totalRawAmount.add(sheet.getRawSalary());
+            }
+        }
+
+        return totalRawAmount;
+    }
+
     private BigDecimal calculateRawSalary(int staffId) {
         StaffInfo staffInfo = getStaffInfo(staffId);
         StaffSalaryCalculateStrategy strategy = FactorySalaryCalculateStrategy.productStrategy(staffInfo);
