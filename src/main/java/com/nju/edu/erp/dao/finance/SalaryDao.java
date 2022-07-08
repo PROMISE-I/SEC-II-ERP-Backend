@@ -67,4 +67,13 @@ public interface SalaryDao {
      * @return 影响行数
      */
     int updateSheetStateOnPrev(String salarySheetId, SalarySheetState prevState, SalarySheetState state);
+
+    /**
+     * 根据年份和月份返回相应创建时间的工资单
+     * @param staffId 员工编号
+     * @param year 年份
+     * @param month 月份
+     * @return 工资单
+     */
+    SalarySheetPO findSheetByStaffIdAndYearAndMonth(int staffId, int year, int month);
 }

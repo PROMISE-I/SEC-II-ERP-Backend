@@ -5,6 +5,7 @@ import com.nju.edu.erp.enums.Role;
 import com.nju.edu.erp.model.vo.UserVO;
 import com.nju.edu.erp.model.vo.finance.YearEndAwardsVO;
 import com.nju.edu.erp.service.YearEndAwardsService;
+import com.nju.edu.erp.utils.DateHelper;
 import com.nju.edu.erp.web.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -31,6 +32,8 @@ public class YearEndAwardsController {
     @Authorized(roles = {Role.GM, Role.ADMIN})
     @PostMapping("/awards-make")
     public Response makeAwards(UserVO userVO, @RequestBody YearEndAwardsVO yearEndAwardsVO) {
+        yearEndAwardsVO.setYear(DateHelper.getLastYear());
+
         if (userVO.getRole().equals(Role.GM)) return Response.buildFailed("C00000", "总经理没有年终奖!");
         else if (yearEndAwardsService.hasMade(yearEndAwardsVO.getStaffId(), yearEndAwardsVO.getYear())){
             return Response.buildFailed("C00001", "该员工去年已经制定过年终奖了！请不要重复制定");
@@ -57,5 +60,17 @@ public class YearEndAwardsController {
     @GetMapping("/find-all")
     public Response findAll() {
         return Response.buildSuccess(yearEndAwardsService.findAll());
+    }
+
+    /**
+     * 查询某个员工某年的年终奖
+     * @param staffId 员工id
+     * @param year 年份
+     * @return 年终奖
+     */
+    @GetMapping("/find-by-staffId-year")
+    public Response findByStaffIdAndYear(@RequestParam(value = "staffId") int staffId,
+                                         @RequestParam(value = "year") int year) {
+        return Response.buildSuccess(yearEndAwardsService.getYearEndAwardsByStaffId(staffId, year));
     }
 }

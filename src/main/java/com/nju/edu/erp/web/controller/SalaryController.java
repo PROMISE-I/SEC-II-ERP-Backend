@@ -142,4 +142,15 @@ public class SalaryController {
     public Response findAllSalarySheet() {
         return Response.buildSuccess(salaryService.findAllSalarySheets());
     }
+
+
+    /**
+     * 返回去年前11个月份的原始工资总额
+     * @param staffId 员工编号
+     * @return 原始工资总额
+     */
+    @GetMapping("/get-total-amount")
+    public Response getTotalAmountBeforeNovember(int staffId) {
+        return Response.buildSuccess(salaryService.getTotalAmountBeforeNovember(staffId));
+    }
 }

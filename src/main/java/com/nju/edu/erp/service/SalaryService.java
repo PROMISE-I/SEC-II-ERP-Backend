@@ -50,4 +50,11 @@ public interface SalaryService {
      * @param salarySheetVO 工资单内容
      */
     void redInkOffsetSheetMake(SalarySheetVO salarySheetVO);
+
+    /**
+     * 返回去年前11个月份的原始工资总额
+     * @param staffId 员工编号
+     * @return 原始工资总额
+     */
+    BigDecimal getTotalAmountBeforeNovember(int staffId);
 }

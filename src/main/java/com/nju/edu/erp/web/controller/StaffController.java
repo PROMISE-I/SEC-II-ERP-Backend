@@ -44,10 +44,10 @@ public class StaffController {
     }
 
     /**
-     *
-     * @return
+     * 找到除了总经理外的所有员工
+     * @return 员工信息列表
      */
-    @GetMapping("/finAllExceptGM")
+    @GetMapping("/findAllExceptGM")
     public Response findAllExceptGM() {
        return Response.buildSuccess(staffService.findAllExceptGM());
     }
