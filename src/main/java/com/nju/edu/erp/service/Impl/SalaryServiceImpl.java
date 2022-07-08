@@ -8,7 +8,7 @@ import com.nju.edu.erp.model.po.finance.SalarySheetPO;
 import com.nju.edu.erp.model.vo.finance.SalarySheetVO;
 import com.nju.edu.erp.service.*;
 import com.nju.edu.erp.service.Impl.strategy.salary.calculate.FactorySalaryCalculateStrategy;
-import com.nju.edu.erp.service.Impl.strategy.salary.calculate.SalaryCalculateStrategy;
+import com.nju.edu.erp.service.Impl.strategy.salary.calculate.StaffSalaryCalculateStrategy;
 import com.nju.edu.erp.service.Impl.strategy.salary.calculate.StaffInfo;
 import com.nju.edu.erp.utils.DateHelper;
 import com.nju.edu.erp.utils.IdGenerator;
@@ -163,7 +163,7 @@ public class SalaryServiceImpl implements SalaryService {
 
     private BigDecimal calculateRawSalary(int staffId) {
         StaffInfo staffInfo = getStaffInfo(staffId);
-        SalaryCalculateStrategy strategy = FactorySalaryCalculateStrategy.productStrategy(staffInfo);
+        StaffSalaryCalculateStrategy strategy = FactorySalaryCalculateStrategy.productStrategy(staffInfo);
         return strategy.calculate();
     }
 
