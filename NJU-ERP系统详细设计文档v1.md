@@ -34,3 +34,27 @@
 参考《NJU-ERP系统体系结构设计文档》中对体系结构设计的概述。
 
 ## 结构视角
+
+### 业务逻辑层的分解
+
+业务逻辑层的开发包图见体系结构文档。
+
+#### 销售模块
+
+##### 单据的状态图
+
+![status-diagram](NJU-ERP%E7%B3%BB%E7%BB%9F%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3v1/201250127-status-diagram.jpg)
+
+##### 查看经营历程表的系统顺序图
+
+<img src="NJU-ERP%E7%B3%BB%E7%BB%9F%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3v1/201250185-%E6%9F%A5%E7%9C%8B%E7%BB%8F%E8%90%A5%E5%8E%86%E7%A8%8B%E8%A1%A8%E7%B3%BB%E7%BB%9F%E9%A1%BA%E5%BA%8F%E5%9B%BE.png" alt="查看经营历程表系统顺序图" style="zoom:70%;" />
+
+##### 销售模块的概念类图
+
+<img src="NJU-ERP%E7%B3%BB%E7%BB%9F%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3v1/201250181-class-diagram.png" alt="class-diagram" style="zoom:80%;" />
+
+
+
+## 依赖视角
+
+NJU-ERP 系统开发包图（https://processon.com/diagraming/627093086376891e1c2106c1）
