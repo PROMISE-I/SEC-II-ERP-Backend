@@ -1,5 +1,8 @@
 package com.nju.edu.erp.utils;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
@@ -70,5 +73,16 @@ public class DateHelper {
         LocalDate today = LocalDate.now();
         today = today.minusYears(1);
         return today.getYear();
+    }
+
+    public static Date stringToDate(String timeStr) {
+        DateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = null;
+        try {
+            date = dateFormat.parse(timeStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date;
     }
 }
