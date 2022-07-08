@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(path = "/year-end-awards")
 public class YearEndAwards {
 
-    private YearEndAwardsService yearEndAwardsService;
+//    private YearEndAwardsService yearEndAwardsService;
 
     @PostMapping("/sheet-make")
     public Response makeSheet() {
