@@ -64,7 +64,7 @@ public class SaleReturnsServiceImpl implements SaleReturnsService {
         String id = saleReturnsSheetVO.getId();
         //如果id为null说明是新建单据，否则为红冲或红冲并复制
         if (id == null) {
-            IdGenerator.generateSheetId(latest == null? null : latest.getId(), "XSTHD");
+            id = IdGenerator.generateSheetId(latest == null? null : latest.getId(), "XSTHD");
         }
         saleReturnsSheetPO.setId(id);
         saleReturnsSheetPO.setState(SaleReturnsSheetState.PENDING_LEVEL_1);
