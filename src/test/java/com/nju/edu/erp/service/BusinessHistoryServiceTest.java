@@ -33,12 +33,10 @@ public class BusinessHistoryServiceTest {
                 .build();
         List<BusinessHistorySheetVO> ans = businessHistoryService.findAll(businessHistoryQueryVO);
         List<String> expected = new ArrayList<>();
-        expected.add("XSD-20220523-00000");
         expected.add("XSD-20220524-00000");
         expected.add("XSD-20220524-00001");
         expected.add("XSD-20220524-00002");
         expected.add("XSD-20220524-00003");
-        expected.add("XSD-20220524-00004");
         for(String e: expected){
             boolean success = false;
             for(BusinessHistorySheetVO b: ans){
@@ -89,7 +87,7 @@ public class BusinessHistoryServiceTest {
     public void findPurchaseTest(){
         BusinessHistoryQueryVO businessHistoryQueryVO = BusinessHistoryQueryVO.builder()
                 .begin("2022-05-20")
-                .end("2022-05-23")
+                .end("2022-05-24")
                 .type("purchase")
                 .build();
         List<BusinessHistorySheetVO> ans = businessHistoryService.findAll(businessHistoryQueryVO);
@@ -97,6 +95,7 @@ public class BusinessHistoryServiceTest {
         expected.add("JHD-20220523-00000");
         expected.add("JHD-20220523-00001");
         expected.add("JHD-20220523-00002");
+        expected.add("JHD-20220524-00002");
         assert (expected.size() == ans.size());
         for(String e: expected){
             boolean success = false;
@@ -124,7 +123,6 @@ public class BusinessHistoryServiceTest {
         List<BusinessHistorySheetVO> ans = businessHistoryService.findAll(businessHistoryQueryVO);
         List<String> expected = new ArrayList<>();
         expected.add("JHTHD-20220524-00000");
-        expected.add("JHTHD-20220524-00001");
         assert (expected.size() == ans.size());
         for(String e: expected){
             boolean success = true;
