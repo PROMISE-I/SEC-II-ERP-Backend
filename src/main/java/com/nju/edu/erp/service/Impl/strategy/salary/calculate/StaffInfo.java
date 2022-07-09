@@ -1,7 +1,7 @@
 package com.nju.edu.erp.service.Impl.strategy.salary.calculate;
 
 
-import com.nju.edu.erp.enums.SalaryCalculateType;
+import com.nju.edu.erp.enums.salary_strategy.SalaryCalculateType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

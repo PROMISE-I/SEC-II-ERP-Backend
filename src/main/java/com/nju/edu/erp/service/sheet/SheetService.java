@@ -1,7 +1,7 @@
 package com.nju.edu.erp.service.sheet;
 
-import com.nju.edu.erp.enums.sheetState.SheetState;
-import com.nju.edu.erp.model.vo.UserVO;
+import com.nju.edu.erp.enums.sheet_state.SheetState;
+import com.nju.edu.erp.model.vo.user.UserVO;
 import com.nju.edu.erp.model.vo.sheet.SheetVO;
 
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.nju.edu.erp.auth;
 
-import com.nju.edu.erp.enums.Role;
+import com.nju.edu.erp.enums.user.Role;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

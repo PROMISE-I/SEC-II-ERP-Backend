@@ -1,9 +1,10 @@
 package com.nju.edu.erp.dao;
 
-import com.nju.edu.erp.enums.Role;
-import com.nju.edu.erp.enums.SalaryCalculateType;
-import com.nju.edu.erp.enums.SalarySendType;
-import com.nju.edu.erp.model.po.PositionInfoPO;
+import com.nju.edu.erp.dao.staff.PositionDao;
+import com.nju.edu.erp.enums.user.Role;
+import com.nju.edu.erp.enums.salary_strategy.SalaryCalculateType;
+import com.nju.edu.erp.enums.salary_strategy.SalarySendType;
+import com.nju.edu.erp.model.po.staff.PositionInfoPO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

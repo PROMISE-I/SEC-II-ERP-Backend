@@ -1,6 +1,6 @@
 package com.nju.edu.erp.web.controller;
 
-import com.nju.edu.erp.enums.sheetState.PurchaseSheetState;
+import com.nju.edu.erp.enums.sheet_state.purchase.PurchaseSheetState;
 import com.nju.edu.erp.model.vo.purchase.PurchaseSheetVO;
 import com.nju.edu.erp.web.Response;
 import org.springframework.web.bind.annotation.*;

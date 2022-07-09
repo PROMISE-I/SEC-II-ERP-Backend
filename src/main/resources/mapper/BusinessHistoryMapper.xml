@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.nju.edu.erp.dao.BusinessHistoryDao">
+<mapper namespace="com.nju.edu.erp.dao.sheets_counting.BusinessHistoryDao">
 
-    <select id="findAllSaleSheetByInterval" resultType="com.nju.edu.erp.model.po.SaleSheetPO">
+    <select id="findAllSaleSheetByInterval" resultType="com.nju.edu.erp.model.po.sale.SaleSheetPO">
         select *
         from sale_sheet
         where TO_DAYS(create_time) between TO_DAYS(#{begin}) and TO_DAYS(#{end})
         and salesman = #{salesman} and supplier = #{customer}
         and state = '审批完成'
     </select>
-    <select id="findAllSaleReturnsSheetByInterval" resultType="com.nju.edu.erp.model.po.SaleReturnsSheetPO">
+    <select id="findAllSaleReturnsSheetByInterval" resultType="com.nju.edu.erp.model.po.sale.returns.SaleReturnsSheetPO">
         select *
         from sale_returns_sheet
         where TO_DAYS(create_time) between TO_DAYS(#{begin}) and TO_DAYS(#{end})
@@ -20,20 +20,20 @@
             )
         and state = '审批完成'
     </select>
-    <select id="findAllPurchaseSheetByInterval" resultType="com.nju.edu.erp.model.po.PurchaseSheetPO">
+    <select id="findAllPurchaseSheetByInterval" resultType="com.nju.edu.erp.model.po.purchase.PurchaseSheetPO">
         select *
         from purchase_sheet
         where TO_DAYS(create_time) between TO_DAYS(#{begin}) and TO_DAYS(#{end})
         and state = '审批完成'
     </select>
     <select id="findAllPurchaseReturnsSheetByInterval"
-            resultType="com.nju.edu.erp.model.po.PurchaseReturnsSheetPO">
+            resultType="com.nju.edu.erp.model.po.purchase.returns.PurchaseReturnsSheetPO">
         select *
         from purchase_returns_sheet
         where TO_DAYS(create_time) between TO_DAYS(#{begin}) and TO_DAYS(#{end})
         and state = '审批完成'
     </select>
-    <select id="findAllPayMoneySheetByInterval" resultType="com.nju.edu.erp.model.po.finance.PayMoneySheetPO">
+    <select id="findAllPayMoneySheetByInterval" resultType="com.nju.edu.erp.model.po.finance.pay_money.PayMoneySheetPO">
         select *
         from pay_money_sheet
         where TO_DAYS(create_time) between TO_DAYS(#{begin}) and TO_DAYS(#{end})
@@ -41,7 +41,7 @@
         and state = '审批完成'
     </select>
     <select id="findAllReceiveMoneySheetByInterval"
-            resultType="com.nju.edu.erp.model.po.finance.ReceiveMoneySheetPO">
+            resultType="com.nju.edu.erp.model.po.finance.receive_money.ReceiveMoneySheetPO">
         select *
         from receive_money_sheet
         where TO_DAYS(create_time) between TO_DAYS(#{begin}) and TO_DAYS(#{end})
@@ -49,7 +49,7 @@
         and state = '审批完成'
 
     </select>
-    <select id="findAllSalarySheetByInterval" resultType="com.nju.edu.erp.model.po.finance.SalarySheetPO">
+    <select id="findAllSalarySheetByInterval" resultType="com.nju.edu.erp.model.po.finance.salary.SalarySheetPO">
         select *
         from salary_sheet
         where TO_DAYS(create_time) between TO_DAYS(#{begin}) and TO_DAYS(#{end})
@@ -57,12 +57,12 @@
     </select>
 
     <select id="findPaymentTransferListByPayMoneySheetId"
-            resultType="com.nju.edu.erp.model.po.finance.PayMoneyTransferListPO">
+            resultType="com.nju.edu.erp.model.po.finance.pay_money.PayMoneyTransferListPO">
         select * from pay_money_transfer_list
         where pay_money_sheet_id = #{id}
     </select>
     <select id="findReceiveMoneyTransferListByReceiveMoneySheetId"
-            resultType="com.nju.edu.erp.model.po.finance.ReceiveMoneyTransferListPO">
+            resultType="com.nju.edu.erp.model.po.finance.receive_money.ReceiveMoneyTransferListPO">
         select * from receive_money_transfer_list
         where receive_money_sheet_id = #{id}
     </select>

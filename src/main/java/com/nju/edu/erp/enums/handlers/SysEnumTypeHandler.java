@@ -1,10 +1,19 @@
 package com.nju.edu.erp.enums.handlers;
 
 import com.nju.edu.erp.enums.BaseEnum;
-import com.nju.edu.erp.enums.CustomerType;
-import com.nju.edu.erp.enums.SalaryCalculateType;
-import com.nju.edu.erp.enums.SalarySendType;
-import com.nju.edu.erp.enums.sheetState.*;
+import com.nju.edu.erp.enums.customer.CustomerType;
+import com.nju.edu.erp.enums.salary_strategy.SalaryCalculateType;
+import com.nju.edu.erp.enums.salary_strategy.SalarySendType;
+import com.nju.edu.erp.enums.sheet_state.finance.PayMoneySheetState;
+import com.nju.edu.erp.enums.sheet_state.finance.ReceiveMoneySheetState;
+import com.nju.edu.erp.enums.sheet_state.finance.SalarySheetState;
+import com.nju.edu.erp.enums.sheet_state.gifts.GiveAwaySheetState;
+import com.nju.edu.erp.enums.sheet_state.purchase.PurchaseReturnsSheetState;
+import com.nju.edu.erp.enums.sheet_state.purchase.PurchaseSheetState;
+import com.nju.edu.erp.enums.sheet_state.sale.SaleReturnsSheetState;
+import com.nju.edu.erp.enums.sheet_state.sale.SaleSheetState;
+import com.nju.edu.erp.enums.sheet_state.warehouse.WarehouseInputSheetState;
+import com.nju.edu.erp.enums.sheet_state.warehouse.WarehouseOutputSheetState;
 import org.apache.ibatis.type.MappedTypes;
 
 /**

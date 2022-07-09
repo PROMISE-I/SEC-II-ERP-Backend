@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.nju.edu.erp.dao.SaleReturnsSheetDao">
-    <select id="getLatest" resultType="com.nju.edu.erp.model.po.SaleReturnsSheetPO">
+<mapper namespace="com.nju.edu.erp.dao.sale.SaleReturnsSheetDao">
+    <select id="getLatest" resultType="com.nju.edu.erp.model.po.sale.returns.SaleReturnsSheetPO">
         select * from sale_returns_sheet order by id desc limit 0,1;
     </select>
 
@@ -17,11 +17,11 @@
         </foreach>
     </insert>
 
-    <select id="findAll" resultType="com.nju.edu.erp.model.po.SaleReturnsSheetPO">
+    <select id="findAll" resultType="com.nju.edu.erp.model.po.sale.returns.SaleReturnsSheetPO">
         select * from sale_returns_sheet;
     </select>
 
-    <select id="findAllByState" resultType="com.nju.edu.erp.model.po.SaleReturnsSheetPO">
+    <select id="findAllByState" resultType="com.nju.edu.erp.model.po.sale.returns.SaleReturnsSheetPO">
         select * from sale_returns_sheet where state = #{state}
     </select>
 
@@ -37,15 +37,15 @@
         where id = #{saleReturnsSheetId} and state = #{prevState}
     </update>
 
-    <select id="findOneById" resultType="com.nju.edu.erp.model.po.SaleReturnsSheetPO">
+    <select id="findOneById" resultType="com.nju.edu.erp.model.po.sale.returns.SaleReturnsSheetPO">
         select * from sale_returns_sheet where id = #{saleReturnsSheetId}
     </select>
 
-    <select id="findContentBySaleReturnsSheetId" resultType="com.nju.edu.erp.model.po.SaleReturnsSheetContentPO">
+    <select id="findContentBySaleReturnsSheetId" resultType="com.nju.edu.erp.model.po.sale.returns.SaleReturnsSheetContentPO">
         select * from sale_returns_sheet_content where sale_returns_sheet_id = #{saleReturnsSheetId}
     </select>
 
-    <select id="findAllWarehouseOutputSheetContentBySaleReturnsSheetIdAndPid" resultType="com.nju.edu.erp.model.po.WarehouseOutputSheetContentPO">
+    <select id="findAllWarehouseOutputSheetContentBySaleReturnsSheetIdAndPid" resultType="com.nju.edu.erp.model.po.warehouse.output.WarehouseOutputSheetContentPO">
         select wosc.*
         from sale_returns_sheet srs, warehouse_output_sheet wos, warehouse_output_sheet_content wosc
         where srs.id = #{saleReturnsSheetId} and
@@ -55,7 +55,7 @@
         order by wosc.sale_price
     </select>
 
-    <select id="getSaleReturnsDetailByCondition" resultType="com.nju.edu.erp.model.po.SaleIODetailPO">
+    <select id="getSaleReturnsDetailByCondition" resultType="com.nju.edu.erp.model.po.sale.io_detail.SaleIODetailPO">
         select srs.create_time as create_time, p.name as product_name,
                p.type as product_type, srsc.quantity as quantity,
                srsc.unit_price as unit_price, srsc.total_price as total_amount
@@ -70,7 +70,7 @@
               ss.salesman = #{salesman}
     </select>
 
-    <select id="getSaleReturnsDetailByRange" resultType="com.nju.edu.erp.model.po.SaleIODetailPO">
+    <select id="getSaleReturnsDetailByRange" resultType="com.nju.edu.erp.model.po.sale.io_detail.SaleIODetailPO">
         select srs.create_time as create_time, p.name as product_name,
                p.type as product_type, srsc.quantity as quantity,
                srsc.unit_price as unit_price, srsc.total_price as total_amount

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.nju.edu.erp.dao.PositionDao">
+<mapper namespace="com.nju.edu.erp.dao.staff.PositionDao">
     <update id="updateOne">
         update position
         set title = #{title},
@@ -13,16 +13,16 @@
         where title = #{title}
     </update>
 
-    <select id="findOneByTitle" resultType="com.nju.edu.erp.model.po.PositionInfoPO">
+    <select id="findOneByTitle" resultType="com.nju.edu.erp.model.po.staff.PositionInfoPO">
         select * from position
         where title = #{title}
     </select>
-    <select id="findAll" resultType="com.nju.edu.erp.model.po.PositionInfoPO">
+    <select id="findAll" resultType="com.nju.edu.erp.model.po.staff.PositionInfoPO">
         select * from position
     </select>
 
 
-    <resultMap id="PositionInfoPO" type="com.nju.edu.erp.model.po.PositionInfoPO">
+    <resultMap id="PositionInfoPO" type="com.nju.edu.erp.model.po.staff.PositionInfoPO">
         <result column="title" property="title"></result>
         <result column="base_salary" property="baseSalary"></result>
         <result column="special_salary" property="specialSalary"></result>
