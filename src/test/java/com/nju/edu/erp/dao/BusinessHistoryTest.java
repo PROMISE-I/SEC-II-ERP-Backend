@@ -1,7 +1,8 @@
 package com.nju.edu.erp.dao;
 
-import com.nju.edu.erp.model.po.SaleReturnsSheetPO;
-import com.nju.edu.erp.model.po.SaleSheetPO;
+import com.nju.edu.erp.dao.finance.sheets_counting.BusinessHistoryDao;
+import com.nju.edu.erp.model.po.sale_purchase.sale.returns.SaleReturnsSheetPO;
+import com.nju.edu.erp.model.po.sale_purchase.sale.SaleSheetPO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,8 +1,8 @@
 package com.nju.edu.erp.dao.finance;
 
-import com.nju.edu.erp.enums.sheetState.PayMoneySheetState;
-import com.nju.edu.erp.model.po.finance.PayMoneySheetPO;
-import com.nju.edu.erp.model.po.finance.PayMoneyTransferListPO;
+import com.nju.edu.erp.enums.sheet_state.finance.PayMoneySheetState;
+import com.nju.edu.erp.model.po.finance.pay_money.PayMoneySheetPO;
+import com.nju.edu.erp.model.po.finance.pay_money.PayMoneyTransferListPO;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

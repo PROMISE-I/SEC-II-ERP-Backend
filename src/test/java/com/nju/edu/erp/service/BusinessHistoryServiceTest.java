@@ -1,11 +1,12 @@
 package com.nju.edu.erp.service;
 
-import com.nju.edu.erp.model.vo.BusinessHistoryQueryVO;
-import com.nju.edu.erp.model.vo.BusinessHistorySheetVO;
-import com.nju.edu.erp.model.vo.purchase.PurchaseSheetVO;
+import com.nju.edu.erp.model.vo.finance.sheets_counting.BusinessHistoryQueryVO;
+import com.nju.edu.erp.model.vo.finance.sheets_counting.BusinessHistorySheetVO;
+import com.nju.edu.erp.model.vo.sale_purchase.purchase.PurchaseSheetVO;
 import com.nju.edu.erp.model.vo.purchaseReturns.PurchaseReturnsSheetVO;
-import com.nju.edu.erp.model.vo.sale.SaleSheetVO;
-import com.nju.edu.erp.model.vo.saleReturns.SaleReturnsSheetVO;
+import com.nju.edu.erp.model.vo.sale_purchase.sale.SaleSheetVO;
+import com.nju.edu.erp.model.vo.sale_purchase.sale.returns.SaleReturnsSheetVO;
+import com.nju.edu.erp.service.Interface.finance.sheets_counting.BusinessHistoryService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

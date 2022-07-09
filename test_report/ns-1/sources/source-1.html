@@ -1,0 +1,324 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > PayMoneyServiceImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.nju.edu.erp.service.Impl.finance</a>
+</div>
+
+<h1>Coverage Summary for Class: PayMoneyServiceImpl (com.nju.edu.erp.service.Impl.finance)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">PayMoneyServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    85.7%
+  </span>
+  <span class="absValue">
+    (6/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    74%
+  </span>
+  <span class="absValue">
+    (54/73)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">PayMoneyServiceImpl$$EnhancerBySpringCGLIB$$1a466b8f</td>
+  </tr>
+  <tr>
+    <td class="name">PayMoneyServiceImpl$$EnhancerBySpringCGLIB$$207005b5</td>
+  </tr>
+  <tr>
+    <td class="name">PayMoneyServiceImpl$$EnhancerBySpringCGLIB$$365f5c</td>
+  </tr>
+  <tr>
+    <td class="name">PayMoneyServiceImpl$$EnhancerBySpringCGLIB$$388eb362</td>
+  </tr>
+  <tr>
+    <td class="name">PayMoneyServiceImpl$$EnhancerBySpringCGLIB$$399f2eac</td>
+  </tr>
+  <tr>
+    <td class="name">PayMoneyServiceImpl$$EnhancerBySpringCGLIB$$399f2eac$$FastClassBySpringCGLIB$$b7cb0388</td>
+  </tr>
+  <tr>
+    <td class="name">PayMoneyServiceImpl$$EnhancerBySpringCGLIB$$562f1977</td>
+  </tr>
+  <tr>
+    <td class="name">PayMoneyServiceImpl$$EnhancerBySpringCGLIB$$69ed6070</td>
+  </tr>
+  <tr>
+    <td class="name">PayMoneyServiceImpl$$EnhancerBySpringCGLIB$$9b7db2f5</td>
+  </tr>
+  <tr>
+    <td class="name">PayMoneyServiceImpl$$EnhancerBySpringCGLIB$$abe5a9a4</td>
+  </tr>
+  <tr>
+    <td class="name">PayMoneyServiceImpl$$EnhancerBySpringCGLIB$$c44c2d00</td>
+  </tr>
+  <tr>
+    <td class="name">PayMoneyServiceImpl$$EnhancerBySpringCGLIB$$dbcadee8</td>
+  </tr>
+  <tr>
+    <td class="name">PayMoneyServiceImpl$$EnhancerBySpringCGLIB$$dbe215ff</td>
+  </tr>
+  <tr>
+    <td class="name">PayMoneyServiceImpl$$EnhancerBySpringCGLIB$$dd78cb62</td>
+  </tr>
+  <tr>
+    <td class="name">PayMoneyServiceImpl$$EnhancerBySpringCGLIB$$ed598d01</td>
+  </tr>
+  <tr>
+    <td class="name">PayMoneyServiceImpl$$EnhancerBySpringCGLIB$$f99c179b</td>
+  </tr>
+  <tr>
+    <td class="name">PayMoneyServiceImpl$$FastClassBySpringCGLIB$$3096b859</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    85.7%
+  </span>
+  <span class="absValue">
+    (6/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    74%
+  </span>
+  <span class="absValue">
+    (54/73)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.nju.edu.erp.service.Impl.finance;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.nju.edu.erp.dao.finance.PayMoneyDao;
+<i class="no-highlight">4</i>&nbsp;import com.nju.edu.erp.enums.sheet_state.finance.PayMoneySheetState;
+<i class="no-highlight">5</i>&nbsp;import com.nju.edu.erp.exception.MyServiceException;
+<i class="no-highlight">6</i>&nbsp;import com.nju.edu.erp.model.po.sale_purchase.customer.CustomerPO;
+<i class="no-highlight">7</i>&nbsp;import com.nju.edu.erp.model.po.finance.pay_money.PayMoneySheetPO;
+<i class="no-highlight">8</i>&nbsp;import com.nju.edu.erp.model.po.finance.pay_money.PayMoneyTransferListPO;
+<i class="no-highlight">9</i>&nbsp;import com.nju.edu.erp.model.vo.user.UserVO;
+<i class="no-highlight">10</i>&nbsp;import com.nju.edu.erp.model.vo.finance.pay_money.PayMoneySheetVO;
+<i class="no-highlight">11</i>&nbsp;import com.nju.edu.erp.model.vo.finance.pay_money.PayMoneyTransferListVO;
+<i class="no-highlight">12</i>&nbsp;import com.nju.edu.erp.service.Interface.finance.bank_account.BankAccountService;
+<i class="no-highlight">13</i>&nbsp;import com.nju.edu.erp.service.Interface.sale_purchase.customer.CustomerService;
+<i class="no-highlight">14</i>&nbsp;import com.nju.edu.erp.service.Interface.finance.PayMoneyService;
+<i class="no-highlight">15</i>&nbsp;import com.nju.edu.erp.utils.IdGenerator;
+<i class="no-highlight">16</i>&nbsp;import org.springframework.beans.BeanUtils;
+<i class="no-highlight">17</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i class="no-highlight">18</i>&nbsp;import org.springframework.stereotype.Service;
+<i class="no-highlight">19</i>&nbsp;import org.springframework.transaction.annotation.Transactional;
+<i class="no-highlight">20</i>&nbsp;
+<i class="no-highlight">21</i>&nbsp;import java.math.BigDecimal;
+<i class="no-highlight">22</i>&nbsp;import java.util.ArrayList;
+<i class="no-highlight">23</i>&nbsp;import java.util.Date;
+<i class="no-highlight">24</i>&nbsp;import java.util.List;
+<i class="no-highlight">25</i>&nbsp;
+<i class="no-highlight">26</i>&nbsp;@Service
+<i class="no-highlight">27</i>&nbsp;public class PayMoneyServiceImpl implements PayMoneyService {
+<i class="no-highlight">28</i>&nbsp;
+<i class="no-highlight">29</i>&nbsp;    PayMoneyDao payMoneyDao;
+<i class="no-highlight">30</i>&nbsp;
+<i class="no-highlight">31</i>&nbsp;    CustomerService customerService;
+<i class="no-highlight">32</i>&nbsp;
+<i class="no-highlight">33</i>&nbsp;    BankAccountService bankAccountService;
+<i class="no-highlight">34</i>&nbsp;
+<i class="no-highlight">35</i>&nbsp;    @Autowired
+<b class="fc"><i class="no-highlight">36</i>&nbsp;    public PayMoneyServiceImpl(PayMoneyDao payMoneyDao, CustomerService customerService, BankAccountService bankAccountService) {</b>
+<b class="fc"><i class="no-highlight">37</i>&nbsp;        this.payMoneyDao = payMoneyDao;</b>
+<b class="fc"><i class="no-highlight">38</i>&nbsp;        this.customerService = customerService;</b>
+<b class="fc"><i class="no-highlight">39</i>&nbsp;        this.bankAccountService = bankAccountService;</b>
+<i class="no-highlight">40</i>&nbsp;    }
+<i class="no-highlight">41</i>&nbsp;
+<i class="no-highlight">42</i>&nbsp;    @Override
+<i class="no-highlight">43</i>&nbsp;    @Transactional
+<i class="no-highlight">44</i>&nbsp;    public void makePayMoneySheet(UserVO userVO, PayMoneySheetVO payMoneySheetVO) {
+<b class="fc"><i class="no-highlight">45</i>&nbsp;        PayMoneySheetPO payMoneySheetPO = new PayMoneySheetPO();</b>
+<b class="fc"><i class="no-highlight">46</i>&nbsp;        BeanUtils.copyProperties(payMoneySheetVO, payMoneySheetPO);</b>
+<i class="no-highlight">47</i>&nbsp;        // ???????????????
+<b class="fc"><i class="no-highlight">48</i>&nbsp;        payMoneySheetPO.setOperator(userVO.getName());</b>
+<b class="fc"><i class="no-highlight">49</i>&nbsp;        payMoneySheetPO.setCreateTime(new Date());</b>
+<b class="fc"><i class="no-highlight">50</i>&nbsp;        PayMoneySheetPO latest = payMoneyDao.getLatest();</b>
+<b class="fc"><i class="no-highlight">51</i>&nbsp;        String id = payMoneySheetVO.getId();</b>
+<i class="no-highlight">52</i>&nbsp;        //??id?null???????????????????
+<b class="fc"><i class="no-highlight">53</i>&nbsp;        if (id == null) {</b>
+<b class="fc"><i class="no-highlight">54</i>&nbsp;            id = IdGenerator.generateSheetId(latest == null ? null : latest.getId(), &quot;FKD&quot;);</b>
+<i class="no-highlight">55</i>&nbsp;        }
+<b class="fc"><i class="no-highlight">56</i>&nbsp;        payMoneySheetPO.setId(id);</b>
+<b class="fc"><i class="no-highlight">57</i>&nbsp;        payMoneySheetPO.setState(PayMoneySheetState.PENDING_LEVEL_1);</b>
+<i class="no-highlight">58</i>&nbsp;
+<b class="fc"><i class="no-highlight">59</i>&nbsp;        BigDecimal totalAmount = BigDecimal.ZERO;</b>
+<b class="fc"><i class="no-highlight">60</i>&nbsp;        List&lt;PayMoneyTransferListPO&gt; transferListPOS = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i class="no-highlight">61</i>&nbsp;        for (PayMoneyTransferListVO transferListVO : payMoneySheetVO.getTransferList()) {</b>
+<b class="fc"><i class="no-highlight">62</i>&nbsp;            PayMoneyTransferListPO transferListPO = new PayMoneyTransferListPO();</b>
+<i class="no-highlight">63</i>&nbsp;
+<b class="fc"><i class="no-highlight">64</i>&nbsp;            BeanUtils.copyProperties(transferListVO, transferListPO);</b>
+<b class="fc"><i class="no-highlight">65</i>&nbsp;            transferListPO.setPayMoneySheetId(id);</b>
+<b class="fc"><i class="no-highlight">66</i>&nbsp;            transferListPOS.add(transferListPO);</b>
+<i class="no-highlight">67</i>&nbsp;
+<b class="fc"><i class="no-highlight">68</i>&nbsp;            totalAmount = totalAmount.add(transferListPO.getAmount());</b>
+<b class="fc"><i class="no-highlight">69</i>&nbsp;        }</b>
+<i class="no-highlight">70</i>&nbsp;
+<b class="fc"><i class="no-highlight">71</i>&nbsp;        payMoneySheetPO.setTotalAmount(totalAmount);</b>
+<b class="fc"><i class="no-highlight">72</i>&nbsp;        payMoneyDao.save(payMoneySheetPO);</b>
+<b class="fc"><i class="no-highlight">73</i>&nbsp;        payMoneyDao.saveBatch(transferListPOS);</b>
+<i class="no-highlight">74</i>&nbsp;    }
+<i class="no-highlight">75</i>&nbsp;
+<i class="no-highlight">76</i>&nbsp;    @Override
+<i class="no-highlight">77</i>&nbsp;    public List&lt;PayMoneySheetVO&gt; getPayMoneySheetByState(PayMoneySheetState state) {
+<i class="no-highlight">78</i>&nbsp;        List&lt;PayMoneySheetPO&gt; all;
+<b class="fc"><i class="no-highlight">79</i>&nbsp;        if (state == null) {</b>
+<b class="fc"><i class="no-highlight">80</i>&nbsp;            all = payMoneyDao.findAll();</b>
+<i class="no-highlight">81</i>&nbsp;        } else {
+<b class="fc"><i class="no-highlight">82</i>&nbsp;            all = payMoneyDao.finaAllByState(state);</b>
+<i class="no-highlight">83</i>&nbsp;        }
+<i class="no-highlight">84</i>&nbsp;
+<b class="fc"><i class="no-highlight">85</i>&nbsp;        return getPayMoneySheetVOS(all);</b>
+<i class="no-highlight">86</i>&nbsp;    }
+<i class="no-highlight">87</i>&nbsp;
+<i class="no-highlight">88</i>&nbsp;    @Override
+<i class="no-highlight">89</i>&nbsp;    @Transactional
+<i class="no-highlight">90</i>&nbsp;    public void approval(String payMoneySheetId, PayMoneySheetState state) {
+<b class="fc"><i class="no-highlight">91</i>&nbsp;        if (state.equals(PayMoneySheetState.FAILURE)) {</b>
+<b class="nc"><i class="no-highlight">92</i>&nbsp;            PayMoneySheetPO payMoneySheet = payMoneyDao.findOneById(payMoneySheetId);</b>
+<b class="nc"><i class="no-highlight">93</i>&nbsp;            if (payMoneySheet.getState() == PayMoneySheetState.SUCCESS) throw new RuntimeException(&quot;??????&quot;);</b>
+<i class="no-highlight">94</i>&nbsp;
+<b class="nc"><i class="no-highlight">95</i>&nbsp;            int effectLines = payMoneyDao.updateState(payMoneySheetId, state);</b>
+<b class="nc"><i class="no-highlight">96</i>&nbsp;            if (effectLines == 0) throw new RuntimeException(&quot;????&quot;);</b>
+<b class="nc"><i class="no-highlight">97</i>&nbsp;        } else {</b>
+<i class="no-highlight">98</i>&nbsp;            PayMoneySheetState prevState;
+<b class="fc"><i class="no-highlight">99</i>&nbsp;            if(state.equals(PayMoneySheetState.SUCCESS)) {</b>
+<b class="nc"><i class="no-highlight">100</i>&nbsp;                prevState = PayMoneySheetState.PENDING_LEVEL_2;</b>
+<b class="fc"><i class="no-highlight">101</i>&nbsp;            } else if(state.equals(PayMoneySheetState.PENDING_LEVEL_2)) {</b>
+<b class="fc"><i class="no-highlight">102</i>&nbsp;                prevState = PayMoneySheetState.PENDING_LEVEL_1;</b>
+<i class="no-highlight">103</i>&nbsp;            } else {
+<b class="nc"><i class="no-highlight">104</i>&nbsp;                throw new RuntimeException(&quot;??????&quot;);</b>
+<i class="no-highlight">105</i>&nbsp;            }
+<i class="no-highlight">106</i>&nbsp;
+<b class="fc"><i class="no-highlight">107</i>&nbsp;            int effectLines = payMoneyDao.updateStateV2(payMoneySheetId, prevState, state);</b>
+<b class="fc"><i class="no-highlight">108</i>&nbsp;            if (effectLines == 0) throw new RuntimeException(&quot;????&quot;);</b>
+<i class="no-highlight">109</i>&nbsp;
+<b class="fc"><i class="no-highlight">110</i>&nbsp;            if (state.equals(PayMoneySheetState.SUCCESS)) {</b>
+<i class="no-highlight">111</i>&nbsp;                //??????????????????????payable?
+<b class="nc"><i class="no-highlight">112</i>&nbsp;                PayMoneySheetPO payMoneySheet = payMoneyDao.findOneById(payMoneySheetId);</b>
+<b class="nc"><i class="no-highlight">113</i>&nbsp;                CustomerPO customer = customerService.findCustomerById(payMoneySheet.getCustomer());</b>
+<b class="nc"><i class="no-highlight">114</i>&nbsp;                customer.setPayable(customer.getPayable().subtract(payMoneySheet.getTotalAmount()));</b>
+<b class="nc"><i class="no-highlight">115</i>&nbsp;                customerService.updateCustomer(customer);</b>
+<i class="no-highlight">116</i>&nbsp;                //?????????
+<b class="nc"><i class="no-highlight">117</i>&nbsp;                List&lt;PayMoneyTransferListPO&gt; transferLists = payMoneyDao.findTransferListByPayMoneySheetId(payMoneySheetId);</b>
+<b class="nc"><i class="no-highlight">118</i>&nbsp;                for (PayMoneyTransferListPO transferList : transferLists) {</b>
+<b class="nc"><i class="no-highlight">119</i>&nbsp;                    BigDecimal amount = bankAccountService.getAmountByAccountId(transferList.getBankAccountId());</b>
+<b class="nc"><i class="no-highlight">120</i>&nbsp;                    if (transferList.getAmount().compareTo(amount) &gt; 0) {</b>
+<b class="nc"><i class="no-highlight">121</i>&nbsp;                        throw new MyServiceException(&quot;D00001&quot;, &quot;????????????????????????????&quot;);</b>
+<i class="no-highlight">122</i>&nbsp;                    } else {
+<b class="nc"><i class="no-highlight">123</i>&nbsp;                        bankAccountService.spendAtAccountId(transferList.getBankAccountId(), transferList.getAmount());</b>
+<i class="no-highlight">124</i>&nbsp;                    }
+<b class="nc"><i class="no-highlight">125</i>&nbsp;                }</b>
+<i class="no-highlight">126</i>&nbsp;            }
+<i class="no-highlight">127</i>&nbsp;        }
+<i class="no-highlight">128</i>&nbsp;    }
+<i class="no-highlight">129</i>&nbsp;
+<i class="no-highlight">130</i>&nbsp;    @Override
+<i class="no-highlight">131</i>&nbsp;    public List&lt;PayMoneySheetVO&gt; findAllSheets() {
+<b class="fc"><i class="no-highlight">132</i>&nbsp;        List&lt;PayMoneySheetPO&gt; allSheets = payMoneyDao.findAll();</b>
+<b class="fc"><i class="no-highlight">133</i>&nbsp;        return getPayMoneySheetVOS(allSheets);</b>
+<i class="no-highlight">134</i>&nbsp;    }
+<i class="no-highlight">135</i>&nbsp;
+<i class="no-highlight">136</i>&nbsp;    @Override
+<i class="no-highlight">137</i>&nbsp;    public boolean isSheetExists(String sheetId) {
+<b class="nc"><i class="no-highlight">138</i>&nbsp;        return payMoneyDao.findOneById(sheetId) != null;</b>
+<i class="no-highlight">139</i>&nbsp;    }
+<i class="no-highlight">140</i>&nbsp;
+<i class="no-highlight">141</i>&nbsp;    private List&lt;PayMoneySheetVO&gt; getPayMoneySheetVOS(List&lt;PayMoneySheetPO&gt; allSheets) {
+<b class="fc"><i class="no-highlight">142</i>&nbsp;        List&lt;PayMoneySheetVO&gt; res = new ArrayList&lt;&gt;();</b>
+<i class="no-highlight">143</i>&nbsp;
+<b class="fc"><i class="no-highlight">144</i>&nbsp;        for (PayMoneySheetPO po : allSheets) {</b>
+<b class="fc"><i class="no-highlight">145</i>&nbsp;            PayMoneySheetVO vo = new PayMoneySheetVO();</b>
+<b class="fc"><i class="no-highlight">146</i>&nbsp;            BeanUtils.copyProperties(po, vo);</b>
+<i class="no-highlight">147</i>&nbsp;
+<b class="fc"><i class="no-highlight">148</i>&nbsp;            List&lt;PayMoneyTransferListPO&gt; transferLists = payMoneyDao.findTransferListByPayMoneySheetId(po.getId());</b>
+<b class="fc"><i class="no-highlight">149</i>&nbsp;            List&lt;PayMoneyTransferListVO&gt; vos = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i class="no-highlight">150</i>&nbsp;            for (PayMoneyTransferListPO p : transferLists) {</b>
+<b class="fc"><i class="no-highlight">151</i>&nbsp;                PayMoneyTransferListVO v = new PayMoneyTransferListVO();</b>
+<b class="fc"><i class="no-highlight">152</i>&nbsp;                BeanUtils.copyProperties(p, v);</b>
+<b class="fc"><i class="no-highlight">153</i>&nbsp;                vos.add(v);</b>
+<b class="fc"><i class="no-highlight">154</i>&nbsp;            }</b>
+<i class="no-highlight">155</i>&nbsp;
+<b class="fc"><i class="no-highlight">156</i>&nbsp;            vo.setTransferList(vos);</b>
+<b class="fc"><i class="no-highlight">157</i>&nbsp;            res.add(vo);</b>
+<b class="fc"><i class="no-highlight">158</i>&nbsp;        }</b>
+<b class="fc"><i class="no-highlight">159</i>&nbsp;        return res;</b>
+<i class="no-highlight">160</i>&nbsp;    }
+<i class="no-highlight">161</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-10 04:16</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,379 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > BusinessHistoryServiceImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.nju.edu.erp.service.Impl.finance.sheets_counting</a>
+</div>
+
+<h1>Coverage Summary for Class: BusinessHistoryServiceImpl (com.nju.edu.erp.service.Impl.finance.sheets_counting)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">BusinessHistoryServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (6/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    69.8%
+  </span>
+  <span class="absValue">
+    (132/189)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.nju.edu.erp.service.Impl.finance.sheets_counting;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.nju.edu.erp.dao.sale_purchase.purchase.PurchaseReturnsSheetDao;
+<i class="no-highlight">4</i>&nbsp;import com.nju.edu.erp.dao.sale_purchase.purchase.PurchaseSheetDao;
+<i class="no-highlight">5</i>&nbsp;import com.nju.edu.erp.dao.sale_purchase.sale.SaleReturnsSheetDao;
+<i class="no-highlight">6</i>&nbsp;import com.nju.edu.erp.dao.sale_purchase.sale.SaleSheetDao;
+<i class="no-highlight">7</i>&nbsp;import com.nju.edu.erp.dao.finance.sheets_counting.BusinessHistoryDao;
+<i class="no-highlight">8</i>&nbsp;import com.nju.edu.erp.model.po.finance.pay_money.PayMoneySheetPO;
+<i class="no-highlight">9</i>&nbsp;import com.nju.edu.erp.model.po.finance.pay_money.PayMoneyTransferListPO;
+<i class="no-highlight">10</i>&nbsp;import com.nju.edu.erp.model.po.finance.receive_money.ReceiveMoneySheetPO;
+<i class="no-highlight">11</i>&nbsp;import com.nju.edu.erp.model.po.finance.receive_money.ReceiveMoneyTransferListPO;
+<i class="no-highlight">12</i>&nbsp;import com.nju.edu.erp.model.po.finance.salary.SalarySheetPO;
+<i class="no-highlight">13</i>&nbsp;import com.nju.edu.erp.model.po.sale_purchase.purchase.returns.PurchaseReturnsSheetContentPO;
+<i class="no-highlight">14</i>&nbsp;import com.nju.edu.erp.model.po.sale_purchase.purchase.returns.PurchaseReturnsSheetPO;
+<i class="no-highlight">15</i>&nbsp;import com.nju.edu.erp.model.po.sale_purchase.purchase.PurchaseSheetContentPO;
+<i class="no-highlight">16</i>&nbsp;import com.nju.edu.erp.model.po.sale_purchase.purchase.PurchaseSheetPO;
+<i class="no-highlight">17</i>&nbsp;import com.nju.edu.erp.model.po.sale_purchase.sale.returns.SaleReturnsSheetContentPO;
+<i class="no-highlight">18</i>&nbsp;import com.nju.edu.erp.model.po.sale_purchase.sale.returns.SaleReturnsSheetPO;
+<i class="no-highlight">19</i>&nbsp;import com.nju.edu.erp.model.po.sale_purchase.sale.SaleSheetContentPO;
+<i class="no-highlight">20</i>&nbsp;import com.nju.edu.erp.model.po.sale_purchase.sale.SaleSheetPO;
+<i class="no-highlight">21</i>&nbsp;import com.nju.edu.erp.model.vo.finance.sheets_counting.BusinessHistoryQueryVO;
+<i class="no-highlight">22</i>&nbsp;import com.nju.edu.erp.model.vo.finance.sheets_counting.BusinessHistorySheetVO;
+<i class="no-highlight">23</i>&nbsp;import com.nju.edu.erp.model.vo.finance.pay_money.PayMoneySheetVO;
+<i class="no-highlight">24</i>&nbsp;import com.nju.edu.erp.model.vo.finance.pay_money.PayMoneyTransferListVO;
+<i class="no-highlight">25</i>&nbsp;import com.nju.edu.erp.model.vo.finance.receive_money.ReceiveMoneySheetVO;
+<i class="no-highlight">26</i>&nbsp;import com.nju.edu.erp.model.vo.finance.receive_money.ReceiveMoneyTransferListVO;
+<i class="no-highlight">27</i>&nbsp;import com.nju.edu.erp.model.vo.sale_purchase.purchase.PurchaseSheetContentVO;
+<i class="no-highlight">28</i>&nbsp;import com.nju.edu.erp.model.vo.sale_purchase.purchase.PurchaseSheetVO;
+<i class="no-highlight">29</i>&nbsp;import com.nju.edu.erp.model.vo.purchaseReturns.PurchaseReturnsSheetContentVO;
+<i class="no-highlight">30</i>&nbsp;import com.nju.edu.erp.model.vo.purchaseReturns.PurchaseReturnsSheetVO;
+<i class="no-highlight">31</i>&nbsp;import com.nju.edu.erp.model.vo.sale_purchase.sale.SaleSheetContentVO;
+<i class="no-highlight">32</i>&nbsp;import com.nju.edu.erp.model.vo.sale_purchase.sale.SaleSheetVO;
+<i class="no-highlight">33</i>&nbsp;import com.nju.edu.erp.model.vo.sale_purchase.sale.returns.SaleReturnsSheetContentVO;
+<i class="no-highlight">34</i>&nbsp;import com.nju.edu.erp.model.vo.sale_purchase.sale.returns.SaleReturnsSheetVO;
+<i class="no-highlight">35</i>&nbsp;import com.nju.edu.erp.service.Interface.finance.sheets_counting.BusinessHistoryService;
+<i class="no-highlight">36</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i class="no-highlight">37</i>&nbsp;import org.springframework.stereotype.Service;
+<i class="no-highlight">38</i>&nbsp;
+<i class="no-highlight">39</i>&nbsp;import java.util.ArrayList;
+<i class="no-highlight">40</i>&nbsp;import java.util.List;
+<i class="no-highlight">41</i>&nbsp;
+<i class="no-highlight">42</i>&nbsp;@Service
+<i class="no-highlight">43</i>&nbsp;public class BusinessHistoryServiceImpl implements BusinessHistoryService {
+<i class="no-highlight">44</i>&nbsp;    private final BusinessHistoryDao businessHistoryDao;
+<i class="no-highlight">45</i>&nbsp;    private final SaleSheetDao saleSheetDao;
+<i class="no-highlight">46</i>&nbsp;    private final SaleReturnsSheetDao saleReturnsSheetDao;
+<i class="no-highlight">47</i>&nbsp;    private final PurchaseSheetDao purchaseSheetDao;
+<i class="no-highlight">48</i>&nbsp;    private final PurchaseReturnsSheetDao purchaseReturnsSheetDao;
+<i class="no-highlight">49</i>&nbsp;
+<i class="no-highlight">50</i>&nbsp;    @Autowired
+<b class="fc"><i class="no-highlight">51</i>&nbsp;    public BusinessHistoryServiceImpl(PurchaseReturnsSheetDao purchaseReturnsSheetDao,BusinessHistoryDao businessHistoryDao, SaleSheetDao saleSheetDao, SaleReturnsSheetDao saleReturnsSheetDao, PurchaseSheetDao purchaseSheetDao){</b>
+<b class="fc"><i class="no-highlight">52</i>&nbsp;        this.businessHistoryDao = businessHistoryDao;</b>
+<b class="fc"><i class="no-highlight">53</i>&nbsp;        this.saleSheetDao = saleSheetDao;</b>
+<b class="fc"><i class="no-highlight">54</i>&nbsp;        this.saleReturnsSheetDao = saleReturnsSheetDao;</b>
+<b class="fc"><i class="no-highlight">55</i>&nbsp;        this.purchaseSheetDao = purchaseSheetDao;</b>
+<b class="fc"><i class="no-highlight">56</i>&nbsp;        this.purchaseReturnsSheetDao = purchaseReturnsSheetDao;</b>
+<i class="no-highlight">57</i>&nbsp;    }
+<i class="no-highlight">58</i>&nbsp;
+<i class="no-highlight">59</i>&nbsp;    @Override
+<i class="no-highlight">60</i>&nbsp;    public List&lt;BusinessHistorySheetVO&gt; findAll(BusinessHistoryQueryVO businessHistoryQueryVO) {
+<b class="fc"><i class="no-highlight">61</i>&nbsp;        List&lt;BusinessHistorySheetVO&gt; businessHistorySheetVOList = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i class="no-highlight">62</i>&nbsp;        String begin = businessHistoryQueryVO.getBegin();</b>
+<b class="fc"><i class="no-highlight">63</i>&nbsp;        String end = businessHistoryQueryVO.getEnd();</b>
+<b class="fc"><i class="no-highlight">64</i>&nbsp;        String salesman = businessHistoryQueryVO.getSalesman();</b>
+<b class="fc"><i class="no-highlight">65</i>&nbsp;        Integer customer = businessHistoryQueryVO.getCustomer();</b>
+<b class="fc"><i class="no-highlight">66</i>&nbsp;        String type = businessHistoryQueryVO.getType();</b>
+<i class="no-highlight">67</i>&nbsp;        //???
+<b class="fc"><i class="no-highlight">68</i>&nbsp;        if(&quot;sale&quot;.equals(type)){</b>
+<b class="fc"><i class="no-highlight">69</i>&nbsp;            List&lt;SaleSheetPO&gt; lst = businessHistoryDao.findAllSaleSheetByInterval(begin, end, salesman, customer);</b>
+<b class="fc"><i class="no-highlight">70</i>&nbsp;            handleSaleSheet(businessHistorySheetVOList,lst);</b>
+<i class="no-highlight">71</i>&nbsp;
+<b class="fc"><i class="no-highlight">72</i>&nbsp;        }else if(&quot;sale-returns&quot;.equals(type)){</b>
+<b class="fc"><i class="no-highlight">73</i>&nbsp;            List&lt;SaleReturnsSheetPO&gt; lst = businessHistoryDao.findAllSaleReturnsSheetByInterval(begin, end, salesman, customer);</b>
+<b class="fc"><i class="no-highlight">74</i>&nbsp;            handleSaleReturns(businessHistorySheetVOList, lst);</b>
+<b class="fc"><i class="no-highlight">75</i>&nbsp;        }</b>
+<i class="no-highlight">76</i>&nbsp;        //???
+<b class="fc"><i class="no-highlight">77</i>&nbsp;        else if(&quot;purchase&quot;.equals(type)){</b>
+<b class="fc"><i class="no-highlight">78</i>&nbsp;            List&lt;PurchaseSheetPO&gt; lst = businessHistoryDao.findAllPurchaseSheetByInterval(begin, end);</b>
+<b class="fc"><i class="no-highlight">79</i>&nbsp;            handlePurchase(businessHistorySheetVOList, lst);</b>
+<b class="fc"><i class="no-highlight">80</i>&nbsp;        }else if(&quot;purchase-returns&quot;.equals(type)){</b>
+<b class="fc"><i class="no-highlight">81</i>&nbsp;            List&lt;PurchaseReturnsSheetPO&gt; lst = businessHistoryDao.findAllPurchaseReturnsSheetByInterval(begin, end);</b>
+<b class="fc"><i class="no-highlight">82</i>&nbsp;            handlePurchaseReturns(businessHistorySheetVOList, lst);</b>
+<b class="fc"><i class="no-highlight">83</i>&nbsp;        }</b>
+<i class="no-highlight">84</i>&nbsp;        //???
+<b class="nc"><i class="no-highlight">85</i>&nbsp;        else if(&quot;pay&quot;.equals(type)){</b>
+<b class="nc"><i class="no-highlight">86</i>&nbsp;            List&lt;PayMoneySheetPO&gt; lst = businessHistoryDao.findAllPayMoneySheetByInterval(begin, end, customer);</b>
+<b class="nc"><i class="no-highlight">87</i>&nbsp;            handlePayMoneySheet(businessHistorySheetVOList, lst);</b>
+<b class="nc"><i class="no-highlight">88</i>&nbsp;        }else if(&quot;receive&quot;.equals(type)){</b>
+<b class="nc"><i class="no-highlight">89</i>&nbsp;            List&lt;ReceiveMoneySheetPO&gt; lst = businessHistoryDao.findAllReceiveMoneySheetByInterval(begin, end, customer);</b>
+<b class="nc"><i class="no-highlight">90</i>&nbsp;            handleReceive(businessHistorySheetVOList, lst);</b>
+<b class="nc"><i class="no-highlight">91</i>&nbsp;        }else if(&quot;salary&quot;.equals(type)){</b>
+<b class="nc"><i class="no-highlight">92</i>&nbsp;            List&lt;SalarySheetPO&gt; lst = businessHistoryDao.findAllSalarySheetByInterval(begin, end);</b>
+<b class="nc"><i class="no-highlight">93</i>&nbsp;            for(SalarySheetPO ssp: lst){</b>
+<b class="nc"><i class="no-highlight">94</i>&nbsp;                BusinessHistorySheetVO businessHistorySheetVO = new BusinessHistorySheetVO(&quot;salary&quot;, ssp);</b>
+<b class="nc"><i class="no-highlight">95</i>&nbsp;                businessHistorySheetVOList.add(businessHistorySheetVO);</b>
+<b class="nc"><i class="no-highlight">96</i>&nbsp;            }</b>
+<i class="no-highlight">97</i>&nbsp;        }
+<i class="no-highlight">98</i>&nbsp;        //???
+<i class="no-highlight">99</i>&nbsp;
+<b class="fc"><i class="no-highlight">100</i>&nbsp;        return businessHistorySheetVOList;</b>
+<i class="no-highlight">101</i>&nbsp;    }
+<i class="no-highlight">102</i>&nbsp;
+<i class="no-highlight">103</i>&nbsp;    private void handleSaleSheet(List&lt;BusinessHistorySheetVO&gt; ans, List&lt;SaleSheetPO&gt; lst){
+<b class="fc"><i class="no-highlight">104</i>&nbsp;        for(SaleSheetPO ssp : lst){</b>
+<i class="no-highlight">105</i>&nbsp;            //????????????????
+<b class="fc"><i class="no-highlight">106</i>&nbsp;            SaleSheetVO ssv = new SaleSheetVO();</b>
+<b class="fc"><i class="no-highlight">107</i>&nbsp;            ssv.setId(ssp.getId());</b>
+<b class="fc"><i class="no-highlight">108</i>&nbsp;            ssv.setDiscount(ssp.getDiscount());</b>
+<b class="fc"><i class="no-highlight">109</i>&nbsp;            ssv.setFinalAmount(ssp.getFinalAmount());</b>
+<b class="fc"><i class="no-highlight">110</i>&nbsp;            ssv.setOperator(ssp.getOperator());</b>
+<b class="fc"><i class="no-highlight">111</i>&nbsp;            ssv.setRawTotalAmount(ssp.getRawTotalAmount());</b>
+<b class="fc"><i class="no-highlight">112</i>&nbsp;            ssv.setSupplier(ssp.getSupplier());</b>
+<b class="fc"><i class="no-highlight">113</i>&nbsp;            ssv.setSalesman(ssp.getSalesman());</b>
+<b class="fc"><i class="no-highlight">114</i>&nbsp;            ssv.setRemark(ssp.getRemark());</b>
+<b class="fc"><i class="no-highlight">115</i>&nbsp;            ssv.setState(ssp.getState());</b>
+<b class="fc"><i class="no-highlight">116</i>&nbsp;            ssv.setVoucherAmount(ssp.getVoucherAmount());</b>
+<b class="fc"><i class="no-highlight">117</i>&nbsp;            List&lt;SaleSheetContentPO&gt; sscpLst = saleSheetDao.findContentBySheetId(ssp.getId());</b>
+<b class="fc"><i class="no-highlight">118</i>&nbsp;            List&lt;SaleSheetContentVO&gt; sscvLst = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i class="no-highlight">119</i>&nbsp;            for(SaleSheetContentPO sscp : sscpLst){</b>
+<b class="fc"><i class="no-highlight">120</i>&nbsp;                SaleSheetContentVO sscv = new SaleSheetContentVO();</b>
+<b class="fc"><i class="no-highlight">121</i>&nbsp;                sscv.setPid(sscp.getPid());</b>
+<b class="fc"><i class="no-highlight">122</i>&nbsp;                sscv.setRemark(sscp.getRemark());</b>
+<b class="fc"><i class="no-highlight">123</i>&nbsp;                sscv.setQuantity(sscp.getQuantity());</b>
+<b class="fc"><i class="no-highlight">124</i>&nbsp;                sscv.setTotalPrice(sscp.getTotalPrice());</b>
+<b class="fc"><i class="no-highlight">125</i>&nbsp;                sscv.setUnitPrice(sscp.getUnitPrice());</b>
+<b class="fc"><i class="no-highlight">126</i>&nbsp;                sscvLst.add(sscv);</b>
+<b class="fc"><i class="no-highlight">127</i>&nbsp;            }</b>
+<b class="fc"><i class="no-highlight">128</i>&nbsp;            ssv.setSaleSheetContent(sscvLst);</b>
+<b class="fc"><i class="no-highlight">129</i>&nbsp;            BusinessHistorySheetVO businessHistorySheetVO = new BusinessHistorySheetVO(&quot;sale&quot;, ssv);</b>
+<b class="fc"><i class="no-highlight">130</i>&nbsp;            ans.add(businessHistorySheetVO);</b>
+<b class="fc"><i class="no-highlight">131</i>&nbsp;        }</b>
+<i class="no-highlight">132</i>&nbsp;    }
+<i class="no-highlight">133</i>&nbsp;
+<i class="no-highlight">134</i>&nbsp;    private void handleSaleReturns(List&lt;BusinessHistorySheetVO&gt; ans, List&lt;SaleReturnsSheetPO&gt; lst){
+<i class="no-highlight">135</i>&nbsp;        //?????????????????
+<b class="fc"><i class="no-highlight">136</i>&nbsp;        for(SaleReturnsSheetPO srsp : lst){</b>
+<b class="fc"><i class="no-highlight">137</i>&nbsp;            SaleReturnsSheetVO srsv = new SaleReturnsSheetVO();</b>
+<b class="fc"><i class="no-highlight">138</i>&nbsp;            srsv.setId(srsp.getId());</b>
+<b class="fc"><i class="no-highlight">139</i>&nbsp;            srsv.setDiscount(srsp.getDiscount());</b>
+<b class="fc"><i class="no-highlight">140</i>&nbsp;            srsv.setOperator(srsp.getOperator());</b>
+<b class="fc"><i class="no-highlight">141</i>&nbsp;            srsv.setRemark(srsp.getRemark());</b>
+<b class="fc"><i class="no-highlight">142</i>&nbsp;            srsv.setCreateTime(srsp.getCreateTime());</b>
+<b class="fc"><i class="no-highlight">143</i>&nbsp;            srsv.setFinalAmount(srsp.getFinalAmount());</b>
+<b class="fc"><i class="no-highlight">144</i>&nbsp;            srsv.setState(srsp.getState());</b>
+<b class="fc"><i class="no-highlight">145</i>&nbsp;            srsv.setRawTotalAmount(srsp.getRawTotalAmount());</b>
+<b class="fc"><i class="no-highlight">146</i>&nbsp;            srsv.setVoucherAmount(srsp.getVoucherAmount());</b>
+<b class="fc"><i class="no-highlight">147</i>&nbsp;            srsv.setSaleSheetId(srsp.getSaleSheetId());</b>
+<b class="fc"><i class="no-highlight">148</i>&nbsp;            List&lt;SaleReturnsSheetContentPO&gt; srscpLst = saleReturnsSheetDao.findContentBySaleReturnsSheetId(srsv.getId());</b>
+<b class="fc"><i class="no-highlight">149</i>&nbsp;            List&lt;SaleReturnsSheetContentVO&gt; srscvLst = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i class="no-highlight">150</i>&nbsp;            for(SaleReturnsSheetContentPO srscp : srscpLst){</b>
+<b class="fc"><i class="no-highlight">151</i>&nbsp;                SaleReturnsSheetContentVO srscv = new SaleReturnsSheetContentVO();</b>
+<b class="fc"><i class="no-highlight">152</i>&nbsp;                srscv.setPid(srscp.getPid());</b>
+<b class="fc"><i class="no-highlight">153</i>&nbsp;                srscv.setRemark(srscp.getRemark());</b>
+<b class="fc"><i class="no-highlight">154</i>&nbsp;                srscv.setQuantity(srscp.getQuantity());</b>
+<b class="fc"><i class="no-highlight">155</i>&nbsp;                srscv.setTotalPrice(srscp.getTotalPrice());</b>
+<b class="fc"><i class="no-highlight">156</i>&nbsp;                srscv.setUnitPrice(srscp.getUnitPrice());</b>
+<b class="fc"><i class="no-highlight">157</i>&nbsp;                srscvLst.add(srscv);</b>
+<b class="fc"><i class="no-highlight">158</i>&nbsp;            }</b>
+<b class="fc"><i class="no-highlight">159</i>&nbsp;            srsv.setSaleReturnsSheetContent(srscvLst);</b>
+<b class="fc"><i class="no-highlight">160</i>&nbsp;            BusinessHistorySheetVO businessHistorySheetVO = new BusinessHistorySheetVO(&quot;sale-returns&quot;,srsv);</b>
+<b class="fc"><i class="no-highlight">161</i>&nbsp;            ans.add(businessHistorySheetVO);</b>
+<b class="fc"><i class="no-highlight">162</i>&nbsp;        }</b>
+<i class="no-highlight">163</i>&nbsp;    }
+<i class="no-highlight">164</i>&nbsp;
+<i class="no-highlight">165</i>&nbsp;    private void handlePurchase(List&lt;BusinessHistorySheetVO&gt; ans, List&lt;PurchaseSheetPO&gt; lst){
+<b class="fc"><i class="no-highlight">166</i>&nbsp;        for(PurchaseSheetPO psp: lst){</b>
+<b class="fc"><i class="no-highlight">167</i>&nbsp;            PurchaseSheetVO psv = new PurchaseSheetVO();</b>
+<b class="fc"><i class="no-highlight">168</i>&nbsp;            psv.setId(psp.getId());</b>
+<b class="fc"><i class="no-highlight">169</i>&nbsp;            psv.setOperator(psp.getOperator());</b>
+<b class="fc"><i class="no-highlight">170</i>&nbsp;            psv.setRemark(psp.getRemark());</b>
+<b class="fc"><i class="no-highlight">171</i>&nbsp;            psv.setState(psp.getState());</b>
+<b class="fc"><i class="no-highlight">172</i>&nbsp;            psv.setSupplier(psp.getSupplier());</b>
+<b class="fc"><i class="no-highlight">173</i>&nbsp;            psv.setTotalAmount(psp.getTotalAmount());</b>
+<b class="fc"><i class="no-highlight">174</i>&nbsp;            List&lt;PurchaseSheetContentPO&gt; pscpLst = purchaseSheetDao.findContentByPurchaseSheetId(psv.getId());</b>
+<b class="fc"><i class="no-highlight">175</i>&nbsp;            List&lt;PurchaseSheetContentVO&gt; pscvLst = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i class="no-highlight">176</i>&nbsp;            for(PurchaseSheetContentPO pscp: pscpLst){</b>
+<b class="fc"><i class="no-highlight">177</i>&nbsp;                PurchaseSheetContentVO pscv = new PurchaseSheetContentVO();</b>
+<b class="fc"><i class="no-highlight">178</i>&nbsp;                pscv.setId(pscp.getId());</b>
+<b class="fc"><i class="no-highlight">179</i>&nbsp;                pscv.setRemark(pscp.getRemark());</b>
+<b class="fc"><i class="no-highlight">180</i>&nbsp;                pscv.setPid(pscp.getPid());</b>
+<b class="fc"><i class="no-highlight">181</i>&nbsp;                pscv.setQuantity(pscp.getQuantity());</b>
+<b class="fc"><i class="no-highlight">182</i>&nbsp;                pscv.setTotalPrice(pscp.getTotalPrice());</b>
+<b class="fc"><i class="no-highlight">183</i>&nbsp;                pscv.setUnitPrice(pscp.getUnitPrice());</b>
+<b class="fc"><i class="no-highlight">184</i>&nbsp;                pscv.setPurchaseSheetId(pscp.getPurchaseSheetId());</b>
+<b class="fc"><i class="no-highlight">185</i>&nbsp;                pscvLst.add(pscv);</b>
+<b class="fc"><i class="no-highlight">186</i>&nbsp;            }</b>
+<b class="fc"><i class="no-highlight">187</i>&nbsp;            psv.setPurchaseSheetContent(pscvLst);</b>
+<b class="fc"><i class="no-highlight">188</i>&nbsp;            BusinessHistorySheetVO businessHistorySheetVO = new BusinessHistorySheetVO(&quot;purchase&quot;, psv);</b>
+<b class="fc"><i class="no-highlight">189</i>&nbsp;            ans.add(businessHistorySheetVO);</b>
+<b class="fc"><i class="no-highlight">190</i>&nbsp;        }</b>
+<i class="no-highlight">191</i>&nbsp;
+<i class="no-highlight">192</i>&nbsp;    }
+<i class="no-highlight">193</i>&nbsp;
+<i class="no-highlight">194</i>&nbsp;    private void handlePurchaseReturns(List&lt;BusinessHistorySheetVO&gt; ans, List&lt;PurchaseReturnsSheetPO&gt; lst){
+<b class="fc"><i class="no-highlight">195</i>&nbsp;        for(PurchaseReturnsSheetPO prsp: lst){</b>
+<b class="fc"><i class="no-highlight">196</i>&nbsp;            PurchaseReturnsSheetVO prsv = new PurchaseReturnsSheetVO();</b>
+<b class="fc"><i class="no-highlight">197</i>&nbsp;            prsv.setOperator(prsp.getOperator());</b>
+<b class="fc"><i class="no-highlight">198</i>&nbsp;            prsv.setId(prsp.getId());</b>
+<b class="fc"><i class="no-highlight">199</i>&nbsp;            prsv.setPurchaseSheetId(prsp.getPurchaseSheetId());</b>
+<b class="fc"><i class="no-highlight">200</i>&nbsp;            prsv.setState(prsp.getState());</b>
+<b class="fc"><i class="no-highlight">201</i>&nbsp;            prsv.setRemark(prsp.getRemark());</b>
+<b class="fc"><i class="no-highlight">202</i>&nbsp;            prsv.setCreateTime(prsp.getCreateTime());</b>
+<b class="fc"><i class="no-highlight">203</i>&nbsp;            prsv.setTotalAmount(prsp.getTotalAmount());</b>
+<b class="fc"><i class="no-highlight">204</i>&nbsp;            List&lt;PurchaseReturnsSheetContentPO&gt; prscpLst = purchaseReturnsSheetDao.findContentByPurchaseReturnsSheetId(prsv.getId());</b>
+<b class="fc"><i class="no-highlight">205</i>&nbsp;            List&lt;PurchaseReturnsSheetContentVO&gt; prscvLst = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i class="no-highlight">206</i>&nbsp;            for(PurchaseReturnsSheetContentPO prscp: prscpLst){</b>
+<b class="fc"><i class="no-highlight">207</i>&nbsp;                PurchaseReturnsSheetContentVO prscv = new PurchaseReturnsSheetContentVO();</b>
+<b class="fc"><i class="no-highlight">208</i>&nbsp;                prscv.setId(prscp.getId());</b>
+<b class="fc"><i class="no-highlight">209</i>&nbsp;                prscv.setPid(prscp.getPid());</b>
+<b class="fc"><i class="no-highlight">210</i>&nbsp;                prscv.setQuantity(prscp.getQuantity());</b>
+<b class="fc"><i class="no-highlight">211</i>&nbsp;                prscv.setRemark(prscp.getRemark());</b>
+<b class="fc"><i class="no-highlight">212</i>&nbsp;                prscv.setTotalPrice(prscp.getTotalPrice());</b>
+<b class="fc"><i class="no-highlight">213</i>&nbsp;                prscv.setUnitPrice(prscp.getUnitPrice());</b>
+<b class="fc"><i class="no-highlight">214</i>&nbsp;                prscv.setPurchaseReturnsSheetId(prscp.getPurchaseReturnsSheetId());</b>
+<b class="fc"><i class="no-highlight">215</i>&nbsp;                prscvLst.add(prscv);</b>
+<b class="fc"><i class="no-highlight">216</i>&nbsp;            }</b>
+<b class="fc"><i class="no-highlight">217</i>&nbsp;            prsv.setPurchaseReturnsSheetContent(prscvLst);</b>
+<b class="fc"><i class="no-highlight">218</i>&nbsp;            BusinessHistorySheetVO businessHistorySheetVO = new BusinessHistorySheetVO(&quot;purchase-returns&quot;, prsv);</b>
+<b class="fc"><i class="no-highlight">219</i>&nbsp;            ans.add(businessHistorySheetVO);</b>
+<b class="fc"><i class="no-highlight">220</i>&nbsp;        }</b>
+<i class="no-highlight">221</i>&nbsp;    }
+<i class="no-highlight">222</i>&nbsp;
+<i class="no-highlight">223</i>&nbsp;    private void handlePayMoneySheet(List&lt;BusinessHistorySheetVO&gt; ans, List&lt;PayMoneySheetPO&gt; lst){
+<b class="nc"><i class="no-highlight">224</i>&nbsp;        for(PayMoneySheetPO payMoneySheetPO: lst){</b>
+<b class="nc"><i class="no-highlight">225</i>&nbsp;            String payMoneySheetId = payMoneySheetPO.getId();</b>
+<b class="nc"><i class="no-highlight">226</i>&nbsp;            List&lt;PayMoneyTransferListPO&gt; payMoneyTransferListPOList = businessHistoryDao.</b>
+<b class="nc"><i class="no-highlight">227</i>&nbsp;                    findPaymentTransferListByPayMoneySheetId(payMoneySheetId);</b>
+<b class="nc"><i class="no-highlight">228</i>&nbsp;            PayMoneySheetVO payMoneySheetVO = new PayMoneySheetVO();</b>
+<b class="nc"><i class="no-highlight">229</i>&nbsp;            List&lt;PayMoneyTransferListVO&gt; payMoneyTransferListVOList = new ArrayList&lt;&gt;();</b>
+<b class="nc"><i class="no-highlight">230</i>&nbsp;            for(PayMoneyTransferListPO payMoneyTransferListPO: payMoneyTransferListPOList){</b>
+<b class="nc"><i class="no-highlight">231</i>&nbsp;                PayMoneyTransferListVO payMoneyTransferListVO = new PayMoneyTransferListVO();</b>
+<b class="nc"><i class="no-highlight">232</i>&nbsp;                payMoneyTransferListVO.setId(payMoneyTransferListPO.getId());</b>
+<b class="nc"><i class="no-highlight">233</i>&nbsp;                payMoneyTransferListVO.setRemark(payMoneyTransferListPO.getRemark());</b>
+<b class="nc"><i class="no-highlight">234</i>&nbsp;                payMoneyTransferListVO.setAmount(payMoneyTransferListPO.getAmount());</b>
+<b class="nc"><i class="no-highlight">235</i>&nbsp;                payMoneyTransferListVO.setBankAccountId(payMoneyTransferListPO.getBankAccountId());</b>
+<b class="nc"><i class="no-highlight">236</i>&nbsp;                payMoneyTransferListVOList.add(payMoneyTransferListVO);</b>
+<b class="nc"><i class="no-highlight">237</i>&nbsp;            }</b>
+<b class="nc"><i class="no-highlight">238</i>&nbsp;            payMoneySheetVO.setId(payMoneySheetPO.getId());</b>
+<b class="nc"><i class="no-highlight">239</i>&nbsp;            payMoneySheetVO.setOperator(payMoneySheetPO.getOperator());</b>
+<b class="nc"><i class="no-highlight">240</i>&nbsp;            payMoneySheetVO.setState(payMoneySheetPO.getState());</b>
+<b class="nc"><i class="no-highlight">241</i>&nbsp;            payMoneySheetVO.setTotalAmount(payMoneySheetPO.getTotalAmount());</b>
+<b class="nc"><i class="no-highlight">242</i>&nbsp;            payMoneySheetVO.setTransferList(payMoneyTransferListVOList);</b>
+<b class="nc"><i class="no-highlight">243</i>&nbsp;            payMoneySheetVO.setCustomer(payMoneySheetPO.getCustomer());</b>
+<b class="nc"><i class="no-highlight">244</i>&nbsp;            BusinessHistorySheetVO businessHistorySheetVO = new BusinessHistorySheetVO(&quot;pay&quot;, payMoneySheetVO);</b>
+<b class="nc"><i class="no-highlight">245</i>&nbsp;            ans.add(businessHistorySheetVO);</b>
+<b class="nc"><i class="no-highlight">246</i>&nbsp;        }</b>
+<i class="no-highlight">247</i>&nbsp;    }
+<i class="no-highlight">248</i>&nbsp;
+<i class="no-highlight">249</i>&nbsp;    private void handleReceive(List&lt;BusinessHistorySheetVO&gt; ans, List&lt;ReceiveMoneySheetPO&gt; lst){
+<b class="nc"><i class="no-highlight">250</i>&nbsp;        for(ReceiveMoneySheetPO receiveMoneySheetPO: lst){</b>
+<b class="nc"><i class="no-highlight">251</i>&nbsp;            String id = receiveMoneySheetPO.getId();</b>
+<b class="nc"><i class="no-highlight">252</i>&nbsp;            List&lt;ReceiveMoneyTransferListPO&gt; receiveMoneyTransferListPOList = businessHistoryDao.findReceiveMoneyTransferListByReceiveMoneySheetId(id);</b>
+<b class="nc"><i class="no-highlight">253</i>&nbsp;            List&lt;ReceiveMoneyTransferListVO&gt; receiveMoneyTransferListVOList = new ArrayList&lt;&gt;();</b>
+<b class="nc"><i class="no-highlight">254</i>&nbsp;            for(ReceiveMoneyTransferListPO receiveMoneyTransferListPO: receiveMoneyTransferListPOList){</b>
+<b class="nc"><i class="no-highlight">255</i>&nbsp;                ReceiveMoneyTransferListVO receiveMoneyTransferListVO = new ReceiveMoneyTransferListVO();</b>
+<b class="nc"><i class="no-highlight">256</i>&nbsp;                receiveMoneyTransferListVO.setId(receiveMoneyTransferListPO.getId());</b>
+<b class="nc"><i class="no-highlight">257</i>&nbsp;                receiveMoneyTransferListVO.setRemark(receiveMoneyTransferListPO.getRemark());</b>
+<b class="nc"><i class="no-highlight">258</i>&nbsp;                receiveMoneyTransferListVO.setAmount(receiveMoneyTransferListPO.getAmount());</b>
+<b class="nc"><i class="no-highlight">259</i>&nbsp;                receiveMoneyTransferListVO.setBankAccountId(receiveMoneyTransferListPO.getBankAccountId());</b>
+<b class="nc"><i class="no-highlight">260</i>&nbsp;                receiveMoneyTransferListVOList.add(receiveMoneyTransferListVO);</b>
+<b class="nc"><i class="no-highlight">261</i>&nbsp;            }</b>
+<b class="nc"><i class="no-highlight">262</i>&nbsp;            ReceiveMoneySheetVO receiveMoneySheetVO = new ReceiveMoneySheetVO();</b>
+<b class="nc"><i class="no-highlight">263</i>&nbsp;            receiveMoneySheetVO.setId(receiveMoneySheetPO.getId());</b>
+<b class="nc"><i class="no-highlight">264</i>&nbsp;            receiveMoneySheetVO.setCustomer(receiveMoneySheetPO.getCustomer());</b>
+<b class="nc"><i class="no-highlight">265</i>&nbsp;            receiveMoneySheetVO.setOperator(receiveMoneySheetPO.getOperator());</b>
+<b class="nc"><i class="no-highlight">266</i>&nbsp;            receiveMoneySheetVO.setState(receiveMoneySheetPO.getState());</b>
+<b class="nc"><i class="no-highlight">267</i>&nbsp;            receiveMoneySheetVO.setTotalAmount(receiveMoneySheetPO.getTotalAmount());</b>
+<b class="nc"><i class="no-highlight">268</i>&nbsp;            receiveMoneySheetVO.setTransferList(receiveMoneyTransferListVOList);</b>
+<b class="nc"><i class="no-highlight">269</i>&nbsp;            BusinessHistorySheetVO businessHistorySheetVO = new BusinessHistorySheetVO(&quot;receive&quot;, receiveMoneySheetVO);</b>
+<b class="nc"><i class="no-highlight">270</i>&nbsp;            ans.add(businessHistorySheetVO);</b>
+<b class="nc"><i class="no-highlight">271</i>&nbsp;        }</b>
+<i class="no-highlight">272</i>&nbsp;    }
+<i class="no-highlight">273</i>&nbsp;
+<i class="no-highlight">274</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-10 04:16</div>
+</div>
+</body>
+</html>

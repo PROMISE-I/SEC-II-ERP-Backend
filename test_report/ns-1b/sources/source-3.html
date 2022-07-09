@@ -1,0 +1,134 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > TotalPricePromotionService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.nju.edu.erp.service.Interface.promotion</a>
+</div>
+
+<h1>Coverage Summary for Class: TotalPricePromotionService (com.nju.edu.erp.service.Interface.promotion)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">TotalPricePromotionService</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.nju.edu.erp.service.Interface.promotion;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.nju.edu.erp.model.po.promotion.strategy.total_price.TotalPricePromotionContentPO;
+<i class="no-highlight">4</i>&nbsp;import com.nju.edu.erp.model.po.promotion.strategy.total_price.TotalPricePromotionPO;
+<i class="no-highlight">5</i>&nbsp;import com.nju.edu.erp.model.vo.user.UserVO;
+<i class="no-highlight">6</i>&nbsp;import com.nju.edu.erp.model.vo.promotion.total_price.TotalPricePromotionVO;
+<i class="no-highlight">7</i>&nbsp;
+<i class="no-highlight">8</i>&nbsp;import java.math.BigDecimal;
+<i class="no-highlight">9</i>&nbsp;import java.util.Date;
+<i class="no-highlight">10</i>&nbsp;import java.util.List;
+<i class="no-highlight">11</i>&nbsp;
+<i class="no-highlight">12</i>&nbsp;/**
+<i class="no-highlight">13</i>&nbsp; * @author WFS
+<i class="no-highlight">14</i>&nbsp; * @date 2022/7/8 19:29
+<i class="no-highlight">15</i>&nbsp; */
+<i class="no-highlight">16</i>&nbsp;public interface TotalPricePromotionService {
+<i class="no-highlight">17</i>&nbsp;    /**
+<i class="no-highlight">18</i>&nbsp;     * ??????????????
+<i class="no-highlight">19</i>&nbsp;     * @param userVO
+<i class="no-highlight">20</i>&nbsp;     * @param totalPricePromotionVO
+<i class="no-highlight">21</i>&nbsp;     */
+<i class="no-highlight">22</i>&nbsp;    void makePromotion(UserVO userVO, TotalPricePromotionVO totalPricePromotionVO);
+<i class="no-highlight">23</i>&nbsp;
+<i class="no-highlight">24</i>&nbsp;    /**
+<i class="no-highlight">25</i>&nbsp;     * ???????????
+<i class="no-highlight">26</i>&nbsp;     * @return
+<i class="no-highlight">27</i>&nbsp;     */
+<i class="no-highlight">28</i>&nbsp;    List&lt;TotalPricePromotionVO&gt; findAll();
+<i class="no-highlight">29</i>&nbsp;
+<i class="no-highlight">30</i>&nbsp;    /**
+<i class="no-highlight">31</i>&nbsp;     * ??????id?????????
+<i class="no-highlight">32</i>&nbsp;     * @param id
+<i class="no-highlight">33</i>&nbsp;     * @return
+<i class="no-highlight">34</i>&nbsp;     */
+<i class="no-highlight">35</i>&nbsp;    TotalPricePromotionVO findById(String id);
+<i class="no-highlight">36</i>&nbsp;
+<i class="no-highlight">37</i>&nbsp;    /**
+<i class="no-highlight">38</i>&nbsp;     * ??????id???????????
+<i class="no-highlight">39</i>&nbsp;     * @param id
+<i class="no-highlight">40</i>&nbsp;     */
+<i class="no-highlight">41</i>&nbsp;    void deleteById(String id);
+<i class="no-highlight">42</i>&nbsp;
+<i class="no-highlight">43</i>&nbsp;    /**
+<i class="no-highlight">44</i>&nbsp;     * ????rawTotalAmount??today????????????????????
+<i class="no-highlight">45</i>&nbsp;     * @param today ??
+<i class="no-highlight">46</i>&nbsp;     * @param rawTotalAmount ??
+<i class="no-highlight">47</i>&nbsp;     * @return ?????
+<i class="no-highlight">48</i>&nbsp;     */
+<i class="no-highlight">49</i>&nbsp;    BigDecimal getVoucherAmountByDateAndThreshold(Date today, BigDecimal rawTotalAmount);
+<i class="no-highlight">50</i>&nbsp;
+<i class="no-highlight">51</i>&nbsp;    /**
+<i class="no-highlight">52</i>&nbsp;     * ?????????id??????
+<i class="no-highlight">53</i>&nbsp;     * @param id ???????id
+<i class="no-highlight">54</i>&nbsp;     * @return ??????
+<i class="no-highlight">55</i>&nbsp;     */
+<i class="no-highlight">56</i>&nbsp;    List&lt;TotalPricePromotionContentPO&gt; findContentByTotalPricePromotionId(String id);
+<i class="no-highlight">57</i>&nbsp;
+<i class="no-highlight">58</i>&nbsp;    /**
+<i class="no-highlight">59</i>&nbsp;     * ????rawTotalAmount??today???????????????????
+<i class="no-highlight">60</i>&nbsp;     * @param today ??
+<i class="no-highlight">61</i>&nbsp;     * @param rawTotalAmount ??
+<i class="no-highlight">62</i>&nbsp;     * @return ??????
+<i class="no-highlight">63</i>&nbsp;     */
+<i class="no-highlight">64</i>&nbsp;    TotalPricePromotionPO getPromotionByDateAndThreshold(Date today, BigDecimal rawTotalAmount);
+<i class="no-highlight">65</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-10 04:16</div>
+</div>
+</body>
+</html>

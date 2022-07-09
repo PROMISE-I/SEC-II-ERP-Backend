@@ -26,25 +26,25 @@
               state = #{prevState}
     </update>
 
-    <select id="getLatest" resultType="com.nju.edu.erp.model.po.finance.ReceiveMoneySheetPO">
+    <select id="getLatest" resultType="com.nju.edu.erp.model.po.finance.receive_money.ReceiveMoneySheetPO">
         select * from receive_money_sheet
         order by id desc limit 0, 1
     </select>
 
-    <select id="findAll" resultType="com.nju.edu.erp.model.po.finance.ReceiveMoneySheetPO">
+    <select id="findAll" resultType="com.nju.edu.erp.model.po.finance.receive_money.ReceiveMoneySheetPO">
         select * from receive_money_sheet
     </select>
 
-    <select id="finaAllByState" resultType="com.nju.edu.erp.model.po.finance.ReceiveMoneySheetPO">
+    <select id="finaAllByState" resultType="com.nju.edu.erp.model.po.finance.receive_money.ReceiveMoneySheetPO">
         select * from receive_money_sheet where state = #{state}
     </select>
 
     <select id="findTransferListByReceiveMoneySheetId"
-            resultType="com.nju.edu.erp.model.po.finance.ReceiveMoneyTransferListPO">
+            resultType="com.nju.edu.erp.model.po.finance.receive_money.ReceiveMoneyTransferListPO">
         select * from receive_money_transfer_list where receive_money_sheet_id = #{receiveMoneySheetId}
     </select>
 
-    <select id="findOneById" resultType="com.nju.edu.erp.model.po.finance.ReceiveMoneySheetPO">
+    <select id="findOneById" resultType="com.nju.edu.erp.model.po.finance.receive_money.ReceiveMoneySheetPO">
         select * from receive_money_sheet where id = #{id}
     </select>
 </mapper>

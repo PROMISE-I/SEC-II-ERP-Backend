@@ -1,6 +1,7 @@
 package com.nju.edu.erp.service;
 
-import com.nju.edu.erp.model.vo.promotion.LevelPromotionStrategyVO;
+import com.nju.edu.erp.model.vo.promotion.level.LevelPromotionStrategyVO;
+import com.nju.edu.erp.service.Interface.promotion.LevelPromotionService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

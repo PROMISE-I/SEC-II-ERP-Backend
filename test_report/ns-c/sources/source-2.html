@@ -1,0 +1,162 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > TotalPricePromotionGiveAwayStrategy</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.nju.edu.erp.service.Impl.strategy.promotion.give_away</a>
+</div>
+
+<h1>Coverage Summary for Class: TotalPricePromotionGiveAwayStrategy (com.nju.edu.erp.service.Impl.strategy.promotion.give_away)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">TotalPricePromotionGiveAwayStrategy</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (19/19)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.nju.edu.erp.service.Impl.strategy.promotion.give_away;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.nju.edu.erp.model.po.sale_purchase.sale.SaleSheetPO;
+<i class="no-highlight">4</i>&nbsp;import com.nju.edu.erp.model.po.promotion.strategy.total_price.TotalPricePromotionContentPO;
+<i class="no-highlight">5</i>&nbsp;import com.nju.edu.erp.model.po.promotion.strategy.total_price.TotalPricePromotionPO;
+<i class="no-highlight">6</i>&nbsp;import com.nju.edu.erp.model.vo.promotion.grifts.GiveAwaySheetContentVO;
+<i class="no-highlight">7</i>&nbsp;import com.nju.edu.erp.model.vo.promotion.grifts.GiveAwaySheetVO;
+<i class="no-highlight">8</i>&nbsp;import com.nju.edu.erp.service.Interface.promotion.gifts.GiveAwayService;
+<i class="no-highlight">9</i>&nbsp;import com.nju.edu.erp.service.Interface.promotion.TotalPricePromotionService;
+<i class="no-highlight">10</i>&nbsp;import org.springframework.beans.BeanUtils;
+<i class="no-highlight">11</i>&nbsp;
+<i class="no-highlight">12</i>&nbsp;import java.util.ArrayList;
+<i class="no-highlight">13</i>&nbsp;import java.util.Date;
+<i class="no-highlight">14</i>&nbsp;import java.util.List;
+<i class="no-highlight">15</i>&nbsp;
+<i class="no-highlight">16</i>&nbsp;/**
+<i class="no-highlight">17</i>&nbsp; * @author WFS
+<i class="no-highlight">18</i>&nbsp; * @date 2022/7/9 16:24
+<i class="no-highlight">19</i>&nbsp; */
+<i class="no-highlight">20</i>&nbsp;public class TotalPricePromotionGiveAwayStrategy implements GiveAwayStrategy{
+<i class="no-highlight">21</i>&nbsp;
+<i class="no-highlight">22</i>&nbsp;    private final TotalPricePromotionService totalPricePromotionService;
+<i class="no-highlight">23</i>&nbsp;
+<i class="no-highlight">24</i>&nbsp;    private final GiveAwayService giveAwayService;
+<i class="no-highlight">25</i>&nbsp;
+<i class="no-highlight">26</i>&nbsp;    private final SaleSheetPO saleSheetPO;
+<i class="no-highlight">27</i>&nbsp;
+<b class="fc"><i class="no-highlight">28</i>&nbsp;    public TotalPricePromotionGiveAwayStrategy(TotalPricePromotionService totalPricePromotionService, GiveAwayService giveAwayService, SaleSheetPO saleSheetPO) {</b>
+<b class="fc"><i class="no-highlight">29</i>&nbsp;        this.totalPricePromotionService = totalPricePromotionService;</b>
+<b class="fc"><i class="no-highlight">30</i>&nbsp;        this.giveAwayService = giveAwayService;</b>
+<b class="fc"><i class="no-highlight">31</i>&nbsp;        this.saleSheetPO = saleSheetPO;</b>
+<i class="no-highlight">32</i>&nbsp;    }
+<i class="no-highlight">33</i>&nbsp;
+<i class="no-highlight">34</i>&nbsp;    @Override
+<i class="no-highlight">35</i>&nbsp;    public void makeGiveAwaySheet() {
+<b class="fc"><i class="no-highlight">36</i>&nbsp;        Date today = new Date();</b>
+<b class="fc"><i class="no-highlight">37</i>&nbsp;        GiveAwaySheetVO giveAwaySheetVO = new GiveAwaySheetVO();</b>
+<b class="fc"><i class="no-highlight">38</i>&nbsp;        TotalPricePromotionPO promotion = totalPricePromotionService.getPromotionByDateAndThreshold(today, saleSheetPO.getRawTotalAmount());</b>
+<i class="no-highlight">39</i>&nbsp;
+<b class="fc"><i class="no-highlight">40</i>&nbsp;        if (promotion != null) {</b>
+<b class="fc"><i class="no-highlight">41</i>&nbsp;            List&lt;TotalPricePromotionContentPO&gt; cpos = totalPricePromotionService.findContentByTotalPricePromotionId(promotion.getId());</b>
+<i class="no-highlight">42</i>&nbsp;
+<b class="fc"><i class="no-highlight">43</i>&nbsp;            List&lt;GiveAwaySheetContentVO&gt; gascvos = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i class="no-highlight">44</i>&nbsp;            for(TotalPricePromotionContentPO cpo : cpos) {</b>
+<b class="fc"><i class="no-highlight">45</i>&nbsp;                GiveAwaySheetContentVO gasvo = new GiveAwaySheetContentVO();</b>
+<b class="fc"><i class="no-highlight">46</i>&nbsp;                BeanUtils.copyProperties(cpo, gasvo);</b>
+<b class="fc"><i class="no-highlight">47</i>&nbsp;                gasvo.setId(null);</b>
+<b class="fc"><i class="no-highlight">48</i>&nbsp;                gascvos.add(gasvo);</b>
+<b class="fc"><i class="no-highlight">49</i>&nbsp;            }</b>
+<b class="fc"><i class="no-highlight">50</i>&nbsp;            giveAwaySheetVO.setContentVOList(gascvos);</b>
+<i class="no-highlight">51</i>&nbsp;
+<b class="fc"><i class="no-highlight">52</i>&nbsp;            giveAwaySheetVO.setSaleSheetId(saleSheetPO.getId());</b>
+<i class="no-highlight">53</i>&nbsp;
+<b class="fc"><i class="no-highlight">54</i>&nbsp;            giveAwayService.makeSheet(null, giveAwaySheetVO);</b>
+<i class="no-highlight">55</i>&nbsp;        }
+<i class="no-highlight">56</i>&nbsp;    }
+<i class="no-highlight">57</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-10 04:16</div>
+</div>
+</body>
+</html>

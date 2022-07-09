@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.nju.edu.erp.dao.SaleSheetDao">
+<mapper namespace="com.nju.edu.erp.dao.sale_purchase.sale.SaleSheetDao">
     <insert id="saveSheet">
         insert into sale_sheet (id, supplier, operator, remark, `state`, create_time, salesman, raw_total_amount, discount, final_amount, voucher_amount)
         values (#{id},#{supplier},#{operator},#{remark}, #{state}, #{createTime}, #{salesman}, #{rawTotalAmount}, #{discount}, #{finalAmount}, #{voucherAmount}) ;
@@ -25,24 +25,24 @@
         where id = #{sheetId} and state = #{prev}
     </update>
 
-    <select id="getLatestSheet" resultType="com.nju.edu.erp.model.po.SaleSheetPO">
+    <select id="getLatestSheet" resultType="com.nju.edu.erp.model.po.sale_purchase.sale.SaleSheetPO">
         select * from sale_sheet order by id desc limit 0,1 ;
     </select>
 
-    <select id="findAllSheet" resultType="com.nju.edu.erp.model.po.SaleSheetPO">
+    <select id="findAllSheet" resultType="com.nju.edu.erp.model.po.sale_purchase.sale.SaleSheetPO">
         select * from sale_sheet;
     </select>
 
-    <select id="findContentBySheetId" resultType="com.nju.edu.erp.model.po.SaleSheetContentPO">
+    <select id="findContentBySheetId" resultType="com.nju.edu.erp.model.po.sale_purchase.sale.SaleSheetContentPO">
         select * from sale_sheet_content where sale_sheet_id = #{sheetId};
     </select>
 
-    <select id="findSheetById" resultType="com.nju.edu.erp.model.po.SaleSheetPO">
+    <select id="findSheetById" resultType="com.nju.edu.erp.model.po.sale_purchase.sale.SaleSheetPO">
         select * from sale_sheet where id = #{id};
     </select>
 
 <!--获取某个销售人员某段时间内消费总金额最大的客户(不考虑退货情况,销售单不需要审批通过,如果这样的客户有多个，仅保留一个)-->
-    <select id="getMaxAmountCustomerOfSalesmanByTime" resultType="com.nju.edu.erp.model.po.CustomerPurchaseAmountPO">
+    <select id="getMaxAmountCustomerOfSalesmanByTime" resultType="com.nju.edu.erp.model.po.sale_purchase.customer.CustomerPurchaseAmountPO">
         select c.id as id,c.type as type,c.level as level,c.name as name,c.phone as phone,c.address as address,c.zipcode as zipcode,c.email as email,c.line_of_credit as line_of_credit,c.receivable as receivable,c.payable as payable,c.operator as operator,sum(s.final_amount) as total_final_amount
         from sale_sheet s,customer c
         where s.salesman=#{salesman} and s.create_time>=#{beginTime} and s.create_time&lt;=#{endTime} and s.supplier=c.id
@@ -51,11 +51,11 @@
         limit 1;
     </select>
 
-    <select id="findAllByState" resultType="com.nju.edu.erp.model.po.SaleSheetPO">
+    <select id="findAllByState" resultType="com.nju.edu.erp.model.po.sale_purchase.sale.SaleSheetPO">
         select * from sale_sheet where state = #{state}
     </select>
 
-    <select id="getSaleDetailByCondition" resultType="com.nju.edu.erp.model.po.SaleIODetailPO">
+    <select id="getSaleDetailByCondition" resultType="com.nju.edu.erp.model.po.sale_purchase.sale.io_detail.SaleIODetailPO">
         select ss.create_time as create_time, p.name as product_name,
                p.type as product_type, ssc.quantity as quantity,
                ssc.unit_price as unit_price, ssc.total_price as total_amount
@@ -68,7 +68,7 @@
               ss.supplier = #{customer} and
               ss.salesman = #{salesman}
     </select>
-    <select id="getSaleDetailByRange" resultType="com.nju.edu.erp.model.po.SaleIODetailPO">
+    <select id="getSaleDetailByRange" resultType="com.nju.edu.erp.model.po.sale_purchase.sale.io_detail.SaleIODetailPO">
         select ss.create_time as create_time, p.name as product_name,
                p.type as product_type, ssc.quantity as quantity,
                ssc.unit_price as unit_price, ssc.total_price as total_amount
@@ -87,7 +87,7 @@
               state = '审批完成'
     </select>
 
-    <resultMap id="CustomerPurchaseAmountPO" type="com.nju.edu.erp.model.po.CustomerPurchaseAmountPO">
+    <resultMap id="CustomerPurchaseAmountPO" type="com.nju.edu.erp.model.po.sale_purchase.customer.CustomerPurchaseAmountPO">
         <result column="total_final_amount" property="totalFinalAmount"></result>
         <association property="customerPO" javaType="CustomerPO" >
             <id column="id" property="id"></id>
