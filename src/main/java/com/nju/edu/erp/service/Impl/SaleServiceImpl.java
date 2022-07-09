@@ -8,6 +8,7 @@ import com.nju.edu.erp.enums.sheetState.SaleSheetState;
 import com.nju.edu.erp.model.po.*;
 import com.nju.edu.erp.model.po.promotion.GiveAwaySheetPO;
 import com.nju.edu.erp.model.vo.ProductInfoVO;
+import com.nju.edu.erp.model.vo.promotion.LevelPromotionStrategyVO;
 import com.nju.edu.erp.model.vo.sale.SaleIODetailFilterConditionVO;
 import com.nju.edu.erp.model.vo.sale.SaleSheetContentVO;
 import com.nju.edu.erp.model.vo.sale.SaleSheetVO;
@@ -57,8 +58,15 @@ public class SaleServiceImpl implements SaleService {
 
     private final GiveAwayService giveAwayService;
 
+    private final LevelPromotionService levelPromotionService;
+
+    private final CombinatorialPromotionService combinatorialPromotionService;
+
+
+
+
     @Autowired
-    public SaleServiceImpl(SaleSheetDao saleSheetDao, ProductDao productDao, CustomerDao customerDao, ProductService productService, CustomerService customerService, WarehouseService warehouseService, TotalPricePromotionService totalPricePromotionService, GiveAwayService giveAwayService) {
+    public SaleServiceImpl(CombinatorialPromotionService combinatorialPromotionService, SaleSheetDao saleSheetDao, ProductDao productDao, CustomerDao customerDao, ProductService productService, CustomerService customerService, WarehouseService warehouseService, TotalPricePromotionService totalPricePromotionService, GiveAwayService giveAwayService, LevelPromotionService levelPromotionService) {
         this.saleSheetDao = saleSheetDao;
         this.productDao = productDao;
         this.customerDao = customerDao;
@@ -67,6 +75,8 @@ public class SaleServiceImpl implements SaleService {
         this.warehouseService = warehouseService;
         this.totalPricePromotionService = totalPricePromotionService;
         this.giveAwayService = giveAwayService;
+        this.levelPromotionService = levelPromotionService;
+        this.combinatorialPromotionService = combinatorialPromotionService;
     }
 
     @Override
@@ -108,7 +118,9 @@ public class SaleServiceImpl implements SaleService {
         saleSheetPO.setRawTotalAmount(totalAmount);
 
         //TODO 促销策略的折扣和优惠券作用地方
-        saleSheetPO.setDiscount(getDiscount());
+        Integer customer = saleSheetPO.getSupplier();
+        Integer level = customerService.findCustomerById(customer).getLevel();
+        saleSheetPO.setDiscount(getDiscount(level));
         saleSheetPO.setVoucherAmount(getVoucherAmount(saleSheetPO));
         makeGiveAway(saleSheetPO);
 
@@ -304,11 +316,12 @@ public class SaleServiceImpl implements SaleService {
         return saleSheetDao.findSheetById(sheetId) != null;
     }
 
-    private BigDecimal getDiscount() {
+    private BigDecimal getDiscount(Integer level) {
         BigDecimal totalDiscount = BigDecimal.ONE;
         List<DiscountStrategy> strategies = new ArrayList<>();
         //TODO 定义自己的构造函数并在这边修改，如果需要额外参数可以在这个函数的参数列表中加
-        LevelPromotionDiscountStrategy levelPromotionDiscountStrategy = new LevelPromotionDiscountStrategy();
+        LevelPromotionStrategyVO levelPromotionStrategyVO = levelPromotionService.findByLevel(level);
+        LevelPromotionDiscountStrategy levelPromotionDiscountStrategy = new LevelPromotionDiscountStrategy(levelPromotionStrategyVO.getDiscount());
         strategies.add(levelPromotionDiscountStrategy);
 
         for (DiscountStrategy strategy : strategies) {
@@ -325,10 +338,24 @@ public class SaleServiceImpl implements SaleService {
         TotalPricePromotionVoucherStrategy totalPricePromotionVoucherStrategy = new TotalPricePromotionVoucherStrategy(totalPricePromotionService, saleSheetPO);
         strategies.add(totalPricePromotionVoucherStrategy);
         //TODO 定义自己的构造函数并在这边修改，如果需要额外参数可以在这个函数的参数列表中加
-        LevelPromotionVoucherStrategy levelPromotionVoucherStrategy = new LevelPromotionVoucherStrategy();
+        Integer customer = saleSheetPO.getSupplier();
+        Integer level = customerService.findCustomerById(customer).getLevel();
+        BigDecimal voucher = levelPromotionService.findByLevel(level).getCoupon();
+        LevelPromotionVoucherStrategy levelPromotionVoucherStrategy = new LevelPromotionVoucherStrategy(voucher);
         strategies.add(levelPromotionVoucherStrategy);
         //TODO 定义自己的构造函数并在这边修改，如果需要额外参数可以在这个函数的参数列表中加
-        CombinatorialPromotionVoucherStrategy combinatorialPromotionVoucherStrategy = new CombinatorialPromotionVoucherStrategy();
+        String saleSheetId = saleSheetPO.getId();
+        List<SaleSheetContentPO> saleSheetContentPOList = saleSheetDao.findContentBySheetId(saleSheetId);
+        BigDecimal voucherAmount = BigDecimal.ZERO;
+        for(int i = 0; i < saleSheetContentPOList.size(); i ++){
+            for(int j = i + 1; j < saleSheetContentPOList.size(); j ++){
+                String productOneId = saleSheetContentPOList.get(i).getPid();
+                String productTwoId = saleSheetContentPOList.get(j).getPid();
+                BigDecimal temp = combinatorialPromotionService.findByPair(productOneId, productTwoId).getDiscountAmount();
+                if(temp.compareTo(voucherAmount) > 0)voucherAmount = temp;
+            }
+        }
+        CombinatorialPromotionVoucherStrategy combinatorialPromotionVoucherStrategy = new CombinatorialPromotionVoucherStrategy(voucherAmount);
         strategies.add(combinatorialPromotionVoucherStrategy);
 
         for (VoucherStrategy strategy : strategies) {
@@ -343,7 +370,9 @@ public class SaleServiceImpl implements SaleService {
         TotalPricePromotionGiveAwayStrategy totalPricePromotionGiveAwayStrategy = new TotalPricePromotionGiveAwayStrategy(totalPricePromotionService, giveAwayService, saleSheetPO);
         strategies.add(totalPricePromotionGiveAwayStrategy);
         //TODO 定义自己的构造函数并在这边修改，如果需要额外参数可以在这个函数的参数列表中加
-        LevelPromotionGiveAwayStrategy levelPromotionGiveAwayStrategy = new LevelPromotionGiveAwayStrategy();
+        Integer customer = saleSheetPO.getSupplier();
+        Integer level = customerService.findCustomerById(customer).getLevel();
+        LevelPromotionGiveAwayStrategy levelPromotionGiveAwayStrategy = new LevelPromotionGiveAwayStrategy(giveAwayService, levelPromotionService.findPresentInfoByLevel(level), saleSheetPO.getId(), productService);
         strategies.add(levelPromotionGiveAwayStrategy);
 
         for (GiveAwayStrategy strategy : strategies) {
