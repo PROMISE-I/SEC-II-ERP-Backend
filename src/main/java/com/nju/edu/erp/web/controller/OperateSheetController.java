@@ -17,7 +17,7 @@ public class OperateSheetController {
     }
 
     @GetMapping("/show")
-    public Response showSheet(@RequestParam("begin") String begin, @RequestParam("end") String end){
+    public Response showSheet(@RequestParam("begin") String begin, @RequestParam("end")String end){
         OperateSheetVO operateSheetVO = new OperateSheetVO();
 
         operateSheetVO.setBeginDateStr(begin);

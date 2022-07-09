@@ -18,9 +18,9 @@ import java.util.List;
 @Repository
 public interface BusinessHistoryDao {
     //销售类
-    public List<SaleSheetPO> findAllSaleSheetByInterval(@Param("begin") String begin,@Param("end") String end);
+    public List<SaleSheetPO> findAllSaleSheetByInterval(@Param("begin") String begin,@Param("end") String end, @Param("salesman") String salesman, @Param("customer") Integer customer);
 
-    public List<SaleReturnsSheetPO> findAllSaleReturnsSheetByInterval(@Param("begin") String begin, @Param("end") String end);
+    public List<SaleReturnsSheetPO> findAllSaleReturnsSheetByInterval(@Param("begin") String begin, @Param("end") String end, @Param("salesman") String salesman, @Param("customer") Integer customer);
 
     //进货类
     public List<PurchaseSheetPO> findAllPurchaseSheetByInterval(@Param("begin") String begin,@Param("end") String end);
@@ -29,9 +29,9 @@ public interface BusinessHistoryDao {
 
     //财务类
 
-    public List<PayMoneySheetPO> findAllPayMoneySheetByInterval(@Param("begin") String begin, @Param("end") String end);
+    public List<PayMoneySheetPO> findAllPayMoneySheetByInterval(@Param("begin") String begin, @Param("end") String end, @Param("customer") Integer customer);
 
-    public List<ReceiveMoneySheetPO> findAllReceiveMoneySheetByInterval(@Param("begin") String begin, @Param("end") String end);
+    public List<ReceiveMoneySheetPO> findAllReceiveMoneySheetByInterval(@Param("begin") String begin, @Param("end") String end,@Param("customer") Integer customer);
 
     public List<SalarySheetPO> findAllSalarySheetByInterval(@Param("begin") String begin, @Param("end") String end);
     //库存类
