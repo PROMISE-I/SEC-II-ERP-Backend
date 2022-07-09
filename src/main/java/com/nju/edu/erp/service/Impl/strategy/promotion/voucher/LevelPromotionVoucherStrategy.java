@@ -10,6 +10,6 @@ import java.math.BigDecimal;
 public class LevelPromotionVoucherStrategy implements VoucherStrategy{
     @Override
     public BigDecimal getVoucherAmount() {
-        return null;
+        return BigDecimal.ZERO;
     }
 }

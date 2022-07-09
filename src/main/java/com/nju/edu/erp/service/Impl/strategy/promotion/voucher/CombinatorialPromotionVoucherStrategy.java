@@ -10,6 +10,6 @@ import java.math.BigDecimal;
 public class CombinatorialPromotionVoucherStrategy implements VoucherStrategy{
     @Override
     public BigDecimal getVoucherAmount() {
-        return null;
+        return BigDecimal.ZERO;
     }
 }

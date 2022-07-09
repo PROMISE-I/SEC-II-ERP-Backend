@@ -42,7 +42,7 @@
             resultType="com.nju.edu.erp.model.po.promotion.TotalPricePromotionPO">
         select * from total_price_promotion
         where threshold &lt;= #{rawTotalAmount} and
-              today between begin_time and end_time
+              #{today} between begin_time and end_time
         order by voucher_amount desc
         limit 0, 1
     </select>

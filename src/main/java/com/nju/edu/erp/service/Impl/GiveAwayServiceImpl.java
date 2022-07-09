@@ -75,6 +75,7 @@ public class GiveAwayServiceImpl implements GiveAwayService {
             contentPOS.add(contentPO);
             totalAmount = totalAmount.add(contentPO.getTotalPrice());
         }
+        toSave.setTotalAmount(totalAmount);
 
         giveAwayDao.save(toSave);
         giveAwayDao.saveBatch(contentPOS);
