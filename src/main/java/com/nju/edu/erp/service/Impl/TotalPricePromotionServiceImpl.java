@@ -94,6 +94,17 @@ public class TotalPricePromotionServiceImpl implements TotalPricePromotionServic
 
     @Override
     public BigDecimal getVoucherAmountByDateAndThreshold(Date today, BigDecimal rawTotalAmount) {
+        TotalPricePromotionPO promotion = totalPricePromotionDao.getVoucherAmountByDateAndThreshold(today, rawTotalAmount);
+        return promotion.getVoucherAmount();
+    }
+
+    @Override
+    public List<TotalPricePromotionContentPO> findContentByTotalPricePromotionId(String id) {
+        return totalPricePromotionDao.findContentByTotalPricePromotionId(id);
+    }
+
+    @Override
+    public TotalPricePromotionPO getPromotionByDateAndThreshold(Date today, BigDecimal rawTotalAmount) {
         return totalPricePromotionDao.getVoucherAmountByDateAndThreshold(today, rawTotalAmount);
     }
 
