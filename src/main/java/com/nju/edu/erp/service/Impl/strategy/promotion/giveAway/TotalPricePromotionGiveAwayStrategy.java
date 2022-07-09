@@ -36,19 +36,22 @@ public class TotalPricePromotionGiveAwayStrategy implements GiveAwayStrategy{
         Date today = new Date();
         GiveAwaySheetVO giveAwaySheetVO = new GiveAwaySheetVO();
         TotalPricePromotionPO promotion = totalPricePromotionService.getPromotionByDateAndThreshold(today, saleSheetPO.getRawTotalAmount());
-        List<TotalPricePromotionContentPO> cpos = totalPricePromotionService.findContentByTotalPricePromotionId(promotion.getId());
 
-        List<GiveAwaySheetContentVO> gascvos = new ArrayList<>();
-        for(TotalPricePromotionContentPO cpo : cpos) {
-            GiveAwaySheetContentVO gasvo = new GiveAwaySheetContentVO();
-            BeanUtils.copyProperties(cpo, gasvo);
-            gasvo.setId(null);
-            gascvos.add(gasvo);
+        if (promotion != null) {
+            List<TotalPricePromotionContentPO> cpos = totalPricePromotionService.findContentByTotalPricePromotionId(promotion.getId());
+
+            List<GiveAwaySheetContentVO> gascvos = new ArrayList<>();
+            for(TotalPricePromotionContentPO cpo : cpos) {
+                GiveAwaySheetContentVO gasvo = new GiveAwaySheetContentVO();
+                BeanUtils.copyProperties(cpo, gasvo);
+                gasvo.setId(null);
+                gascvos.add(gasvo);
+            }
+            giveAwaySheetVO.setContentVOList(gascvos);
+
+            giveAwaySheetVO.setSaleSheetId(saleSheetPO.getId());
+
+            giveAwayService.makeSheet(null, giveAwaySheetVO);
         }
-        giveAwaySheetVO.setContentVOList(gascvos);
-
-        giveAwaySheetVO.setSaleSheetId(saleSheetPO.getId());
-
-        giveAwayService.makeSheet(null, giveAwaySheetVO);
     }
 }
