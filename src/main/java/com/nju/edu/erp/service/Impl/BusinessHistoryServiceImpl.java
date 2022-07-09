@@ -2,11 +2,13 @@ package com.nju.edu.erp.service.Impl;
 
 import com.nju.edu.erp.dao.*;
 import com.nju.edu.erp.model.po.*;
-import com.nju.edu.erp.model.po.finance.PayMoneySheetPO;
-import com.nju.edu.erp.model.po.finance.ReceiveMoneySheetPO;
-import com.nju.edu.erp.model.po.finance.SalarySheetPO;
+import com.nju.edu.erp.model.po.finance.*;
 import com.nju.edu.erp.model.vo.BusinessHistoryQueryVO;
 import com.nju.edu.erp.model.vo.BusinessHistorySheetVO;
+import com.nju.edu.erp.model.vo.finance.PayMoneySheetVO;
+import com.nju.edu.erp.model.vo.finance.PayMoneyTransferListVO;
+import com.nju.edu.erp.model.vo.finance.ReceiveMoneySheetVO;
+import com.nju.edu.erp.model.vo.finance.ReceiveMoneyTransferListVO;
 import com.nju.edu.erp.model.vo.purchase.PurchaseSheetContentVO;
 import com.nju.edu.erp.model.vo.purchase.PurchaseSheetVO;
 import com.nju.edu.erp.model.vo.purchaseReturns.PurchaseReturnsSheetContentVO;
@@ -67,16 +69,10 @@ public class BusinessHistoryServiceImpl implements BusinessHistoryService {
         //财务类
         else if("pay".equals(type)){
             List<PayMoneySheetPO> lst = businessHistoryDao.findAllPayMoneySheetByInterval(begin, end, customer);
-            for(PayMoneySheetPO pmsp: lst){
-                BusinessHistorySheetVO businessHistorySheetVO = new BusinessHistorySheetVO("pay", pmsp);
-                businessHistorySheetVOList.add(businessHistorySheetVO);
-            }
+            handlePayMoneySheet(businessHistorySheetVOList, lst);
         }else if("receive".equals(type)){
             List<ReceiveMoneySheetPO> lst = businessHistoryDao.findAllReceiveMoneySheetByInterval(begin, end, customer);
-            for(ReceiveMoneySheetPO rmsp: lst){
-                BusinessHistorySheetVO businessHistorySheetVO = new BusinessHistorySheetVO("receive", rmsp);
-                businessHistorySheetVOList.add(businessHistorySheetVO);
-            }
+            handleReceive(businessHistorySheetVOList, lst);
         }else if("salary".equals(type)){
             List<SalarySheetPO> lst = businessHistoryDao.findAllSalarySheetByInterval(begin, end);
             for(SalarySheetPO ssp: lst){
@@ -205,6 +201,57 @@ public class BusinessHistoryServiceImpl implements BusinessHistoryService {
             }
             prsv.setPurchaseReturnsSheetContent(prscvLst);
             BusinessHistorySheetVO businessHistorySheetVO = new BusinessHistorySheetVO("purchase-returns", prsv);
+            ans.add(businessHistorySheetVO);
+        }
+    }
+
+    private void handlePayMoneySheet(List<BusinessHistorySheetVO> ans, List<PayMoneySheetPO> lst){
+        for(PayMoneySheetPO payMoneySheetPO: lst){
+            String payMoneySheetId = payMoneySheetPO.getId();
+            List<PayMoneyTransferListPO> payMoneyTransferListPOList = businessHistoryDao.
+                    findPaymentTransferListByPayMoneySheetId(payMoneySheetId);
+            PayMoneySheetVO payMoneySheetVO = new PayMoneySheetVO();
+            List<PayMoneyTransferListVO> payMoneyTransferListVOList = new ArrayList<>();
+            for(PayMoneyTransferListPO payMoneyTransferListPO: payMoneyTransferListPOList){
+                PayMoneyTransferListVO payMoneyTransferListVO = new PayMoneyTransferListVO();
+                payMoneyTransferListVO.setId(payMoneyTransferListPO.getId());
+                payMoneyTransferListVO.setRemark(payMoneyTransferListPO.getRemark());
+                payMoneyTransferListVO.setAmount(payMoneyTransferListPO.getAmount());
+                payMoneyTransferListVO.setBankAccountId(payMoneyTransferListPO.getBankAccountId());
+                payMoneyTransferListVOList.add(payMoneyTransferListVO);
+            }
+            payMoneySheetVO.setId(payMoneySheetPO.getId());
+            payMoneySheetVO.setOperator(payMoneySheetPO.getOperator());
+            payMoneySheetVO.setState(payMoneySheetPO.getState());
+            payMoneySheetVO.setTotalAmount(payMoneySheetPO.getTotalAmount());
+            payMoneySheetVO.setTransferList(payMoneyTransferListVOList);
+            payMoneySheetVO.setCustomer(payMoneySheetPO.getCustomer());
+            BusinessHistorySheetVO businessHistorySheetVO = new BusinessHistorySheetVO("pay", payMoneySheetVO);
+            ans.add(businessHistorySheetVO);
+        }
+    }
+
+    private void handleReceive(List<BusinessHistorySheetVO> ans, List<ReceiveMoneySheetPO> lst){
+        for(ReceiveMoneySheetPO receiveMoneySheetPO: lst){
+            String id = receiveMoneySheetPO.getId();
+            List<ReceiveMoneyTransferListPO> receiveMoneyTransferListPOList = businessHistoryDao.findReceiveMoneyTransferListByReceiveMoneySheetId(id);
+            List<ReceiveMoneyTransferListVO> receiveMoneyTransferListVOList = new ArrayList<>();
+            for(ReceiveMoneyTransferListPO receiveMoneyTransferListPO: receiveMoneyTransferListPOList){
+                ReceiveMoneyTransferListVO receiveMoneyTransferListVO = new ReceiveMoneyTransferListVO();
+                receiveMoneyTransferListVO.setId(receiveMoneyTransferListPO.getId());
+                receiveMoneyTransferListVO.setRemark(receiveMoneyTransferListPO.getRemark());
+                receiveMoneyTransferListVO.setAmount(receiveMoneyTransferListPO.getAmount());
+                receiveMoneyTransferListVO.setBankAccountId(receiveMoneyTransferListPO.getBankAccountId());
+                receiveMoneyTransferListVOList.add(receiveMoneyTransferListVO);
+            }
+            ReceiveMoneySheetVO receiveMoneySheetVO = new ReceiveMoneySheetVO();
+            receiveMoneySheetVO.setId(receiveMoneySheetPO.getId());
+            receiveMoneySheetVO.setCustomer(receiveMoneySheetPO.getCustomer());
+            receiveMoneySheetVO.setOperator(receiveMoneySheetPO.getOperator());
+            receiveMoneySheetVO.setState(receiveMoneySheetPO.getState());
+            receiveMoneySheetVO.setTotalAmount(receiveMoneySheetPO.getTotalAmount());
+            receiveMoneySheetVO.setTransferList(receiveMoneyTransferListVOList);
+            BusinessHistorySheetVO businessHistorySheetVO = new BusinessHistorySheetVO("receive", receiveMoneySheetVO);
             ans.add(businessHistorySheetVO);
         }
     }

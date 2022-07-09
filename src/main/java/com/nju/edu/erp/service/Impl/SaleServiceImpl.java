@@ -3,8 +3,10 @@ package com.nju.edu.erp.service.Impl;
 import com.nju.edu.erp.dao.CustomerDao;
 import com.nju.edu.erp.dao.ProductDao;
 import com.nju.edu.erp.dao.SaleSheetDao;
+import com.nju.edu.erp.enums.sheetState.GiveAwaySheetState;
 import com.nju.edu.erp.enums.sheetState.SaleSheetState;
 import com.nju.edu.erp.model.po.*;
+import com.nju.edu.erp.model.po.promotion.GiveAwaySheetPO;
 import com.nju.edu.erp.model.vo.ProductInfoVO;
 import com.nju.edu.erp.model.vo.sale.SaleIODetailFilterConditionVO;
 import com.nju.edu.erp.model.vo.sale.SaleSheetContentVO;
@@ -15,6 +17,9 @@ import com.nju.edu.erp.model.vo.warehouse.WarehouseOutputFormVO;
 import com.nju.edu.erp.service.*;
 import com.nju.edu.erp.service.Impl.strategy.promotion.discount.DiscountStrategy;
 import com.nju.edu.erp.service.Impl.strategy.promotion.discount.LevelPromotionDiscountStrategy;
+import com.nju.edu.erp.service.Impl.strategy.promotion.giveAway.GiveAwayStrategy;
+import com.nju.edu.erp.service.Impl.strategy.promotion.giveAway.LevelPromotionGiveAwayStrategy;
+import com.nju.edu.erp.service.Impl.strategy.promotion.giveAway.TotalPricePromotionGiveAwayStrategy;
 import com.nju.edu.erp.service.Impl.strategy.promotion.voucher.CombinatorialPromotionVoucherStrategy;
 import com.nju.edu.erp.service.Impl.strategy.promotion.voucher.LevelPromotionVoucherStrategy;
 import com.nju.edu.erp.service.Impl.strategy.promotion.voucher.TotalPricePromotionVoucherStrategy;
@@ -50,8 +55,10 @@ public class SaleServiceImpl implements SaleService {
 
     private final TotalPricePromotionService totalPricePromotionService;
 
+    private final GiveAwayService giveAwayService;
+
     @Autowired
-    public SaleServiceImpl(SaleSheetDao saleSheetDao, ProductDao productDao, CustomerDao customerDao, ProductService productService, CustomerService customerService, WarehouseService warehouseService, TotalPricePromotionService totalPricePromotionService) {
+    public SaleServiceImpl(SaleSheetDao saleSheetDao, ProductDao productDao, CustomerDao customerDao, ProductService productService, CustomerService customerService, WarehouseService warehouseService, TotalPricePromotionService totalPricePromotionService, GiveAwayService giveAwayService) {
         this.saleSheetDao = saleSheetDao;
         this.productDao = productDao;
         this.customerDao = customerDao;
@@ -59,6 +66,7 @@ public class SaleServiceImpl implements SaleService {
         this.customerService = customerService;
         this.warehouseService = warehouseService;
         this.totalPricePromotionService = totalPricePromotionService;
+        this.giveAwayService = giveAwayService;
     }
 
     @Override
@@ -102,7 +110,7 @@ public class SaleServiceImpl implements SaleService {
         //TODO 促销策略的折扣和优惠券作用地方
         saleSheetPO.setDiscount(getDiscount());
         saleSheetPO.setVoucherAmount(getVoucherAmount(saleSheetPO));
-        makeGiveAway();
+        makeGiveAway(saleSheetPO);
 
         BigDecimal finalAmount = totalAmount.multiply(saleSheetPO.getDiscount()).subtract(saleSheetPO.getVoucherAmount());
         saleSheetPO.setFinalAmount(finalAmount);
@@ -206,6 +214,16 @@ public class SaleServiceImpl implements SaleService {
                 warehouseOutputFormVO.setSaleSheetId(saleSheetId);
                 warehouseOutputFormVO.setList(warehouseOutputFormContentVOS);
                 warehouseService.productOutOfWarehouse(warehouseOutputFormVO);
+
+                //将对应赠送单的状态由PENDING_SALE_SHEET_APPROVAL_SUCCESS变成PENDING_LEVEL_1
+                GiveAwaySheetPO giveAwaySheet = giveAwayService.getSheetBySaleSheetId(saleSheetId);
+                if (giveAwaySheet != null) {
+                    if (giveAwaySheet.getState().equals(GiveAwaySheetState.PENDING_SALE_SHEET_APPROVAL_SUCCESS)) {
+                        giveAwayService.approval(giveAwaySheet.getId(), GiveAwaySheetState.PENDING_LEVEL_1);
+                    } else {
+                        throw new RuntimeException("赠送单状态异常！销售单审批失败！请联系管理员!");
+                    }
+                }
             }
         }
     }
@@ -318,10 +336,20 @@ public class SaleServiceImpl implements SaleService {
         for (VoucherStrategy strategy : strategies) {
             totalVoucherAmount = totalVoucherAmount.add(strategy.getVoucherAmount());
         }
-        return BigDecimal.ZERO;
+        return totalVoucherAmount;
     }
 
-    private void makeGiveAway() {
+    private void makeGiveAway(SaleSheetPO saleSheetPO) {
+        List<GiveAwayStrategy> strategies = new ArrayList<>();
 
+        TotalPricePromotionGiveAwayStrategy totalPricePromotionGiveAwayStrategy = new TotalPricePromotionGiveAwayStrategy(totalPricePromotionService, giveAwayService, saleSheetPO);
+        strategies.add(totalPricePromotionGiveAwayStrategy);
+        //TODO 定义自己的构造函数并在这边修改，如果需要额外参数可以在这个函数的参数列表中加
+        LevelPromotionGiveAwayStrategy levelPromotionGiveAwayStrategy = new LevelPromotionGiveAwayStrategy();
+        strategies.add(levelPromotionGiveAwayStrategy);
+
+        for (GiveAwayStrategy strategy : strategies) {
+            strategy.makeGiveAwaySheet();
+        }
     }
 }

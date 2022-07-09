@@ -4,6 +4,7 @@ import com.nju.edu.erp.auth.Authorized;
 import com.nju.edu.erp.enums.Role;
 import com.nju.edu.erp.model.vo.UserVO;
 import com.nju.edu.erp.model.vo.finance.YearEndAwardsVO;
+import com.nju.edu.erp.service.StaffService;
 import com.nju.edu.erp.service.YearEndAwardsService;
 import com.nju.edu.erp.utils.DateHelper;
 import com.nju.edu.erp.web.Response;
@@ -20,9 +21,12 @@ public class YearEndAwardsController {
 
     private final YearEndAwardsService yearEndAwardsService;
 
+    private final StaffService staffService;
+
     @Autowired
-    public YearEndAwardsController(YearEndAwardsService yearEndAwardsService) {
+    public YearEndAwardsController(YearEndAwardsService yearEndAwardsService, StaffService staffService) {
         this.yearEndAwardsService = yearEndAwardsService;
+        this.staffService = staffService;
     }
 
     /**
@@ -34,7 +38,7 @@ public class YearEndAwardsController {
     public Response makeAwards(UserVO userVO, @RequestBody YearEndAwardsVO yearEndAwardsVO) {
         yearEndAwardsVO.setYear(DateHelper.getLastYear());
 
-        if (userVO.getRole().equals(Role.GM)) return Response.buildFailed("C00000", "总经理没有年终奖!");
+        if (staffService.getRoleByEmployeeId(yearEndAwardsVO.getStaffId()).equals(Role.GM)) return Response.buildFailed("C00000", "总经理没有年终奖!");
         else if (yearEndAwardsService.hasMade(yearEndAwardsVO.getStaffId(), yearEndAwardsVO.getYear())){
             return Response.buildFailed("C00001", "该员工去年已经制定过年终奖了！请不要重复制定");
         }else {

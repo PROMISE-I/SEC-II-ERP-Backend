@@ -59,6 +59,7 @@ public class TotalPricePromotionServiceImpl implements TotalPricePromotionServic
             BeanUtils.copyProperties(cvo, cpo);
             cpo.setTotalPricePromotionId(id);
             if (cpo.getQuantity() != null) {
+                cpo.setTotalPrice(cpo.getUnitPrice().multiply(BigDecimal.valueOf(cpo.getQuantity())));
                 cpos.add(cpo);
             }
         }
@@ -94,6 +95,17 @@ public class TotalPricePromotionServiceImpl implements TotalPricePromotionServic
 
     @Override
     public BigDecimal getVoucherAmountByDateAndThreshold(Date today, BigDecimal rawTotalAmount) {
+        TotalPricePromotionPO promotion = totalPricePromotionDao.getVoucherAmountByDateAndThreshold(today, rawTotalAmount);
+        return promotion == null? BigDecimal.ZERO : promotion.getVoucherAmount();
+    }
+
+    @Override
+    public List<TotalPricePromotionContentPO> findContentByTotalPricePromotionId(String id) {
+        return totalPricePromotionDao.findContentByTotalPricePromotionId(id);
+    }
+
+    @Override
+    public TotalPricePromotionPO getPromotionByDateAndThreshold(Date today, BigDecimal rawTotalAmount) {
         return totalPricePromotionDao.getVoucherAmountByDateAndThreshold(today, rawTotalAmount);
     }
 

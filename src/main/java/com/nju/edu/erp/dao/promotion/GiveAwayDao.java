@@ -32,4 +32,6 @@ public interface GiveAwayDao {
     int updateSheetStateOnPrev(String sheetId, GiveAwaySheetState prevState, GiveAwaySheetState state);
 
     List<GiveAwaySheetContentPO> findContentById(String sheetId);
+
+    GiveAwaySheetPO findSheetBySaleSheetId(String saleSheetId);
 }

@@ -22,7 +22,7 @@
     </delete>
 
     <select id="getLatest" resultType="com.nju.edu.erp.model.po.promotion.TotalPricePromotionPO">
-        select * from total_price_promotion order by `id` limit 0, 1
+        select * from total_price_promotion order by `id` desc limit 0, 1
     </select>
 
     <select id="findAll" resultType="com.nju.edu.erp.model.po.promotion.TotalPricePromotionPO">
@@ -38,10 +38,11 @@
         select * from total_price_promotion_content where total_price_promotion_id = #{id}
     </select>
 
-    <select id="getVoucherAmountByDateAndThreshold" resultType="java.math.BigDecimal">
-        select voucher_amount from total_price_promotion
+    <select id="getVoucherAmountByDateAndThreshold"
+            resultType="com.nju.edu.erp.model.po.promotion.TotalPricePromotionPO">
+        select * from total_price_promotion
         where threshold &lt;= #{rawTotalAmount} and
-              today between begin_time and end_time
+              #{today} between begin_time and end_time
         order by voucher_amount desc
         limit 0, 1
     </select>
