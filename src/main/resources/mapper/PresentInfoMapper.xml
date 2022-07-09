@@ -3,10 +3,10 @@
 <mapper namespace="com.nju.edu.erp.dao.promotion.PresentInfoDao">
     <insert id="insertOne">
         insert into present_info (level, product_id, quantity)
-        values (#{level}, #{productId}, #{quantity})
+        values (#{level}, #{pid}, #{quantity})
     </insert>
     <update id="updateOne">
-        update present_info set product_id = #{productId},
+        update present_info set product_id = #{pid},
                                 quantity = #{quantity}
         where id = #{id}
     </update>

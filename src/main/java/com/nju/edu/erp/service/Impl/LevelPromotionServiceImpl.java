@@ -58,6 +58,7 @@ public class LevelPromotionServiceImpl implements LevelPromotionService {
         List<PresentInfoPO> lst = levelPromotionStrategyVO.getPresentInfoList();
         if(lst != null) {
             for (PresentInfoPO pip : lst) {
+                if("".equals(pip.getPid()))continue;
                 if (pip.getId() == null) presentInfoDao.insertOne(pip);
                 else presentInfoDao.updateOne(pip);
             }
