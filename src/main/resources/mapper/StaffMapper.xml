@@ -3,8 +3,8 @@
 <mapper namespace="com.nju.edu.erp.dao.StaffDao">
 
     <insert id="createStaff" keyProperty="id" useGeneratedKeys="true">
-    insert into staff(`name`, gender, birthday, phone, position )
-    values (#{name}, #{gender}, #{birthday}, #{phone}, #{position})
+    insert into staff(`name`, gender, birthday, phone, position, balance )
+    values (#{name}, #{gender}, #{birthday}, #{phone}, #{position}, 0.00)
     </insert>
 
     <update id="updateOne">

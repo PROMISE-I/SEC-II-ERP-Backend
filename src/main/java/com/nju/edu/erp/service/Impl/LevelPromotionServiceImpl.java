@@ -32,7 +32,9 @@ public class LevelPromotionServiceImpl implements LevelPromotionService {
     public List<LevelPromotionStrategyVO> findAll() {
         List<LevelPromotionStrategyPO> levelPromotionStrategyPOList = levelStrategyDao.findAll();
         List<PresentInfoPO> presentInfoPOList = presentInfoDao.findAll();
-
+        for(PresentInfoPO p: presentInfoPOList){
+            System.out.println(p);
+        }
         return match(levelPromotionStrategyPOList, presentInfoPOList);
     }
 
@@ -42,13 +44,13 @@ public class LevelPromotionServiceImpl implements LevelPromotionService {
      * @return 某个级别的促销策略列表
      */
     @Override
-    public List<LevelPromotionStrategyVO> findByLevel(Integer level) {
+    public LevelPromotionStrategyVO findByLevel(Integer level) {
 
         List<LevelPromotionStrategyPO> levelPromotionStrategyPOList = levelStrategyDao.findByLevel(level);
 
         List<PresentInfoPO> presentInfoPOList = presentInfoDao.findAll();
 
-        return match(levelPromotionStrategyPOList, presentInfoPOList);
+        return match(levelPromotionStrategyPOList, presentInfoPOList).get(0);
     }
 
     @Transactional
@@ -56,9 +58,12 @@ public class LevelPromotionServiceImpl implements LevelPromotionService {
     public void updateOne(LevelPromotionStrategyVO levelPromotionStrategyVO) {
         LevelPromotionStrategyPO levelPromotionStrategyPO = new LevelPromotionStrategyPO(levelPromotionStrategyVO);
         List<PresentInfoPO> lst = levelPromotionStrategyVO.getPresentInfoList();
-        for(PresentInfoPO pip : lst){
-            if(pip.getId() == null)presentInfoDao.insertOne(pip);
-            else presentInfoDao.updateOne(pip);
+        if(lst != null) {
+            for (PresentInfoPO pip : lst) {
+                if("".equals(pip.getPid()))continue;
+                if (pip.getId() == null) presentInfoDao.insertOne(pip);
+                else presentInfoDao.updateOne(pip);
+            }
         }
         levelStrategyDao.updateOne(levelPromotionStrategyPO);
     }
@@ -75,7 +80,7 @@ public class LevelPromotionServiceImpl implements LevelPromotionService {
                     lst.add(pip);
                 }
             }
-            lpsv.setPresentInfoList(lst);
+            if(lst.size() > 0)lpsv.setPresentInfoList(lst);
             levelPromotionStrategyVOList.add(lpsv);
         }
 

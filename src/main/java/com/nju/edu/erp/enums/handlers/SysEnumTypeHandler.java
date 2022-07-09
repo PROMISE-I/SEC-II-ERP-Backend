@@ -16,7 +16,8 @@ import org.apache.ibatis.type.MappedTypes;
         SaleSheetState.class, PurchaseReturnsSheetState.class,
         SaleReturnsSheetState.class, PayMoneySheetState.class,
         ReceiveMoneySheetState.class, SalarySheetState.class,
-        SalaryCalculateType.class, SalarySendType.class})
+        SalaryCalculateType.class, SalarySendType.class,
+        GiveAwaySheetState.class})
 public class SysEnumTypeHandler<E extends Enum<E> & BaseEnum> extends BaseEnumTypeHandler<E> {
     /**
      * 设置配置文件设置的转换类以及枚举类内容，供其他方法更便捷高效的实现

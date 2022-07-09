@@ -1,5 +1,6 @@
 package com.nju.edu.erp.dao;
 
+import com.nju.edu.erp.model.po.SaleReturnsSheetPO;
 import com.nju.edu.erp.model.po.SaleSheetPO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -54,12 +55,23 @@ public class BusinessHistoryTest {
 
     @Test
     public void findSaleReturnsSheetByCondition1(){
-
+        String begin = "2022-07-07";
+        String end = "2022-07-10";
+        String salesman = "xiaoshoujingli";
+        Integer customer = 2;
+        List<SaleReturnsSheetPO> ans = businessHistoryDao.findAllSaleReturnsSheetByInterval(begin, end, salesman, customer);
+        assert (ans.size() == 1);
+        assert (ans.get(0).getId().equals("XSTHD-20220709-00000"));
     }
 
     @Test
     public void findSaleReturnsSheetByCondition2(){
-
+        String begin = "2022-07-07";
+        String end = "2022-07-10";
+        String salesman = "xiaoshoujingli";
+        Integer customer = 1;
+        List<SaleReturnsSheetPO> ans = businessHistoryDao.findAllSaleReturnsSheetByInterval(begin, end, salesman, customer);
+        assert (ans == null || ans.size() == 0);
     }
 
 

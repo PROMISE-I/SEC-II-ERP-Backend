@@ -3,16 +3,19 @@
 <mapper namespace="com.nju.edu.erp.dao.promotion.PresentInfoDao">
     <insert id="insertOne">
         insert into present_info (level, product_id, quantity)
-        values (#{level}, #{productId}, #{quantity})
+        values (#{level}, #{pid}, #{quantity})
     </insert>
     <update id="updateOne">
-        update present_info set product_id = #{productId},
+        update present_info set product_id = #{pid},
                                 quantity = #{quantity}
         where id = #{id}
     </update>
 
 
-    <select id="findAll" resultType="com.nju.edu.erp.model.po.promotion.PresentInfoPO">
+    <select id="findAll" resultType="com.nju.edu.erp.model.po.promotion.PresentInfoPO" resultMap="presentInfo">
         select * from present_info
     </select>
+    <resultMap id="presentInfo" type="com.nju.edu.erp.model.po.promotion.PresentInfoPO">
+        <result column="product_id" property="pid"></result>
+    </resultMap>
 </mapper>

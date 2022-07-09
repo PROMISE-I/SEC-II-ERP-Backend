@@ -12,10 +12,13 @@ import com.nju.edu.erp.model.vo.sale.SaleSheetVO;
 import com.nju.edu.erp.model.vo.UserVO;
 import com.nju.edu.erp.model.vo.warehouse.WarehouseOutputFormContentVO;
 import com.nju.edu.erp.model.vo.warehouse.WarehouseOutputFormVO;
-import com.nju.edu.erp.service.CustomerService;
-import com.nju.edu.erp.service.ProductService;
-import com.nju.edu.erp.service.SaleService;
-import com.nju.edu.erp.service.WarehouseService;
+import com.nju.edu.erp.service.*;
+import com.nju.edu.erp.service.Impl.strategy.promotion.discount.DiscountStrategy;
+import com.nju.edu.erp.service.Impl.strategy.promotion.discount.LevelPromotionDiscountStrategy;
+import com.nju.edu.erp.service.Impl.strategy.promotion.voucher.CombinatorialPromotionVoucherStrategy;
+import com.nju.edu.erp.service.Impl.strategy.promotion.voucher.LevelPromotionVoucherStrategy;
+import com.nju.edu.erp.service.Impl.strategy.promotion.voucher.TotalPricePromotionVoucherStrategy;
+import com.nju.edu.erp.service.Impl.strategy.promotion.voucher.VoucherStrategy;
 import com.nju.edu.erp.utils.IdGenerator;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,20 +48,22 @@ public class SaleServiceImpl implements SaleService {
 
     private final WarehouseService warehouseService;
 
+    private final TotalPricePromotionService totalPricePromotionService;
+
     @Autowired
-    public SaleServiceImpl(SaleSheetDao saleSheetDao, ProductDao productDao, CustomerDao customerDao, ProductService productService, CustomerService customerService, WarehouseService warehouseService) {
+    public SaleServiceImpl(SaleSheetDao saleSheetDao, ProductDao productDao, CustomerDao customerDao, ProductService productService, CustomerService customerService, WarehouseService warehouseService, TotalPricePromotionService totalPricePromotionService) {
         this.saleSheetDao = saleSheetDao;
         this.productDao = productDao;
         this.customerDao = customerDao;
         this.productService = productService;
         this.customerService = customerService;
         this.warehouseService = warehouseService;
+        this.totalPricePromotionService = totalPricePromotionService;
     }
 
     @Override
     @Transactional
     public void makeSaleSheet(UserVO userVO, SaleSheetVO saleSheetVO) {
-        // TODO
         // 需要持久化销售单（SaleSheet）和销售单content（SaleSheetContent），其中总价或者折后价格的计算需要在后端进行
         // 需要的service和dao层相关方法均已提供，可以不用自己再实现一遍
         SaleSheetPO saleSheetPO = new SaleSheetPO();
@@ -93,6 +98,12 @@ public class SaleServiceImpl implements SaleService {
 
         saleSheetDao.saveBatchSheetContent(saleSheetContentPOList);
         saleSheetPO.setRawTotalAmount(totalAmount);
+
+        //TODO 促销策略的折扣和优惠券作用地方
+        saleSheetPO.setDiscount(getDiscount());
+        saleSheetPO.setVoucherAmount(getVoucherAmount(saleSheetPO));
+        makeGiveAway();
+
         BigDecimal finalAmount = totalAmount.multiply(saleSheetPO.getDiscount()).subtract(saleSheetPO.getVoucherAmount());
         saleSheetPO.setFinalAmount(finalAmount);
         saleSheetDao.saveSheet(saleSheetPO);
@@ -101,7 +112,6 @@ public class SaleServiceImpl implements SaleService {
     @Override
     @Transactional
     public List<SaleSheetVO> getSaleSheetByState(SaleSheetState state) {
-        // TODO
         // 根据单据状态获取销售单（注意：VO包含SaleSheetContent）
         // 依赖的dao层部分方法未提供，需要自己实现
         List<SaleSheetVO> res = new ArrayList<>();
@@ -137,7 +147,6 @@ public class SaleServiceImpl implements SaleService {
     @Override
     @Transactional
     public void approval(String saleSheetId, SaleSheetState state) {
-        // TODO
         // 需要的service和dao层相关方法均已提供，可以不用自己再实现一遍
         /* 一些注意点：
             1. 二级审批成功之后需要进行
@@ -277,5 +286,42 @@ public class SaleServiceImpl implements SaleService {
     @Override
     public boolean isSheetExists(String sheetId) {
         return saleSheetDao.findSheetById(sheetId) != null;
+    }
+
+    private BigDecimal getDiscount() {
+        BigDecimal totalDiscount = BigDecimal.ONE;
+        List<DiscountStrategy> strategies = new ArrayList<>();
+        //TODO 定义自己的构造函数并在这边修改，如果需要额外参数可以在这个函数的参数列表中加
+        LevelPromotionDiscountStrategy levelPromotionDiscountStrategy = new LevelPromotionDiscountStrategy();
+        strategies.add(levelPromotionDiscountStrategy);
+
+        for (DiscountStrategy strategy : strategies) {
+            totalDiscount = totalDiscount.multiply(strategy.getDiscount());
+        }
+
+        return totalDiscount;
+    }
+
+    private BigDecimal getVoucherAmount(SaleSheetPO saleSheetPO) {
+        BigDecimal totalVoucherAmount  = BigDecimal.ZERO;
+        List<VoucherStrategy> strategies = new ArrayList<>();
+
+        TotalPricePromotionVoucherStrategy totalPricePromotionVoucherStrategy = new TotalPricePromotionVoucherStrategy(totalPricePromotionService, saleSheetPO);
+        strategies.add(totalPricePromotionVoucherStrategy);
+        //TODO 定义自己的构造函数并在这边修改，如果需要额外参数可以在这个函数的参数列表中加
+        LevelPromotionVoucherStrategy levelPromotionVoucherStrategy = new LevelPromotionVoucherStrategy();
+        strategies.add(levelPromotionVoucherStrategy);
+        //TODO 定义自己的构造函数并在这边修改，如果需要额外参数可以在这个函数的参数列表中加
+        CombinatorialPromotionVoucherStrategy combinatorialPromotionVoucherStrategy = new CombinatorialPromotionVoucherStrategy();
+        strategies.add(combinatorialPromotionVoucherStrategy);
+
+        for (VoucherStrategy strategy : strategies) {
+            totalVoucherAmount = totalVoucherAmount.add(strategy.getVoucherAmount());
+        }
+        return BigDecimal.ZERO;
+    }
+
+    private void makeGiveAway() {
+
     }
 }
