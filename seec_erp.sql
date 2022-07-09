@@ -789,3 +789,17 @@ CREATE TABLE `year_end_awards`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+-- ----------------------------
+-- Table structure for give_away
+-- ----------------------------
+DROP TABLE IF EXISTS `give_away`;
+CREATE TABLE `give_away`   (
+    `id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'ZSD + 日期 + index = 赠送单编号',
+    `sale_sheet_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '对应销售单编号',
+    `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
+    `state`  varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '单据状态',
+    `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+    `total_amount` decimal(10, 2) NULL DEFAULT NULL COMMENT '总额合计',
+    PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
