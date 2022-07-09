@@ -8,6 +8,7 @@ import com.nju.edu.erp.service.ProductService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,6 +58,7 @@ public class CombinatorialServiceImpl implements CombinatorialPromotionService {
     }
 
     @Override
+    @Transactional
     public int createOne(CombinatorialDiscountVO combinatorialDiscountVO) {
         CombinatorialDiscountPO cp = new CombinatorialDiscountPO(combinatorialDiscountVO);
         int affected = combinatorialPromotionDao.createOne(cp);
@@ -64,6 +66,7 @@ public class CombinatorialServiceImpl implements CombinatorialPromotionService {
     }
 
     @Override
+    @Transactional
     public int updateOne(CombinatorialDiscountVO combinatorialDiscountVO) {
         CombinatorialDiscountPO cp = new CombinatorialDiscountPO(combinatorialDiscountVO);
         int affected = combinatorialPromotionDao.updateOne(cp);
