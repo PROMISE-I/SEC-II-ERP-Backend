@@ -141,7 +141,7 @@ NJU-ERP 系统前端采用 Vue 框架，后端采用 SpringBoot 框架，使用 
 
 根据需求，系统存在以下界面：登陆界面、商品分类管理界面、商品管理界面、库存管理界面、库存查看界面、库存盘点界面、进货管理界面、进货退货管理界面、销售管理界面、销售退货管理界面、客户管理界面、审批界面。
 
-除了登陆界面外，所有界面根据使用的用户分成五个模块，每个模块内部页面可相互跳转。
+除了登陆界面外，所有界面根据使用的用户分成五个模块，**每个模块内部页面可相互跳转**。
 
 界面跳转如下图所示：
 
@@ -321,7 +321,11 @@ end
 
 数据层主要为业务逻辑层提供数据访问服务，包括对可持久化对象的增删改查。
 
-数据层主要给业务逻辑层提供数据访问服务，包括对于持久化数据的增、删、改、查。Inventory 业务逻辑、Sales 业务逻辑需要的服务有 CategoryDao、ProductDao、UserDao、WarehouseDao、WarehouseInputSheetDao、WarehouseOutputSheetDao、CustomerDao、RestockReturnedGoodsSheetDao、RestockSheetDao、SalesReturnedGoodsSheetDao、SalesSheetDao接口提供。在ERP系统中采用数据库来进行持久化数据的保存，借助Mybatis框架和Mapper映射文件完成数据层的具体实现。数据层模块的描述具体如下图所示。
+数据层主要给业务逻辑层提供数据访问服务，包括对于持久化数据的增、删、改、查。
+
+Inventory 业务逻辑、Sales 业务逻辑需要的服务有 CategoryDao、ProductDao、UserDao、WarehouseDao、WarehouseInputSheetDao、WarehouseOutputSheetDao、CustomerDao、RestockReturnedGoodsSheetDao、RestockSheetDao、SalesReturnedGoodsSheetDao、SalesSheetDao接口提供。
+
+在ERP系统中采用数据库来进行持久化数据的保存，借助Mybatis框架和Mapper映射文件完成数据层的具体实现。数据层模块的描述具体如下图所示。
 
 ![数据层模块的描述](NJU-ERP%E7%B3%BB%E7%BB%9F%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E6%96%87%E6%A1%A3v1/201250185-%E6%95%B0%E6%8D%AE%E5%B1%82%E6%A8%A1%E5%9D%97%E7%9A%84%E6%8F%8F%E8%BF%B0.png)
 
@@ -426,7 +430,7 @@ end
 | combinatorial_discount | 组合降价策略 |
 | customer                       | 客户 |
 | pay_money_sheet                | 付款单 |
-| pay_money_transfer_list        | TODO |
+| pay_money_transfer_list        | ***TODO*** |
 | position                      | 岗位 |
 | present_info          | 礼物信息 |
 | product                        | 商品 |
@@ -437,8 +441,8 @@ end
 | purchase_sheet_content         | 进货单内容 |
 | receive_money_sheet            | 收款单 |
 | receive_money_transfer_list    | 收款单内容 |
-| salary_calculate_type          | TODO |
-| salary_send_type               | TODO |
+| salary_calculate_type          | ***TODO*** |
+| salary_send_type               | ***TODO*** |
 | salary_sheet                   | 工资单 |
 | sale_returns_sheet             | 销售退货单 |
 | sale_returns_sheet_content     | 销售退货单内容 |
