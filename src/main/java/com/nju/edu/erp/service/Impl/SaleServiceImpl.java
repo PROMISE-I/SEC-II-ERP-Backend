@@ -334,7 +334,7 @@ public class SaleServiceImpl implements SaleService {
         for (VoucherStrategy strategy : strategies) {
             totalVoucherAmount = totalVoucherAmount.add(strategy.getVoucherAmount());
         }
-        return BigDecimal.ZERO;
+        return totalVoucherAmount;
     }
 
     private void makeGiveAway(SaleSheetPO saleSheetPO) {

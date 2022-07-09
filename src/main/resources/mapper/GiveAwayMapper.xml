@@ -25,7 +25,7 @@
     </update>
 
     <select id="getLatestSheet" resultType="com.nju.edu.erp.model.po.promotion.GiveAwaySheetPO">
-        select * from give_away_sheet order by id limit 0, 1
+        select * from give_away_sheet order by id desc limit 0, 1
     </select>
     <select id="findAll" resultType="com.nju.edu.erp.model.po.promotion.GiveAwaySheetPO">
         select * from give_away_sheet

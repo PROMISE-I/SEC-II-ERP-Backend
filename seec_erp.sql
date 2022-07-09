@@ -617,6 +617,11 @@ CREATE TABLE `total_price_promotion`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of total_price_promotion
+-- ----------------------------
+INSERT INTO `total_price_promotion` VALUES ('ZJCXCL-20220709-00000', 1000000.00, '2021-07-01 00:00:00', '2023-08-01 00:00:00', 'sky', 10000.00, 'total price promotion 1');
+
+-- ----------------------------
 -- Table structure for total_price_promotion_content
 -- ----------------------------
 DROP TABLE IF EXISTS `total_price_promotion_content`;
@@ -630,6 +635,12 @@ CREATE TABLE `total_price_promotion_content`  (
   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of total_price_promotion_content
+-- ----------------------------
+INSERT INTO `total_price_promotion_content` VALUES (1, 'ZJCXCL-20220709-00000', '0000000000400000', 2, 1000.00, NULL, 'give away product 1');
+INSERT INTO `total_price_promotion_content` VALUES (2, 'ZJCXCL-20220709-00000', '0000000000400001', 2, 1000.00, NULL, 'give away product 2');
 
 -- ----------------------------
 -- Table structure for user
@@ -788,8 +799,6 @@ CREATE TABLE `year_end_awards`  (
   PRIMARY KEY (`staff_id`, `year`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
-SET FOREIGN_KEY_CHECKS = 1;
-
 -- ----------------------------
 -- Table structure for give_away_sheet
 -- ----------------------------
@@ -818,3 +827,5 @@ CREATE TABLE `give_away_sheet_content`   (
      `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
      PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 0 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+SET FOREIGN_KEY_CHECKS = 1;
