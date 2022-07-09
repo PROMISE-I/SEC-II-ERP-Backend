@@ -97,7 +97,7 @@ public class GiveAwayServiceImpl implements GiveAwayService {
         if (state.equals(GiveAwaySheetState.FAILURE)) {
             GiveAwaySheetPO sheet = giveAwayDao.findSheetById(sheetId);
             if (sheet.getState().equals(GiveAwaySheetState.SUCCESS)) throw new RuntimeException("状态更新失败！");
-            int effectLines = giveAwayDao.updateSheetState(sheet, state);
+            int effectLines = giveAwayDao.updateSheetState(sheetId, state);
             if (effectLines == 0) throw new RuntimeException("状态更新失败！");
         } else {
             GiveAwaySheetState prevState;
