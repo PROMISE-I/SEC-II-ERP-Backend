@@ -180,6 +180,11 @@ public class SalaryServiceImpl implements SalaryService {
         return totalRawAmount;
     }
 
+    @Override
+    public boolean isSheetExists(String sheetId) {
+        return salaryDao.findSheetById(sheetId) != null;
+    }
+
     private BigDecimal calculateRawSalary(int staffId) {
         StaffInfo staffInfo = getStaffInfo(staffId);
         StaffSalaryCalculateStrategy strategy = FactorySalaryCalculateStrategy.productStrategy(staffInfo);

@@ -57,11 +57,15 @@ public class TotalPricePromotionServiceImpl implements TotalPricePromotionServic
             TotalPricePromotionContentPO cpo = new TotalPricePromotionContentPO();
             BeanUtils.copyProperties(cvo, cpo);
             cpo.setTotalPricePromotionId(id);
-            cpos.add(cpo);
+            if (cpo.getQuantity() != null) {
+                cpos.add(cpo);
+            }
         }
 
         totalPricePromotionDao.save(toSave);
-        totalPricePromotionDao.saveBatch(cpos);
+        if (cpos.size() != 0){
+            totalPricePromotionDao.saveBatch(cpos);
+        }
     }
 
     @Override

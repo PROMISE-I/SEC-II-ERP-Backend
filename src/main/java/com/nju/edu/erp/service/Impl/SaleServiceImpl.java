@@ -273,4 +273,9 @@ public class SaleServiceImpl implements SaleService {
         BigDecimal totalSaleAmount =  saleSheetDao.getTotalSaleAmountByMonthAndYearAndSalesman(year, month, salesman);
         return totalSaleAmount == null ? BigDecimal.ZERO : totalSaleAmount;
     }
+
+    @Override
+    public boolean isSheetExists(String sheetId) {
+        return saleSheetDao.findSheetById(sheetId) != null;
+    }
 }

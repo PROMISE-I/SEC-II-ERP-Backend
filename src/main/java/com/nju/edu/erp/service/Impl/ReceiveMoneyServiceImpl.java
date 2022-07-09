@@ -132,6 +132,11 @@ public class ReceiveMoneyServiceImpl implements ReceiveMoneyService {
         return getReceiveMoneySheetVOS(allSheets);
     }
 
+    @Override
+    public boolean isSheetExists(String sheetId) {
+        return receiveMoneyDao.findOneById(sheetId) != null;
+    }
+
     private List<ReceiveMoneySheetVO> getReceiveMoneySheetVOS(List<ReceiveMoneySheetPO> allSheets) {
         List<ReceiveMoneySheetVO> res = new ArrayList<>();
 

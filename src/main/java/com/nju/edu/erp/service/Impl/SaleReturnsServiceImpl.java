@@ -235,4 +235,9 @@ public class SaleReturnsServiceImpl implements SaleReturnsService {
         BigDecimal saleReturnsAmount = saleReturnsSheetDao.getTotalSaleReturnsAmountByMonthAndYearAndSalesman(year, month, salesman);
         return saleReturnsAmount == null ? BigDecimal.ZERO : saleReturnsAmount;
     }
+
+    @Override
+    public boolean isSheetExists(String sheetId) {
+        return saleReturnsSheetDao.findOneById(sheetId) != null;
+    }
 }

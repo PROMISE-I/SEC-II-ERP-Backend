@@ -35,4 +35,11 @@ public interface PurchaseService {
      * @return 进货单全部信息
      */
     PurchaseSheetVO getPurchaseSheetById(String purchaseSheetId);
+
+    /**
+     * 查看单据是否存在
+     * @param sheetId 单据编号
+     * @return 是否存在, true 表示存在
+     */
+    boolean isSheetExists(String sheetId);
 }

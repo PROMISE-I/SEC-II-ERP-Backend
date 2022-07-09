@@ -33,4 +33,11 @@ public interface ReceiveMoneyService {
      * @return 收款单列表
      */
     List<ReceiveMoneySheetVO> findAllSheet();
+
+    /**
+     * 查看单据是否存在
+     * @param sheetId 单据编号
+     * @return 是否存在, true 表示存在
+     */
+    boolean isSheetExists(String sheetId);
 }
