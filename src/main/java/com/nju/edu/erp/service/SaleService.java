@@ -3,6 +3,7 @@ package com.nju.edu.erp.service;
 import com.nju.edu.erp.enums.sheetState.SaleSheetState;
 import com.nju.edu.erp.model.po.CustomerPurchaseAmountPO;
 import com.nju.edu.erp.model.po.SaleIODetailPO;
+import com.nju.edu.erp.model.po.SaleSheetPO;
 import com.nju.edu.erp.model.vo.sale.SaleIODetailFilterConditionVO;
 import com.nju.edu.erp.model.vo.sale.SaleSheetVO;
 import com.nju.edu.erp.model.vo.UserVO;
@@ -74,4 +75,11 @@ public interface SaleService {
      * @return 销售总额
      */
     BigDecimal getTotalSaleAmountByMonthAndYearAndSalesman(Integer year, Integer month, String salesman);
+
+    /**
+     * 查看单据是否存在
+     * @param sheetId 单据编号
+     * @return 是否存在, true 表示存在
+     */
+    boolean isSheetExists(String sheetId);
 }

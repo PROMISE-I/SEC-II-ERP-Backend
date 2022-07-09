@@ -133,6 +133,11 @@ public class PayMoneyServiceImpl implements PayMoneyService {
         return getPayMoneySheetVOS(allSheets);
     }
 
+    @Override
+    public boolean isSheetExists(String sheetId) {
+        return payMoneyDao.findOneById(sheetId) != null;
+    }
+
     private List<PayMoneySheetVO> getPayMoneySheetVOS(List<PayMoneySheetPO> allSheets) {
         List<PayMoneySheetVO> res = new ArrayList<>();
 
