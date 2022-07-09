@@ -1,6 +1,6 @@
 package com.nju.edu.erp.service.Impl.strategy.promotion.give_away;
 
-import com.nju.edu.erp.model.po.sale.SaleSheetPO;
+import com.nju.edu.erp.model.po.sale_purchase.sale.SaleSheetPO;
 import com.nju.edu.erp.model.po.promotion.strategy.total_price.TotalPricePromotionContentPO;
 import com.nju.edu.erp.model.po.promotion.strategy.total_price.TotalPricePromotionPO;
 import com.nju.edu.erp.model.vo.promotion.grifts.GiveAwaySheetContentVO;

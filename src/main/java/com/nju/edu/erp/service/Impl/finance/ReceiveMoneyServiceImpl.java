@@ -2,14 +2,14 @@ package com.nju.edu.erp.service.Impl.finance;
 
 import com.nju.edu.erp.dao.finance.ReceiveMoneyDao;
 import com.nju.edu.erp.enums.sheet_state.finance.ReceiveMoneySheetState;
-import com.nju.edu.erp.model.po.customer.CustomerPO;
+import com.nju.edu.erp.model.po.sale_purchase.customer.CustomerPO;
 import com.nju.edu.erp.model.vo.user.UserVO;
 import com.nju.edu.erp.model.po.finance.receive_money.ReceiveMoneySheetPO;
 import com.nju.edu.erp.model.vo.finance.receive_money.ReceiveMoneySheetVO;
 import com.nju.edu.erp.model.po.finance.receive_money.ReceiveMoneyTransferListPO;
 import com.nju.edu.erp.model.vo.finance.receive_money.ReceiveMoneyTransferListVO;
-import com.nju.edu.erp.service.Interface.bank_account.BankAccountService;
-import com.nju.edu.erp.service.Interface.customer.CustomerService;
+import com.nju.edu.erp.service.Interface.finance.bank_account.BankAccountService;
+import com.nju.edu.erp.service.Interface.sale_purchase.customer.CustomerService;
 import com.nju.edu.erp.service.Interface.finance.ReceiveMoneyService;
 import com.nju.edu.erp.utils.IdGenerator;
 import org.springframework.beans.BeanUtils;
