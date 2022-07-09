@@ -12,7 +12,10 @@
     </update>
 
 
-    <select id="findAll" resultType="com.nju.edu.erp.model.po.promotion.PresentInfoPO">
+    <select id="findAll" resultType="com.nju.edu.erp.model.po.promotion.PresentInfoPO" resultMap="presentInfo">
         select * from present_info
     </select>
+    <resultMap id="presentInfo" type="com.nju.edu.erp.model.po.promotion.PresentInfoPO">
+        <result column="product_id" property="pid"></result>
+    </resultMap>
 </mapper>
