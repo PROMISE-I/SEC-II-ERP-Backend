@@ -791,10 +791,10 @@ CREATE TABLE `year_end_awards`  (
 SET FOREIGN_KEY_CHECKS = 1;
 
 -- ----------------------------
--- Table structure for give_away
+-- Table structure for give_away_sheet
 -- ----------------------------
-DROP TABLE IF EXISTS `give_away`;
-CREATE TABLE `give_away`   (
+DROP TABLE IF EXISTS `give_away_sheet`;
+CREATE TABLE `give_away_sheet`   (
     `id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'ZSD + 日期 + index = 赠送单编号',
     `sale_sheet_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '对应销售单编号',
     `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
@@ -803,3 +803,18 @@ CREATE TABLE `give_away`   (
     `total_amount` decimal(10, 2) NULL DEFAULT NULL COMMENT '总额合计',
     PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for give_away_sheet_content
+-- ----------------------------
+DROP TABLE IF EXISTS `give_away_sheet_content`;
+CREATE TABLE `give_away_sheet_content`   (
+     `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增id',
+     `give_away_sheet_id` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '赠送单id',
+     `pid` char(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品id',
+     `quantity` int(11) NULL DEFAULT NULL COMMENT '数量',
+     `unit_price` decimal(10, 2) NULL DEFAULT NULL COMMENT '单价',
+     `total_price` decimal(10, 2) NULL DEFAULT NULL COMMENT '金额',
+     `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
+     PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 0 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
