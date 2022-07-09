@@ -54,4 +54,21 @@ public class PositionInfoPO {
      * 扣税
      */
     BigDecimal tax;
+
+    @Override
+    public boolean equals(Object o){
+        PositionInfoPO p = null;
+        if (o instanceof PositionInfoPO){
+            p = (PositionInfoPO) o;
+        }else{
+            return false;
+        }
+
+        return title.equals(p.getTitle()) && level.equals(p.getLevel())&&
+                salaryPaymentMethod.equals(p.getSalaryPaymentMethod())
+                && salaryCalculateMethod.equals(p.getSalaryCalculateMethod())
+                && (baseSalary.compareTo(p.getBaseSalary()) == 0)
+                && (specialSalary.compareTo(p.getSpecialSalary()) == 0)
+                && (tax.compareTo(p.getTax()) == 0);
+    }
 }

@@ -105,5 +105,6 @@ VALUES ('0000000000500002', '0000000000400001', 2000, '2002-08-09', '2022-09-09'
 INSERT INTO combinatorial_discount(product_one_id, product_two_id, discount_amount, begin, end)
 VALUES ('0000000000400000', '0000000000500002', 1000, '2002-10-09', '2022-11-09');
 
+# data for business-history dao test
 
 
