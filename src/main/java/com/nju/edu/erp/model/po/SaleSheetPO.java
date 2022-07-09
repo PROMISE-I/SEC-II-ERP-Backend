@@ -58,4 +58,13 @@ public class SaleSheetPO {
      * 创建时间
      */
     private Date createTime;
+
+    @Override
+    public boolean equals(Object o){
+        if(o instanceof SaleSheetPO) {
+            return ((SaleSheetPO) o).getId().equals(id);
+        }
+
+        return false;
+    }
 }

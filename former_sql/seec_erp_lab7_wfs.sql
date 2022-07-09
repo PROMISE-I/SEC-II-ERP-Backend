@@ -7,7 +7,15 @@ CREATE TABLE `bank_account`(
     `name`   varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '账户名称',
     `amount` decimal(10, 2) NULL DEFAULT NULL COMMENT '金额',
     PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of bank_account
+-- ----------------------------
+INSERT INTO `bank_account` VALUES (0, '南哪第一银行', 1000000.00);
+INSERT INTO `bank_account` VALUES (1, '南哪第二银行', 5000000.00);
+INSERT INTO `bank_account` VALUES (2, '南哪软院分行', 10000000.00);
+INSERT INTO `bank_account` VALUES (3, '南哪商院分行', 50000000.00);
 
 -- ----------------------------
 -- Table structure for receive_money_transfer_list
@@ -20,7 +28,17 @@ CREATE TABLE `receive_money_transfer_list`(
     `amount`                 decimal(10, 2) NULL DEFAULT NULL COMMENT '转账总额',
     `remark`                 varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
     PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 0 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of receive_money_transfer_list
+-- ----------------------------
+INSERT INTO `receive_money_transfer_list` VALUES (0, 'SKD-20220528-00000', 2, 1000000.00, '对应销售单：XSD-20220523-00000');
+INSERT INTO `receive_money_transfer_list` VALUES (1, 'SKD-20220528-00000', 0, 39800.00, '对应销售单：XSD-20220523-00000');
+INSERT INTO `receive_money_transfer_list` VALUES (2, 'SKD-20220528-00001', 2, 3000000.00, '对应销售单：XSD-20220524-00000');
+INSERT INTO `receive_money_transfer_list` VALUES (3, 'SKD-20220528-00001', 0, 359800.00, '对应销售单：XSD-20220524-00000');
+INSERT INTO `receive_money_transfer_list` VALUES (4, 'SKD-20220528-00002', 1, 495800.00, '对应销售单：XSD-20220524-00001');
+INSERT INTO `receive_money_transfer_list` VALUES (5, 'SKD-20220528-00003', 1, 575800.00, '对应销售单：XSD-20220524-00002');
 
 -- ----------------------------
 -- Table structure for receive_money_sheet
@@ -37,6 +55,14 @@ CREATE TABLE `receive_money_sheet`(
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of receive_money_sheet
+-- ----------------------------
+INSERT INTO `receive_money_sheet` VALUES ('SKD-20220528-00000', 2, 'sky', 1039800.00, '待一级审批', '2022-05-28 08:31:02');
+INSERT INTO `receive_money_sheet` VALUES ('SKD-20220528-00001', 2, 'sky', 3359800.00, '待一级审批', '2022-05-28 08:32:11');
+INSERT INTO `receive_money_sheet` VALUES ('SKD-20220528-00002', 2, 'sky', 495800.00, '待一级审批', '2022-05-28 08:32:37');
+INSERT INTO `receive_money_sheet` VALUES ('SKD-20220528-00003', 2, 'sky', 575800.00, '待一级审批', '2022-05-28 08:33:06');
+
+-- ----------------------------
 -- Table structure for pay_money_transfer_list
 -- ----------------------------
 DROP TABLE IF EXISTS `pay_money_transfer_list`;
@@ -47,7 +73,18 @@ CREATE TABLE `pay_money_transfer_list`(
     `amount`             decimal(10, 2) NULL DEFAULT NULL COMMENT '转账总额',
     `remark`             varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
     PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 0 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of pay_money_transfer_list
+-- ----------------------------
+INSERT INTO `pay_money_transfer_list` VALUES (0, 'FKD-20220528-00000', 3, 1000000.00, '对应进货单：JHD-20220523-00000');
+INSERT INTO `pay_money_transfer_list` VALUES (1, 'FKD-20220528-00001', 3, 2000000.00, '对应进货单：JHD-20220523-00001');
+INSERT INTO `pay_money_transfer_list` VALUES (2, 'FKD-20220528-00001', 2, 200000.00, '对应进货单：JHD-20220523-00001');
+INSERT INTO `pay_money_transfer_list` VALUES (3, 'FKD-20220528-00002', 2, 3000000.00, '对应进货单：JHD-20220523-00002');
+INSERT INTO `pay_money_transfer_list` VALUES (4, 'FKD-20220528-00002', 0, 400000.00, '对应进货单：JHD-20220523-00002');
+INSERT INTO `pay_money_transfer_list` VALUES (5, 'FKD-20220528-00002', 1, 50000.00, '对应进货单：JHD-20220523-00002');
+INSERT INTO `pay_money_transfer_list` VALUES (6, 'FKD-20220528-00003', 3, 1650000.00, '对应进货单：JHD-20220524-00002');
 
 -- ----------------------------
 -- Table structure for pay_money_sheet
@@ -62,6 +99,14 @@ CREATE TABLE `pay_money_sheet`(
     `create_time`  datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
     PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of pay_money_sheet
+-- ----------------------------
+INSERT INTO `pay_money_sheet` VALUES ('FKD-20220528-00000', 1, 'sky', 1000000.00, '待一级审批', '2022-05-28 08:38:21');
+INSERT INTO `pay_money_sheet` VALUES ('FKD-20220528-00001', 1, 'sky', 2200000.00, '待一级审批', '2022-05-28 08:40:25');
+INSERT INTO `pay_money_sheet` VALUES ('FKD-20220528-00002', 1, 'sky', 3450000.00, '待一级审批', '2022-05-28 08:41:30');
+INSERT INTO `pay_money_sheet` VALUES ('FKD-20220528-00003', 1, 'sky', 1650000.00, '待一级审批', '2022-05-28 08:41:59');
 
 -- ----------------------------
 -- Table structure for salary_sheet

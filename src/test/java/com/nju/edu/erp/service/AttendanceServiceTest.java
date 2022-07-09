@@ -24,6 +24,9 @@ public class AttendanceServiceTest {
         assert(attendanceService.checkAttendance(attendanceRecordPO));
     }
 
+
+    @Test
+    @Transactional
     public void clockInTest2(){
         //创造一条打卡记录
         AttendanceRecordPO attendanceRecordPO = new AttendanceRecordPO(1, "2022-07-09");
