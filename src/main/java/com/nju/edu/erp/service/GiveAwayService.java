@@ -19,4 +19,6 @@ public interface GiveAwayService {
     void approval(String sheetId, GiveAwaySheetState state);
 
     GiveAwaySheetPO getSheetBySaleSheetId(String saleSheetId);
+
+    List<GiveAwaySheetVO> findAll();
 }
