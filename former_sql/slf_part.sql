@@ -122,3 +122,4 @@ VALUES (4, '1970-01-01', '1970-01-01');
 INSERT INTO promotion (level, begin, end)
 VALUES (5, '1970-01-01', '1970-01-01');
 
+

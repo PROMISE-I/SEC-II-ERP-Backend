@@ -32,13 +32,13 @@ public class LevelPromotionController {
     /**
      * show promotion strategy for certain level
      * @param level
-     * @return 某个级别对应销售策略的列表
+     * @return 某个级别对应销售策略
      */
     @GetMapping("/findByLevel")
     public Response findByLevel(@RequestParam Integer level){
-        List<LevelPromotionStrategyVO> lst = levelPromotionService.findByLevel(level);
+        LevelPromotionStrategyVO l = levelPromotionService.findByLevel(level);
 
-        return Response.buildSuccess(lst);
+        return Response.buildSuccess(l);
     }
 
     /**
