@@ -29,7 +29,7 @@
         select * from combinatorial_discount
         where (product_one_id = #{productOne} and product_two_id = #{productTwo})
         or (product_one_id = #{productTwo} and product_two_id = #{productOne})
-        limit 1
+        order by discount_amount desc limit 1
     </select>
 
     <resultMap id="CombinatorialDiscountPO" type="com.nju.edu.erp.model.po.promotion.CombinatorialDiscountPO">

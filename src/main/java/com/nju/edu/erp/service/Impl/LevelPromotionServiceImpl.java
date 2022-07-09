@@ -68,6 +68,11 @@ public class LevelPromotionServiceImpl implements LevelPromotionService {
         levelStrategyDao.updateOne(levelPromotionStrategyPO);
     }
 
+    @Override
+    public List<PresentInfoPO> findPresentInfoByLevel(Integer level) {
+        return presentInfoDao.findPresentInfoByLevel(level);
+    }
+
     private List<LevelPromotionStrategyVO> match(List<LevelPromotionStrategyPO> levelPromotionStrategyPOList, List<PresentInfoPO> presentInfoPOList){
         List<LevelPromotionStrategyVO> levelPromotionStrategyVOList = new ArrayList<>();
         //遍历每个级别的促销策略

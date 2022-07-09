@@ -8,8 +8,13 @@ import java.math.BigDecimal;
  */
 //TODO 获得代金卷
 public class LevelPromotionVoucherStrategy implements VoucherStrategy{
+    private BigDecimal voucher;
+
+    public LevelPromotionVoucherStrategy(BigDecimal voucher){
+        this.voucher = voucher;
+    }
     @Override
     public BigDecimal getVoucherAmount() {
-        return BigDecimal.ZERO;
+        return voucher;
     }
 }
