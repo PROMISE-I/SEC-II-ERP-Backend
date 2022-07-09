@@ -33,4 +33,11 @@ public interface PayMoneyService {
      * @return 付款单列表
      */
     List<PayMoneySheetVO> findAllSheets();
+
+    /**
+     * 查看单据是否存在
+     * @param sheetId 单据编号
+     * @return 是否存在, true 表示存在
+     */
+    boolean isSheetExists(String sheetId);
 }
