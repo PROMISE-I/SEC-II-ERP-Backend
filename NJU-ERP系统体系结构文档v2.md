@@ -10,16 +10,6 @@
 
 本报告面向开发人员、测试人员及最终用户而编写，是了解系统的导航。
 
-### 词汇表
-
-TODO：词汇表
-
-| 词汇名称     | 词汇含义                     | 备注 |
-| :----------- | :--------------------------- | ---- |
-| NJU-ERP 系统 | 蓝鲸软件科技企业资源计划系统 |      |
-|              |                              |      |
-|              |                              |      |
-
 ### 参考资料
 
 1. IEEE1471-2000
@@ -31,8 +21,6 @@ TODO：词汇表
 参考《NJU-ERP系统用例文档》和《NJU-ERP系统软件需求规格说明文档》中对产品的概括描述。
 
 ## 体系结构模型
-
-*TODO：这一部分文档结构较为灵活，可以根据实际情况增补条目和标题*
 
 ### 整体架构描述
 
@@ -47,8 +35,6 @@ NJU-ERP 系统中，选择了分层体系结构风格，将系统分为 3 层（
 ### 组合视角
 
 #### 开发包图
-
-***TODO：修改开发包设计***
 
 NJU-ERP 系统的最终开发包设计如下表所示：
 
@@ -130,8 +116,6 @@ NJU-ERP 系统前端采用 Vue 框架，后端采用 SpringBoot 框架，使用 
 
 每一层只是使用下方直接接触的层。层与层之间仅仅是通过接口的调用来完成的。层之间调用的接口如下表所示。
 
-***TODO：完善下表***
-
 | 接口                                                         | 服务调用方 | 服务提供方 |
 | ------------------------------------------------------------ | ---------- | ---------- |
 | CategoryServiceImpl <br />ProductServiceImpl <br />WarehouseServiceimpl <br /> ... | 用户界面层 | 业务逻辑层 |
@@ -196,8 +180,6 @@ end
 
 用户界面层需要的服务接口如下表所示。
 
-***TODO：完善下表***
-
 | 服务名                              | 服务                   |
 | ----------------------------------- | ---------------------- |
 | CategoryServiceImpl.getUIInfo       | 取得商品分类的 UI 内容 |
@@ -226,13 +208,9 @@ end
 
 ##### 业务逻辑层模块的接口规范
 
-***TODO：完善接口规范***
-
 ###### WarehouseBL 模块的接口规范
 
 提供的服务（供接口）
-
-***TODO：完善下表***
 
 
 | 接口名称                                | 语法                                                         | 前置条件             | 后置条件                       |
@@ -251,8 +229,6 @@ end
 | WarehouseServiceImpl.getUIInfo          | public String[] getUIInfo(String[] args)                     | 需要获取 UI 界面内容 | 返回所需的 UI 内容             |
 
 需要的服务(需接口)
-
-***TODO：完善下表***
 
 | 服务名                                                       | 服务                                       |
 | ------------------------------------------------------------ | ------------------------------------------ |
@@ -280,8 +256,6 @@ end
 
 提供的服务（供接口）
 
-***TODO：完善下表***
-
 | 接口名称                               | 语法                                                         | 前置条件           | 后置条件                                        |
 | :------------------------------------- | ------------------------------------------------------------ | ------------------ | ----------------------------------------------- |
 | CustomerServiceImpl.createCustomer     | public CustomerVO createCustomer(CustomerInfoVO customerInfoVO) | 新增一个客户       | 增加新增的客户信息                              |
@@ -294,8 +268,6 @@ end
 | StockServiceImpl.returnStock           | public RestockReturnedGoodsSheetVO returnStock(RestockReturnedGoodsSheetInfoVO restockReturnedGoodsSheetInfoVO) | 需要退货(给供应商) | 更新库存信息                                    |
 
 需要的服务（需接口）
-
-***TODO：完善下表***
 
 | 服务名                                                       | 服务                                                      |
 | ------------------------------------------------------------ | --------------------------------------------------------- |
@@ -341,8 +313,6 @@ Inventory 业务逻辑、Sales 业务逻辑需要的服务有 CategoryDao、Prod
 ##### 数据层模块的接口规范
 
 数据层模块的接口规范如下表所示。
-
-***TODO：完善下表***
 
 | 接口名称                                                     | 语法                                                         | 前置条件                                          | 后置条件                                            |
 | :----------------------------------------------------------- | ------------------------------------------------------------ | :------------------------------------------------ | :-------------------------------------------------- |
@@ -400,8 +370,6 @@ Inventory 业务逻辑、Sales 业务逻辑需要的服务有 CategoryDao、Prod
 
 系统中的 PO 类就是对应的相关的实体类，ERP 系统设计如下 PO。
 
-***TODO：完善下表***
-
 | PO 类                         | 描述                                                         |
 | ----------------------------- | ------------------------------------------------------------ |
 | CategoryPO                    | 包含分类 id、分类名、父分类 ID、是否为叶节点、商品数量、下一个商品 index 属性。 |
@@ -420,8 +388,6 @@ Inventory 业务逻辑、Sales 业务逻辑需要的服务有 CategoryDao、Prod
 
 #### 数据库表
 
-***TODO：修改下表***
-
 | 表名         | 描述         |
 | ------------ | ------------ |
 | attendence   | 员工打卡签到 |
@@ -430,7 +396,7 @@ Inventory 业务逻辑、Sales 业务逻辑需要的服务有 CategoryDao、Prod
 | combinatorial_discount | 组合降价策略 |
 | customer                       | 客户 |
 | pay_money_sheet                | 付款单 |
-| pay_money_transfer_list        | ***TODO*** |
+| pay_money_transfer_list        | 收款单转账列表 |
 | position                      | 岗位 |
 | present_info          | 礼物信息 |
 | product                        | 商品 |
@@ -441,8 +407,8 @@ Inventory 业务逻辑、Sales 业务逻辑需要的服务有 CategoryDao、Prod
 | purchase_sheet_content         | 进货单内容 |
 | receive_money_sheet            | 收款单 |
 | receive_money_transfer_list    | 收款单内容 |
-| salary_calculate_type          | ***TODO*** |
-| salary_send_type               | ***TODO*** |
+| salary_calculate_type          | 薪资计算类型 |
+| salary_send_type               | 薪资发放类型 |
 | salary_sheet                   | 工资单 |
 | sale_returns_sheet             | 销售退货单 |
 | sale_returns_sheet_content     | 销售退货单内容 |
