@@ -2,7 +2,7 @@ package com.nju.edu.erp.service;
 
 import com.nju.edu.erp.enums.Role;
 import com.nju.edu.erp.enums.sheetState.PayMoneySheetState;
-import com.nju.edu.erp.model.po.User;
+import com.nju.edu.erp.model.vo.UserVO;
 import com.nju.edu.erp.model.vo.finance.PayMoneySheetVO;
 import com.nju.edu.erp.model.vo.finance.PayMoneyTransferListVO;
 import org.junit.Test;
@@ -65,32 +65,41 @@ public class PayMoneyServiceTest {
     @Test
     @Transactional
     public void makePayMoneySheetTest(){
-        User user = User.builder()
-                .role(Role.ADMIN)
-                .id(4)
+        Integer originalSize = payMoneyService.findAllSheets().size();
+        UserVO user = UserVO.builder()
                 .name("sky")
+                .role(Role.ADMIN)
                 .password("123456")
                 .build();
         PayMoneyTransferListVO payMoneyTransferListVO = PayMoneyTransferListVO.builder()
-                .id(1)
                 .amount(BigDecimal.valueOf(2000000.00))
                 .bankAccountId(3)
-                .remark("对应进货单：JHD-20220523-00001")
+                .remark("test")
                 .build();
         PayMoneyTransferListVO payMoneyTransferListVO2 = PayMoneyTransferListVO.builder()
-                .id(2)
                 .amount(BigDecimal.valueOf(200000.00))
                 .bankAccountId(2)
-                .remark("对应进货单：JHD-20220523-00001")
+                .remark("test")
                 .build();
-
-        PayMoneySheetVO payMoneySheetVO = PayMoneySheetVO.builder().build();
+        List<PayMoneyTransferListVO> payMoneyTransferListVOList = new ArrayList<>();
+        payMoneyTransferListVOList.add(payMoneyTransferListVO);
+        payMoneyTransferListVOList.add(payMoneyTransferListVO2);
+        PayMoneySheetVO payMoneySheetVO = PayMoneySheetVO.builder()
+                .customer(1)
+                .transferList(payMoneyTransferListVOList)
+                .build();
+        payMoneyService.makePayMoneySheet(user, payMoneySheetVO);
+        Integer currentSize = payMoneyService.findAllSheets().size();
+        assert ((currentSize - originalSize) == 1);
     }
 
     @Test
     @Transactional
-    public void approvalTest(){
-
+    public void approvalTest1(){
+        String id = "FKD-20220528-00000";
+        payMoneyService.approval(id, PayMoneySheetState.PENDING_LEVEL_2);
+        List<PayMoneySheetVO> lst = payMoneyService.getPayMoneySheetByState(PayMoneySheetState.PENDING_LEVEL_2);
+        assert lst.size() == 1 && lst.get(0).getId().equals(id);
     }
 
 }
