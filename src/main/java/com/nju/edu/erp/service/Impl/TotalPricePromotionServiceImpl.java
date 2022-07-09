@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -89,6 +90,11 @@ public class TotalPricePromotionServiceImpl implements TotalPricePromotionServic
     public void deleteById(String id) {
         totalPricePromotionDao.deleteById(id);
         totalPricePromotionDao.deleteContentById(id);
+    }
+
+    @Override
+    public BigDecimal getVoucherAmountByDateAndThreshold(Date today, BigDecimal rawTotalAmount) {
+        return totalPricePromotionDao.getVoucherAmountByDateAndThreshold(today, rawTotalAmount);
     }
 
     private TotalPricePromotionVO POToVO(TotalPricePromotionPO po) {
