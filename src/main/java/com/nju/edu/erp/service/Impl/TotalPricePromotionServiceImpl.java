@@ -12,6 +12,7 @@ import com.nju.edu.erp.utils.IdGenerator;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -32,6 +33,7 @@ public class TotalPricePromotionServiceImpl implements TotalPricePromotionServic
     }
 
     @Override
+    @Transactional
     public void makePromotion(UserVO userVO, TotalPricePromotionVO totalPricePromotionVO) {
         TotalPricePromotionPO toSave = new TotalPricePromotionPO();
         BeanUtils.copyProperties(totalPricePromotionVO, toSave);
@@ -47,7 +49,7 @@ public class TotalPricePromotionServiceImpl implements TotalPricePromotionServic
 
         toSave.setOperator(userVO.getName());
         TotalPricePromotionPO latest = totalPricePromotionDao.getLatest();
-        String id = IdGenerator.generateSheetId(latest.getId(), "ZJCXCL");
+        String id = IdGenerator.generateSheetId(latest == null? null : latest.getId(), "ZJCXCL");
         toSave.setId(id);
 
         List<TotalPricePromotionContentPO> cpos = new ArrayList<>();
@@ -79,8 +81,10 @@ public class TotalPricePromotionServiceImpl implements TotalPricePromotionServic
     }
 
     @Override
+    @Transactional
     public void deleteById(String id) {
         totalPricePromotionDao.deleteById(id);
+        totalPricePromotionDao.deleteContentById(id);
     }
 
     private TotalPricePromotionVO POToVO(TotalPricePromotionPO po) {
@@ -92,7 +96,7 @@ public class TotalPricePromotionServiceImpl implements TotalPricePromotionServic
         List<TotalPricePromotionContentVO> cvos = new ArrayList<>();
         for (TotalPricePromotionContentPO cpo : totalPricePromotionDao.findContentByTotalPricePromotionId(po.getId())) {
             TotalPricePromotionContentVO cvo = new TotalPricePromotionContentVO();
-            BeanUtils.copyProperties(po, vo);
+            BeanUtils.copyProperties(cpo, cvo);
             cvos.add(cvo);
         }
 

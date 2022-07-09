@@ -59,4 +59,10 @@ public interface TotalPricePromotionDao {
      * @return 总价促销策略内容列表
      */
     List<TotalPricePromotionContentPO> findContentByTotalPricePromotionId(String id);
+
+    /**
+     * 删除对应id的总价促销策略具体内容
+     * @param id 编号
+     */
+    void deleteContentById(String id);
 }

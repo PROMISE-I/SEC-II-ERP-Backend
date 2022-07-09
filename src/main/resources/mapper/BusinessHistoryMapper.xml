@@ -6,11 +6,17 @@
         select *
         from sale_sheet
         where TO_DAYS(create_time) between TO_DAYS(#{begin}) and TO_DAYS(#{end})
+        and salesman = #{salesman} and supplier = #{customer}
     </select>
     <select id="findAllSaleReturnsSheetByInterval" resultType="com.nju.edu.erp.model.po.SaleReturnsSheetPO">
         select *
         from sale_returns_sheet
         where TO_DAYS(create_time) between TO_DAYS(#{begin}) and TO_DAYS(#{end})
+        and sale_sheet_id in (
+            select id from sale_sheet
+            where supplier = #{customer}
+            and salesman = #{salesman}
+            )
     </select>
     <select id="findAllPurchaseSheetByInterval" resultType="com.nju.edu.erp.model.po.PurchaseSheetPO">
         select *
@@ -27,12 +33,15 @@
         select *
         from pay_money_sheet
         where TO_DAYS(create_time) between TO_DAYS(#{begin}) and TO_DAYS(#{end})
+        and customer = #{customer}
     </select>
     <select id="findAllReceiveMoneySheetByInterval"
             resultType="com.nju.edu.erp.model.po.finance.ReceiveMoneySheetPO">
         select *
         from receive_money_sheet
         where TO_DAYS(create_time) between TO_DAYS(#{begin}) and TO_DAYS(#{end})
+        and customer = #{customer}
+
     </select>
     <select id="findAllSalarySheetByInterval" resultType="com.nju.edu.erp.model.po.finance.SalarySheetPO">
         select *
