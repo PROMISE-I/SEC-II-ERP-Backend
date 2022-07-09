@@ -272,14 +272,12 @@ CI：客户端使与服务器使用 REST 接口进行通信。
 
 ##### 相关功能需求
 
-| 需求 ID                         | 需求描述                                           |
-| ------------------------------- | -------------------------------------------------- |
-| SalesSchedule.Input             | 系统应该允许财务人员使用键盘输入                   |
-| SalesSchedule.Input.Period      | 系统应该允许财务人员选择工资单对应的员工           |
-| SalesSchedule.Input.ProductName | 系统应该允许财务人员选择商品名                     |
-| SalesSchedule.Input.Member      | 系统应该允许财务人员选择客户                       |
-| SalesSchedule.Input.Operator    | 系统应该允许财务人员选择操作员                     |
-| SalesSchedule.Input.Done        | 财务人员确认查询销售明细表后，系统应该显示销售明细 |
+| 需求 ID                       | 需求描述                                           |
+| ----------------------------- | -------------------------------------------------- |
+| SalesSchedule.Input           | 系统应该允许财务人员使用键盘输入                   |
+| SalesSchedule.Input.Period    | 系统应该允许财务人员选择查看的时间段               |
+| SalesSchedule.Input.SheetType | 系统应该允许财务人员选择单据类型                   |
+| SalesSchedule.Input.Done      | 财务人员确认查询销售明细表后，系统应该显示销售明细 |
 
 #### 查看经营历程表
 
@@ -314,14 +312,9 @@ CI：客户端使与服务器使用 REST 接口进行通信。
 
 ***TODO：相关功能需求***
 
-| 需求 ID                         | 需求描述                                           |
-| ------------------------------- | -------------------------------------------------- |
-| SalesSchedule.Input             | 系统应该允许财务人员使用键盘输入                   |
-| SalesSchedule.Input.Period      | 系统应该允许财务人员选择工资单对应的员工           |
-| SalesSchedule.Input.ProductName | 系统应该允许财务人员选择商品名                     |
-| SalesSchedule.Input.Member      | 系统应该允许财务人员选择客户                       |
-| SalesSchedule.Input.Operator    | 系统应该允许财务人员选择操作员                     |
-| SalesSchedule.Input.Done        | 财务人员确认查询销售明细表后，系统应该显示销售明细 |
+| 需求 ID               | 需求描述                         |
+| --------------------- | -------------------------------- |
+| BusinessHistory.Input | 系统应该允许财务人员使用键盘输入 |
 
 #### 查看经营情况表
 
