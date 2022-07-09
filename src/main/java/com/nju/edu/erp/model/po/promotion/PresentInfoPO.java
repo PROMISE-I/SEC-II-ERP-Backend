@@ -23,7 +23,7 @@ public class PresentInfoPO {
     /**
      * 赠送的产品的 id
      */
-    String productId;
+    String pid;
 
     /**
      * 赠送的产品个数
