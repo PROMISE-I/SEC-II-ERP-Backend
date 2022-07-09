@@ -3,7 +3,7 @@
 <mapper namespace="com.nju.edu.erp.dao.promotion.GiveAwayDao">
     <insert id="save">
         insert into give_away_sheet (id, sale_sheet_id, remark, state, create_time, total_amount) values
-        (#{id}, #{sale_sheet_id}, #{remark}, #{state}, #{createTime}, #{totalAmount})
+        (#{id}, #{saleSheetId}, #{remark}, #{state}, #{createTime}, #{totalAmount})
     </insert>
     <insert id="saveBatch" useGeneratedKeys="true" keyProperty="id">
         insert into give_away_sheet_content (id, give_away_sheet_id, pid, quantity, unit_price, total_price, remark) values
