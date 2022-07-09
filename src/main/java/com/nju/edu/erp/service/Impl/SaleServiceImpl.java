@@ -217,10 +217,12 @@ public class SaleServiceImpl implements SaleService {
 
                 //将对应赠送单的状态由PENDING_SALE_SHEET_APPROVAL_SUCCESS变成PENDING_LEVEL_1
                 GiveAwaySheetPO giveAwaySheet = giveAwayService.getSheetBySaleSheetId(saleSheetId);
-                if (giveAwaySheet.getState().equals(GiveAwaySheetState.PENDING_SALE_SHEET_APPROVAL_SUCCESS)) {
-                    giveAwayService.approval(giveAwaySheet.getId(), GiveAwaySheetState.PENDING_LEVEL_1);
-                } else {
-                    throw new RuntimeException("赠送单状态异常！销售单审批失败！请联系管理员!");
+                if (giveAwaySheet != null) {
+                    if (giveAwaySheet.getState().equals(GiveAwaySheetState.PENDING_SALE_SHEET_APPROVAL_SUCCESS)) {
+                        giveAwayService.approval(giveAwaySheet.getId(), GiveAwaySheetState.PENDING_LEVEL_1);
+                    } else {
+                        throw new RuntimeException("赠送单状态异常！销售单审批失败！请联系管理员!");
+                    }
                 }
             }
         }
