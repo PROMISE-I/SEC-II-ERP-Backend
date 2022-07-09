@@ -52,5 +52,16 @@ public class BusinessHistoryTest {
         assert (ans == null || ans.size() == 0);
     }
 
+    @Test
+    public void findSaleReturnsSheetByCondition1(){
+
+    }
+
+    @Test
+    public void findSaleReturnsSheetByCondition2(){
+
+    }
+
+
 
 }
