@@ -37,7 +37,7 @@ public class LevelPromotionGiveAwayStrategy implements GiveAwayStrategy{
             GiveAwaySheetContentVO giveAwaySheetContentVO = new GiveAwaySheetContentVO();
             giveAwaySheetContentVO.setPid(presentInfo.getPid());
             giveAwaySheetContentVO.setQuantity(presentInfo.getQuantity());
-            giveAwaySheetContentVO.setUnitPrice(productService.getOneProductByPid(presentInfo.getPid()).getRetailPrice());
+            giveAwaySheetContentVO.setUnitPrice(productService.getOneProductByPid(presentInfo.getPid()).getPurchasePrice());
             giveAwaySheetContentVO.setTotalPrice(giveAwaySheetContentVO.getUnitPrice().multiply(BigDecimal.valueOf(giveAwaySheetContentVO.getQuantity())));
             giveAwaySheetContentVOList.add(giveAwaySheetContentVO);
         }

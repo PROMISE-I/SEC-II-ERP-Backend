@@ -50,6 +50,7 @@ public class CombinatorialServiceImpl implements CombinatorialPromotionService {
         String pName1 = productService.getOneProductByPid(productOneId).getName();
         String pName2 = productService.getOneProductByPid(productTwoId).getName();
         CombinatorialDiscountPO cp = combinatorialPromotionDao.findByPair(productOneId, productTwoId);
+        if(cp == null)return null;
         CombinatorialDiscountVO cv = new CombinatorialDiscountVO(cp);
         //给 VO 对象补上商品名称便于前端显示
         cv.setProductOneName(pName1);
