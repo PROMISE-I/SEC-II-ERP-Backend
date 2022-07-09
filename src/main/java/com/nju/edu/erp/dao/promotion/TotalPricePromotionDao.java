@@ -5,6 +5,8 @@ import com.nju.edu.erp.model.po.promotion.TotalPricePromotionPO;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -65,4 +67,12 @@ public interface TotalPricePromotionDao {
      * @param id 编号
      */
     void deleteContentById(String id);
+
+    /**
+     * 得到超过rawTotalAmount和在today内的所有折扣中优惠卷价格最高的
+     * @param today 时间
+     * @param rawTotalAmount 总价
+     * @return 折扣
+     */
+    BigDecimal getVoucherAmountByDateAndThreshold(Date today, BigDecimal rawTotalAmount);
 }
