@@ -1,11 +1,12 @@
 package com.nju.edu.erp.service;
 
 import com.nju.edu.erp.dao.finance.ReceiveMoneyDao;
-import com.nju.edu.erp.enums.Role;
-import com.nju.edu.erp.enums.sheetState.ReceiveMoneySheetState;
-import com.nju.edu.erp.model.vo.UserVO;
-import com.nju.edu.erp.model.vo.finance.ReceiveMoneySheetVO;
-import com.nju.edu.erp.model.vo.finance.ReceiveMoneyTransferListVO;
+import com.nju.edu.erp.enums.sheet_state.finance.ReceiveMoneySheetState;
+import com.nju.edu.erp.enums.user.Role;
+import com.nju.edu.erp.model.vo.finance.receive_money.ReceiveMoneySheetVO;
+import com.nju.edu.erp.model.vo.finance.receive_money.ReceiveMoneyTransferListVO;
+import com.nju.edu.erp.model.vo.user.UserVO;
+import com.nju.edu.erp.service.Interface.finance.ReceiveMoneyService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

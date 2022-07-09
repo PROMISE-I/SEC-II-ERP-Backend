@@ -1,15 +1,16 @@
 package com.nju.edu.erp.service;
 
-import com.nju.edu.erp.dao.SaleSheetDao;
-import com.nju.edu.erp.dao.promotion.GiveAwayDao;
-import com.nju.edu.erp.enums.Role;
-import com.nju.edu.erp.model.po.SaleSheetPO;
-import com.nju.edu.erp.model.po.promotion.GiveAwaySheetContentPO;
-import com.nju.edu.erp.model.po.promotion.GiveAwaySheetPO;
-import com.nju.edu.erp.model.vo.UserVO;
-import com.nju.edu.erp.model.vo.promotion.GiveAwaySheetVO;
-import com.nju.edu.erp.model.vo.sale.SaleSheetContentVO;
-import com.nju.edu.erp.model.vo.sale.SaleSheetVO;
+import com.nju.edu.erp.dao.promotion.gifts.GiveAwayDao;
+import com.nju.edu.erp.dao.sale_purchase.sale.SaleSheetDao;
+import com.nju.edu.erp.enums.user.Role;
+import com.nju.edu.erp.model.po.promotion.gifts.GiveAwaySheetContentPO;
+import com.nju.edu.erp.model.po.promotion.gifts.GiveAwaySheetPO;
+import com.nju.edu.erp.model.po.sale_purchase.sale.SaleSheetPO;
+import com.nju.edu.erp.model.vo.sale_purchase.sale.SaleSheetContentVO;
+import com.nju.edu.erp.model.vo.sale_purchase.sale.SaleSheetVO;
+import com.nju.edu.erp.model.vo.user.UserVO;
+import com.nju.edu.erp.service.Interface.promotion.gifts.GiveAwayService;
+import com.nju.edu.erp.service.Interface.sale_purchase.sale.SaleService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,11 +1,11 @@
 package com.nju.edu.erp.service;
 
-import com.nju.edu.erp.dao.promotion.TotalPricePromotionDao;
-import com.nju.edu.erp.enums.Role;
-import com.nju.edu.erp.model.po.promotion.TotalPricePromotionPO;
-import com.nju.edu.erp.model.vo.UserVO;
-import com.nju.edu.erp.model.vo.promotion.TotalPricePromotionContentVO;
-import com.nju.edu.erp.model.vo.promotion.TotalPricePromotionVO;
+import com.nju.edu.erp.dao.promotion.strategy.TotalPricePromotionDao;
+import com.nju.edu.erp.enums.user.Role;
+import com.nju.edu.erp.model.vo.promotion.total_price.TotalPricePromotionContentVO;
+import com.nju.edu.erp.model.vo.promotion.total_price.TotalPricePromotionVO;
+import com.nju.edu.erp.model.vo.user.UserVO;
+import com.nju.edu.erp.service.Interface.promotion.TotalPricePromotionService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
