@@ -137,6 +137,11 @@ public class GiveAwayServiceImpl implements GiveAwayService {
         }
     }
 
+    @Override
+    public GiveAwaySheetPO getSheetBySaleSheetId(String saleSheetId) {
+        return giveAwayDao.findSheetBySaleSheetId(saleSheetId);
+    }
+
     private List<GiveAwaySheetVO> POToVO(List<GiveAwaySheetPO> sheetPOS) {
         List<GiveAwaySheetVO> res = new ArrayList<>();
 

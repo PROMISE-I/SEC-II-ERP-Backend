@@ -1,6 +1,7 @@
 package com.nju.edu.erp.service;
 
 import com.nju.edu.erp.enums.sheetState.GiveAwaySheetState;
+import com.nju.edu.erp.model.po.promotion.GiveAwaySheetPO;
 import com.nju.edu.erp.model.vo.UserVO;
 import com.nju.edu.erp.model.vo.promotion.GiveAwaySheetVO;
 
@@ -16,4 +17,6 @@ public interface GiveAwayService {
     List<GiveAwaySheetVO> getSheetByState(GiveAwaySheetState state);
 
     void approval(String sheetId, GiveAwaySheetState state);
+
+    GiveAwaySheetPO getSheetBySaleSheetId(String saleSheetId);
 }

@@ -3,8 +3,10 @@ package com.nju.edu.erp.service.Impl;
 import com.nju.edu.erp.dao.CustomerDao;
 import com.nju.edu.erp.dao.ProductDao;
 import com.nju.edu.erp.dao.SaleSheetDao;
+import com.nju.edu.erp.enums.sheetState.GiveAwaySheetState;
 import com.nju.edu.erp.enums.sheetState.SaleSheetState;
 import com.nju.edu.erp.model.po.*;
+import com.nju.edu.erp.model.po.promotion.GiveAwaySheetPO;
 import com.nju.edu.erp.model.vo.ProductInfoVO;
 import com.nju.edu.erp.model.vo.sale.SaleIODetailFilterConditionVO;
 import com.nju.edu.erp.model.vo.sale.SaleSheetContentVO;
@@ -212,6 +214,14 @@ public class SaleServiceImpl implements SaleService {
                 warehouseOutputFormVO.setSaleSheetId(saleSheetId);
                 warehouseOutputFormVO.setList(warehouseOutputFormContentVOS);
                 warehouseService.productOutOfWarehouse(warehouseOutputFormVO);
+
+                //将对应赠送单的状态由PENDING_SALE_SHEET_APPROVAL_SUCCESS变成PENDING_LEVEL_1
+                GiveAwaySheetPO giveAwaySheet = giveAwayService.getSheetBySaleSheetId(saleSheetId);
+                if (giveAwaySheet.getState().equals(GiveAwaySheetState.PENDING_SALE_SHEET_APPROVAL_SUCCESS)) {
+                    giveAwayService.approval(giveAwaySheet.getId(), GiveAwaySheetState.PENDING_LEVEL_1);
+                } else {
+                    throw new RuntimeException("赠送单状态异常！销售单审批失败！请联系管理员!");
+                }
             }
         }
     }
