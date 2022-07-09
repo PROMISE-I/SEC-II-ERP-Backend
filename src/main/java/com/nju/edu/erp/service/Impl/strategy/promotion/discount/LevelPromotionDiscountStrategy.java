@@ -8,6 +8,7 @@ import java.math.BigDecimal;
  */
 //TODO 返回折扣
 public class LevelPromotionDiscountStrategy implements DiscountStrategy{
+
     @Override
     public BigDecimal getDiscount() {
         return null;
