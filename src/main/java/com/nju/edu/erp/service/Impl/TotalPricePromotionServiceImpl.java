@@ -59,6 +59,7 @@ public class TotalPricePromotionServiceImpl implements TotalPricePromotionServic
             BeanUtils.copyProperties(cvo, cpo);
             cpo.setTotalPricePromotionId(id);
             if (cpo.getQuantity() != null) {
+                cpo.setTotalPrice(cpo.getUnitPrice().multiply(BigDecimal.valueOf(cpo.getQuantity())));
                 cpos.add(cpo);
             }
         }

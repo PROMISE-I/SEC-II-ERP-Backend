@@ -700,10 +700,10 @@ CREATE TABLE `total_price_promotion_content`  (
 -- ----------------------------
 -- Records of total_price_promotion_content
 -- ----------------------------
-INSERT INTO `total_price_promotion_content` VALUES (1, 'ZJCXCL-20220709-00000', '0000000000400000', 2, 1000.00, NULL, 'give away product 1');
-INSERT INTO `total_price_promotion_content` VALUES (2, 'ZJCXCL-20220709-00000', '0000000000400001', 2, 1000.00, NULL, 'give away product 2');
-INSERT INTO `total_price_promotion_content` VALUES (3, 'ZJCXCL-20220709-00001', '0000000000400000', 1, 1000.00, NULL, '');
-INSERT INTO `total_price_promotion_content` VALUES (4, 'ZJCXCL-20220709-00001', '0000000000400001', 1, 1000.00, NULL, NULL);
+INSERT INTO `total_price_promotion_content` VALUES (1, 'ZJCXCL-20220709-00000', '0000000000400000', 2, 1000.00, 2000, 'give away product 1');
+INSERT INTO `total_price_promotion_content` VALUES (2, 'ZJCXCL-20220709-00000', '0000000000400001', 2, 1000.00, 2000, 'give away product 2');
+INSERT INTO `total_price_promotion_content` VALUES (3, 'ZJCXCL-20220709-00001', '0000000000400000', 1, 1000.00, 1000, '');
+INSERT INTO `total_price_promotion_content` VALUES (4, 'ZJCXCL-20220709-00001', '0000000000400001', 1, 1000.00, 1000, NULL);
 
 -- ----------------------------
 -- Table structure for user
