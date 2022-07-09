@@ -75,6 +75,7 @@ public class GiveAwayServiceImpl implements GiveAwayService {
             contentPOS.add(contentPO);
             totalAmount = totalAmount.add(contentPO.getTotalPrice());
         }
+        toSave.setTotalAmount(totalAmount);
 
         giveAwayDao.save(toSave);
         giveAwayDao.saveBatch(contentPOS);
@@ -135,6 +136,17 @@ public class GiveAwayServiceImpl implements GiveAwayService {
                 warehouseService.productOutOfWarehouse(warehouseOutputFormVO);
             }
         }
+    }
+
+    @Override
+    public GiveAwaySheetPO getSheetBySaleSheetId(String saleSheetId) {
+        return giveAwayDao.findSheetBySaleSheetId(saleSheetId);
+    }
+
+    @Override
+    public List<GiveAwaySheetVO> findAll() {
+        List<GiveAwaySheetPO> all = giveAwayDao.findAll();
+        return POToVO(all);
     }
 
     private List<GiveAwaySheetVO> POToVO(List<GiveAwaySheetPO> sheetPOS) {

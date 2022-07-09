@@ -11,6 +11,6 @@ public class LevelPromotionDiscountStrategy implements DiscountStrategy{
 
     @Override
     public BigDecimal getDiscount() {
-        return null;
+        return BigDecimal.ONE;
     }
 }
