@@ -62,7 +62,7 @@ public class TotalPricePromotionController {
      * @return
      */
     @Authorized(roles = {Role.GM, Role.ADMIN})
-    @PostMapping("/promotion-delete")
+    @GetMapping("/promotion-delete")
     public Response delete(@RequestParam(value = "id") String id) {
         totalPricePromotionService.deleteById(id);
         return Response.buildSuccess();
