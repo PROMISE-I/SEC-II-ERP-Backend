@@ -95,13 +95,91 @@ public class SaleServiceWithPromotionTest {
 
     @Test
     @Transactional
-    public void makeSaleSheetTotalPromotionTest(){
-
+    public void makeSaleSheetCombinatorialTest(){
+        UserVO userVO = UserVO.builder()
+                .name("sky")
+                .role(Role.ADMIN)
+                .password("123456")
+                .build();
+        List<SaleSheetContentVO> saleSheetContentVOList = new ArrayList<>();
+        SaleSheetContentVO saleSheetContentVO1 = SaleSheetContentVO.builder()
+                .pid("0000000000400001")
+                .quantity(2)
+                .unitPrice(BigDecimal.valueOf(1000.00))
+                .totalPrice(BigDecimal.valueOf(2000.00))
+                .remark("")
+                .build();
+        SaleSheetContentVO saleSheetContentVO2 = SaleSheetContentVO.builder()
+                .pid("0000000000500000")
+                .quantity(3)
+                .unitPrice(BigDecimal.valueOf(3000.00))
+                .totalPrice(BigDecimal.valueOf(9000.00))
+                .remark("")
+                .build();
+        saleSheetContentVOList.add(saleSheetContentVO1);
+        saleSheetContentVOList.add(saleSheetContentVO2);
+        SaleSheetVO saleSheetVO = SaleSheetVO.builder()
+                .operator("sky")
+                .remark("level test")
+                .saleSheetContent(saleSheetContentVOList)
+                .supplier(2)
+                .salesman("sky")
+                .build();
+        saleService.makeSaleSheet(userVO, saleSheetVO);
+        SaleSheetPO saleSheetPO = saleSheetDao.getLatestSheet();
+        assert saleSheetPO.getVoucherAmount().compareTo(BigDecimal.valueOf(1100.00)) == 0;
     }
 
     @Test
     @Transactional
-    public void makeSheetCombinatorialPromotionTest(){
-
+    public void makeSheetTotalPromotionTest(){
+        UserVO userVO = UserVO.builder()
+                .name("sky")
+                .role(Role.ADMIN)
+                .password("123456")
+                .build();
+        List<SaleSheetContentVO> saleSheetContentVOList = new ArrayList<>();
+        SaleSheetContentVO saleSheetContentVO1 = SaleSheetContentVO.builder()
+                .pid("0000000000500002")
+                .quantity(200)
+                .unitPrice(BigDecimal.valueOf(1000.00))
+                .totalPrice(BigDecimal.valueOf(200000.00))
+                .remark("")
+                .build();
+        SaleSheetContentVO saleSheetContentVO2 = SaleSheetContentVO.builder()
+                .pid("0000000000500000")
+                .quantity(300)
+                .unitPrice(BigDecimal.valueOf(3000.00))
+                .totalPrice(BigDecimal.valueOf(900000.00))
+                .remark("")
+                .build();
+        saleSheetContentVOList.add(saleSheetContentVO1);
+        saleSheetContentVOList.add(saleSheetContentVO2);
+        SaleSheetVO saleSheetVO = SaleSheetVO.builder()
+                .operator("sky")
+                .remark("level test")
+                .saleSheetContent(saleSheetContentVOList)
+                .supplier(1)
+                .salesman("sky")
+                .build();
+        saleService.makeSaleSheet(userVO, saleSheetVO);
+        SaleSheetPO saleSheetPO = saleSheetDao.getLatestSheet();
+        assert saleSheetPO.getVoucherAmount().compareTo(BigDecimal.valueOf(10000.00)) == 0;
+        GiveAwaySheetPO giveAwaySheetPO = giveAwayService.getSheetBySaleSheetId(saleSheetPO.getId());
+        List<GiveAwaySheetContentPO> lst = giveAwayDao.findContentById(giveAwaySheetPO.getId());
+        List<String> expected = new ArrayList<>();
+        expected.add("0000000000400000");
+        expected.add("0000000000400001");
+        assert expected.size() == lst.size();
+        for(String e: expected){
+            boolean success = false;
+            for(GiveAwaySheetContentPO giveAwaySheetContentPO: lst){
+                if(giveAwaySheetContentPO.getPid().equals(e)){
+                    success = true;
+                    break;
+                }
+            }
+            assert success;
+        }
     }
 }
