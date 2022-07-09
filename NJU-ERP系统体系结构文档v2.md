@@ -30,7 +30,11 @@ NJU-ERP 系统中，选择了分层体系结构风格，将系统分为 3 层（
 
 图 1：参照体系结构风格的包图表达逻辑视角（https://processon.com/diagraming/62709109079129397f2ee488）
 
+![参照体系结构风格的包图表达逻辑视角](NJU-ERP%E7%B3%BB%E7%BB%9F%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E6%96%87%E6%A1%A3v2/image-20220710010828725.png)
+
 图 2：软件体系结构逻辑设计方案（https://processon.com/diagraming/6270b2955653bb5be570b723）
+
+![软件体系结构逻辑设计方案](NJU-ERP%E7%B3%BB%E7%BB%9F%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E6%96%87%E6%A1%A3v2/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%A1%88.png)
 
 ### 组合视角
 
@@ -84,11 +88,15 @@ NJU-ERP 系统的最终开发包图如下图所示
 
 NJU-ERP 系统开发包图（https://processon.com/diagraming/627093086376891e1c2106c1）
 
+![ERP系统开发包图](NJU-ERP%E7%B3%BB%E7%BB%9F%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E6%96%87%E6%A1%A3v2/ERP%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E5%8C%85%E5%9B%BE.png)
+
 #### 运行时进程
 
 在系统中，会有多个客户端进程（浏览器）和一个服务器进程，其进程图如下。结合部署图，客户端进程是在客户端机器商运行，服务器进程是在服务器端机器上运行。
 
 进程图（https://processon.com/diagraming/627c71cff346fb64d55adc0f）
+
+![进程图](NJU-ERP%E7%B3%BB%E7%BB%9F%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E6%96%87%E6%A1%A3v2/image-20220710010946184.png)
 
 #### 物理部署
 
@@ -97,6 +105,8 @@ NJU-ERP 系统前端采用 Vue 框架，后端采用 SpringBoot 框架，使用 
 部署时需要在服务器端放置服务器端构件，其中包括 Vue 框架、Springboot 框架和 Mybatis 框架；不需要在客户端部署任何构件，客户端通过网络在浏览器中访问该系统。
 
 部署图（https://processon.com/diagraming/6242da841e0853078939ac2c）
+
+![部署图](NJU-ERP%E7%B3%BB%E7%BB%9F%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E6%96%87%E6%A1%A3v2/image-20220710011004599.png)
 
 ### 接口视角
 
@@ -180,12 +190,11 @@ end
 
 用户界面层需要的服务接口如下表所示。
 
-| 服务名                              | 服务                   |
-| ----------------------------------- | ---------------------- |
-| CategoryServiceImpl.getUIInfo       | 取得商品分类的 UI 内容 |
-| ProductServiceImpl.getUIInfo        | 取得商品信息的 UI 内容 |
-| WarehouseServiceImpl.getUIInfo      | 取得库存信息的 UI 内容 |
-| ...（库存和销售模块中未实现的接口） | ...                    |
+| 服务名                         | 服务                   |
+| ------------------------------ | ---------------------- |
+| CategoryServiceImpl.getUIInfo  | 取得商品分类的 UI 内容 |
+| ProductServiceImpl.getUIInfo   | 取得商品信息的 UI 内容 |
+| WarehouseServiceImpl.getUIInfo | 取得库存信息的 UI 内容 |
 
 ##### 用户界面模块设计原理
 

@@ -47,6 +47,56 @@
 
 业务逻辑层的开发包图见体系结构文档。
 
+#### 库存模块
+
+##### 模块概述
+
+该模块包括商品分类管理、商品管理
+
+##### 接口规范
+
+提供的服务（供接口）
+
+
+| 接口名称                                | 语法                                                         | 前置条件             | 后置条件                       |
+| :-------------------------------------- | ------------------------------------------------------------ | -------------------- | ------------------------------ |
+| CategoryServiceImpl.createCategory      | public CategoryVO createCategory(Integer parentId, String name) | 需要新增一个商品分类 | 增加新增的商品分类信息         |
+| CategoryServiceImpl.queryAllCategory    | public List\<CategoryVO\> queryAllCategory()                 | 需要查询商品分类     | 返回所有的商品分类             |
+| CategoryServiceImpl.updateCategory      | public CategoryVO updateCategory(Integer id, String name)    | 需要更新商品分类     | 更新商品分类信息               |
+| CategoryServiceImpl.deleteCategory      | public void deleteCategory(Integer id)                       | 需要删除一个商品分类 | 删除指定 Id 的商品分类         |
+| CategoryServiceImpl.getUIInfo           | public String[] getUIInfo(String[] args)                     | 需要获取 UI 界面内容 | 返回所需的 UI 内容             |
+| ProductServiceImpl.createProduct        | public ProductInfoVO createProduct(CreateProductVO inputVO） | 需要新增一个商品     | 增加新增的商品信息             |
+| ProductServiceImpl.updateProduct        | public ProductInfoVO updateProduct(ProductInfoVO productInfoVO) | 需要更新商品信息     | 更新指定的商品信息             |
+| ProductServiceImpl.queryAllProduct      | public List\<ProductInfoVO\> queryAllProduct()               | 需要查询商品信息     | 返回所有商品信息               |
+| ProductServiceImpl.deleteById           | public void deleteById(String id)                            | 需要删除商品信息     | 删除指定 Id 的商品信息         |
+| ProductServiceImpl.getUIInfo            | public String[] getUIInfo(String[] args)                     | 需要获取 UI 界面内容 | 返回所需的 UI 内容             |
+| WarehouseServiceImpl.productWarehousing | public void productWarehousing(WarehouseInputFormVO warehouseInputFormVO) | 需要入库商品         | 更新库存中的商品信息(增加库存) |
+| WarehouseServiceImpl.getUIInfo          | public String[] getUIInfo(String[] args)                     | 需要获取 UI 界面内容 | 返回所需的 UI 内容             |
+
+需要的服务(需接口)
+
+| 服务名                                                       | 服务                                       |
+| ------------------------------------------------------------ | ------------------------------------------ |
+| CategoryDao.findByCategoryId(Integer categoryId)             | 根据 Id 得到 CategoryPO 对象               |
+| CategoryDao.createCategory(CategoryPO categoryPO)            | 向数据库中插入 CategoryPO对象              |
+| CategoryDao.updateById(CategoryPO categoryPO)                | 更新数据库中的 CategoryPO 对象             |
+| CategoryDao.findAll()                                        | 查询所有 CategoryPO 对象                   |
+| CategoryDao.deleteById(Integer id)                           | 删除数据库中指定 Id 的CategotyPO对象       |
+| ProductDao.createProduct(ProductPO productPO)                | 向数据库中插入 ProductPO 对象              |
+| ProductDao.updateById(ProductPO productPO)                   | 更新数据库中的 ProductPO 对象              |
+| ProductDao.findById(String id)                               | 根据 Id 查找 ProductPO 对象                |
+| ProductDao.findAll()                                         | 查询所有 ProductPO 对象                    |
+| ProductDao.deleteById(String id)                             | 删除数据库中指定 Id 的 ProductDao 对象     |
+| WarehouseDao.saveBatch(List\<WarehousePO\> warehousePOList)  | 向数据库中插入一批 WarehousePO 对象        |
+| WarehouseDao.deductQuantity(WarehousePO warehousePO)         | 减少一批商品的库存数量                     |
+| WarehouseDao.findAllNotZeroByPidSortedByBatchId(String pid)  | 按 pid 查询一批商品，按 batchId 排序       |
+| WarehouseInputSheetDao.getLatest()                           | 查询最近一条入库单(WarehouseInputSheetPO)  |
+| WarehouseInputSheetDao.save(WarehouseInputSheetPO toSave)    | 存入一条入库单记录(WarehouseInputSheetPO)  |
+| WarehouseInputSheetDao.saveBatch(List\<WarehouseInputSheetContentPO> warehouseInputListPOSheetContent) | 把入库单上的具体内容存入数据库             |
+| WarehouseOutputSheetDao.getLatest()                          | 查询最近一条出库单(WarehouseOutputSheetPO) |
+| WarehouseOutputSheetDao.save(WarehouseOutputSheetPO toSave)  | 存入一条出库单记录(WarehouseOutputSheetPO) |
+| WarehouseOutputSheetDao.saveBatch(List\<WarehouseOutputSheetContentPO> warehouseOutputListPOSheetContent) | 把出库单上的具体内容存入数据库             |
+
 #### 财务模块
 
 ##### 模块概述
@@ -56,6 +106,8 @@
 模块的职责和接口参加软甲体系结构文档。
 
 ##### 整体结构
+
+***TODO：整体结构***
 
 ##### 接口规范
 
@@ -75,11 +127,35 @@
 
 #### 人力资源模块
 
-***TODO***
+##### 模块概述
+
+##### 整体结构
+
+***TODO：整体结构***
+
+##### 接口规范
+
+***TODO：接口规范***
+
+##### 业务逻辑层的动态模型
+
+##### 业务逻辑层的设计原理
 
 #### 企业经营管理模块
 
-***TODO***
+##### 模块概述
+
+##### 整体结构
+
+***TODO：整体结构***
+
+##### 接口规范
+
+***TODO：接口规范***
+
+##### 业务逻辑层的动态模型
+
+##### 业务逻辑层的设计原理
 
 ### 数据层的分解
 
