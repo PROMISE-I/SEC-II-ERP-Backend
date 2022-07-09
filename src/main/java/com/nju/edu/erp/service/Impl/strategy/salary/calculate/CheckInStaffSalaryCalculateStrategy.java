@@ -23,6 +23,6 @@ public class CheckInStaffSalaryCalculateStrategy extends StaffSalaryCalculateStr
      */
     @Override
     public BigDecimal calculate() {
-        return basicSalary.multiply(checkInTimeMonthly).multiply(BigDecimal.valueOf(1/30)).add(postSalary);
+        return basicSalary.multiply(checkInTimeMonthly).multiply(BigDecimal.valueOf(1.0/30)).add(postSalary);
     }
 }

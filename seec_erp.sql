@@ -11,7 +11,7 @@
  Target Server Version : 80015
  File Encoding         : 65001
 
- Date: 09/07/2022 19:29:59
+ Date: 10/07/2022 00:13:29
 */
 
 SET NAMES utf8mb4;
@@ -23,9 +23,571 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `attendance`;
 CREATE TABLE `attendance`  (
   `staff_id` int(11) NOT NULL,
-  `date` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `date` datetime(0) NOT NULL,
   PRIMARY KEY (`staff_id`, `date`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of attendance
+-- ----------------------------
+INSERT INTO `attendance` VALUES (1, '2021-02-04 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-02-05 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-02-06 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-02-07 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-02-08 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-02-09 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-02-10 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-02-11 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-02-12 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-02-14 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-02-16 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-02-17 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-02-18 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-02-19 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-02-21 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-03-01 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-03-02 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-03-03 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-03-04 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-03-05 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-03-06 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-03-07 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-03-08 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-03-10 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-03-12 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-03-16 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-03-19 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-03-21 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-04-02 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-04-04 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-04-07 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-04-10 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-04-12 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-04-14 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-04-19 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-04-21 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-04-24 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-04-26 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-04-29 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-05-01 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-05-02 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-05-03 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-05-04 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-05-05 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-05-06 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-05-07 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-05-08 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-05-09 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-05-10 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-05-11 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-05-14 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-05-16 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-05-18 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-05-21 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-05-24 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2021-05-29 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2022-07-01 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2022-07-02 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2022-07-04 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2022-07-05 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2022-07-07 00:00:00');
+INSERT INTO `attendance` VALUES (1, '2022-07-09 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-02-04 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-02-05 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-02-06 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-02-07 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-02-08 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-02-09 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-02-10 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-02-11 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-02-12 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-02-14 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-02-16 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-02-17 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-02-18 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-02-19 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-02-21 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-03-01 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-03-02 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-03-03 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-03-04 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-03-05 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-03-06 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-03-07 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-03-08 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-03-10 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-03-12 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-03-16 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-03-19 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-03-21 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-04-02 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-04-04 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-04-07 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-04-10 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-04-12 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-04-14 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-04-19 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-04-21 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-04-24 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-04-26 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-04-29 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-05-01 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-05-02 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-05-03 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-05-04 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-05-05 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-05-06 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-05-07 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-05-08 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-05-09 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-05-10 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-05-11 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-05-14 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-05-16 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-05-18 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-05-21 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-05-24 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2021-05-29 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2022-07-01 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2022-07-02 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2022-07-04 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2022-07-05 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2022-07-07 00:00:00');
+INSERT INTO `attendance` VALUES (2, '2022-07-09 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-02-04 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-02-05 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-02-06 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-02-07 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-02-08 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-02-09 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-02-10 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-02-11 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-02-12 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-02-14 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-02-16 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-02-17 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-02-18 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-02-19 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-02-21 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-03-01 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-03-02 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-03-03 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-03-04 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-03-05 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-03-06 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-03-07 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-03-08 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-03-10 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-03-12 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-03-16 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-03-19 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-03-21 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-04-02 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-04-04 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-04-07 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-04-10 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-04-12 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-04-14 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-04-19 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-04-21 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-04-24 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-04-26 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-04-29 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-05-01 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-05-02 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-05-03 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-05-04 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-05-05 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-05-06 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-05-07 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-05-08 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-05-09 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-05-10 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-05-11 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-05-14 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-05-16 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-05-18 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-05-21 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-05-24 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2021-05-29 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2022-07-01 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2022-07-02 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2022-07-04 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2022-07-05 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2022-07-07 00:00:00');
+INSERT INTO `attendance` VALUES (3, '2022-07-09 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-02-04 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-02-05 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-02-06 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-02-07 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-02-08 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-02-09 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-02-10 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-02-11 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-02-12 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-02-14 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-02-16 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-02-17 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-02-18 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-02-19 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-02-21 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-03-01 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-03-02 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-03-03 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-03-04 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-03-05 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-03-06 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-03-07 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-03-08 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-03-10 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-03-12 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-03-16 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-03-19 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-03-21 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-04-02 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-04-04 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-04-07 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-04-10 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-04-12 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-04-14 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-04-19 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-04-21 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-04-24 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-04-26 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-04-29 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-05-01 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-05-02 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-05-03 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-05-04 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-05-05 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-05-06 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-05-07 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-05-08 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-05-09 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-05-10 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-05-11 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-05-14 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-05-16 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-05-18 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-05-21 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-05-24 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2021-05-29 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2022-07-01 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2022-07-02 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2022-07-04 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2022-07-05 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2022-07-07 00:00:00');
+INSERT INTO `attendance` VALUES (4, '2022-07-09 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-02-04 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-02-05 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-02-06 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-02-07 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-02-08 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-02-09 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-02-10 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-02-11 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-02-12 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-02-14 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-02-16 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-02-17 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-02-18 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-02-19 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-02-21 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-03-01 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-03-02 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-03-03 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-03-04 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-03-05 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-03-06 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-03-07 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-03-08 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-03-10 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-03-12 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-03-16 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-03-19 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-03-21 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-04-02 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-04-04 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-04-07 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-04-10 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-04-12 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-04-14 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-04-19 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-04-21 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-04-24 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-04-26 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-04-29 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-05-01 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-05-02 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-05-03 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-05-04 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-05-05 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-05-06 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-05-07 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-05-08 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-05-09 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-05-10 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-05-11 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-05-14 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-05-16 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-05-18 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-05-21 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-05-24 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2021-05-29 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2022-07-01 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2022-07-02 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2022-07-04 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2022-07-05 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2022-07-07 00:00:00');
+INSERT INTO `attendance` VALUES (5, '2022-07-09 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-02-04 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-02-05 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-02-06 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-02-07 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-02-08 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-02-09 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-02-10 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-02-11 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-02-12 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-02-14 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-02-16 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-02-17 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-02-18 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-02-19 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-02-21 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-03-01 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-03-02 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-03-03 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-03-04 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-03-05 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-03-06 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-03-07 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-03-08 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-03-10 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-03-12 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-03-16 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-03-19 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-03-21 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-04-02 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-04-04 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-04-07 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-04-10 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-04-12 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-04-14 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-04-19 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-04-21 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-04-24 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-04-26 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-04-29 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-05-01 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-05-02 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-05-03 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-05-04 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-05-05 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-05-06 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-05-07 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-05-08 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-05-09 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-05-10 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-05-11 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-05-14 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-05-16 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-05-18 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-05-21 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-05-24 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2021-05-29 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2022-07-01 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2022-07-02 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2022-07-04 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2022-07-05 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2022-07-07 00:00:00');
+INSERT INTO `attendance` VALUES (7, '2022-07-09 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-02-04 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-02-05 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-02-06 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-02-07 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-02-08 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-02-09 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-02-10 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-02-11 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-02-12 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-02-14 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-02-16 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-02-17 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-02-18 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-02-19 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-02-21 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-03-01 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-03-02 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-03-03 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-03-04 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-03-05 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-03-06 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-03-07 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-03-08 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-03-10 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-03-12 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-03-16 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-03-19 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-03-21 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-04-02 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-04-04 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-04-07 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-04-10 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-04-12 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-04-14 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-04-19 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-04-21 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-04-24 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-04-26 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-04-29 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-05-01 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-05-02 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-05-03 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-05-04 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-05-05 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-05-06 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-05-07 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-05-08 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-05-09 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-05-10 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-05-11 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-05-14 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-05-16 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-05-18 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-05-21 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-05-24 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2021-05-29 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2022-07-01 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2022-07-02 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2022-07-04 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2022-07-05 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2022-07-07 00:00:00');
+INSERT INTO `attendance` VALUES (9, '2022-07-09 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-02-04 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-02-05 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-02-06 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-02-07 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-02-08 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-02-09 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-02-10 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-02-11 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-02-12 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-02-14 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-02-16 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-02-17 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-02-18 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-02-19 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-02-21 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-03-01 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-03-02 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-03-03 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-03-04 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-03-05 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-03-06 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-03-07 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-03-08 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-03-10 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-03-12 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-03-16 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-03-19 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-03-21 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-04-02 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-04-04 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-04-07 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-04-10 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-04-12 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-04-14 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-04-19 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-04-21 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-04-24 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-04-26 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-04-29 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-05-01 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-05-02 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-05-03 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-05-04 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-05-05 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-05-06 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-05-07 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-05-08 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-05-09 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-05-10 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-05-11 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-05-14 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-05-16 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-05-18 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-05-21 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-05-24 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2021-05-29 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2022-07-01 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2022-07-02 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2022-07-04 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2022-07-05 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2022-07-07 00:00:00');
+INSERT INTO `attendance` VALUES (10, '2022-07-09 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-02-04 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-02-05 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-02-06 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-02-07 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-02-08 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-02-09 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-02-10 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-02-11 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-02-12 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-02-14 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-02-16 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-02-17 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-02-18 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-02-19 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-02-21 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-03-01 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-03-02 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-03-03 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-03-04 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-03-05 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-03-06 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-03-07 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-03-08 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-03-10 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-03-12 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-03-16 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-03-19 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-03-21 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-04-02 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-04-04 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-04-07 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-04-10 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-04-12 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-04-14 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-04-19 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-04-21 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-04-24 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-04-26 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-04-29 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-05-01 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-05-02 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-05-03 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-05-04 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-05-05 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-05-06 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-05-07 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-05-08 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-05-09 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-05-10 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-05-11 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-05-14 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-05-16 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-05-18 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-05-21 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-05-24 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2021-05-29 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2022-07-01 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2022-07-02 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2022-07-04 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2022-07-05 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2022-07-07 00:00:00');
+INSERT INTO `attendance` VALUES (11, '2022-07-09 00:00:00');
 
 -- ----------------------------
 -- Table structure for bank_account
@@ -43,7 +605,7 @@ CREATE TABLE `bank_account`  (
 -- ----------------------------
 INSERT INTO `bank_account` VALUES (1, '南哪第二银行', 5000000.00);
 INSERT INTO `bank_account` VALUES (2, '南哪软院分行', 11000000.00);
-INSERT INTO `bank_account` VALUES (3, '南哪商院分行', 47865030.00);
+INSERT INTO `bank_account` VALUES (3, '南哪商院分行', 47562477.99);
 INSERT INTO `bank_account` VALUES (4, '南哪第一银行', 1000000.00);
 
 -- ----------------------------
@@ -114,7 +676,7 @@ CREATE TABLE `customer`  (
 -- Records of customer
 -- ----------------------------
 INSERT INTO `customer` VALUES (1, '供应商', 1, 'yzh', '12306', '南京大学', '123456', '654321@abc.com', 0.00, 0.00, 6000000.00, 'uncln');
-INSERT INTO `customer` VALUES (2, '销售商', 1, 'lxs', '12580', '南哪儿大学', '123457', '12121@cba.com', 20000000.00, 5680600.00, 0.00, 'uncln');
+INSERT INTO `customer` VALUES (2, '销售商', 1, 'lxs', '12580', '南哪儿大学', '123457', '12121@cba.com', 20000000.00, 2320800.00, 0.00, 'uncln');
 
 -- ----------------------------
 -- Table structure for give_away_sheet
@@ -150,7 +712,7 @@ CREATE TABLE `give_away_sheet_content`  (
   `total_price` decimal(10, 2) NULL DEFAULT NULL COMMENT '金额',
   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of give_away_sheet_content
@@ -265,8 +827,8 @@ CREATE TABLE `product`  (
 -- ----------------------------
 -- Records of product
 -- ----------------------------
-INSERT INTO `product` VALUES ('0000000000400000', '戴尔电脑', 4, '戴尔(DELL)Vostro笔记本电脑5410 123色 戴尔成就3500Vostro1625D', 500, 3000.00, 4056.00, 1900.00, 3000.00);
-INSERT INTO `product` VALUES ('0000000000400001', '小米手机', 4, 'lalalalala', 1000, 2000.00, 3500.00, 2700.00, 4200.00);
+INSERT INTO `product` VALUES ('0000000000400000', '戴尔电脑', 4, '戴尔(DELL)Vostro笔记本电脑5410 123色 戴尔成就3500Vostro1625D', 1100, 3000.00, 4056.00, 1900.00, 3000.00);
+INSERT INTO `product` VALUES ('0000000000400001', '小米手机', 4, 'lalalalala', 1600, 2000.00, 3500.00, 2700.00, 4200.00);
 INSERT INTO `product` VALUES ('0000000000500000', 'intel电脑', 5, 'iphone14maxpro', 200, 6000.00, 10000.00, 1000.00, 10000.00);
 INSERT INTO `product` VALUES ('0000000000500001', 'iphone', 5, 'iphone14普通版', 100, 4000.00, 8000.00, 1000.00, 20000.00);
 INSERT INTO `product` VALUES ('0000000000500002', '坚果', 5, 'pro3', 100, 2499.00, 3199.00, 1000.00, NULL);
@@ -283,7 +845,16 @@ CREATE TABLE `promotion`  (
   `begin` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `end` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of promotion
+-- ----------------------------
+INSERT INTO `promotion` VALUES (1, 1, 0.00, 0.00, '1970-01-01', '1970-01-01');
+INSERT INTO `promotion` VALUES (2, 2, 0.00, 0.00, '1970-01-01', '1970-01-01');
+INSERT INTO `promotion` VALUES (3, 3, 0.00, 0.00, '1970-01-01', '1970-01-01');
+INSERT INTO `promotion` VALUES (4, 4, 0.00, 0.00, '1970-01-01', '1970-01-01');
+INSERT INTO `promotion` VALUES (5, 5, 0.00, 0.00, '1970-01-01', '1970-01-01');
 
 -- ----------------------------
 -- Table structure for purchase_returns_sheet
@@ -379,7 +950,7 @@ CREATE TABLE `purchase_sheet_content`  (
   `total_price` decimal(10, 2) NULL DEFAULT NULL COMMENT '金额',
   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 62 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 66 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of purchase_sheet_content
@@ -498,8 +1069,26 @@ CREATE TABLE `salary_sheet`  (
 -- ----------------------------
 -- Records of salary_sheet
 -- ----------------------------
+INSERT INTO `salary_sheet` VALUES ('GZD-202103-1', 1, 'seecoder', 3, 17500.00, 375.00, 17125.00, '审批完成', '2021-03-09 23:56:10');
+INSERT INTO `salary_sheet` VALUES ('GZD-202103-10', 10, 'slf', 3, 18000.00, 390.00, 17610.00, '审批完成', '2021-03-09 23:57:10');
+INSERT INTO `salary_sheet` VALUES ('GZD-202103-11', 11, 'wfs', 3, 17500.00, 375.00, 17125.00, '审批完成', '2021-03-09 23:57:15');
+INSERT INTO `salary_sheet` VALUES ('GZD-202103-2', 2, 'uncln', 3, 17500.00, 375.00, 17125.00, '审批完成', '2021-03-09 23:56:17');
+INSERT INTO `salary_sheet` VALUES ('GZD-202103-3', 3, 'kucun', 3, 17500.00, 375.00, 17125.00, '审批完成', '2021-03-09 23:56:25');
+INSERT INTO `salary_sheet` VALUES ('GZD-202103-5', 5, 'zxr', 3, 45000.00, 1480.00, 43520.00, '审批完成', '2021-03-09 23:56:33');
+INSERT INTO `salary_sheet` VALUES ('GZD-202103-6', 6, '67', 3, 100000.00, 6980.00, 93020.00, '审批完成', '2021-03-09 23:56:40');
+INSERT INTO `salary_sheet` VALUES ('GZD-202103-7', 7, 'xiaoshou', 3, 12500.00, 225.00, 12275.00, '审批完成', '2021-03-09 23:56:47');
+INSERT INTO `salary_sheet` VALUES ('GZD-202103-8', 8, 'Leone', 3, 100000.00, 6980.00, 93020.00, '待一级审批', '2021-03-09 23:56:53');
+INSERT INTO `salary_sheet` VALUES ('GZD-202103-9', 9, 'xiaoshoujingli', 3, 45000.00, 1480.00, 43520.00, '待一级审批', '2021-03-09 23:57:04');
+INSERT INTO `salary_sheet` VALUES ('GZD-202104-1', 1, 'seecoder', 3, 17166.67, 365.00, 16801.67, '审批完成', '2021-04-10 00:00:38');
+INSERT INTO `salary_sheet` VALUES ('GZD-202104-10', 10, 'slf', 3, 17600.00, 378.00, 17222.00, '审批完成', '2021-04-10 00:01:23');
+INSERT INTO `salary_sheet` VALUES ('GZD-202104-11', 11, 'wfs', 3, 17166.67, 365.00, 16801.67, '审批完成', '2021-04-10 00:01:29');
+INSERT INTO `salary_sheet` VALUES ('GZD-202104-2', 2, 'uncln', 3, 17166.67, 365.00, 16801.67, '审批完成', '2021-04-10 00:00:42');
+INSERT INTO `salary_sheet` VALUES ('GZD-202104-3', 3, 'kucun', 3, 17166.67, 365.00, 16801.67, '审批失败', '2021-04-10 00:00:47');
+INSERT INTO `salary_sheet` VALUES ('GZD-202104-5', 5, 'zxr', 3, 44333.33, 1413.33, 42920.00, '待二级审批', '2021-04-10 00:00:53');
+INSERT INTO `salary_sheet` VALUES ('GZD-202104-7', 7, 'xiaoshou', 3, 12166.67, 215.00, 11951.67, '待一级审批', '2021-04-10 00:01:06');
+INSERT INTO `salary_sheet` VALUES ('GZD-202104-9', 9, 'xiaoshoujingli', 3, 44333.33, 1413.33, 42920.00, '待一级审批', '2021-04-10 00:01:19');
 INSERT INTO `salary_sheet` VALUES ('GZD-202206-1', 1, 'seecoder', 3, 15000.00, 300.00, 14700.00, '审批完成', '2022-06-28 09:29:23');
-INSERT INTO `salary_sheet` VALUES ('GZD-202206-10', 10, 'slf', 3, 15000.00, 300.00, 14700.00, '待二级审批', '2022-06-28 09:30:10');
+INSERT INTO `salary_sheet` VALUES ('GZD-202206-10', 10, 'slf', 3, 15000.00, 300.00, 14700.00, '审批失败', '2022-06-28 09:30:10');
 INSERT INTO `salary_sheet` VALUES ('GZD-202206-11', 11, 'wfs', 2, 15000.00, 300.00, 14700.00, '待二级审批', '2022-06-28 09:29:56');
 INSERT INTO `salary_sheet` VALUES ('GZD-202206-2', 2, 'uncln', 3, 15000.00, 300.00, 14700.00, '待一级审批', '2022-06-28 09:29:34');
 INSERT INTO `salary_sheet` VALUES ('GZD-202206-3', 3, 'kucun', 2, 15000.00, 300.00, 14700.00, '待一级审批', '2022-06-28 09:29:40');
@@ -523,6 +1112,13 @@ CREATE TABLE `sale_returns_sheet`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of sale_returns_sheet
+-- ----------------------------
+INSERT INTO `sale_returns_sheet` VALUES ('XSTHD-20220710-00000', 'XSD-20220709-00000', 'sky', 1000000.00, 1.00, 5000.00, 995000.00, '待二级审批', '2022-07-10 00:11:32', '第一个退货单');
+INSERT INTO `sale_returns_sheet` VALUES ('XSTHD-20220710-00001', 'XSD-20220709-00001', 'sky', 150000.00, 1.00, 500.00, 149500.00, '待一级审批', '2022-07-10 00:11:46', '第二个退货单');
+INSERT INTO `sale_returns_sheet` VALUES ('XSTHD-20220710-00002', 'XSD-20220524-00000', 'sky', 4200000.00, 0.80, 200.00, 3359800.00, '审批完成', '2022-07-10 00:12:05', '第三个退货单');
+
+-- ----------------------------
 -- Table structure for sale_returns_sheet_content
 -- ----------------------------
 DROP TABLE IF EXISTS `sale_returns_sheet_content`;
@@ -536,6 +1132,15 @@ CREATE TABLE `sale_returns_sheet_content`  (
   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of sale_returns_sheet_content
+-- ----------------------------
+INSERT INTO `sale_returns_sheet_content` VALUES (1, 'XSTHD-20220710-00000', '0000000000500000', 50, 1000000.00, 20000.00, '');
+INSERT INTO `sale_returns_sheet_content` VALUES (2, 'XSTHD-20220710-00001', '0000000000500000', 5, 50000.00, 10000.00, '');
+INSERT INTO `sale_returns_sheet_content` VALUES (3, 'XSTHD-20220710-00001', '0000000000500001', 5, 100000.00, 20000.00, NULL);
+INSERT INTO `sale_returns_sheet_content` VALUES (4, 'XSTHD-20220710-00002', '0000000000400000', 600, 2100000.00, 3500.00, '');
+INSERT INTO `sale_returns_sheet_content` VALUES (5, 'XSTHD-20220710-00002', '0000000000400001', 600, 2100000.00, 3500.00, NULL);
 
 -- ----------------------------
 -- Table structure for sale_sheet
@@ -582,7 +1187,7 @@ CREATE TABLE `sale_sheet_content`  (
   `total_price` decimal(10, 2) NULL DEFAULT NULL COMMENT '金额',
   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 39 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 49 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sale_sheet_content
@@ -623,17 +1228,17 @@ CREATE TABLE `staff`  (
 -- ----------------------------
 -- Records of staff
 -- ----------------------------
-INSERT INTO `staff` VALUES (1, 'seecoder', '男', '1990-01-01', '12345678901', 'INVENTORY_MANAGER', 14700.00);
-INSERT INTO `staff` VALUES (2, 'uncln', '女', '1990-01-02', '12345678902', 'INVENTORY_MANAGER', 0.00);
-INSERT INTO `staff` VALUES (3, 'kucun', '男', '1990-01-01', '12345678903', 'INVENTORY_MANAGER', 0.00);
+INSERT INTO `staff` VALUES (1, 'seecoder', '男', '1990-01-01', '12345678901', 'INVENTORY_MANAGER', 48626.67);
+INSERT INTO `staff` VALUES (2, 'uncln', '女', '1990-01-02', '12345678902', 'INVENTORY_MANAGER', 33926.67);
+INSERT INTO `staff` VALUES (3, 'kucun', '男', '1990-01-01', '12345678903', 'INVENTORY_MANAGER', 17125.00);
 INSERT INTO `staff` VALUES (4, 'sky', '男', '1990-09-02', '12787979', 'ADMIN', 0.00);
-INSERT INTO `staff` VALUES (5, 'zxr', '男', '1990-01-03', '12345678904', 'SALE_MANAGER', 0.00);
-INSERT INTO `staff` VALUES (6, '67', '男', '1990-01-04', '12345678905', 'GM', 0.00);
-INSERT INTO `staff` VALUES (7, 'xiaoshou', '女', '1990-01-05', '12345678906', 'SALE_STAFF', 0.00);
+INSERT INTO `staff` VALUES (5, 'zxr', '男', '1990-01-03', '12345678904', 'SALE_MANAGER', 43520.00);
+INSERT INTO `staff` VALUES (6, '67', '男', '1990-01-04', '12345678905', 'GM', 93020.00);
+INSERT INTO `staff` VALUES (7, 'xiaoshou', '女', '1990-01-05', '12345678906', 'SALE_STAFF', 12275.00);
 INSERT INTO `staff` VALUES (8, 'Leone', '男', '1990-01-06', '12345678907', 'GM', 0.00);
 INSERT INTO `staff` VALUES (9, 'xiaoshoujingli', '女', '1990-01-07', '12345678908', 'SALE_MANAGER', 1120270.00);
-INSERT INTO `staff` VALUES (10, 'slf', '男', '1990-01-08', '12345678909', 'HR', 0.00);
-INSERT INTO `staff` VALUES (11, 'wfs', '男', '1990-01-09', '12345678910', 'FINANCIAL_STAFF', 0.00);
+INSERT INTO `staff` VALUES (10, 'slf', '男', '1990-01-08', '12345678909', 'HR', 34832.00);
+INSERT INTO `staff` VALUES (11, 'wfs', '男', '1990-01-09', '12345678910', 'FINANCIAL_STAFF', 33926.67);
 
 -- ----------------------------
 -- Table structure for staff_user
@@ -700,10 +1305,10 @@ CREATE TABLE `total_price_promotion_content`  (
 -- ----------------------------
 -- Records of total_price_promotion_content
 -- ----------------------------
-INSERT INTO `total_price_promotion_content` VALUES (1, 'ZJCXCL-20220709-00000', '0000000000400000', 2, 1000.00, 2000, 'give away product 1');
-INSERT INTO `total_price_promotion_content` VALUES (2, 'ZJCXCL-20220709-00000', '0000000000400001', 2, 1000.00, 2000, 'give away product 2');
-INSERT INTO `total_price_promotion_content` VALUES (3, 'ZJCXCL-20220709-00001', '0000000000400000', 1, 1000.00, 1000, '');
-INSERT INTO `total_price_promotion_content` VALUES (4, 'ZJCXCL-20220709-00001', '0000000000400001', 1, 1000.00, 1000, NULL);
+INSERT INTO `total_price_promotion_content` VALUES (1, 'ZJCXCL-20220709-00000', '0000000000400000', 2, 1000.00, 2000.00, 'give away product 1');
+INSERT INTO `total_price_promotion_content` VALUES (2, 'ZJCXCL-20220709-00000', '0000000000400001', 2, 1000.00, 2000.00, 'give away product 2');
+INSERT INTO `total_price_promotion_content` VALUES (3, 'ZJCXCL-20220709-00001', '0000000000400000', 1, 1000.00, 1000.00, '');
+INSERT INTO `total_price_promotion_content` VALUES (4, 'ZJCXCL-20220709-00001', '0000000000400001', 1, 1000.00, 1000.00, NULL);
 
 -- ----------------------------
 -- Table structure for user
@@ -744,7 +1349,7 @@ CREATE TABLE `warehouse`  (
   `batch_id` int(11) NOT NULL COMMENT '批次',
   `production_date` datetime(0) NULL DEFAULT NULL COMMENT '出厂日期',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 27 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of warehouse
@@ -752,8 +1357,8 @@ CREATE TABLE `warehouse`  (
 INSERT INTO `warehouse` VALUES (16, '0000000000400000', 0, 1000.00, 0, NULL);
 INSERT INTO `warehouse` VALUES (17, '0000000000400000', 200, 1200.00, 1, NULL);
 INSERT INTO `warehouse` VALUES (18, '0000000000400001', 400, 2000.00, 1, NULL);
-INSERT INTO `warehouse` VALUES (19, '0000000000400000', 0, 1300.00, 2, NULL);
-INSERT INTO `warehouse` VALUES (20, '0000000000400001', 200, 2800.00, 2, NULL);
+INSERT INTO `warehouse` VALUES (19, '0000000000400000', 600, 1300.00, 2, NULL);
+INSERT INTO `warehouse` VALUES (20, '0000000000400001', 800, 2800.00, 2, NULL);
 INSERT INTO `warehouse` VALUES (21, '0000000000400000', 300, 1900.00, 3, NULL);
 INSERT INTO `warehouse` VALUES (22, '0000000000400001', 400, 2700.00, 3, NULL);
 INSERT INTO `warehouse` VALUES (23, '0000000000500000', 0, 1000.00, 4, NULL);
@@ -798,7 +1403,7 @@ CREATE TABLE `warehouse_input_sheet_content`  (
   `production_date` datetime(0) NULL DEFAULT NULL COMMENT '出厂日期',
   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 54 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 58 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of warehouse_input_sheet_content
@@ -850,7 +1455,7 @@ CREATE TABLE `warehouse_output_sheet_content`  (
   `sale_price` decimal(10, 2) NOT NULL COMMENT '对应批次的单价',
   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 39 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 43 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of warehouse_output_sheet_content
@@ -876,5 +1481,13 @@ CREATE TABLE `year_end_awards`  (
   `amount` decimal(10, 2) NULL DEFAULT NULL COMMENT '年终奖总额',
   PRIMARY KEY (`staff_id`, `year`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of year_end_awards
+-- ----------------------------
+INSERT INTO `year_end_awards` VALUES (1, 2021, 30000.00);
+INSERT INTO `year_end_awards` VALUES (2, 2021, 30000.00);
+INSERT INTO `year_end_awards` VALUES (3, 2021, 10000.00);
+INSERT INTO `year_end_awards` VALUES (5, 2021, 40000.00);
 
 SET FOREIGN_KEY_CHECKS = 1;
