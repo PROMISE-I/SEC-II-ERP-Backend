@@ -25,7 +25,7 @@
     </update>
 
     <select id="getLatestSheet" resultType="com.nju.edu.erp.model.po.promotion.GiveAwaySheetPO">
-        select * from give_away_sheet order by id limit 0, 1
+        select * from give_away_sheet order by id desc limit 0, 1
     </select>
     <select id="findAll" resultType="com.nju.edu.erp.model.po.promotion.GiveAwaySheetPO">
         select * from give_away_sheet
@@ -38,5 +38,8 @@
     </select>
     <select id="findContentById" resultType="com.nju.edu.erp.model.po.promotion.GiveAwaySheetContentPO">
         select * from give_away_sheet_content where give_away_sheet_id = #{sheetId}
+    </select>
+    <select id="findSheetBySaleSheetId" resultType="com.nju.edu.erp.model.po.promotion.GiveAwaySheetPO">
+        select * from give_away_sheet where sale_sheet_id = #{saleSheetId}
     </select>
 </mapper>

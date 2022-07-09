@@ -11,7 +11,7 @@
  Target Server Version : 80015
  File Encoding         : 65001
 
- Date: 28/06/2022 09:32:32
+ Date: 09/07/2022 19:29:59
 */
 
 SET NAMES utf8mb4;
@@ -113,8 +113,54 @@ CREATE TABLE `customer`  (
 -- ----------------------------
 -- Records of customer
 -- ----------------------------
-INSERT INTO `customer` VALUES (1, '供应商', 1, 'yzh', '12306', '南京大学', '123456', '654321@abc.com', 0.00, 0.00, 5500000.00, 'uncln');
-INSERT INTO `customer` VALUES (2, '销售商', 1, 'lxs', '12580', '南哪儿大学', '123457', '12121@cba.com', 20000000.00, 3391600.00, 0.00, 'uncln');
+INSERT INTO `customer` VALUES (1, '供应商', 1, 'yzh', '12306', '南京大学', '123456', '654321@abc.com', 0.00, 0.00, 6000000.00, 'uncln');
+INSERT INTO `customer` VALUES (2, '销售商', 1, 'lxs', '12580', '南哪儿大学', '123457', '12121@cba.com', 20000000.00, 5680600.00, 0.00, 'uncln');
+
+-- ----------------------------
+-- Table structure for give_away_sheet
+-- ----------------------------
+DROP TABLE IF EXISTS `give_away_sheet`;
+CREATE TABLE `give_away_sheet`  (
+  `id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'ZSD + 日期 + index = 赠送单编号',
+  `sale_sheet_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '对应销售单编号',
+  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
+  `state` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '单据状态',
+  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `total_amount` decimal(10, 2) NULL DEFAULT NULL COMMENT '总额合计',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of give_away_sheet
+-- ----------------------------
+INSERT INTO `give_away_sheet` VALUES ('ZSD-20220709-00000', 'XSD-20220709-00000', NULL, '待一级审批', '2022-07-09 19:10:35', 4000.00);
+INSERT INTO `give_away_sheet` VALUES ('ZSD-20220709-00001', 'XSD-20220709-00001', NULL, '待一级审批', '2022-07-09 19:13:38', 2000.00);
+INSERT INTO `give_away_sheet` VALUES ('ZSD-20220709-00002', 'XSD-20220709-00002', NULL, '等待销售单通过审批', '2022-07-09 19:16:48', 2000.00);
+
+-- ----------------------------
+-- Table structure for give_away_sheet_content
+-- ----------------------------
+DROP TABLE IF EXISTS `give_away_sheet_content`;
+CREATE TABLE `give_away_sheet_content`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增id',
+  `give_away_sheet_id` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '赠送单id',
+  `pid` char(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品id',
+  `quantity` int(11) NULL DEFAULT NULL COMMENT '数量',
+  `unit_price` decimal(10, 2) NULL DEFAULT NULL COMMENT '单价',
+  `total_price` decimal(10, 2) NULL DEFAULT NULL COMMENT '金额',
+  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of give_away_sheet_content
+-- ----------------------------
+INSERT INTO `give_away_sheet_content` VALUES (1, 'ZSD-20220709-00000', '0000000000400000', 2, 1000.00, 2000.00, 'give away product 1');
+INSERT INTO `give_away_sheet_content` VALUES (2, 'ZSD-20220709-00000', '0000000000400001', 2, 1000.00, 2000.00, 'give away product 2');
+INSERT INTO `give_away_sheet_content` VALUES (3, 'ZSD-20220709-00001', '0000000000400000', 1, 1000.00, 1000.00, '');
+INSERT INTO `give_away_sheet_content` VALUES (4, 'ZSD-20220709-00001', '0000000000400001', 1, 1000.00, 1000.00, NULL);
+INSERT INTO `give_away_sheet_content` VALUES (5, 'ZSD-20220709-00002', '0000000000400000', 1, 1000.00, 1000.00, '');
+INSERT INTO `give_away_sheet_content` VALUES (6, 'ZSD-20220709-00002', '0000000000400001', 1, 1000.00, 1000.00, NULL);
 
 -- ----------------------------
 -- Table structure for pay_money_sheet
@@ -221,9 +267,9 @@ CREATE TABLE `product`  (
 -- ----------------------------
 INSERT INTO `product` VALUES ('0000000000400000', '戴尔电脑', 4, '戴尔(DELL)Vostro笔记本电脑5410 123色 戴尔成就3500Vostro1625D', 500, 3000.00, 4056.00, 1900.00, 3000.00);
 INSERT INTO `product` VALUES ('0000000000400001', '小米手机', 4, 'lalalalala', 1000, 2000.00, 3500.00, 2700.00, 4200.00);
-INSERT INTO `product` VALUES ('0000000000500000', 'intel电脑', 5, 'iphone14maxpro', 0, 6000.00, 10000.00, NULL, NULL);
-INSERT INTO `product` VALUES ('0000000000500001', 'iphone', 5, 'iphone14普通版', 0, 4000.00, 8000.00, NULL, NULL);
-INSERT INTO `product` VALUES ('0000000000500002', '坚果', 5, 'pro3', 0, 2499.00, 3199.00, NULL, NULL);
+INSERT INTO `product` VALUES ('0000000000500000', 'intel电脑', 5, 'iphone14maxpro', 200, 6000.00, 10000.00, 1000.00, 10000.00);
+INSERT INTO `product` VALUES ('0000000000500001', 'iphone', 5, 'iphone14普通版', 100, 4000.00, 8000.00, 1000.00, 20000.00);
+INSERT INTO `product` VALUES ('0000000000500002', '坚果', 5, 'pro3', 100, 2499.00, 3199.00, 1000.00, NULL);
 
 -- ----------------------------
 -- Table structure for promotion
@@ -317,6 +363,8 @@ INSERT INTO `purchase_sheet` VALUES ('JHD-20220523-00002', 1, 'xiaoshoujingli', 
 INSERT INTO `purchase_sheet` VALUES ('JHD-20220524-00000', 1, 'xiaoshoujingli', NULL, 2200000.00, '待二级审批', '2022-05-24 00:56:54');
 INSERT INTO `purchase_sheet` VALUES ('JHD-20220524-00001', 1, 'xiaoshoujingli', NULL, 3240000.00, '待一级审批', '2022-05-24 00:57:29');
 INSERT INTO `purchase_sheet` VALUES ('JHD-20220524-00002', 1, 'xiaoshoujingli', NULL, 1650000.00, '审批完成', '2022-05-24 01:02:04');
+INSERT INTO `purchase_sheet` VALUES ('JHD-20220709-00000', 1, 'sky', NULL, 300000.00, '审批完成', '2022-07-09 19:24:55');
+INSERT INTO `purchase_sheet` VALUES ('JHD-20220709-00001', 1, 'zxr', NULL, 200000.00, '审批完成', '2022-07-09 19:28:17');
 
 -- ----------------------------
 -- Table structure for purchase_sheet_content
@@ -347,6 +395,10 @@ INSERT INTO `purchase_sheet_content` VALUES (58, 'JHD-20220524-00001', '00000000
 INSERT INTO `purchase_sheet_content` VALUES (59, 'JHD-20220524-00001', '0000000000400001', 700, 3000.00, 2100000.00, NULL);
 INSERT INTO `purchase_sheet_content` VALUES (60, 'JHD-20220524-00002', '0000000000400000', 300, 1900.00, 570000.00, '');
 INSERT INTO `purchase_sheet_content` VALUES (61, 'JHD-20220524-00002', '0000000000400001', 400, 2700.00, 1080000.00, NULL);
+INSERT INTO `purchase_sheet_content` VALUES (62, 'JHD-20220709-00000', '0000000000500000', 100, 1000.00, 100000.00, '');
+INSERT INTO `purchase_sheet_content` VALUES (63, 'JHD-20220709-00000', '0000000000500001', 100, 1000.00, 100000.00, NULL);
+INSERT INTO `purchase_sheet_content` VALUES (64, 'JHD-20220709-00000', '0000000000500002', 100, 1000.00, 100000.00, NULL);
+INSERT INTO `purchase_sheet_content` VALUES (65, 'JHD-20220709-00001', '0000000000500000', 200, 1000.00, 200000.00, '');
 
 -- ----------------------------
 -- Table structure for receive_money_sheet
@@ -513,6 +565,9 @@ INSERT INTO `sale_sheet` VALUES ('XSD-20220524-00001', 2, 'xiaoshoujingli', NULL
 INSERT INTO `sale_sheet` VALUES ('XSD-20220524-00002', 2, 'xiaoshoujingli', NULL, '审批完成', '2022-05-24 00:45:25', 'xiaoshoujingli', 720000.00, 0.80, 575800.00, 200.00);
 INSERT INTO `sale_sheet` VALUES ('XSD-20220524-00003', 2, 'xiaoshoujingli', NULL, '待二级审批', '2022-05-24 01:05:15', 'xiaoshoujingli', 660000.00, 0.80, 527700.00, 300.00);
 INSERT INTO `sale_sheet` VALUES ('XSD-20220524-00004', 2, 'xiaoshoujingli', NULL, '待一级审批', '2022-05-24 01:07:23', 'xiaoshoujingli', 2900000.00, 0.90, 2609800.00, 200.00);
+INSERT INTO `sale_sheet` VALUES ('XSD-20220709-00000', 2, 'sky', 'use for produce \"give away\" sheet', '审批完成', '2022-07-09 19:10:35', 'sky', 2000000.00, 1.00, 1990000.00, 10000.00);
+INSERT INTO `sale_sheet` VALUES ('XSD-20220709-00001', 2, 'sky', 'use to pruduce \"give away\" sheet', '审批完成', '2022-07-09 19:13:38', 'sky', 300000.00, 1.00, 299000.00, 1000.00);
+INSERT INTO `sale_sheet` VALUES ('XSD-20220709-00002', 2, 'sky', 'use to produce \"give away\" sheet', '待一级审批', '2022-07-09 19:16:48', 'sky', 140000.00, 1.00, 139000.00, 1000.00);
 
 -- ----------------------------
 -- Table structure for sale_sheet_content
@@ -527,7 +582,7 @@ CREATE TABLE `sale_sheet_content`  (
   `total_price` decimal(10, 2) NULL DEFAULT NULL COMMENT '金额',
   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 38 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 39 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sale_sheet_content
@@ -544,6 +599,11 @@ INSERT INTO `sale_sheet_content` VALUES (34, 'XSD-20220524-00003', '000000000040
 INSERT INTO `sale_sheet_content` VALUES (35, 'XSD-20220524-00003', '0000000000400001', 100, 3800.00, 380000.00, NULL);
 INSERT INTO `sale_sheet_content` VALUES (36, 'XSD-20220524-00004', '0000000000400000', 300, 3000.00, 900000.00, '');
 INSERT INTO `sale_sheet_content` VALUES (37, 'XSD-20220524-00004', '0000000000400001', 500, 4000.00, 2000000.00, NULL);
+INSERT INTO `sale_sheet_content` VALUES (38, 'XSD-20220709-00000', '0000000000500000', 100, 20000.00, 2000000.00, '');
+INSERT INTO `sale_sheet_content` VALUES (39, 'XSD-20220709-00001', '0000000000500000', 10, 10000.00, 100000.00, '');
+INSERT INTO `sale_sheet_content` VALUES (40, 'XSD-20220709-00001', '0000000000500001', 10, 20000.00, 200000.00, NULL);
+INSERT INTO `sale_sheet_content` VALUES (47, 'XSD-20220709-00002', '0000000000500000', 10, 10000.00, 100000.00, '');
+INSERT INTO `sale_sheet_content` VALUES (48, 'XSD-20220709-00002', '0000000000500002', 2, 20000.00, 40000.00, NULL);
 
 -- ----------------------------
 -- Table structure for staff
@@ -617,6 +677,12 @@ CREATE TABLE `total_price_promotion`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of total_price_promotion
+-- ----------------------------
+INSERT INTO `total_price_promotion` VALUES ('ZJCXCL-20220709-00000', 1000000.00, '2021-07-01 00:00:00', '2023-08-01 00:00:00', 'sky', 10000.00, 'total price promotion 1');
+INSERT INTO `total_price_promotion` VALUES ('ZJCXCL-20220709-00001', 100000.00, '2021-07-01 00:00:00', '2023-08-01 00:00:00', 'sky', 1000.00, NULL);
+
+-- ----------------------------
 -- Table structure for total_price_promotion_content
 -- ----------------------------
 DROP TABLE IF EXISTS `total_price_promotion_content`;
@@ -629,7 +695,15 @@ CREATE TABLE `total_price_promotion_content`  (
   `total_price` decimal(10, 2) NULL DEFAULT NULL COMMENT '金额',
   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of total_price_promotion_content
+-- ----------------------------
+INSERT INTO `total_price_promotion_content` VALUES (1, 'ZJCXCL-20220709-00000', '0000000000400000', 2, 1000.00, NULL, 'give away product 1');
+INSERT INTO `total_price_promotion_content` VALUES (2, 'ZJCXCL-20220709-00000', '0000000000400001', 2, 1000.00, NULL, 'give away product 2');
+INSERT INTO `total_price_promotion_content` VALUES (3, 'ZJCXCL-20220709-00001', '0000000000400000', 1, 1000.00, NULL, '');
+INSERT INTO `total_price_promotion_content` VALUES (4, 'ZJCXCL-20220709-00001', '0000000000400001', 1, 1000.00, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for user
@@ -682,6 +756,10 @@ INSERT INTO `warehouse` VALUES (19, '0000000000400000', 0, 1300.00, 2, NULL);
 INSERT INTO `warehouse` VALUES (20, '0000000000400001', 200, 2800.00, 2, NULL);
 INSERT INTO `warehouse` VALUES (21, '0000000000400000', 300, 1900.00, 3, NULL);
 INSERT INTO `warehouse` VALUES (22, '0000000000400001', 400, 2700.00, 3, NULL);
+INSERT INTO `warehouse` VALUES (23, '0000000000500000', 0, 1000.00, 4, NULL);
+INSERT INTO `warehouse` VALUES (24, '0000000000500001', 100, 1000.00, 4, NULL);
+INSERT INTO `warehouse` VALUES (25, '0000000000500002', 100, 1000.00, 4, NULL);
+INSERT INTO `warehouse` VALUES (26, '0000000000500000', 200, 1000.00, 5, NULL);
 
 -- ----------------------------
 -- Table structure for warehouse_input_sheet
@@ -704,6 +782,8 @@ INSERT INTO `warehouse_input_sheet` VALUES ('RKD-20220523-00000', 0, 'kucun', '2
 INSERT INTO `warehouse_input_sheet` VALUES ('RKD-20220523-00001', 1, 'kucun', '2022-05-23 23:17:42', '审批完成', 'JHD-20220523-00001');
 INSERT INTO `warehouse_input_sheet` VALUES ('RKD-20220523-00002', 2, 'kucun', '2022-05-23 23:17:44', '审批完成', 'JHD-20220523-00002');
 INSERT INTO `warehouse_input_sheet` VALUES ('RKD-20220524-00000', 3, 'kucun', '2022-05-24 01:02:31', '审批完成', 'JHD-20220524-00002');
+INSERT INTO `warehouse_input_sheet` VALUES ('RKD-20220709-00000', 4, 'seecoder', '2022-07-09 19:25:23', '审批完成', 'JHD-20220709-00000');
+INSERT INTO `warehouse_input_sheet` VALUES ('RKD-20220709-00005', 5, 'sky', '2022-07-09 19:28:37', '审批完成', 'JHD-20220709-00001');
 
 -- ----------------------------
 -- Table structure for warehouse_input_sheet_content
@@ -730,6 +810,10 @@ INSERT INTO `warehouse_input_sheet_content` VALUES (50, 'RKD-20220523-00002', '0
 INSERT INTO `warehouse_input_sheet_content` VALUES (51, 'RKD-20220523-00002', '0000000000400001', 1000, 2800.00, NULL, 'c');
 INSERT INTO `warehouse_input_sheet_content` VALUES (52, 'RKD-20220524-00000', '0000000000400000', 300, 1900.00, NULL, '');
 INSERT INTO `warehouse_input_sheet_content` VALUES (53, 'RKD-20220524-00000', '0000000000400001', 400, 2700.00, NULL, NULL);
+INSERT INTO `warehouse_input_sheet_content` VALUES (54, 'RKD-20220709-00000', '0000000000500000', 100, 1000.00, NULL, '');
+INSERT INTO `warehouse_input_sheet_content` VALUES (55, 'RKD-20220709-00000', '0000000000500001', 100, 1000.00, NULL, NULL);
+INSERT INTO `warehouse_input_sheet_content` VALUES (56, 'RKD-20220709-00000', '0000000000500002', 100, 1000.00, NULL, NULL);
+INSERT INTO `warehouse_input_sheet_content` VALUES (57, 'RKD-20220709-00005', '0000000000500000', 200, 1000.00, NULL, '');
 
 -- ----------------------------
 -- Table structure for warehouse_output_sheet
@@ -750,6 +834,8 @@ CREATE TABLE `warehouse_output_sheet`  (
 INSERT INTO `warehouse_output_sheet` VALUES ('CKD-20220524-00000', 'kucun', '2022-05-24 00:05:32', 'XSD-20220524-00000', '审批完成');
 INSERT INTO `warehouse_output_sheet` VALUES ('CKD-20220524-00001', 'kucun', '2022-05-24 00:33:12', 'XSD-20220524-00001', '审批完成');
 INSERT INTO `warehouse_output_sheet` VALUES ('CKD-20220524-00002', 'kucun', '2022-05-24 00:45:38', 'XSD-20220524-00002', '审批完成');
+INSERT INTO `warehouse_output_sheet` VALUES ('CKD-20220709-00000', 'seecoder', '2022-07-09 19:18:45', 'XSD-20220709-00000', '审批完成');
+INSERT INTO `warehouse_output_sheet` VALUES ('CKD-20220709-00001', NULL, '2022-07-09 19:29:36', 'XSD-20220709-00001', '草稿');
 
 -- ----------------------------
 -- Table structure for warehouse_output_sheet_content
@@ -776,6 +862,9 @@ INSERT INTO `warehouse_output_sheet_content` VALUES (35, '0000000000400000', 'CK
 INSERT INTO `warehouse_output_sheet_content` VALUES (36, '0000000000400001', 'CKD-20220524-00001', 2, 100, 4000.00, NULL);
 INSERT INTO `warehouse_output_sheet_content` VALUES (37, '0000000000400000', 'CKD-20220524-00002', 1, 100, 3000.00, '');
 INSERT INTO `warehouse_output_sheet_content` VALUES (38, '0000000000400001', 'CKD-20220524-00002', 2, 100, 4200.00, NULL);
+INSERT INTO `warehouse_output_sheet_content` VALUES (40, '0000000000500000', 'CKD-20220709-00000', 4, 100, 20000.00, '');
+INSERT INTO `warehouse_output_sheet_content` VALUES (41, '0000000000500000', 'CKD-20220709-00001', NULL, 10, 10000.00, '');
+INSERT INTO `warehouse_output_sheet_content` VALUES (42, '0000000000500001', 'CKD-20220709-00001', NULL, 10, 20000.00, NULL);
 
 -- ----------------------------
 -- Table structure for year_end_awards
@@ -789,32 +878,3 @@ CREATE TABLE `year_end_awards`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 SET FOREIGN_KEY_CHECKS = 1;
-
--- ----------------------------
--- Table structure for give_away_sheet
--- ----------------------------
-DROP TABLE IF EXISTS `give_away_sheet`;
-CREATE TABLE `give_away_sheet`   (
-    `id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'ZSD + 日期 + index = 赠送单编号',
-    `sale_sheet_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '对应销售单编号',
-    `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
-    `state`  varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '单据状态',
-    `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
-    `total_amount` decimal(10, 2) NULL DEFAULT NULL COMMENT '总额合计',
-    PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Table structure for give_away_sheet_content
--- ----------------------------
-DROP TABLE IF EXISTS `give_away_sheet_content`;
-CREATE TABLE `give_away_sheet_content`   (
-     `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增id',
-     `give_away_sheet_id` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '赠送单id',
-     `pid` char(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品id',
-     `quantity` int(11) NULL DEFAULT NULL COMMENT '数量',
-     `unit_price` decimal(10, 2) NULL DEFAULT NULL COMMENT '单价',
-     `total_price` decimal(10, 2) NULL DEFAULT NULL COMMENT '金额',
-     `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
-     PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 0 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;

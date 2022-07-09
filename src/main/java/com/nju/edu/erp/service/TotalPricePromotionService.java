@@ -1,5 +1,7 @@
 package com.nju.edu.erp.service;
 
+import com.nju.edu.erp.model.po.promotion.TotalPricePromotionContentPO;
+import com.nju.edu.erp.model.po.promotion.TotalPricePromotionPO;
 import com.nju.edu.erp.model.vo.UserVO;
 import com.nju.edu.erp.model.vo.promotion.TotalPricePromotionVO;
 
@@ -39,10 +41,25 @@ public interface TotalPricePromotionService {
     void deleteById(String id);
 
     /**
-     * 得到超过rawTotalAmount和在today内的所有折扣中优惠卷价格最高的
+     * 得到超过rawTotalAmount和在today内的所有折扣中优惠卷价格最高的优惠卷金额
      * @param today 时间
      * @param rawTotalAmount 总价
-     * @return 折扣
+     * @return 优惠卷金额
      */
     BigDecimal getVoucherAmountByDateAndThreshold(Date today, BigDecimal rawTotalAmount);
+
+    /**
+     * 根据总价促销策略的id找到赠品内容
+     * @param id 总价促销策略的id
+     * @return 赠品内容列表
+     */
+    List<TotalPricePromotionContentPO> findContentByTotalPricePromotionId(String id);
+
+    /**
+     * 得到超过rawTotalAmount和在today内的所有折扣中优惠卷价格最高的促销策略
+     * @param today 时间
+     * @param rawTotalAmount 总价
+     * @return 总价促销策略
+     */
+    TotalPricePromotionPO getPromotionByDateAndThreshold(Date today, BigDecimal rawTotalAmount);
 }

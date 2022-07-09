@@ -54,4 +54,9 @@ public class GiveAwayController {
             return Response.buildFailed("000000","操作失败"); // code可能得改一个其他的
         }
     }
+
+    @GetMapping(value = "/find-all")
+    public Response findAll() {
+        return Response.buildSuccess(giveAwayService.findAll());
+    }
 }
