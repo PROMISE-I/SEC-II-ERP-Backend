@@ -32,7 +32,9 @@ public class LevelPromotionServiceImpl implements LevelPromotionService {
     public List<LevelPromotionStrategyVO> findAll() {
         List<LevelPromotionStrategyPO> levelPromotionStrategyPOList = levelStrategyDao.findAll();
         List<PresentInfoPO> presentInfoPOList = presentInfoDao.findAll();
-
+        for(PresentInfoPO p: presentInfoPOList){
+            System.out.println(p);
+        }
         return match(levelPromotionStrategyPOList, presentInfoPOList);
     }
 
