@@ -1,0 +1,199 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > CategoryServiceImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.nju.edu.erp.service.Impl.warehouse.product</a>
+</div>
+
+<h1>Coverage Summary for Class: CategoryServiceImpl (com.nju.edu.erp.service.Impl.warehouse.product)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CategoryServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    16.7%
+  </span>
+  <span class="absValue">
+    (1/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    5%
+  </span>
+  <span class="absValue">
+    (2/40)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.nju.edu.erp.service.Impl.warehouse.product;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.nju.edu.erp.dao.warehouse.product.CategoryDao;
+<i class="no-highlight">4</i>&nbsp;import com.nju.edu.erp.exception.MyServiceException;
+<i class="no-highlight">5</i>&nbsp;import com.nju.edu.erp.model.po.warehouse.product.CategoryPO;
+<i class="no-highlight">6</i>&nbsp;import com.nju.edu.erp.model.vo.warehouse.product.CategoryVO;
+<i class="no-highlight">7</i>&nbsp;import com.nju.edu.erp.service.Interface.warehouse.product.CategoryService;
+<i class="no-highlight">8</i>&nbsp;import org.springframework.beans.BeanUtils;
+<i class="no-highlight">9</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i class="no-highlight">10</i>&nbsp;import org.springframework.stereotype.Service;
+<i class="no-highlight">11</i>&nbsp;
+<i class="no-highlight">12</i>&nbsp;import java.util.List;
+<i class="no-highlight">13</i>&nbsp;import java.util.stream.Collectors;
+<i class="no-highlight">14</i>&nbsp;
+<i class="no-highlight">15</i>&nbsp;@Service
+<i class="no-highlight">16</i>&nbsp;public class CategoryServiceImpl implements CategoryService {
+<i class="no-highlight">17</i>&nbsp;
+<i class="no-highlight">18</i>&nbsp;
+<i class="no-highlight">19</i>&nbsp;    private final CategoryDao categoryDao;
+<i class="no-highlight">20</i>&nbsp;
+<i class="no-highlight">21</i>&nbsp;    @Autowired
+<b class="fc"><i class="no-highlight">22</i>&nbsp;    public CategoryServiceImpl(CategoryDao categoryDao) {</b>
+<b class="fc"><i class="no-highlight">23</i>&nbsp;        this.categoryDao = categoryDao;</b>
+<i class="no-highlight">24</i>&nbsp;    }
+<i class="no-highlight">25</i>&nbsp;
+<i class="no-highlight">26</i>&nbsp;    @Override
+<i class="no-highlight">27</i>&nbsp;    public CategoryVO createCategory(Integer parentId, String name) {
+<i class="no-highlight">28</i>&nbsp;        // parentId ?0?????
+<b class="nc"><i class="no-highlight">29</i>&nbsp;        if (parentId &lt;= 0) {</b>
+<b class="nc"><i class="no-highlight">30</i>&nbsp;            throw new MyServiceException(&quot;A0000&quot;, &quot;????&quot;);</b>
+<i class="no-highlight">31</i>&nbsp;        }
+<i class="no-highlight">32</i>&nbsp;        // ????????????????
+<b class="nc"><i class="no-highlight">33</i>&nbsp;        CategoryPO fatherPO = categoryDao.findByCategoryId(parentId);</b>
+<i class="no-highlight">34</i>&nbsp;        // ?????????
+<b class="nc"><i class="no-highlight">35</i>&nbsp;        if (fatherPO == null || fatherPO.getItemCount() &gt; 0) {</b>
+<b class="nc"><i class="no-highlight">36</i>&nbsp;            throw new MyServiceException(&quot;A0001&quot;, &quot;?????????????????? ??????!&quot;);</b>
+<i class="no-highlight">37</i>&nbsp;        }
+<i class="no-highlight">38</i>&nbsp;        // ??PO??????
+<b class="nc"><i class="no-highlight">39</i>&nbsp;        CategoryPO savePO = new CategoryPO(null, name, parentId, true, 0, 0);</b>
+<b class="nc"><i class="no-highlight">40</i>&nbsp;        int ans = categoryDao.createCategory(savePO);</b>
+<b class="nc"><i class="no-highlight">41</i>&nbsp;        if (ans == 0) {</b>
+<b class="nc"><i class="no-highlight">42</i>&nbsp;            throw new MyServiceException(&quot;A0002&quot;, &quot;????!&quot;);</b>
+<i class="no-highlight">43</i>&nbsp;        }
+<i class="no-highlight">44</i>&nbsp;        // ??????isLeaf
+<b class="nc"><i class="no-highlight">45</i>&nbsp;        fatherPO.setLeaf(false);</b>
+<b class="nc"><i class="no-highlight">46</i>&nbsp;        categoryDao.updateById(fatherPO);</b>
+<i class="no-highlight">47</i>&nbsp;        // ?????
+<b class="nc"><i class="no-highlight">48</i>&nbsp;        CategoryVO responseVO = new CategoryVO();</b>
+<b class="nc"><i class="no-highlight">49</i>&nbsp;        BeanUtils.copyProperties(savePO, responseVO);</b>
+<b class="nc"><i class="no-highlight">50</i>&nbsp;        return responseVO;</b>
+<i class="no-highlight">51</i>&nbsp;    }
+<i class="no-highlight">52</i>&nbsp;
+<i class="no-highlight">53</i>&nbsp;    @Override
+<i class="no-highlight">54</i>&nbsp;    public List&lt;CategoryVO&gt; queryAllCategory() {
+<b class="nc"><i class="no-highlight">55</i>&nbsp;        List&lt;CategoryPO&gt; queryAns = categoryDao.findAll();</b>
+<b class="nc"><i class="no-highlight">56</i>&nbsp;        List&lt;CategoryVO&gt; responseVO = queryAns.stream().map(categoryPO -&gt; {</b>
+<b class="nc"><i class="no-highlight">57</i>&nbsp;            CategoryVO categoryVO = new CategoryVO();</b>
+<b class="nc"><i class="no-highlight">58</i>&nbsp;            BeanUtils.copyProperties(categoryPO, categoryVO);</b>
+<b class="nc"><i class="no-highlight">59</i>&nbsp;            return  categoryVO;</b>
+<b class="nc"><i class="no-highlight">60</i>&nbsp;        }).collect(Collectors.toList());</b>
+<b class="nc"><i class="no-highlight">61</i>&nbsp;        return responseVO;</b>
+<i class="no-highlight">62</i>&nbsp;    }
+<i class="no-highlight">63</i>&nbsp;
+<i class="no-highlight">64</i>&nbsp;    @Override
+<i class="no-highlight">65</i>&nbsp;    public CategoryVO updateCategory(Integer id, String name) {
+<b class="nc"><i class="no-highlight">66</i>&nbsp;        CategoryPO categoryPO = categoryDao.findByCategoryId(id);</b>
+<b class="nc"><i class="no-highlight">67</i>&nbsp;        categoryPO.setName(name);</b>
+<b class="nc"><i class="no-highlight">68</i>&nbsp;        int ans = categoryDao.updateById(categoryPO);</b>
+<b class="nc"><i class="no-highlight">69</i>&nbsp;        if (ans == 0) {</b>
+<b class="nc"><i class="no-highlight">70</i>&nbsp;            throw new MyServiceException(&quot;A0003&quot;,&quot;?????&quot;);</b>
+<i class="no-highlight">71</i>&nbsp;        }
+<b class="nc"><i class="no-highlight">72</i>&nbsp;        CategoryPO queryAns = categoryDao.findByCategoryId(id);</b>
+<b class="nc"><i class="no-highlight">73</i>&nbsp;        CategoryVO responseVO = new CategoryVO();</b>
+<b class="nc"><i class="no-highlight">74</i>&nbsp;        BeanUtils.copyProperties(queryAns, responseVO);</b>
+<b class="nc"><i class="no-highlight">75</i>&nbsp;        return responseVO;</b>
+<i class="no-highlight">76</i>&nbsp;    }
+<i class="no-highlight">77</i>&nbsp;
+<i class="no-highlight">78</i>&nbsp;    @Override
+<i class="no-highlight">79</i>&nbsp;    public void deleteCategory(Integer id) {
+<b class="nc"><i class="no-highlight">80</i>&nbsp;        CategoryPO categoryToDelete = categoryDao.findByCategoryId(id);</b>
+<b class="nc"><i class="no-highlight">81</i>&nbsp;        if (categoryToDelete == null) {</b>
+<b class="nc"><i class="no-highlight">82</i>&nbsp;            throw new MyServiceException(&quot;A0004&quot;, &quot;?????? ?????&quot;);</b>
+<i class="no-highlight">83</i>&nbsp;        }
+<b class="nc"><i class="no-highlight">84</i>&nbsp;        if (!categoryToDelete.isLeaf()) {</b>
+<b class="nc"><i class="no-highlight">85</i>&nbsp;            throw new MyServiceException(&quot;A0005&quot;, &quot;????? ?????&quot;);</b>
+<i class="no-highlight">86</i>&nbsp;        }
+<b class="nc"><i class="no-highlight">87</i>&nbsp;        if (categoryToDelete.getItemCount() &gt; 0) {</b>
+<b class="nc"><i class="no-highlight">88</i>&nbsp;            throw new MyServiceException(&quot;A0006&quot;, &quot;????????????&quot;);</b>
+<i class="no-highlight">89</i>&nbsp;        }
+<b class="nc"><i class="no-highlight">90</i>&nbsp;        categoryDao.deleteById(id);</b>
+<i class="no-highlight">91</i>&nbsp;    }
+<i class="no-highlight">92</i>&nbsp;
+<i class="no-highlight">93</i>&nbsp;
+<i class="no-highlight">94</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-10 04:16</div>
+</div>
+</body>
+</html>

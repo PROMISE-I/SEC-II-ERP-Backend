@@ -1,0 +1,135 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > SaleReturnsService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.nju.edu.erp.service.Interface.sale_purchase.sale</a>
+</div>
+
+<h1>Coverage Summary for Class: SaleReturnsService (com.nju.edu.erp.service.Interface.sale_purchase.sale)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">SaleReturnsService</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.nju.edu.erp.service.Interface.sale_purchase.sale;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.nju.edu.erp.enums.sheet_state.sale.SaleReturnsSheetState;
+<i class="no-highlight">4</i>&nbsp;import com.nju.edu.erp.model.po.sale_purchase.sale.io_detail.SaleIODetailPO;
+<i class="no-highlight">5</i>&nbsp;import com.nju.edu.erp.model.vo.user.UserVO;
+<i class="no-highlight">6</i>&nbsp;import com.nju.edu.erp.model.vo.sale_purchase.sale.io_detail.SaleIODetailFilterConditionVO;
+<i class="no-highlight">7</i>&nbsp;import com.nju.edu.erp.model.vo.sale_purchase.sale.returns.SaleReturnsSheetVO;
+<i class="no-highlight">8</i>&nbsp;
+<i class="no-highlight">9</i>&nbsp;import java.math.BigDecimal;
+<i class="no-highlight">10</i>&nbsp;import java.text.ParseException;
+<i class="no-highlight">11</i>&nbsp;import java.util.List;
+<i class="no-highlight">12</i>&nbsp;
+<i class="no-highlight">13</i>&nbsp;// ??????? + ??????/??????? + ????? + ????
+<i class="no-highlight">14</i>&nbsp;public interface SaleReturnsService {
+<i class="no-highlight">15</i>&nbsp;
+<i class="no-highlight">16</i>&nbsp;    /**
+<i class="no-highlight">17</i>&nbsp;     * ???????
+<i class="no-highlight">18</i>&nbsp;     * @param userVO ??????
+<i class="no-highlight">19</i>&nbsp;     * @param saleReturnsSheetVO ?????
+<i class="no-highlight">20</i>&nbsp;     */
+<i class="no-highlight">21</i>&nbsp;    void makeSaleReturnsSheet(UserVO userVO, SaleReturnsSheetVO saleReturnsSheetVO);
+<i class="no-highlight">22</i>&nbsp;
+<i class="no-highlight">23</i>&nbsp;    /**
+<i class="no-highlight">24</i>&nbsp;     * ???????????(state == null ??????????)
+<i class="no-highlight">25</i>&nbsp;     * @param state ????????
+<i class="no-highlight">26</i>&nbsp;     * @return ?????
+<i class="no-highlight">27</i>&nbsp;     */
+<i class="no-highlight">28</i>&nbsp;    List&lt;SaleReturnsSheetVO&gt; getSaleReturnsSheetByState(SaleReturnsSheetState state);
+<i class="no-highlight">29</i>&nbsp;
+<i class="no-highlight">30</i>&nbsp;    /**
+<i class="no-highlight">31</i>&nbsp;     * ???????id????(state == &quot;?????&quot;/&quot;????&quot;/&quot;????&quot;)
+<i class="no-highlight">32</i>&nbsp;     * @param saleReturnsSheetId ?????id
+<i class="no-highlight">33</i>&nbsp;     * @param state ???????????
+<i class="no-highlight">34</i>&nbsp;     */
+<i class="no-highlight">35</i>&nbsp;    void approval(String saleReturnsSheetId, SaleReturnsSheetState state);
+<i class="no-highlight">36</i>&nbsp;
+<i class="no-highlight">37</i>&nbsp;    /**
+<i class="no-highlight">38</i>&nbsp;     * ?????????????????????????????
+<i class="no-highlight">39</i>&nbsp;     * @param condition ????
+<i class="no-highlight">40</i>&nbsp;     * @return ????????????
+<i class="no-highlight">41</i>&nbsp;     */
+<i class="no-highlight">42</i>&nbsp;    List&lt;SaleIODetailPO&gt; getSaleReturnsDetailByCondition(SaleIODetailFilterConditionVO condition) throws ParseException;
+<i class="no-highlight">43</i>&nbsp;
+<i class="no-highlight">44</i>&nbsp;    /**
+<i class="no-highlight">45</i>&nbsp;     * ????????????????????????????
+<i class="no-highlight">46</i>&nbsp;     * @param beginTimeStr ???????
+<i class="no-highlight">47</i>&nbsp;     * @param endTimeStr ???????
+<i class="no-highlight">48</i>&nbsp;     * @return ????????????
+<i class="no-highlight">49</i>&nbsp;     */
+<i class="no-highlight">50</i>&nbsp;    List&lt;SaleIODetailPO&gt; getSaleReturnsDetailByRange(String beginTimeStr, String endTimeStr) throws ParseException;
+<i class="no-highlight">51</i>&nbsp;
+<i class="no-highlight">52</i>&nbsp;    /**
+<i class="no-highlight">53</i>&nbsp;     * ??????????????????????
+<i class="no-highlight">54</i>&nbsp;     * @param year ??
+<i class="no-highlight">55</i>&nbsp;     * @param month ??
+<i class="no-highlight">56</i>&nbsp;     * @return ??????
+<i class="no-highlight">57</i>&nbsp;     */
+<i class="no-highlight">58</i>&nbsp;    BigDecimal getTotalSaleReturnsAmountByMonthAndYearAndSalesman(int year, int month, String salesman);
+<i class="no-highlight">59</i>&nbsp;
+<i class="no-highlight">60</i>&nbsp;    /**
+<i class="no-highlight">61</i>&nbsp;     * ????????
+<i class="no-highlight">62</i>&nbsp;     * @param sheetId ????
+<i class="no-highlight">63</i>&nbsp;     * @return ????, true ????
+<i class="no-highlight">64</i>&nbsp;     */
+<i class="no-highlight">65</i>&nbsp;    boolean isSheetExists(String sheetId);
+<i class="no-highlight">66</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-10 04:16</div>
+</div>
+</body>
+</html>

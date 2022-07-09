@@ -1,0 +1,187 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > SalaryServiceStub</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.nju.edu.erp.service.stub</a>
+</div>
+
+<h1>Coverage Summary for Class: SalaryServiceStub (com.nju.edu.erp.service.stub)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SalaryServiceStub</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/33)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.nju.edu.erp.service.stub;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.nju.edu.erp.enums.sheet_state.finance.SalarySheetState;
+<i class="no-highlight">4</i>&nbsp;import com.nju.edu.erp.model.vo.finance.salary.SalarySheetVO;
+<i class="no-highlight">5</i>&nbsp;import com.nju.edu.erp.service.Interface.finance.salary.SalaryService;
+<i class="no-highlight">6</i>&nbsp;
+<i class="no-highlight">7</i>&nbsp;import java.math.BigDecimal;
+<i class="no-highlight">8</i>&nbsp;import java.util.ArrayList;
+<i class="no-highlight">9</i>&nbsp;import java.util.Date;
+<i class="no-highlight">10</i>&nbsp;import java.util.List;
+<i class="no-highlight">11</i>&nbsp;
+<i class="no-highlight">12</i>&nbsp;/**
+<i class="no-highlight">13</i>&nbsp; * @author WFS
+<i class="no-highlight">14</i>&nbsp; * @date 2022/7/10 2:16
+<i class="no-highlight">15</i>&nbsp; */
+<b class="nc"><i class="no-highlight">16</i>&nbsp;public class SalaryServiceStub implements SalaryService {</b>
+<i class="no-highlight">17</i>&nbsp;    @Override
+<i class="no-highlight">18</i>&nbsp;    public void makeSalarySheet(int employeeId, int companyBankAccountId) {
+<i class="no-highlight">19</i>&nbsp;    }
+<i class="no-highlight">20</i>&nbsp;
+<i class="no-highlight">21</i>&nbsp;    @Override
+<i class="no-highlight">22</i>&nbsp;    public BigDecimal getSalaryByEmployeeId(int employeeId) {
+<b class="nc"><i class="no-highlight">23</i>&nbsp;        return BigDecimal.valueOf(10000);</b>
+<i class="no-highlight">24</i>&nbsp;    }
+<i class="no-highlight">25</i>&nbsp;
+<i class="no-highlight">26</i>&nbsp;    @Override
+<i class="no-highlight">27</i>&nbsp;    public List&lt;SalarySheetVO&gt; getSalarySheetByState(SalarySheetState state) {
+<b class="nc"><i class="no-highlight">28</i>&nbsp;        List&lt;SalarySheetVO&gt; res = new ArrayList&lt;&gt;();</b>
+<b class="nc"><i class="no-highlight">29</i>&nbsp;        SalarySheetVO salarySheetVO = SalarySheetVO.builder()</b>
+<b class="nc"><i class="no-highlight">30</i>&nbsp;                .id(&quot;GZD-20220710-0&quot;)</b>
+<b class="nc"><i class="no-highlight">31</i>&nbsp;                .staffId(1)</b>
+<b class="nc"><i class="no-highlight">32</i>&nbsp;                .staffName(&quot;??&quot;)</b>
+<b class="nc"><i class="no-highlight">33</i>&nbsp;                .companyBankAccountId(1)</b>
+<b class="nc"><i class="no-highlight">34</i>&nbsp;                .rawSalary(BigDecimal.valueOf(10000))</b>
+<b class="nc"><i class="no-highlight">35</i>&nbsp;                .tax(BigDecimal.valueOf(2000))</b>
+<b class="nc"><i class="no-highlight">36</i>&nbsp;                .actualSalary(BigDecimal.valueOf(8000))</b>
+<b class="nc"><i class="no-highlight">37</i>&nbsp;                .state(SalarySheetState.SUCCESS)</b>
+<b class="nc"><i class="no-highlight">38</i>&nbsp;                .createTime(new Date())</b>
+<b class="nc"><i class="no-highlight">39</i>&nbsp;                .build();</b>
+<b class="nc"><i class="no-highlight">40</i>&nbsp;        res.add(salarySheetVO);</b>
+<b class="nc"><i class="no-highlight">41</i>&nbsp;        return res;</b>
+<i class="no-highlight">42</i>&nbsp;    }
+<i class="no-highlight">43</i>&nbsp;
+<i class="no-highlight">44</i>&nbsp;    @Override
+<i class="no-highlight">45</i>&nbsp;    public Date getLatestDateByEmployeeId(int employeeId) {
+<b class="nc"><i class="no-highlight">46</i>&nbsp;        return new Date();</b>
+<i class="no-highlight">47</i>&nbsp;    }
+<i class="no-highlight">48</i>&nbsp;
+<i class="no-highlight">49</i>&nbsp;    @Override
+<i class="no-highlight">50</i>&nbsp;    public void approval(String salarySheetId, SalarySheetState state) {}
+<i class="no-highlight">51</i>&nbsp;
+<i class="no-highlight">52</i>&nbsp;    @Override
+<i class="no-highlight">53</i>&nbsp;    public List&lt;SalarySheetVO&gt; findAllSalarySheets() {
+<b class="nc"><i class="no-highlight">54</i>&nbsp;        List&lt;SalarySheetVO&gt; res = new ArrayList&lt;&gt;();</b>
+<b class="nc"><i class="no-highlight">55</i>&nbsp;        SalarySheetVO salarySheetVO = SalarySheetVO.builder()</b>
+<b class="nc"><i class="no-highlight">56</i>&nbsp;                .id(&quot;GZD-20220710-0&quot;)</b>
+<b class="nc"><i class="no-highlight">57</i>&nbsp;                .staffId(1)</b>
+<b class="nc"><i class="no-highlight">58</i>&nbsp;                .staffName(&quot;??&quot;)</b>
+<b class="nc"><i class="no-highlight">59</i>&nbsp;                .companyBankAccountId(1)</b>
+<b class="nc"><i class="no-highlight">60</i>&nbsp;                .rawSalary(BigDecimal.valueOf(10000))</b>
+<b class="nc"><i class="no-highlight">61</i>&nbsp;                .tax(BigDecimal.valueOf(2000))</b>
+<b class="nc"><i class="no-highlight">62</i>&nbsp;                .actualSalary(BigDecimal.valueOf(8000))</b>
+<b class="nc"><i class="no-highlight">63</i>&nbsp;                .state(SalarySheetState.SUCCESS)</b>
+<b class="nc"><i class="no-highlight">64</i>&nbsp;                .createTime(new Date())</b>
+<b class="nc"><i class="no-highlight">65</i>&nbsp;                .build();</b>
+<b class="nc"><i class="no-highlight">66</i>&nbsp;        res.add(salarySheetVO);</b>
+<b class="nc"><i class="no-highlight">67</i>&nbsp;        return res;</b>
+<i class="no-highlight">68</i>&nbsp;    }
+<i class="no-highlight">69</i>&nbsp;
+<i class="no-highlight">70</i>&nbsp;    @Override
+<i class="no-highlight">71</i>&nbsp;    public void redInkOffsetSheetMake(SalarySheetVO salarySheetVO) {}
+<i class="no-highlight">72</i>&nbsp;
+<i class="no-highlight">73</i>&nbsp;    @Override
+<i class="no-highlight">74</i>&nbsp;    public BigDecimal getTotalAmountBeforeNovember(int staffId) {
+<b class="nc"><i class="no-highlight">75</i>&nbsp;        return BigDecimal.valueOf(10000);</b>
+<i class="no-highlight">76</i>&nbsp;    }
+<i class="no-highlight">77</i>&nbsp;
+<i class="no-highlight">78</i>&nbsp;    @Override
+<i class="no-highlight">79</i>&nbsp;    public boolean isSheetExists(String sheetId) {
+<b class="nc"><i class="no-highlight">80</i>&nbsp;        return true;</b>
+<i class="no-highlight">81</i>&nbsp;    }
+<i class="no-highlight">82</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-10 04:16</div>
+</div>
+</body>
+</html>
