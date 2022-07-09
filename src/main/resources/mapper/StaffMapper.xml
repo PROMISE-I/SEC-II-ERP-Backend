@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.nju.edu.erp.dao.StaffDao">
+<mapper namespace="com.nju.edu.erp.dao.staff.StaffDao">
 
     <insert id="createStaff" keyProperty="id" useGeneratedKeys="true">
     insert into staff(`name`, gender, birthday, phone, position, balance )
@@ -20,20 +20,20 @@
     <delete id="deleteOneById">
     delete from staff where id = #{id}
     </delete>
-    <select id="findAll" resultType="com.nju.edu.erp.model.po.StaffPO">
+    <select id="findAll" resultType="com.nju.edu.erp.model.po.staff.StaffPO">
         select * from staff
     </select>
 
-    <select id="getStaffById" resultType="com.nju.edu.erp.model.po.StaffPO">
+    <select id="getStaffById" resultType="com.nju.edu.erp.model.po.staff.StaffPO">
         select * from staff where id = #{staffId}
     </select>
 
-    <select id="findAllExceptGM" resultType="com.nju.edu.erp.model.po.StaffPO">
+    <select id="findAllExceptGM" resultType="com.nju.edu.erp.model.po.staff.StaffPO">
         select * from staff where position &lt;&gt; 'GM'
     </select>
 
 
-    <resultMap id="StaffPO" type="com.nju.edu.erp.model.po.StaffPO">
+    <resultMap id="StaffPO" type="com.nju.edu.erp.model.po.staff.StaffPO">
         <result column="id" property="id"></result>
         <result column="name" property="name"></result>
         <result column="gender" property="gender"></result>

@@ -1,9 +1,9 @@
 package com.nju.edu.erp.CategoryTest;
 
-import com.nju.edu.erp.dao.CategoryDao;
-import com.nju.edu.erp.model.po.CategoryPO;
-import com.nju.edu.erp.model.vo.CategoryVO;
-import com.nju.edu.erp.service.Impl.CategoryServiceImpl;
+import com.nju.edu.erp.dao.warehouse.product.CategoryDao;
+import com.nju.edu.erp.model.po.warehouse.product.CategoryPO;
+import com.nju.edu.erp.model.vo.warehouse.product.CategoryVO;
+import com.nju.edu.erp.service.Impl.warehouse.product.CategoryServiceImpl;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

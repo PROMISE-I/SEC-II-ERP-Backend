@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.nju.edu.erp.dao.AttendanceDao">
+<mapper namespace="com.nju.edu.erp.dao.staff.AttendanceDao">
 
     <insert id="insertAttendanceRecord" parameterType="AttendanceRecordPO"  >
         insert into attendance (staff_id, date)
@@ -20,7 +20,7 @@
     </select>
 
 
-    <resultMap id="AttendanceRecordPO" type="com.nju.edu.erp.model.po.AttendanceRecordPO">
+    <resultMap id="AttendanceRecordPO" type="com.nju.edu.erp.model.po.staff.AttendanceRecordPO">
         <result column="staff_id" property="staffId"></result>
         <result column="date" property="date"></result>
     </resultMap>

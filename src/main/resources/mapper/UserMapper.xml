@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.nju.edu.erp.dao.UserDao">
+<mapper namespace="com.nju.edu.erp.dao.user.UserDao">
     <delete id="deleteById">
         delete from user where id = #{id}
     </delete>
@@ -19,7 +19,7 @@
     </insert>
 
 
-    <resultMap id="User" type="com.nju.edu.erp.model.po.User">
+    <resultMap id="User" type="com.nju.edu.erp.model.po.user.User">
         <id column="id" property="id"></id>
         <result column="name" property="name"></result>
         <result column="password" property="password"></result>

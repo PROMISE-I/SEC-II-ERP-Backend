@@ -1,7 +1,7 @@
 package com.nju.edu.erp.service.Impl.strategy.promotion.voucher;
 
-import com.nju.edu.erp.model.po.SaleSheetPO;
-import com.nju.edu.erp.service.TotalPricePromotionService;
+import com.nju.edu.erp.model.po.sale_purchase.sale.SaleSheetPO;
+import com.nju.edu.erp.service.Interface.promotion.TotalPricePromotionService;
 
 import java.math.BigDecimal;
 import java.util.Date;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.nju.edu.erp.dao.promotion.GiveAwayDao">
+<mapper namespace="com.nju.edu.erp.dao.promotion.gifts.GiveAwayDao">
     <insert id="save">
         insert into give_away_sheet (id, sale_sheet_id, remark, state, create_time, total_amount) values
         (#{id}, #{saleSheetId}, #{remark}, #{state}, #{createTime}, #{totalAmount})
@@ -24,22 +24,22 @@
               state = #{prevState}
     </update>
 
-    <select id="getLatestSheet" resultType="com.nju.edu.erp.model.po.promotion.GiveAwaySheetPO">
+    <select id="getLatestSheet" resultType="com.nju.edu.erp.model.po.promotion.gifts.GiveAwaySheetPO">
         select * from give_away_sheet order by id desc limit 0, 1
     </select>
-    <select id="findAll" resultType="com.nju.edu.erp.model.po.promotion.GiveAwaySheetPO">
+    <select id="findAll" resultType="com.nju.edu.erp.model.po.promotion.gifts.GiveAwaySheetPO">
         select * from give_away_sheet
     </select>
-    <select id="findByState" resultType="com.nju.edu.erp.model.po.promotion.GiveAwaySheetPO">
+    <select id="findByState" resultType="com.nju.edu.erp.model.po.promotion.gifts.GiveAwaySheetPO">
         select * from give_away_sheet where state = #{state}
     </select>
-    <select id="findSheetById" resultType="com.nju.edu.erp.model.po.promotion.GiveAwaySheetPO">
+    <select id="findSheetById" resultType="com.nju.edu.erp.model.po.promotion.gifts.GiveAwaySheetPO">
         select * from give_away_sheet where id = #{sheetId}
     </select>
-    <select id="findContentById" resultType="com.nju.edu.erp.model.po.promotion.GiveAwaySheetContentPO">
+    <select id="findContentById" resultType="com.nju.edu.erp.model.po.promotion.gifts.GiveAwaySheetContentPO">
         select * from give_away_sheet_content where give_away_sheet_id = #{sheetId}
     </select>
-    <select id="findSheetBySaleSheetId" resultType="com.nju.edu.erp.model.po.promotion.GiveAwaySheetPO">
+    <select id="findSheetBySaleSheetId" resultType="com.nju.edu.erp.model.po.promotion.gifts.GiveAwaySheetPO">
         select * from give_away_sheet where sale_sheet_id = #{saleSheetId}
     </select>
 </mapper>

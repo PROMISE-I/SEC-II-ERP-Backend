@@ -1,10 +1,11 @@
 package com.nju.edu.erp.service;
 
-import com.nju.edu.erp.dao.UserDao;
-import com.nju.edu.erp.dao.UserToStaffDao;
-import com.nju.edu.erp.enums.Role;
-import com.nju.edu.erp.model.po.StaffPO;
-import com.nju.edu.erp.model.po.User;
+import com.nju.edu.erp.dao.user.UserDao;
+import com.nju.edu.erp.dao.staff.UserToStaffDao;
+import com.nju.edu.erp.enums.user.Role;
+import com.nju.edu.erp.model.po.staff.StaffPO;
+import com.nju.edu.erp.model.po.user.User;
+import com.nju.edu.erp.service.Interface.staff.StaffService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

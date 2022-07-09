@@ -1,7 +1,7 @@
 package com.nju.edu.erp.model.vo.purchaseReturns;
 
 
-import com.nju.edu.erp.enums.sheetState.PurchaseReturnsSheetState;
+import com.nju.edu.erp.enums.sheet_state.purchase.PurchaseReturnsSheetState;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
