@@ -6,6 +6,8 @@ import com.nju.edu.erp.model.vo.promotion.GiveAwaySheetVO;
 import com.nju.edu.erp.service.GiveAwayService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author WFS
  * @date 2022/7/9 14:51
@@ -18,7 +20,7 @@ public class GiveAwayServiceImpl implements GiveAwayService {
     }
 
     @Override
-    public Object getSheetByState(GiveAwaySheetState state) {
+    public List<GiveAwaySheetVO> getSheetByState(GiveAwaySheetState state) {
         return null;
     }
 
