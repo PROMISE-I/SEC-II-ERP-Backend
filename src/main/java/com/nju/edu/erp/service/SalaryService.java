@@ -57,4 +57,11 @@ public interface SalaryService {
      * @return 原始工资总额
      */
     BigDecimal getTotalAmountBeforeNovember(int staffId);
+
+    /**
+     * 查看单据是否存在
+     * @param sheetId 单据编号
+     * @return 是否存在, true 表示存在
+     */
+    boolean isSheetExists(String sheetId);
 }

@@ -30,4 +30,10 @@ public interface PurchaseReturnsService {
      */
     void approval(String purchaseReturnsSheetId, PurchaseReturnsSheetState state);
 
+    /**
+     * 查看单据是否存在
+     * @param sheetId 单据编号
+     * @return 是否存在, true 表示存在
+     */
+    boolean isSheetExists(String sheetId);
 }

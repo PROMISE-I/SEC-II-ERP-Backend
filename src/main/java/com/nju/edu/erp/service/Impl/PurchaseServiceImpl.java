@@ -212,4 +212,9 @@ public class PurchaseServiceImpl implements PurchaseService {
         pVO.setPurchaseSheetContent(purchaseSheetContentVOList);
         return pVO;
     }
+
+    @Override
+    public boolean isSheetExists(String sheetId) {
+        return purchaseSheetDao.findOneById(sheetId) != null;
+    }
 }

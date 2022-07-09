@@ -192,4 +192,9 @@ public class PurchaseReturnsServiceImpl implements PurchaseReturnsService {
             }
         }
     }
+
+    @Override
+    public boolean isSheetExists(String sheetId) {
+        return purchaseReturnsSheetDao.findOneById(sheetId) != null;
+    }
 }
