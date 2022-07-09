@@ -27,7 +27,7 @@ public interface GiveAwayDao {
 
     GiveAwaySheetPO findSheetById(String sheetId);
 
-    int updateSheetState(GiveAwaySheetPO sheet, GiveAwaySheetPO sheet1);
+    int updateSheetState(GiveAwaySheetPO sheet, GiveAwaySheetState state);
 
     int updateSheetStateOnPrev(String sheetId, GiveAwaySheetState prevState, GiveAwaySheetState state);
 
