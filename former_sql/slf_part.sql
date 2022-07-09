@@ -52,6 +52,9 @@ INSERT INTO staff VALUES (6, '67', '男', '1990-01-04', '12345678905', 'GM', 0);
 INSERT INTO staff VALUES (7, 'xiaoshou', '女', '1990-01-05', '12345678906', 'SALE_STAFF', 0);
 INSERT INTO staff VALUES (8, 'Leone', '男', '1990-01-06', '12345678907', 'GM', 0);
 INSERT INTO staff VALUES (9, 'xiaoshoujingli', '女', '1990-01-07', '12345678908', 'SALE_MANAGER', 0);
+INSERT INTO staff VALUES (10, 'slf', '男', '1990-01-08', '12345678909', 'HR', 0);
+INSERT INTO staff VALUES (11, 'wfs', '男', '1990-01-09', '12345678910', 'FINANCIAL_STAFF', 0);
+
 
 
 drop table if exists staff_user;
@@ -70,6 +73,8 @@ INSERT INTO staff_user VALUES (6, 6);
 INSERT INTO staff_user VALUES (7, 7);
 INSERT INTO staff_user VALUES (8, 8);
 INSERT INTO staff_user VALUES (9, 9);
+INSERT INTO staff_user VALUES (10, 10);
+INSERT INTO staff_user VALUES (11, 11);
 
 drop table if exists present_info;
 CREATE TABLE present_info (

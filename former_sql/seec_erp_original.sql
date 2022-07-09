@@ -1,50 +1,24 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : wangfusen
+ Source Server         : mysql5.7
  Source Server Type    : MySQL
- Source Server Version : 80015
+ Source Server Version : 50736
  Source Host           : localhost:3306
  Source Schema         : seec_erp
 
  Target Server Type    : MySQL
- Target Server Version : 80015
+ Target Server Version : 50736
  File Encoding         : 65001
 
- Date: 28/06/2022 09:32:32
+ Date: 24/05/2022 01:11:23
 */
-
+drop database `seec_erp`;
+create database `seec_erp`;
+use `seec_erp`;
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
--- ----------------------------
--- Table structure for attendance
--- ----------------------------
-DROP TABLE IF EXISTS `attendance`;
-CREATE TABLE `attendance`  (
-  `staff_id` int(11) NOT NULL,
-  `date` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  PRIMARY KEY (`staff_id`, `date`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Table structure for bank_account
--- ----------------------------
-DROP TABLE IF EXISTS `bank_account`;
-CREATE TABLE `bank_account`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '账户名称',
-  `amount` decimal(10, 2) NULL DEFAULT NULL COMMENT '金额',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of bank_account
--- ----------------------------
-INSERT INTO `bank_account` VALUES (1, '南哪第二银行', 5000000.00);
-INSERT INTO `bank_account` VALUES (2, '南哪软院分行', 11000000.00);
-INSERT INTO `bank_account` VALUES (3, '南哪商院分行', 47865030.00);
-INSERT INTO `bank_account` VALUES (4, '南哪第一银行', 1000000.00);
 
 -- ----------------------------
 -- Table structure for category
@@ -70,27 +44,6 @@ INSERT INTO `category` VALUES (4, '电脑', 2, 1, 2, 2);
 INSERT INTO `category` VALUES (5, '手机', 2, 1, 3, 3);
 
 -- ----------------------------
--- Table structure for combinatorial_discount
--- ----------------------------
-DROP TABLE IF EXISTS `combinatorial_discount`;
-CREATE TABLE `combinatorial_discount`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `product_one_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `product_two_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `discount_amount` decimal(10, 2) NOT NULL DEFAULT 0.00,
-  `begin` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `end` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of combinatorial_discount
--- ----------------------------
-INSERT INTO `combinatorial_discount` VALUES (1, '0000000000500000', '0000000000400001', 1000.00, '2002-09-09', '2022-09-09');
-INSERT INTO `combinatorial_discount` VALUES (2, '0000000000500002', '0000000000400001', 2000.00, '2002-08-09', '2022-09-09');
-INSERT INTO `combinatorial_discount` VALUES (3, '0000000000400000', '0000000000500002', 1000.00, '2002-10-09', '2022-11-09');
-
--- ----------------------------
 -- Table structure for customer
 -- ----------------------------
 DROP TABLE IF EXISTS `customer`;
@@ -113,91 +66,8 @@ CREATE TABLE `customer`  (
 -- ----------------------------
 -- Records of customer
 -- ----------------------------
-INSERT INTO `customer` VALUES (1, '供应商', 1, 'yzh', '12306', '南京大学', '123456', '654321@abc.com', 0.00, 0.00, 5500000.00, 'uncln');
-INSERT INTO `customer` VALUES (2, '销售商', 1, 'lxs', '12580', '南哪儿大学', '123457', '12121@cba.com', 20000000.00, 3391600.00, 0.00, 'uncln');
-
--- ----------------------------
--- Table structure for pay_money_sheet
--- ----------------------------
-DROP TABLE IF EXISTS `pay_money_sheet`;
-CREATE TABLE `pay_money_sheet`  (
-  `id` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '付款单单据编号（格式为：FKD-yyyyMMdd-xxxxx',
-  `customer` int(11) NULL DEFAULT NULL COMMENT '客户（包括供应商和销售商）',
-  `operator` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '操作员',
-  `total_amount` decimal(10, 2) NULL DEFAULT NULL COMMENT '转账总额',
-  `state` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '单据状态',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of pay_money_sheet
--- ----------------------------
-INSERT INTO `pay_money_sheet` VALUES ('FKD-20220528-00000', 1, 'sky', 1000000.00, '审批完成', '2022-05-28 08:38:21');
-INSERT INTO `pay_money_sheet` VALUES ('FKD-20220528-00001', 1, 'sky', 2200000.00, '待二级审批', '2022-05-28 08:40:25');
-INSERT INTO `pay_money_sheet` VALUES ('FKD-20220528-00002', 1, 'sky', 3450000.00, '待一级审批', '2022-05-28 08:41:30');
-INSERT INTO `pay_money_sheet` VALUES ('FKD-20220528-00003', 1, 'sky', 1650000.00, '待一级审批', '2022-05-28 08:41:59');
-
--- ----------------------------
--- Table structure for pay_money_transfer_list
--- ----------------------------
-DROP TABLE IF EXISTS `pay_money_transfer_list`;
-CREATE TABLE `pay_money_transfer_list`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增id',
-  `pay_money_sheet_id` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '付款单id',
-  `bank_account_id` int(11) NULL DEFAULT NULL COMMENT '银行账户id',
-  `amount` decimal(10, 2) NULL DEFAULT NULL COMMENT '转账总额',
-  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of pay_money_transfer_list
--- ----------------------------
-INSERT INTO `pay_money_transfer_list` VALUES (1, 'FKD-20220528-00001', 3, 2000000.00, '对应进货单：JHD-20220523-00001');
-INSERT INTO `pay_money_transfer_list` VALUES (2, 'FKD-20220528-00001', 2, 200000.00, '对应进货单：JHD-20220523-00001');
-INSERT INTO `pay_money_transfer_list` VALUES (3, 'FKD-20220528-00002', 2, 3000000.00, '对应进货单：JHD-20220523-00002');
-INSERT INTO `pay_money_transfer_list` VALUES (4, 'FKD-20220528-00002', 0, 400000.00, '对应进货单：JHD-20220523-00002');
-INSERT INTO `pay_money_transfer_list` VALUES (5, 'FKD-20220528-00002', 1, 50000.00, '对应进货单：JHD-20220523-00002');
-INSERT INTO `pay_money_transfer_list` VALUES (6, 'FKD-20220528-00003', 3, 1650000.00, '对应进货单：JHD-20220524-00002');
-INSERT INTO `pay_money_transfer_list` VALUES (7, 'FKD-20220528-00000', 3, 1000000.00, '对应进货单：JHD-20220523-00000');
-
--- ----------------------------
--- Table structure for position
--- ----------------------------
-DROP TABLE IF EXISTS `position`;
-CREATE TABLE `position`  (
-  `title` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '名称',
-  `base_salary` decimal(10, 2) NOT NULL COMMENT '基本工资',
-  `level` int(11) NOT NULL COMMENT '岗位级别',
-  `special_salary` decimal(10, 2) NOT NULL COMMENT '岗位工资',
-  `salary_calculate_method` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '薪资计算方式',
-  `salary_payment_method` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '薪资发放方式',
-  `tax` decimal(10, 2) NOT NULL DEFAULT 0.00 COMMENT '扣税',
-  PRIMARY KEY (`title`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of position
--- ----------------------------
-INSERT INTO `position` VALUES ('FINANCIAL_STAFF', 5000.00, 1, 15000.00, '普通员工薪资计算', '每月发放', 0.15);
-INSERT INTO `position` VALUES ('GM', 20000.00, 5, 100000.00, '管理员工薪资计算', '每年发放', 0.30);
-INSERT INTO `position` VALUES ('HR', 6000.00, 2, 15000.00, '普通员工薪资计算', '每月发放', 0.15);
-INSERT INTO `position` VALUES ('INVENTORY_MANAGER', 5000.00, 1, 15000.00, '普通员工薪资计算', '每月发放', 0.15);
-INSERT INTO `position` VALUES ('SALE_MANAGER', 10000.00, 3, 40000.00, '提成员工薪资计算', '每月发放', 0.30);
-INSERT INTO `position` VALUES ('SALE_STAFF', 5000.00, 1, 10000.00, '提成员工薪资计算', '每月发放', 0.10);
-
--- ----------------------------
--- Table structure for present_info
--- ----------------------------
-DROP TABLE IF EXISTS `present_info`;
-CREATE TABLE `present_info`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `level` int(11) NOT NULL,
-  `product_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `quantity` int(11) NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+INSERT INTO `customer` VALUES (1, '供应商', 1, 'yzh', '12306', '南京大学', '123456', '654321@abc.com', 0.00, 0.00, 6500000.00, 'uncln');
+INSERT INTO `customer` VALUES (2, '销售商', 1, 'lxs', '12580', '南哪儿大学', '123457', '12121@cba.com', 20000000.00, 4431400.00, 0.00, 'uncln');
 
 -- ----------------------------
 -- Table structure for product
@@ -224,20 +94,6 @@ INSERT INTO `product` VALUES ('0000000000400001', '小米手机', 4, 'lalalalala
 INSERT INTO `product` VALUES ('0000000000500000', 'intel电脑', 5, 'iphone14maxpro', 0, 6000.00, 10000.00, NULL, NULL);
 INSERT INTO `product` VALUES ('0000000000500001', 'iphone', 5, 'iphone14普通版', 0, 4000.00, 8000.00, NULL, NULL);
 INSERT INTO `product` VALUES ('0000000000500002', '坚果', 5, 'pro3', 0, 2499.00, 3199.00, NULL, NULL);
-
--- ----------------------------
--- Table structure for promotion
--- ----------------------------
-DROP TABLE IF EXISTS `promotion`;
-CREATE TABLE `promotion`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `level` int(11) NOT NULL,
-  `discount` decimal(10, 2) NULL DEFAULT 0.00,
-  `coupon` decimal(10, 2) NULL DEFAULT 0.00,
-  `begin` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `end` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for purchase_returns_sheet
@@ -349,141 +205,36 @@ INSERT INTO `purchase_sheet_content` VALUES (60, 'JHD-20220524-00002', '00000000
 INSERT INTO `purchase_sheet_content` VALUES (61, 'JHD-20220524-00002', '0000000000400001', 400, 2700.00, 1080000.00, NULL);
 
 -- ----------------------------
--- Table structure for receive_money_sheet
+-- Table structure for sale_returns_sheet_content
 -- ----------------------------
-DROP TABLE IF EXISTS `receive_money_sheet`;
-CREATE TABLE `receive_money_sheet`  (
-  `id` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '收款单单据编号（格式为：SKD-yyyyMMdd-xxxxx',
-  `customer` int(11) NULL DEFAULT NULL COMMENT '客户（包括供应商和销售商）',
-  `operator` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '操作员',
-  `total_amount` decimal(10, 2) NULL DEFAULT NULL COMMENT '转账总额',
-  `state` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '单据状态',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of receive_money_sheet
--- ----------------------------
-INSERT INTO `receive_money_sheet` VALUES ('SKD-20220528-00000', 2, 'sky', 1039800.00, '审批完成', '2022-05-28 08:31:02');
-INSERT INTO `receive_money_sheet` VALUES ('SKD-20220528-00001', 2, 'sky', 3359800.00, '待二级审批', '2022-05-28 08:32:11');
-INSERT INTO `receive_money_sheet` VALUES ('SKD-20220528-00002', 2, 'sky', 495800.00, '待一级审批', '2022-05-28 08:32:37');
-INSERT INTO `receive_money_sheet` VALUES ('SKD-20220528-00003', 2, 'sky', 575800.00, '待一级审批', '2022-05-28 08:33:06');
-
--- ----------------------------
--- Table structure for receive_money_transfer_list
--- ----------------------------
-DROP TABLE IF EXISTS `receive_money_transfer_list`;
-CREATE TABLE `receive_money_transfer_list`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增id',
-  `receive_money_sheet_id` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '收款单id',
-  `bank_account_id` int(11) NULL DEFAULT NULL COMMENT '银行账户id',
-  `amount` decimal(10, 2) NULL DEFAULT NULL COMMENT '转账总额',
-  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of receive_money_transfer_list
--- ----------------------------
-INSERT INTO `receive_money_transfer_list` VALUES (1, 'SKD-20220528-00000', 0, 39800.00, '对应销售单：XSD-20220523-00000');
-INSERT INTO `receive_money_transfer_list` VALUES (2, 'SKD-20220528-00001', 2, 3000000.00, '对应销售单：XSD-20220524-00000');
-INSERT INTO `receive_money_transfer_list` VALUES (3, 'SKD-20220528-00001', 0, 359800.00, '对应销售单：XSD-20220524-00000');
-INSERT INTO `receive_money_transfer_list` VALUES (4, 'SKD-20220528-00002', 1, 495800.00, '对应销售单：XSD-20220524-00001');
-INSERT INTO `receive_money_transfer_list` VALUES (5, 'SKD-20220528-00003', 1, 575800.00, '对应销售单：XSD-20220524-00002');
-INSERT INTO `receive_money_transfer_list` VALUES (6, 'SKD-20220528-00000', 2, 1000000.00, '对应销售单：XSD-20220523-00000');
-
--- ----------------------------
--- Table structure for salary_calculate_type
--- ----------------------------
-DROP TABLE IF EXISTS `salary_calculate_type`;
-CREATE TABLE `salary_calculate_type`  (
-  `id` int(11) NOT NULL COMMENT '自增主键',
-  `type` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '薪资计算方式类型',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of salary_calculate_type
--- ----------------------------
-INSERT INTO `salary_calculate_type` VALUES (0, '普通员工薪资计算');
-INSERT INTO `salary_calculate_type` VALUES (1, '提成员工薪资计算');
-INSERT INTO `salary_calculate_type` VALUES (2, '管理员工薪资计算');
-
--- ----------------------------
--- Table structure for salary_send_type
--- ----------------------------
-DROP TABLE IF EXISTS `salary_send_type`;
-CREATE TABLE `salary_send_type`  (
-  `id` int(11) NOT NULL COMMENT '自增主键',
-  `type` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '薪资发放方式类型',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of salary_send_type
--- ----------------------------
-INSERT INTO `salary_send_type` VALUES (0, '每月发放');
-INSERT INTO `salary_send_type` VALUES (1, '每年发放');
-
--- ----------------------------
--- Table structure for salary_sheet
--- ----------------------------
-DROP TABLE IF EXISTS `salary_sheet`;
-CREATE TABLE `salary_sheet`  (
-  `id` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '工资单单据编号（格式为：GZD-yyyyMM-{staffId}',
-  `staff_id` int(11) NULL DEFAULT NULL COMMENT '员工编号',
-  `staff_name` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '员工姓名',
-  `company_bank_account_id` int(11) NULL DEFAULT NULL COMMENT '公司银行账号编号',
-  `raw_salary` decimal(10, 2) NULL DEFAULT NULL COMMENT '应发工资',
-  `tax` decimal(10, 2) NULL DEFAULT NULL COMMENT '扣除税款',
-  `actual_salary` decimal(10, 2) NULL DEFAULT NULL COMMENT '实发金额',
-  `state` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '单据状态',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of salary_sheet
--- ----------------------------
-INSERT INTO `salary_sheet` VALUES ('GZD-202206-1', 1, 'seecoder', 3, 15000.00, 300.00, 14700.00, '审批完成', '2022-06-28 09:29:23');
-INSERT INTO `salary_sheet` VALUES ('GZD-202206-10', 10, 'slf', 3, 15000.00, 300.00, 14700.00, '待二级审批', '2022-06-28 09:30:10');
-INSERT INTO `salary_sheet` VALUES ('GZD-202206-11', 11, 'wfs', 2, 15000.00, 300.00, 14700.00, '待二级审批', '2022-06-28 09:29:56');
-INSERT INTO `salary_sheet` VALUES ('GZD-202206-2', 2, 'uncln', 3, 15000.00, 300.00, 14700.00, '待一级审批', '2022-06-28 09:29:34');
-INSERT INTO `salary_sheet` VALUES ('GZD-202206-3', 3, 'kucun', 2, 15000.00, 300.00, 14700.00, '待一级审批', '2022-06-28 09:29:40');
-INSERT INTO `salary_sheet` VALUES ('GZD-202206-9', 9, 'xiaoshoujingli', 3, 1702000.00, 581730.00, 1120270.00, '审批完成', '2022-06-28 09:27:55');
+DROP TABLE IF EXISTS `sale_returns_sheet_content`;
+CREATE TABLE `sale_returns_sheet_content`  (
+   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增id',
+   `sale_returns_sheet_id` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '销售退货单id',
+   `pid` char(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品id',
+   `quantity` int(11) NULL DEFAULT NULL COMMENT '数量',
+   `total_price` decimal(10, 2) NULL DEFAULT NULL COMMENT '该商品的总金额',
+   `unit_price` decimal(10, 2) NULL DEFAULT NULL COMMENT '该商品的单价',
+   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
+   PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 0 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for sale_returns_sheet
 -- ----------------------------
 DROP TABLE IF EXISTS `sale_returns_sheet`;
 CREATE TABLE `sale_returns_sheet`  (
-  `id` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '销售退货单id',
-  `sale_sheet_id` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '关联的销售单id',
-  `operator` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '操作员',
-  `raw_total_amount` decimal(10, 2) NULL DEFAULT NULL COMMENT '折让前退货总额',
-  `discount` decimal(10, 2) NULL DEFAULT NULL COMMENT '折扣',
-  `voucher_amount` decimal(10, 2) NULL DEFAULT NULL COMMENT '使用代金卷总额',
-  `final_amount` decimal(10, 2) NULL DEFAULT NULL COMMENT '退货的总金额',
-  `state` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '单据状态',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
-  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注'
+   `id` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '销售退货单id',
+   `sale_sheet_id` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '关联的销售单id',
+   `operator` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '操作员',
+   `raw_total_amount` decimal(10, 2) NULL DEFAULT NULL COMMENT '折让前退货总额',
+   `discount` decimal(10, 2) NULL DEFAULT NULL COMMENT '折扣',
+   `voucher_amount` decimal(10, 2) NULL DEFAULT NULL COMMENT '使用代金卷总额',
+   `final_amount` decimal(10, 2) NULL DEFAULT NULL COMMENT '退货的总金额',
+   `state` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '单据状态',
+   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注'
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Table structure for sale_returns_sheet_content
--- ----------------------------
-DROP TABLE IF EXISTS `sale_returns_sheet_content`;
-CREATE TABLE `sale_returns_sheet_content`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增id',
-  `sale_returns_sheet_id` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '销售退货单id',
-  `pid` char(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品id',
-  `quantity` int(11) NULL DEFAULT NULL COMMENT '数量',
-  `total_price` decimal(10, 2) NULL DEFAULT NULL COMMENT '该商品的总金额',
-  `unit_price` decimal(10, 2) NULL DEFAULT NULL COMMENT '该商品的单价',
-  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for sale_sheet
@@ -544,92 +295,6 @@ INSERT INTO `sale_sheet_content` VALUES (34, 'XSD-20220524-00003', '000000000040
 INSERT INTO `sale_sheet_content` VALUES (35, 'XSD-20220524-00003', '0000000000400001', 100, 3800.00, 380000.00, NULL);
 INSERT INTO `sale_sheet_content` VALUES (36, 'XSD-20220524-00004', '0000000000400000', 300, 3000.00, 900000.00, '');
 INSERT INTO `sale_sheet_content` VALUES (37, 'XSD-20220524-00004', '0000000000400001', 500, 4000.00, 2000000.00, NULL);
-
--- ----------------------------
--- Table structure for staff
--- ----------------------------
-DROP TABLE IF EXISTS `staff`;
-CREATE TABLE `staff`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `gender` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `birthday` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `position` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `balance` decimal(10, 2) NULL DEFAULT 0.00,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of staff
--- ----------------------------
-INSERT INTO `staff` VALUES (1, 'seecoder', '男', '1990-01-01', '12345678901', 'INVENTORY_MANAGER', 14700.00);
-INSERT INTO `staff` VALUES (2, 'uncln', '女', '1990-01-02', '12345678902', 'INVENTORY_MANAGER', 0.00);
-INSERT INTO `staff` VALUES (3, 'kucun', '男', '1990-01-01', '12345678903', 'INVENTORY_MANAGER', 0.00);
-INSERT INTO `staff` VALUES (4, 'sky', '男', '1990-09-02', '12787979', 'ADMIN', 0.00);
-INSERT INTO `staff` VALUES (5, 'zxr', '男', '1990-01-03', '12345678904', 'SALE_MANAGER', 0.00);
-INSERT INTO `staff` VALUES (6, '67', '男', '1990-01-04', '12345678905', 'GM', 0.00);
-INSERT INTO `staff` VALUES (7, 'xiaoshou', '女', '1990-01-05', '12345678906', 'SALE_STAFF', 0.00);
-INSERT INTO `staff` VALUES (8, 'Leone', '男', '1990-01-06', '12345678907', 'GM', 0.00);
-INSERT INTO `staff` VALUES (9, 'xiaoshoujingli', '女', '1990-01-07', '12345678908', 'SALE_MANAGER', 1120270.00);
-INSERT INTO `staff` VALUES (10, 'slf', '男', '1990-01-08', '12345678909', 'HR', 0.00);
-INSERT INTO `staff` VALUES (11, 'wfs', '男', '1990-01-09', '12345678910', 'FINANCIAL_STAFF', 0.00);
-
--- ----------------------------
--- Table structure for staff_user
--- ----------------------------
-DROP TABLE IF EXISTS `staff_user`;
-CREATE TABLE `staff_user`  (
-  `staff_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  INDEX `staff_id`(`staff_id`) USING BTREE,
-  CONSTRAINT `staff_user_ibfk_1` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of staff_user
--- ----------------------------
-INSERT INTO `staff_user` VALUES (1, 1);
-INSERT INTO `staff_user` VALUES (2, 2);
-INSERT INTO `staff_user` VALUES (3, 3);
-INSERT INTO `staff_user` VALUES (4, 4);
-INSERT INTO `staff_user` VALUES (5, 5);
-INSERT INTO `staff_user` VALUES (6, 6);
-INSERT INTO `staff_user` VALUES (7, 7);
-INSERT INTO `staff_user` VALUES (8, 8);
-INSERT INTO `staff_user` VALUES (9, 9);
-INSERT INTO `staff_user` VALUES (10, 10);
-INSERT INTO `staff_user` VALUES (11, 11);
-
--- ----------------------------
--- Table structure for total_price_promotion
--- ----------------------------
-DROP TABLE IF EXISTS `total_price_promotion`;
-CREATE TABLE `total_price_promotion`  (
-  `id` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '编号：ZJCXCL-yyyyMMdd-xxxxx',
-  `threshold` decimal(10, 2) NULL DEFAULT NULL COMMENT '总价阈值',
-  `begin_time` datetime(0) NULL DEFAULT NULL COMMENT '开始时间',
-  `end_time` datetime(0) NULL DEFAULT NULL COMMENT '结束时间',
-  `operator` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '操作者',
-  `voucher_amount` decimal(10, 2) NULL DEFAULT NULL COMMENT '代金卷额度',
-  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Table structure for total_price_promotion_content
--- ----------------------------
-DROP TABLE IF EXISTS `total_price_promotion_content`;
-CREATE TABLE `total_price_promotion_content`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
-  `total_price_promotion_id` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '总价促销策略的编号',
-  `pid` varchar(31) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品编号',
-  `quantity` int(11) NULL DEFAULT NULL COMMENT '数量',
-  `unit_price` decimal(10, 2) NULL DEFAULT NULL COMMENT '单价',
-  `total_price` decimal(10, 2) NULL DEFAULT NULL COMMENT '金额',
-  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for user
@@ -776,16 +441,5 @@ INSERT INTO `warehouse_output_sheet_content` VALUES (35, '0000000000400000', 'CK
 INSERT INTO `warehouse_output_sheet_content` VALUES (36, '0000000000400001', 'CKD-20220524-00001', 2, 100, 4000.00, NULL);
 INSERT INTO `warehouse_output_sheet_content` VALUES (37, '0000000000400000', 'CKD-20220524-00002', 1, 100, 3000.00, '');
 INSERT INTO `warehouse_output_sheet_content` VALUES (38, '0000000000400001', 'CKD-20220524-00002', 2, 100, 4200.00, NULL);
-
--- ----------------------------
--- Table structure for year_end_awards
--- ----------------------------
-DROP TABLE IF EXISTS `year_end_awards`;
-CREATE TABLE `year_end_awards`  (
-  `staff_id` int(11) NOT NULL COMMENT '员工编号',
-  `year` int(11) NOT NULL COMMENT '年份',
-  `amount` decimal(10, 2) NULL DEFAULT NULL COMMENT '年终奖总额',
-  PRIMARY KEY (`staff_id`, `year`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -47,8 +47,13 @@ public class BankAccountServiceImpl implements BankAccountService {
     }
 
     @Override
-    public void spendAtAccountId(Integer companyBankAccountId, BigDecimal actualSalary) {
-        bankAccountDao.spendAtAccountId(companyBankAccountId, actualSalary);
+    public void spendAtAccountId(Integer companyBankAccountId, BigDecimal amount) {
+        bankAccountDao.spendAtAccountId(companyBankAccountId, amount);
+    }
+
+    @Override
+    public void incomeAtAccountId(Integer companyBankAccountId, BigDecimal amount) {
+        bankAccountDao.incomeAtAccountId(companyBankAccountId, amount);
     }
 
     @Override

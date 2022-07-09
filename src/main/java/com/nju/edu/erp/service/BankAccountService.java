@@ -36,9 +36,16 @@ public interface BankAccountService {
     /**
      * 从银行账户播走一笔前
      * @param companyBankAccountId 银行账户id
-     * @param actualSalary 金额数
+     * @param amount 金额数
      */
-    void spendAtAccountId(Integer companyBankAccountId, BigDecimal actualSalary);
+    void spendAtAccountId(Integer companyBankAccountId, BigDecimal amount);
+
+    /**
+     * 存入银行账户一笔钱
+     * @param companyBankAccountId 银行账户id
+     * @param amount 金额数
+     */
+    void incomeAtAccountId(Integer companyBankAccountId, BigDecimal amount);
 
     /**
      * 查询账户id的余额

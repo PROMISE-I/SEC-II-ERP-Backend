@@ -2,12 +2,14 @@ package com.nju.edu.erp.service.Impl;
 
 import com.nju.edu.erp.dao.finance.PayMoneyDao;
 import com.nju.edu.erp.enums.sheetState.PayMoneySheetState;
+import com.nju.edu.erp.exception.MyServiceException;
 import com.nju.edu.erp.model.po.CustomerPO;
 import com.nju.edu.erp.model.po.finance.PayMoneySheetPO;
 import com.nju.edu.erp.model.po.finance.PayMoneyTransferListPO;
 import com.nju.edu.erp.model.vo.UserVO;
 import com.nju.edu.erp.model.vo.finance.PayMoneySheetVO;
 import com.nju.edu.erp.model.vo.finance.PayMoneyTransferListVO;
+import com.nju.edu.erp.service.BankAccountService;
 import com.nju.edu.erp.service.CustomerService;
 import com.nju.edu.erp.service.PayMoneyService;
 import com.nju.edu.erp.utils.IdGenerator;
@@ -28,10 +30,13 @@ public class PayMoneyServiceImpl implements PayMoneyService {
 
     CustomerService customerService;
 
+    BankAccountService bankAccountService;
+
     @Autowired
-    public PayMoneyServiceImpl(PayMoneyDao payMoneyDao, CustomerService customerService) {
+    public PayMoneyServiceImpl(PayMoneyDao payMoneyDao, CustomerService customerService, BankAccountService bankAccountService) {
         this.payMoneyDao = payMoneyDao;
         this.customerService = customerService;
+        this.bankAccountService = bankAccountService;
     }
 
     @Override
@@ -106,8 +111,18 @@ public class PayMoneyServiceImpl implements PayMoneyService {
                 //单据审核通过，修改公司对客户的应付数据（减少payable）
                 PayMoneySheetPO payMoneySheet = payMoneyDao.findOneById(payMoneySheetId);
                 CustomerPO customer = customerService.findCustomerById(payMoneySheet.getCustomer());
-                customer.setReceivable(customer.getPayable().subtract(payMoneySheet.getTotalAmount()));
+                customer.setPayable(customer.getPayable().subtract(payMoneySheet.getTotalAmount()));
                 customerService.updateCustomer(customer);
+                //减少银行账户的余额
+                List<PayMoneyTransferListPO> transferLists = payMoneyDao.findTransferListByPayMoneySheetId(payMoneySheetId);
+                for (PayMoneyTransferListPO transferList : transferLists) {
+                    BigDecimal amount = bankAccountService.getAmountByAccountId(transferList.getBankAccountId());
+                    if (transferList.getAmount().compareTo(amount) > 0) {
+                        throw new MyServiceException("D00001", "付款单转账列表的付款金额数大于银行账户的余额！审批失败！");
+                    } else {
+                        bankAccountService.spendAtAccountId(transferList.getBankAccountId(), transferList.getAmount());
+                    }
+                }
             }
         }
     }
