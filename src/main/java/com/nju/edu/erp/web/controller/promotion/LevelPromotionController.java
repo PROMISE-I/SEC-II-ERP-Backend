@@ -46,6 +46,7 @@ public class LevelPromotionController {
      * @param levelPromotionStrategyVO
      * @return
      */
+    //EXPORT: 更新促销策略, 根据级别的促销策略
     @PostMapping("/update")
     public Response update(@RequestBody LevelPromotionStrategyVO levelPromotionStrategyVO){
         levelPromotionService.updateOne(levelPromotionStrategyVO);

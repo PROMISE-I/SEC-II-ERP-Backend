@@ -25,6 +25,7 @@ public class StaffController {
      * @param staffVO
      * @return
      */
+    //员工管理, 新增
     @PostMapping("/create")
     public Response createStaff(@RequestBody StaffVO staffVO){
         StaffPO staffPO = new StaffPO(staffVO);
@@ -57,6 +58,7 @@ public class StaffController {
      * @param staffVO
      * @return
      */
+    //EXPORT: 员工管理, 更新
     @PostMapping("/update")
     public Response updateOne(@RequestBody StaffVO staffVO){
         StaffPO staffPO = new StaffPO(staffVO);
@@ -71,6 +73,7 @@ public class StaffController {
      * @param id
      * @return
      */
+    //EXPORT: 员工管理, 删除
     @GetMapping("/delete")
     public Response deleteById(@RequestParam Integer id){
         staffService.deleteStaffById(id);

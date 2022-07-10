@@ -31,18 +31,21 @@ public class CombinatorialPromotionController {
         return Response.buildSuccess(combinatorialPromotionService.findByPair(productOneId, productTwoId));
     }
 
+    //EXPORT: 创建促销策略, 组合促销策略
     @PostMapping("/create")
     public Response createOne(@RequestBody CombinatorialDiscountVO combinatorialDiscountVO){
         combinatorialPromotionService.createOne(combinatorialDiscountVO);
         return Response.buildSuccess();
     }
 
+    //EXPORT: 更新促销策略, 组合促销策略
     @PostMapping("/update")
     public Response updateOne(@RequestBody CombinatorialDiscountVO combinatorialDiscountVO){
         combinatorialPromotionService.updateOne(combinatorialDiscountVO);
         return Response.buildSuccess();
     }
 
+    //EXPORT: 删除促销策略
     @GetMapping("/delete")
     public Response deleteOne(@RequestParam("id") Integer id){
         combinatorialPromotionService.deleteOne(id);

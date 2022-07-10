@@ -20,6 +20,7 @@ public class AttendanceController {
         this.attendanceService = attendanceService;
     }
 
+    //EXPORT: 员工打卡
     @PostMapping("/clockIn")
     public Response clockIn(@RequestBody AttendanceRecordVO attendanceRecordVO){
         Integer staffId = attendanceRecordVO.getStaffId();
@@ -30,6 +31,7 @@ public class AttendanceController {
         return Response.buildSuccess();
     }
 
+    //EXPORT: 查询员工是否打卡
     @PostMapping("/check")
     public Response checkAttendance(@RequestBody AttendanceRecordVO attendanceRecordVO){
         Integer staffId = attendanceRecordVO.getStaffId();

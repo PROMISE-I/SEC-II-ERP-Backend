@@ -30,6 +30,7 @@ public class TotalPricePromotionController {
      * @param totalPricePromotionVO
      * @return
      */
+    //EXPORT: 指定促销策略, 根据总价的促销策略
     @Authorized(roles = {Role.GM, Role.ADMIN})
     @PostMapping("/promotion-make")
     public Response makePromotion(UserVO userVO, @RequestBody TotalPricePromotionVO totalPricePromotionVO) {
@@ -61,6 +62,7 @@ public class TotalPricePromotionController {
      * @param id
      * @return
      */
+    //EXPORT: 删除促销策略
     @Authorized(roles = {Role.GM, Role.ADMIN})
     @GetMapping("/promotion-delete")
     public Response delete(@RequestParam(value = "id") String id) {

@@ -49,6 +49,7 @@ public class SalaryController {
      * @param employeeId 员工id
      * @param bankAccountId 员工银行账户id
      */
+    //EXPORT: 指定工资单
     @Authorized(roles = {Role.HR, Role.GM, Role.ADMIN})
     @GetMapping("/sheet-make")
     public Response makeSalarySheet(@RequestParam(value = "employeeId") int employeeId,
@@ -104,6 +105,7 @@ public class SalaryController {
      * @param salarySheetId 工资单id
      * @param state 修改后的状态("审批失败"/"待二级审批")
      */
+    //EXPORT: 工资单一级审批
     @Authorized(roles = {Role.HR, Role.ADMIN})
     @GetMapping("/first-approval")
     public Response firstApproval(@RequestParam(value = "salarySheetId") String salarySheetId,
@@ -121,6 +123,7 @@ public class SalaryController {
      * @param salarySheetId 工资单id
      * @param state 修改后的状态("审批失败"/"审批完成")
      */
+    //EXPORT: 工资单二级审批
     @Authorized (roles = {Role.GM, Role.ADMIN})
     @GetMapping(value = "/second-approval")
     public Response secondApproval(@RequestParam(value = "salarySheetId") String salarySheetId,

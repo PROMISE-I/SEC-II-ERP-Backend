@@ -136,6 +136,7 @@ public class WarehouseController {
      * @param endDateStr   格式：“yyyy-MM-dd HH:mm:ss”，如“2022-05-12 11:38:30”
      * @return
      */
+    //EXPORT: 库存查看
     @GetMapping("/sheetContent/time")
     @Authorized(roles = {Role.ADMIN,Role.INVENTORY_MANAGER})
     public Response getWarehouseIODetailByTime(@RequestParam String beginDateStr,@RequestParam String endDateStr) throws ParseException {
@@ -149,6 +150,7 @@ public class WarehouseController {
      * @param endDateStr   格式：“yyyy-MM-dd HH:mm:ss”，如“2022-05-12 11:38:30”
      * @return
      */
+    //EXPORT: 库存查看
     @GetMapping("/inputSheet/time/quantity")
     @Authorized(roles = {Role.ADMIN,Role.INVENTORY_MANAGER})
     public Response getWarehouseInputProductQuantityByTime(@RequestParam String beginDateStr,@RequestParam String endDateStr) throws ParseException{

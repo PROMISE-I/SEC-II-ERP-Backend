@@ -26,6 +26,7 @@ public class ReceiveMoneyController {
      * @param userVO 操作员
      * @param receiveMoneySheetVO 收款单
      */
+    //EXPORT: 制定收款单
     @Authorized(roles = {Role.FINANCIAL_STAFF, Role.GM, Role.ADMIN})
     @PostMapping("/sheet-make")
     public Response makeReceiveMoneySheet(UserVO userVO, @RequestBody ReceiveMoneySheetVO receiveMoneySheetVO) {
@@ -47,6 +48,7 @@ public class ReceiveMoneyController {
      * @param receiveMoneySheetId 收款单id
      * @param state 修改后的状态("审批失败"/"待二级审批")
      */
+    //EXPORT: 审批收款单
     @Authorized(roles = {Role.FINANCIAL_STAFF, Role.ADMIN})
     @GetMapping("/first-approval")
     public Response firstApproval(@RequestParam("receiveMoneySheetId") String receiveMoneySheetId,
@@ -64,6 +66,7 @@ public class ReceiveMoneyController {
      * @param receiveMoneySheetId 收款单id
      * @param state 修改后的状态("审批失败"/"审批完成")
      */
+    //EXPORT: 审批收款单
     @Authorized(roles = {Role.GM, Role.ADMIN})
     @GetMapping("/second-approval")
     public Response secondApproval(@RequestParam("receiveMoneySheetId") String receiveMoneySheetId,

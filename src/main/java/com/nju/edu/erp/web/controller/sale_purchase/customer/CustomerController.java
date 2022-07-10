@@ -24,6 +24,7 @@ public class CustomerController {
         return Response.buildSuccess(customerService.getCustomersByType(type));
     }
 
+    //EXPORT： 客户管理， 新增客户
     @PostMapping("/addCustomer")
     public Response createCustomer(@RequestBody CustomerVO customerVO){
         CustomerPO customerPO = new CustomerPO(customerVO);
@@ -38,6 +39,7 @@ public class CustomerController {
         return Response.buildSuccess(customerVO);
     }
 
+    //EXPORT: 客户管理, 更新
     @PostMapping("/update")
     public Response updateCustomer(@RequestBody CustomerVO customerVO){
         CustomerPO customerPO = new CustomerPO(customerVO);
@@ -45,6 +47,7 @@ public class CustomerController {
         return Response.buildSuccess();
     }
 
+    //EXPORT: 客户管理, 删除
     @GetMapping("/delete")
     public Response deleteById(@RequestParam int id){
         customerService.deleteOne(id);

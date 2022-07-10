@@ -107,6 +107,7 @@ public class SaleController {
      * @param condition 筛选条件
      * @return 销售单对应的销售明细
      */
+    //EXPORT: 查看销售明细表
     @Authorized(roles = {Role.FINANCIAL_STAFF, Role.GM, Role.ADMIN})
     @PostMapping(value = "/saleDetail")
     public Response getSaleDetailByCondition(@RequestBody SaleIODetailFilterConditionVO condition) throws ParseException {
