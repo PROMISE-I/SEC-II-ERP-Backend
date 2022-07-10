@@ -1,0 +1,112 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ReceiveMoneyService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.nju.edu.erp.service.Interface.finance</a>
+</div>
+
+<h1>Coverage Summary for Class: ReceiveMoneyService (com.nju.edu.erp.service.Interface.finance)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">ReceiveMoneyService</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.nju.edu.erp.service.Interface.finance;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.nju.edu.erp.enums.sheet_state.finance.ReceiveMoneySheetState;
+<i class="no-highlight">4</i>&nbsp;import com.nju.edu.erp.model.vo.user.UserVO;
+<i class="no-highlight">5</i>&nbsp;import com.nju.edu.erp.model.vo.finance.receive_money.ReceiveMoneySheetVO;
+<i class="no-highlight">6</i>&nbsp;
+<i class="no-highlight">7</i>&nbsp;import java.util.List;
+<i class="no-highlight">8</i>&nbsp;
+<i class="no-highlight">9</i>&nbsp;public interface ReceiveMoneyService {
+<i class="no-highlight">10</i>&nbsp;
+<i class="no-highlight">11</i>&nbsp;    /**
+<i class="no-highlight">12</i>&nbsp;     * ?????????
+<i class="no-highlight">13</i>&nbsp;     * @param userVO ???
+<i class="no-highlight">14</i>&nbsp;     * @param receiveMoneySheetVO ???
+<i class="no-highlight">15</i>&nbsp;     */
+<i class="no-highlight">16</i>&nbsp;    void makeReceiveMoneySheet(UserVO userVO, ReceiveMoneySheetVO receiveMoneySheetVO);
+<i class="no-highlight">17</i>&nbsp;
+<i class="no-highlight">18</i>&nbsp;    /**
+<i class="no-highlight">19</i>&nbsp;     * ?????????(state == null ????????)
+<i class="no-highlight">20</i>&nbsp;     * @param state ?????
+<i class="no-highlight">21</i>&nbsp;     */
+<i class="no-highlight">22</i>&nbsp;    List&lt;ReceiveMoneySheetVO&gt; getReceiveMoneySheetByState(ReceiveMoneySheetState state);
+<i class="no-highlight">23</i>&nbsp;
+<i class="no-highlight">24</i>&nbsp;    /**
+<i class="no-highlight">25</i>&nbsp;     * ????
+<i class="no-highlight">26</i>&nbsp;     * @param receiveMoneySheetId ?????
+<i class="no-highlight">27</i>&nbsp;     * @param state ??????
+<i class="no-highlight">28</i>&nbsp;     */
+<i class="no-highlight">29</i>&nbsp;    void approval(String receiveMoneySheetId, ReceiveMoneySheetState state);
+<i class="no-highlight">30</i>&nbsp;
+<i class="no-highlight">31</i>&nbsp;    /**
+<i class="no-highlight">32</i>&nbsp;     * ???????
+<i class="no-highlight">33</i>&nbsp;     * @return ?????
+<i class="no-highlight">34</i>&nbsp;     */
+<i class="no-highlight">35</i>&nbsp;    List&lt;ReceiveMoneySheetVO&gt; findAllSheet();
+<i class="no-highlight">36</i>&nbsp;
+<i class="no-highlight">37</i>&nbsp;    /**
+<i class="no-highlight">38</i>&nbsp;     * ????????
+<i class="no-highlight">39</i>&nbsp;     * @param sheetId ????
+<i class="no-highlight">40</i>&nbsp;     * @return ????, true ????
+<i class="no-highlight">41</i>&nbsp;     */
+<i class="no-highlight">42</i>&nbsp;    boolean isSheetExists(String sheetId);
+<i class="no-highlight">43</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-10 04:16</div>
+</div>
+</body>
+</html>

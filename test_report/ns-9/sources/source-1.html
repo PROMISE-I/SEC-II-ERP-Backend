@@ -1,0 +1,414 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > SaleReturnsServiceImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.nju.edu.erp.service.Impl.sale_purchase.sale</a>
+</div>
+
+<h1>Coverage Summary for Class: SaleReturnsServiceImpl (com.nju.edu.erp.service.Impl.sale_purchase.sale)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SaleReturnsServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    25%
+  </span>
+  <span class="absValue">
+    (2/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    9.8%
+  </span>
+  <span class="absValue">
+    (12/122)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">SaleReturnsServiceImpl$$EnhancerBySpringCGLIB$$1b4830db</td>
+  </tr>
+  <tr>
+    <td class="name">SaleReturnsServiceImpl$$EnhancerBySpringCGLIB$$1b4830db$$FastClassBySpringCGLIB$$11ff3a0e</td>
+  </tr>
+  <tr>
+    <td class="name">SaleReturnsServiceImpl$$EnhancerBySpringCGLIB$$2bb0278a</td>
+  </tr>
+  <tr>
+    <td class="name">SaleReturnsServiceImpl$$EnhancerBySpringCGLIB$$4416aae6</td>
+  </tr>
+  <tr>
+    <td class="name">SaleReturnsServiceImpl$$EnhancerBySpringCGLIB$$5b955cce</td>
+  </tr>
+  <tr>
+    <td class="name">SaleReturnsServiceImpl$$EnhancerBySpringCGLIB$$5bac93e5</td>
+  </tr>
+  <tr>
+    <td class="name">SaleReturnsServiceImpl$$EnhancerBySpringCGLIB$$5d434948</td>
+  </tr>
+  <tr>
+    <td class="name">SaleReturnsServiceImpl$$EnhancerBySpringCGLIB$$6d240ae7</td>
+  </tr>
+  <tr>
+    <td class="name">SaleReturnsServiceImpl$$EnhancerBySpringCGLIB$$79669581</td>
+  </tr>
+  <tr>
+    <td class="name">SaleReturnsServiceImpl$$EnhancerBySpringCGLIB$$8000dd42</td>
+  </tr>
+  <tr>
+    <td class="name">SaleReturnsServiceImpl$$EnhancerBySpringCGLIB$$9a10e975</td>
+  </tr>
+  <tr>
+    <td class="name">SaleReturnsServiceImpl$$EnhancerBySpringCGLIB$$a03a839b</td>
+  </tr>
+  <tr>
+    <td class="name">SaleReturnsServiceImpl$$EnhancerBySpringCGLIB$$b8593148</td>
+  </tr>
+  <tr>
+    <td class="name">SaleReturnsServiceImpl$$EnhancerBySpringCGLIB$$b969ac92</td>
+  </tr>
+  <tr>
+    <td class="name">SaleReturnsServiceImpl$$EnhancerBySpringCGLIB$$d5f9975d</td>
+  </tr>
+  <tr>
+    <td class="name">SaleReturnsServiceImpl$$EnhancerBySpringCGLIB$$e9b7de56</td>
+  </tr>
+  <tr>
+    <td class="name">SaleReturnsServiceImpl$$FastClassBySpringCGLIB$$9db3433b</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    25%
+  </span>
+  <span class="absValue">
+    (2/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    9.8%
+  </span>
+  <span class="absValue">
+    (12/122)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.nju.edu.erp.service.Impl.sale_purchase.sale;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.nju.edu.erp.dao.sale_purchase.sale.SaleReturnsSheetDao;
+<i class="no-highlight">4</i>&nbsp;import com.nju.edu.erp.dao.sale_purchase.sale.SaleSheetDao;
+<i class="no-highlight">5</i>&nbsp;import com.nju.edu.erp.dao.warehouse.WarehouseDao;
+<i class="no-highlight">6</i>&nbsp;import com.nju.edu.erp.enums.sheet_state.sale.SaleReturnsSheetState;
+<i class="no-highlight">7</i>&nbsp;import com.nju.edu.erp.model.po.sale_purchase.customer.CustomerPO;
+<i class="no-highlight">8</i>&nbsp;import com.nju.edu.erp.model.po.sale_purchase.sale.SaleSheetContentPO;
+<i class="no-highlight">9</i>&nbsp;import com.nju.edu.erp.model.po.sale_purchase.sale.SaleSheetPO;
+<i class="no-highlight">10</i>&nbsp;import com.nju.edu.erp.model.po.sale_purchase.sale.io_detail.SaleIODetailFilterConditionPO;
+<i class="no-highlight">11</i>&nbsp;import com.nju.edu.erp.model.po.sale_purchase.sale.io_detail.SaleIODetailPO;
+<i class="no-highlight">12</i>&nbsp;import com.nju.edu.erp.model.po.sale_purchase.sale.returns.SaleReturnsSheetContentPO;
+<i class="no-highlight">13</i>&nbsp;import com.nju.edu.erp.model.po.sale_purchase.sale.returns.SaleReturnsSheetPO;
+<i class="no-highlight">14</i>&nbsp;import com.nju.edu.erp.model.po.warehouse.output.WarehouseOutputSheetContentPO;
+<i class="no-highlight">15</i>&nbsp;import com.nju.edu.erp.model.po.warehouse.WarehousePO;
+<i class="no-highlight">16</i>&nbsp;import com.nju.edu.erp.model.vo.warehouse.product.ProductInfoVO;
+<i class="no-highlight">17</i>&nbsp;import com.nju.edu.erp.model.vo.user.UserVO;
+<i class="no-highlight">18</i>&nbsp;import com.nju.edu.erp.model.vo.sale_purchase.sale.io_detail.SaleIODetailFilterConditionVO;
+<i class="no-highlight">19</i>&nbsp;import com.nju.edu.erp.model.vo.sale_purchase.sale.returns.SaleReturnsSheetContentVO;
+<i class="no-highlight">20</i>&nbsp;import com.nju.edu.erp.model.vo.sale_purchase.sale.returns.SaleReturnsSheetVO;
+<i class="no-highlight">21</i>&nbsp;import com.nju.edu.erp.service.Interface.sale_purchase.customer.CustomerService;
+<i class="no-highlight">22</i>&nbsp;import com.nju.edu.erp.service.Interface.warehouse.product.ProductService;
+<i class="no-highlight">23</i>&nbsp;import com.nju.edu.erp.service.Interface.sale_purchase.sale.SaleReturnsService;
+<i class="no-highlight">24</i>&nbsp;import com.nju.edu.erp.utils.IdGenerator;
+<i class="no-highlight">25</i>&nbsp;import org.springframework.beans.BeanUtils;
+<i class="no-highlight">26</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i class="no-highlight">27</i>&nbsp;import org.springframework.stereotype.Service;
+<i class="no-highlight">28</i>&nbsp;import org.springframework.transaction.annotation.Transactional;
+<i class="no-highlight">29</i>&nbsp;
+<i class="no-highlight">30</i>&nbsp;import java.math.BigDecimal;
+<i class="no-highlight">31</i>&nbsp;import java.text.DateFormat;
+<i class="no-highlight">32</i>&nbsp;import java.text.ParseException;
+<i class="no-highlight">33</i>&nbsp;import java.text.SimpleDateFormat;
+<i class="no-highlight">34</i>&nbsp;import java.util.*;
+<i class="no-highlight">35</i>&nbsp;
+<i class="no-highlight">36</i>&nbsp;@Service
+<i class="no-highlight">37</i>&nbsp;public class SaleReturnsServiceImpl implements SaleReturnsService {
+<i class="no-highlight">38</i>&nbsp;
+<i class="no-highlight">39</i>&nbsp;    SaleReturnsSheetDao saleReturnsSheetDao;
+<i class="no-highlight">40</i>&nbsp;
+<i class="no-highlight">41</i>&nbsp;    ProductService productService;
+<i class="no-highlight">42</i>&nbsp;
+<i class="no-highlight">43</i>&nbsp;    SaleSheetDao saleSheetDao;
+<i class="no-highlight">44</i>&nbsp;
+<i class="no-highlight">45</i>&nbsp;    CustomerService customerService;
+<i class="no-highlight">46</i>&nbsp;
+<i class="no-highlight">47</i>&nbsp;    WarehouseDao warehouseDao;
+<i class="no-highlight">48</i>&nbsp;
+<i class="no-highlight">49</i>&nbsp;    @Autowired
+<b class="fc"><i class="no-highlight">50</i>&nbsp;    public SaleReturnsServiceImpl(SaleReturnsSheetDao saleReturnsSheetDao, ProductService productService, SaleSheetDao saleSheetDao, CustomerService customerService, WarehouseDao warehouseDao) {</b>
+<b class="fc"><i class="no-highlight">51</i>&nbsp;        this.saleReturnsSheetDao = saleReturnsSheetDao;</b>
+<b class="fc"><i class="no-highlight">52</i>&nbsp;        this.productService = productService;</b>
+<b class="fc"><i class="no-highlight">53</i>&nbsp;        this.saleSheetDao = saleSheetDao;</b>
+<b class="fc"><i class="no-highlight">54</i>&nbsp;        this.customerService = customerService;</b>
+<b class="fc"><i class="no-highlight">55</i>&nbsp;        this.warehouseDao = warehouseDao;</b>
+<i class="no-highlight">56</i>&nbsp;    }
+<i class="no-highlight">57</i>&nbsp;
+<i class="no-highlight">58</i>&nbsp;    /**
+<i class="no-highlight">59</i>&nbsp;     * ???????
+<i class="no-highlight">60</i>&nbsp;     * @param userVO ??????
+<i class="no-highlight">61</i>&nbsp;     * @param saleReturnsSheetVO ?????
+<i class="no-highlight">62</i>&nbsp;     */
+<i class="no-highlight">63</i>&nbsp;    @Override
+<i class="no-highlight">64</i>&nbsp;    @Transactional
+<i class="no-highlight">65</i>&nbsp;    public void makeSaleReturnsSheet(UserVO userVO, SaleReturnsSheetVO saleReturnsSheetVO) {
+<b class="nc"><i class="no-highlight">66</i>&nbsp;        SaleReturnsSheetPO saleReturnsSheetPO = new SaleReturnsSheetPO();</b>
+<b class="nc"><i class="no-highlight">67</i>&nbsp;        BeanUtils.copyProperties(saleReturnsSheetVO, saleReturnsSheetPO);</b>
+<i class="no-highlight">68</i>&nbsp;        // ???????????????
+<b class="nc"><i class="no-highlight">69</i>&nbsp;        saleReturnsSheetPO.setOperator(userVO.getName());</b>
+<b class="nc"><i class="no-highlight">70</i>&nbsp;        saleReturnsSheetPO.setCreateTime(new Date());</b>
+<b class="nc"><i class="no-highlight">71</i>&nbsp;        SaleReturnsSheetPO latest = saleReturnsSheetDao.getLatest();</b>
+<b class="nc"><i class="no-highlight">72</i>&nbsp;        String id = saleReturnsSheetVO.getId();</b>
+<i class="no-highlight">73</i>&nbsp;        //??id?null???????????????????
+<b class="nc"><i class="no-highlight">74</i>&nbsp;        if (id == null) {</b>
+<b class="nc"><i class="no-highlight">75</i>&nbsp;            id = IdGenerator.generateSheetId(latest == null? null : latest.getId(), &quot;XSTHD&quot;);</b>
+<i class="no-highlight">76</i>&nbsp;        }
+<b class="nc"><i class="no-highlight">77</i>&nbsp;        saleReturnsSheetPO.setId(id);</b>
+<b class="nc"><i class="no-highlight">78</i>&nbsp;        saleReturnsSheetPO.setState(SaleReturnsSheetState.PENDING_LEVEL_1);</b>
+<b class="nc"><i class="no-highlight">79</i>&nbsp;        BigDecimal totalAmount = BigDecimal.ZERO;</b>
+<b class="nc"><i class="no-highlight">80</i>&nbsp;        List&lt;SaleSheetContentPO&gt; saleSheetContent = saleSheetDao.findContentBySheetId(saleReturnsSheetPO.getSaleSheetId());</b>
+<b class="nc"><i class="no-highlight">81</i>&nbsp;        Map&lt;String, SaleSheetContentPO&gt; map = new HashMap&lt;&gt;();</b>
+<b class="nc"><i class="no-highlight">82</i>&nbsp;        for (SaleSheetContentPO item : saleSheetContent) {</b>
+<b class="nc"><i class="no-highlight">83</i>&nbsp;            map.put(item.getPid(), item);</b>
+<b class="nc"><i class="no-highlight">84</i>&nbsp;        }</b>
+<b class="nc"><i class="no-highlight">85</i>&nbsp;        List&lt;SaleReturnsSheetContentPO&gt; sRContentPOList = new ArrayList&lt;&gt;();</b>
+<b class="nc"><i class="no-highlight">86</i>&nbsp;        for (SaleReturnsSheetContentVO content : saleReturnsSheetVO.getSaleReturnsSheetContent()) {</b>
+<b class="nc"><i class="no-highlight">87</i>&nbsp;            SaleReturnsSheetContentPO sContentPO = new SaleReturnsSheetContentPO();</b>
+<b class="nc"><i class="no-highlight">88</i>&nbsp;            BeanUtils.copyProperties(content, sContentPO);</b>
+<b class="nc"><i class="no-highlight">89</i>&nbsp;            sContentPO.setSaleReturnsSheetId(id);</b>
+<b class="nc"><i class="no-highlight">90</i>&nbsp;            SaleSheetContentPO item = map.get(sContentPO.getPid());</b>
+<b class="nc"><i class="no-highlight">91</i>&nbsp;            sContentPO.setUnitPrice(item.getUnitPrice());</b>
+<i class="no-highlight">92</i>&nbsp;
+<b class="nc"><i class="no-highlight">93</i>&nbsp;            BigDecimal unitPrice = sContentPO.getUnitPrice();</b>
+<b class="nc"><i class="no-highlight">94</i>&nbsp;            sContentPO.setTotalPrice(unitPrice.multiply(BigDecimal.valueOf(sContentPO.getQuantity())));</b>
+<b class="nc"><i class="no-highlight">95</i>&nbsp;            sRContentPOList.add(sContentPO);</b>
+<b class="nc"><i class="no-highlight">96</i>&nbsp;            totalAmount = totalAmount.add(sContentPO.getTotalPrice());</b>
+<b class="nc"><i class="no-highlight">97</i>&nbsp;        }</b>
+<b class="nc"><i class="no-highlight">98</i>&nbsp;        saleReturnsSheetDao.saveBatch(sRContentPOList);</b>
+<i class="no-highlight">99</i>&nbsp;
+<b class="nc"><i class="no-highlight">100</i>&nbsp;        saleReturnsSheetPO.setRawTotalAmount(totalAmount);</b>
+<b class="nc"><i class="no-highlight">101</i>&nbsp;        SaleSheetPO saleSheetPO = saleSheetDao.findSheetById(saleReturnsSheetPO.getSaleSheetId());</b>
+<b class="nc"><i class="no-highlight">102</i>&nbsp;        saleReturnsSheetPO.setDiscount(saleSheetPO.getDiscount());</b>
+<b class="nc"><i class="no-highlight">103</i>&nbsp;        saleReturnsSheetPO.setVoucherAmount(saleSheetPO.getVoucherAmount()</b>
+<b class="nc"><i class="no-highlight">104</i>&nbsp;                .multiply(saleReturnsSheetPO.getRawTotalAmount())</b>
+<b class="nc"><i class="no-highlight">105</i>&nbsp;                .divide(saleSheetPO.getRawTotalAmount(), 2, BigDecimal.ROUND_DOWN)</b>
+<i class="no-highlight">106</i>&nbsp;        );
+<b class="nc"><i class="no-highlight">107</i>&nbsp;        saleReturnsSheetPO.setFinalAmount(saleReturnsSheetPO.getRawTotalAmount()</b>
+<b class="nc"><i class="no-highlight">108</i>&nbsp;                .multiply(saleReturnsSheetPO.getDiscount())</b>
+<b class="nc"><i class="no-highlight">109</i>&nbsp;                .subtract(saleReturnsSheetPO.getVoucherAmount())</b>
+<i class="no-highlight">110</i>&nbsp;        );
+<i class="no-highlight">111</i>&nbsp;
+<b class="nc"><i class="no-highlight">112</i>&nbsp;        saleReturnsSheetDao.save(saleReturnsSheetPO);</b>
+<i class="no-highlight">113</i>&nbsp;    }
+<i class="no-highlight">114</i>&nbsp;
+<i class="no-highlight">115</i>&nbsp;    /**
+<i class="no-highlight">116</i>&nbsp;     * ???????????[???content??](state == null ??????????)
+<i class="no-highlight">117</i>&nbsp;     *
+<i class="no-highlight">118</i>&nbsp;     * @param state ????????
+<i class="no-highlight">119</i>&nbsp;     * @return ?????
+<i class="no-highlight">120</i>&nbsp;     */
+<i class="no-highlight">121</i>&nbsp;    @Override
+<i class="no-highlight">122</i>&nbsp;    @Transactional
+<i class="no-highlight">123</i>&nbsp;    public List&lt;SaleReturnsSheetVO&gt; getSaleReturnsSheetByState(SaleReturnsSheetState state) {
+<b class="nc"><i class="no-highlight">124</i>&nbsp;        List&lt;SaleReturnsSheetVO&gt; res = new ArrayList&lt;&gt;();</b>
+<i class="no-highlight">125</i>&nbsp;        List&lt;SaleReturnsSheetPO&gt; all;
+<b class="nc"><i class="no-highlight">126</i>&nbsp;        if (state == null) {</b>
+<b class="nc"><i class="no-highlight">127</i>&nbsp;            all = saleReturnsSheetDao.findAll();</b>
+<i class="no-highlight">128</i>&nbsp;        } else {
+<b class="nc"><i class="no-highlight">129</i>&nbsp;          all = saleReturnsSheetDao.findAllByState(state);</b>
+<i class="no-highlight">130</i>&nbsp;        }
+<b class="nc"><i class="no-highlight">131</i>&nbsp;        for (SaleReturnsSheetPO po : all) {</b>
+<b class="nc"><i class="no-highlight">132</i>&nbsp;            SaleReturnsSheetVO vo = new SaleReturnsSheetVO();</b>
+<b class="nc"><i class="no-highlight">133</i>&nbsp;            BeanUtils.copyProperties(po, vo);</b>
+<b class="nc"><i class="no-highlight">134</i>&nbsp;            List&lt;SaleReturnsSheetContentPO&gt; alll = saleReturnsSheetDao.findContentBySaleReturnsSheetId(po.getId());</b>
+<b class="nc"><i class="no-highlight">135</i>&nbsp;            List&lt;SaleReturnsSheetContentVO&gt; vos = new ArrayList&lt;&gt;();</b>
+<b class="nc"><i class="no-highlight">136</i>&nbsp;            for (SaleReturnsSheetContentPO p : alll) {</b>
+<b class="nc"><i class="no-highlight">137</i>&nbsp;                SaleReturnsSheetContentVO v = new SaleReturnsSheetContentVO();</b>
+<b class="nc"><i class="no-highlight">138</i>&nbsp;                BeanUtils.copyProperties(p, v);</b>
+<b class="nc"><i class="no-highlight">139</i>&nbsp;                vos.add(v);</b>
+<b class="nc"><i class="no-highlight">140</i>&nbsp;            }</b>
+<b class="nc"><i class="no-highlight">141</i>&nbsp;            vo.setSaleReturnsSheetContent(vos);</b>
+<b class="nc"><i class="no-highlight">142</i>&nbsp;            res.add(vo);</b>
+<b class="nc"><i class="no-highlight">143</i>&nbsp;        }</b>
+<b class="nc"><i class="no-highlight">144</i>&nbsp;        return res;</b>
+<i class="no-highlight">145</i>&nbsp;    }
+<i class="no-highlight">146</i>&nbsp;
+<i class="no-highlight">147</i>&nbsp;    /**
+<i class="no-highlight">148</i>&nbsp;     * ???????id????(state == &quot;?????&quot;/&quot;????&quot;/&quot;????&quot;)
+<i class="no-highlight">149</i>&nbsp;     * ?controller???????
+<i class="no-highlight">150</i>&nbsp;     *
+<i class="no-highlight">151</i>&nbsp;     * @param saleReturnsSheetId ?????id
+<i class="no-highlight">152</i>&nbsp;     * @param state ???????????
+<i class="no-highlight">153</i>&nbsp;     */
+<i class="no-highlight">154</i>&nbsp;    @Override
+<i class="no-highlight">155</i>&nbsp;    @Transactional
+<i class="no-highlight">156</i>&nbsp;    public void approval(String saleReturnsSheetId, SaleReturnsSheetState state) {
+<b class="nc"><i class="no-highlight">157</i>&nbsp;        SaleReturnsSheetPO saleReturnsSheet = saleReturnsSheetDao.findOneById(saleReturnsSheetId);</b>
+<b class="nc"><i class="no-highlight">158</i>&nbsp;        if (state.equals(SaleReturnsSheetState.FAILURE)) {</b>
+<b class="nc"><i class="no-highlight">159</i>&nbsp;            if (saleReturnsSheet.getState() == SaleReturnsSheetState.SUCCESS) throw new RuntimeException(&quot;??????&quot;);</b>
+<b class="nc"><i class="no-highlight">160</i>&nbsp;            int effectLines = saleReturnsSheetDao.updateState(saleReturnsSheetId, state);</b>
+<b class="nc"><i class="no-highlight">161</i>&nbsp;            if(effectLines == 0) throw new RuntimeException(&quot;??????&quot;);</b>
+<b class="nc"><i class="no-highlight">162</i>&nbsp;        } else {</b>
+<i class="no-highlight">163</i>&nbsp;            SaleReturnsSheetState prevState;
+<b class="nc"><i class="no-highlight">164</i>&nbsp;            if (state.equals(SaleReturnsSheetState.SUCCESS)) {</b>
+<b class="nc"><i class="no-highlight">165</i>&nbsp;                prevState = SaleReturnsSheetState.PENDING_LEVEL_2;</b>
+<b class="nc"><i class="no-highlight">166</i>&nbsp;            } else if (state.equals(SaleReturnsSheetState.PENDING_LEVEL_2)) {</b>
+<b class="nc"><i class="no-highlight">167</i>&nbsp;                prevState = SaleReturnsSheetState.PENDING_LEVEL_1;</b>
+<i class="no-highlight">168</i>&nbsp;            } else {
+<b class="nc"><i class="no-highlight">169</i>&nbsp;                throw new RuntimeException(&quot;??????&quot;);</b>
+<i class="no-highlight">170</i>&nbsp;            }
+<b class="nc"><i class="no-highlight">171</i>&nbsp;            int effectLines = saleReturnsSheetDao.updateStateV2(saleReturnsSheetId, prevState, state);</b>
+<b class="nc"><i class="no-highlight">172</i>&nbsp;            if (effectLines == 0) throw new RuntimeException(&quot;??????&quot;);</b>
+<b class="nc"><i class="no-highlight">173</i>&nbsp;            if (state.equals(SaleReturnsSheetState.SUCCESS)) {</b>
+<i class="no-highlight">174</i>&nbsp;                // TODO ????, ???????
+<i class="no-highlight">175</i>&nbsp;                // ?????id? ??????id ?   ?????id-&gt;???id-&gt;???id-&gt;????id?
+<b class="nc"><i class="no-highlight">176</i>&nbsp;                List&lt;SaleReturnsSheetContentPO&gt; saleReturnsSheetContentPOS = saleReturnsSheetDao.findContentBySaleReturnsSheetId(saleReturnsSheetId);</b>
+<i class="no-highlight">177</i>&nbsp;
+<b class="nc"><i class="no-highlight">178</i>&nbsp;                for (SaleReturnsSheetContentPO sRSContentPO : saleReturnsSheetContentPOS) {</b>
+<b class="nc"><i class="no-highlight">179</i>&nbsp;                    String pid = sRSContentPO.getPid();</b>
+<b class="nc"><i class="no-highlight">180</i>&nbsp;                    Integer quantity = sRSContentPO.getQuantity();</b>
+<b class="nc"><i class="no-highlight">181</i>&nbsp;                    List&lt;WarehouseOutputSheetContentPO&gt; batchIdAndQuantities = saleReturnsSheetDao.findAllWarehouseOutputSheetContentBySaleReturnsSheetIdAndPid(saleReturnsSheetId, pid);</b>
+<b class="nc"><i class="no-highlight">182</i>&nbsp;                    for (WarehouseOutputSheetContentPO woscPO : batchIdAndQuantities) {</b>
+<b class="nc"><i class="no-highlight">183</i>&nbsp;                        Integer batchId = woscPO.getBatchId();</b>
+<b class="nc"><i class="no-highlight">184</i>&nbsp;                        Integer quantityInThisBatch = woscPO.getQuantity();</b>
+<b class="nc"><i class="no-highlight">185</i>&nbsp;                        WarehousePO warehousePO = warehouseDao.findOneByPidAndBatchId(pid, batchId);</b>
+<b class="nc"><i class="no-highlight">186</i>&nbsp;                        if(warehousePO == null) throw new RuntimeException(&quot;??????????????&quot;);</b>
+<b class="nc"><i class="no-highlight">187</i>&nbsp;                        if (quantity &lt;= quantityInThisBatch) {</b>
+<b class="nc"><i class="no-highlight">188</i>&nbsp;                            warehousePO.setQuantity(quantity);</b>
+<b class="nc"><i class="no-highlight">189</i>&nbsp;                            warehouseDao.addQuantity(warehousePO);</b>
+<b class="nc"><i class="no-highlight">190</i>&nbsp;                            ProductInfoVO productInfoVO = productService.getOneProductByPid(pid);</b>
+<b class="nc"><i class="no-highlight">191</i>&nbsp;                            productInfoVO.setQuantity(productInfoVO.getQuantity() + quantity);</b>
+<b class="nc"><i class="no-highlight">192</i>&nbsp;                            productService.updateProduct(productInfoVO);</b>
+<b class="nc"><i class="no-highlight">193</i>&nbsp;                            quantity = 0;</b>
+<b class="nc"><i class="no-highlight">194</i>&nbsp;                            break;</b>
+<i class="no-highlight">195</i>&nbsp;                        } else {
+<b class="nc"><i class="no-highlight">196</i>&nbsp;                            warehousePO.setQuantity(quantityInThisBatch);</b>
+<b class="nc"><i class="no-highlight">197</i>&nbsp;                            warehouseDao.addQuantity(warehousePO);</b>
+<b class="nc"><i class="no-highlight">198</i>&nbsp;                            ProductInfoVO productInfoVO = productService.getOneProductByPid(pid);</b>
+<b class="nc"><i class="no-highlight">199</i>&nbsp;                            productInfoVO.setQuantity(productInfoVO.getQuantity() + quantityInThisBatch);</b>
+<b class="nc"><i class="no-highlight">200</i>&nbsp;                            productService.updateProduct(productInfoVO);</b>
+<b class="nc"><i class="no-highlight">201</i>&nbsp;                            quantity -= quantityInThisBatch;</b>
+<i class="no-highlight">202</i>&nbsp;                        }
+<b class="nc"><i class="no-highlight">203</i>&nbsp;                    }</b>
+<b class="nc"><i class="no-highlight">204</i>&nbsp;                    if (quantity &gt; 0) throw new RuntimeException(&quot;????????????????&quot;);</b>
+<b class="nc"><i class="no-highlight">205</i>&nbsp;                }</b>
+<i class="no-highlight">206</i>&nbsp;
+<i class="no-highlight">207</i>&nbsp;                // ??????id &amp; ???id -&gt; ??receivable?????????
+<b class="nc"><i class="no-highlight">208</i>&nbsp;                SaleSheetPO saleSheetPO = saleSheetDao.findSheetById(saleReturnsSheet.getSaleSheetId());</b>
+<b class="nc"><i class="no-highlight">209</i>&nbsp;                Integer supplier = saleSheetPO.getSupplier();</b>
+<b class="nc"><i class="no-highlight">210</i>&nbsp;                CustomerPO customer = customerService.findCustomerById(supplier);</b>
+<i class="no-highlight">211</i>&nbsp;
+<b class="nc"><i class="no-highlight">212</i>&nbsp;                customer.setReceivable(customer.getReceivable().subtract(saleReturnsSheet.getFinalAmount()));</b>
+<b class="nc"><i class="no-highlight">213</i>&nbsp;                customerService.updateCustomer(customer);</b>
+<i class="no-highlight">214</i>&nbsp;            }
+<i class="no-highlight">215</i>&nbsp;
+<i class="no-highlight">216</i>&nbsp;        }
+<i class="no-highlight">217</i>&nbsp;
+<i class="no-highlight">218</i>&nbsp;    }
+<i class="no-highlight">219</i>&nbsp;
+<i class="no-highlight">220</i>&nbsp;    @Override
+<i class="no-highlight">221</i>&nbsp;    public List&lt;SaleIODetailPO&gt; getSaleReturnsDetailByCondition(SaleIODetailFilterConditionVO condition) throws ParseException {
+<b class="fc"><i class="no-highlight">222</i>&nbsp;        DateFormat dateFormat = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;);</b>
+<b class="fc"><i class="no-highlight">223</i>&nbsp;        SaleIODetailFilterConditionPO conditionPO = new SaleIODetailFilterConditionPO();</b>
+<i class="no-highlight">224</i>&nbsp;
+<b class="fc"><i class="no-highlight">225</i>&nbsp;        BeanUtils.copyProperties(condition, conditionPO);</b>
+<b class="fc"><i class="no-highlight">226</i>&nbsp;        conditionPO.setBeginDate(dateFormat.parse(condition.getBeginDateStr()));</b>
+<b class="fc"><i class="no-highlight">227</i>&nbsp;        conditionPO.setEndDate(dateFormat.parse(condition.getEndDateStr()));</b>
+<i class="no-highlight">228</i>&nbsp;
+<b class="fc"><i class="no-highlight">229</i>&nbsp;        return saleReturnsSheetDao.getSaleReturnsDetailByCondition(conditionPO);</b>
+<i class="no-highlight">230</i>&nbsp;    }
+<i class="no-highlight">231</i>&nbsp;
+<i class="no-highlight">232</i>&nbsp;    @Override
+<i class="no-highlight">233</i>&nbsp;    public List&lt;SaleIODetailPO&gt; getSaleReturnsDetailByRange(String beginTimeStr, String endTimeStr) throws ParseException {
+<b class="nc"><i class="no-highlight">234</i>&nbsp;        DateFormat dateFormat = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;);</b>
+<b class="nc"><i class="no-highlight">235</i>&nbsp;        Date beginDate = dateFormat.parse(beginTimeStr);</b>
+<b class="nc"><i class="no-highlight">236</i>&nbsp;        Date endDate = dateFormat.parse(endTimeStr);</b>
+<i class="no-highlight">237</i>&nbsp;
+<b class="nc"><i class="no-highlight">238</i>&nbsp;        return saleReturnsSheetDao.getSaleReturnsDetailByRange(beginDate, endDate);</b>
+<i class="no-highlight">239</i>&nbsp;    }
+<i class="no-highlight">240</i>&nbsp;
+<i class="no-highlight">241</i>&nbsp;    @Override
+<i class="no-highlight">242</i>&nbsp;    public BigDecimal getTotalSaleReturnsAmountByMonthAndYearAndSalesman(int year, int month, String salesman) {
+<b class="nc"><i class="no-highlight">243</i>&nbsp;        BigDecimal saleReturnsAmount = saleReturnsSheetDao.getTotalSaleReturnsAmountByMonthAndYearAndSalesman(year, month, salesman);</b>
+<b class="nc"><i class="no-highlight">244</i>&nbsp;        return saleReturnsAmount == null ? BigDecimal.ZERO : saleReturnsAmount;</b>
+<i class="no-highlight">245</i>&nbsp;    }
+<i class="no-highlight">246</i>&nbsp;
+<i class="no-highlight">247</i>&nbsp;    @Override
+<i class="no-highlight">248</i>&nbsp;    public boolean isSheetExists(String sheetId) {
+<b class="nc"><i class="no-highlight">249</i>&nbsp;        return saleReturnsSheetDao.findOneById(sheetId) != null;</b>
+<i class="no-highlight">250</i>&nbsp;    }
+<i class="no-highlight">251</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-10 04:16</div>
+</div>
+</body>
+</html>

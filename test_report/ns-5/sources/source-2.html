@@ -1,0 +1,272 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > LevelPromotionServiceImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.nju.edu.erp.service.Impl.promotion</a>
+</div>
+
+<h1>Coverage Summary for Class: LevelPromotionServiceImpl (com.nju.edu.erp.service.Impl.promotion)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">LevelPromotionServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    83.3%
+  </span>
+  <span class="absValue">
+    (5/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    67.6%
+  </span>
+  <span class="absValue">
+    (23/34)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">LevelPromotionServiceImpl$$EnhancerBySpringCGLIB$$172a0bb5</td>
+  </tr>
+  <tr>
+    <td class="name">LevelPromotionServiceImpl$$EnhancerBySpringCGLIB$$1d53a5db</td>
+  </tr>
+  <tr>
+    <td class="name">LevelPromotionServiceImpl$$EnhancerBySpringCGLIB$$1d53a5db$$FastClassBySpringCGLIB$$9f83eec1</td>
+  </tr>
+  <tr>
+    <td class="name">LevelPromotionServiceImpl$$EnhancerBySpringCGLIB$$35725388</td>
+  </tr>
+  <tr>
+    <td class="name">LevelPromotionServiceImpl$$EnhancerBySpringCGLIB$$35725388$$FastClassBySpringCGLIB$$bc48f3f9</td>
+  </tr>
+  <tr>
+    <td class="name">LevelPromotionServiceImpl$$EnhancerBySpringCGLIB$$3682ced2</td>
+  </tr>
+  <tr>
+    <td class="name">LevelPromotionServiceImpl$$EnhancerBySpringCGLIB$$5312b99d</td>
+  </tr>
+  <tr>
+    <td class="name">LevelPromotionServiceImpl$$EnhancerBySpringCGLIB$$5312b99d$$FastClassBySpringCGLIB$$18164eff</td>
+  </tr>
+  <tr>
+    <td class="name">LevelPromotionServiceImpl$$EnhancerBySpringCGLIB$$66d10096</td>
+  </tr>
+  <tr>
+    <td class="name">LevelPromotionServiceImpl$$EnhancerBySpringCGLIB$$66d10096$$FastClassBySpringCGLIB$$758c6148</td>
+  </tr>
+  <tr>
+    <td class="name">LevelPromotionServiceImpl$$EnhancerBySpringCGLIB$$9861531b</td>
+  </tr>
+  <tr>
+    <td class="name">LevelPromotionServiceImpl$$EnhancerBySpringCGLIB$$9861531b$$FastClassBySpringCGLIB$$c87fc227</td>
+  </tr>
+  <tr>
+    <td class="name">LevelPromotionServiceImpl$$EnhancerBySpringCGLIB$$a8c949ca</td>
+  </tr>
+  <tr>
+    <td class="name">LevelPromotionServiceImpl$$EnhancerBySpringCGLIB$$c12fcd26</td>
+  </tr>
+  <tr>
+    <td class="name">LevelPromotionServiceImpl$$EnhancerBySpringCGLIB$$c12fcd26$$FastClassBySpringCGLIB$$5d529c25</td>
+  </tr>
+  <tr>
+    <td class="name">LevelPromotionServiceImpl$$EnhancerBySpringCGLIB$$d8ae7f0e</td>
+  </tr>
+  <tr>
+    <td class="name">LevelPromotionServiceImpl$$EnhancerBySpringCGLIB$$d8c5b625</td>
+  </tr>
+  <tr>
+    <td class="name">LevelPromotionServiceImpl$$EnhancerBySpringCGLIB$$da5c6b88</td>
+  </tr>
+  <tr>
+    <td class="name">LevelPromotionServiceImpl$$EnhancerBySpringCGLIB$$ea3d2d27</td>
+  </tr>
+  <tr>
+    <td class="name">LevelPromotionServiceImpl$$EnhancerBySpringCGLIB$$f67fb7c1</td>
+  </tr>
+  <tr>
+    <td class="name">LevelPromotionServiceImpl$$EnhancerBySpringCGLIB$$fd19ff82</td>
+  </tr>
+  <tr>
+    <td class="name">LevelPromotionServiceImpl$$FastClassBySpringCGLIB$$bed87bfb</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    83.3%
+  </span>
+  <span class="absValue">
+    (5/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    67.6%
+  </span>
+  <span class="absValue">
+    (23/34)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.nju.edu.erp.service.Impl.promotion;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.nju.edu.erp.dao.promotion.strategy.LevelStrategyDao;
+<i class="no-highlight">4</i>&nbsp;import com.nju.edu.erp.dao.promotion.gifts.PresentInfoDao;
+<i class="no-highlight">5</i>&nbsp;import com.nju.edu.erp.model.po.promotion.strategy.level.LevelPromotionStrategyPO;
+<i class="no-highlight">6</i>&nbsp;import com.nju.edu.erp.model.po.promotion.gifts.PresentInfoPO;
+<i class="no-highlight">7</i>&nbsp;import com.nju.edu.erp.model.vo.promotion.level.LevelPromotionStrategyVO;
+<i class="no-highlight">8</i>&nbsp;import com.nju.edu.erp.service.Interface.promotion.LevelPromotionService;
+<i class="no-highlight">9</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i class="no-highlight">10</i>&nbsp;import org.springframework.stereotype.Service;
+<i class="no-highlight">11</i>&nbsp;import org.springframework.transaction.annotation.Transactional;
+<i class="no-highlight">12</i>&nbsp;
+<i class="no-highlight">13</i>&nbsp;import java.util.ArrayList;
+<i class="no-highlight">14</i>&nbsp;import java.util.List;
+<i class="no-highlight">15</i>&nbsp;
+<i class="no-highlight">16</i>&nbsp;@Service
+<i class="no-highlight">17</i>&nbsp;public class LevelPromotionServiceImpl implements LevelPromotionService {
+<i class="no-highlight">18</i>&nbsp;    private final PresentInfoDao presentInfoDao;
+<i class="no-highlight">19</i>&nbsp;    private final LevelStrategyDao levelStrategyDao;
+<i class="no-highlight">20</i>&nbsp;
+<i class="no-highlight">21</i>&nbsp;    @Autowired
+<b class="fc"><i class="no-highlight">22</i>&nbsp;    public LevelPromotionServiceImpl(PresentInfoDao presentInfoDao, LevelStrategyDao levelStrategyDao){</b>
+<b class="fc"><i class="no-highlight">23</i>&nbsp;        this.presentInfoDao = presentInfoDao;</b>
+<b class="fc"><i class="no-highlight">24</i>&nbsp;        this.levelStrategyDao = levelStrategyDao;</b>
+<i class="no-highlight">25</i>&nbsp;    }
+<i class="no-highlight">26</i>&nbsp;
+<i class="no-highlight">27</i>&nbsp;    /**
+<i class="no-highlight">28</i>&nbsp;     * ?????????????
+<i class="no-highlight">29</i>&nbsp;     * @return ???????
+<i class="no-highlight">30</i>&nbsp;     */
+<i class="no-highlight">31</i>&nbsp;    @Override
+<i class="no-highlight">32</i>&nbsp;    public List&lt;LevelPromotionStrategyVO&gt; findAll() {
+<b class="nc"><i class="no-highlight">33</i>&nbsp;        List&lt;LevelPromotionStrategyPO&gt; levelPromotionStrategyPOList = levelStrategyDao.findAll();</b>
+<b class="nc"><i class="no-highlight">34</i>&nbsp;        List&lt;PresentInfoPO&gt; presentInfoPOList = presentInfoDao.findAll();</b>
+<b class="nc"><i class="no-highlight">35</i>&nbsp;        for(PresentInfoPO p: presentInfoPOList){</b>
+<b class="nc"><i class="no-highlight">36</i>&nbsp;            System.out.println(p);</b>
+<b class="nc"><i class="no-highlight">37</i>&nbsp;        }</b>
+<b class="nc"><i class="no-highlight">38</i>&nbsp;        return match(levelPromotionStrategyPOList, presentInfoPOList);</b>
+<i class="no-highlight">39</i>&nbsp;    }
+<i class="no-highlight">40</i>&nbsp;
+<i class="no-highlight">41</i>&nbsp;    /**
+<i class="no-highlight">42</i>&nbsp;     * ???????????
+<i class="no-highlight">43</i>&nbsp;     * @param level
+<i class="no-highlight">44</i>&nbsp;     * @return ???????????
+<i class="no-highlight">45</i>&nbsp;     */
+<i class="no-highlight">46</i>&nbsp;    @Override
+<i class="no-highlight">47</i>&nbsp;    public LevelPromotionStrategyVO findByLevel(Integer level) {
+<i class="no-highlight">48</i>&nbsp;
+<b class="fc"><i class="no-highlight">49</i>&nbsp;        List&lt;LevelPromotionStrategyPO&gt; levelPromotionStrategyPOList = levelStrategyDao.findByLevel(level);</b>
+<i class="no-highlight">50</i>&nbsp;
+<b class="fc"><i class="no-highlight">51</i>&nbsp;        List&lt;PresentInfoPO&gt; presentInfoPOList = presentInfoDao.findAll();</b>
+<i class="no-highlight">52</i>&nbsp;
+<b class="fc"><i class="no-highlight">53</i>&nbsp;        return match(levelPromotionStrategyPOList, presentInfoPOList).get(0);</b>
+<i class="no-highlight">54</i>&nbsp;    }
+<i class="no-highlight">55</i>&nbsp;
+<i class="no-highlight">56</i>&nbsp;    @Transactional
+<i class="no-highlight">57</i>&nbsp;    @Override
+<i class="no-highlight">58</i>&nbsp;    public void updateOne(LevelPromotionStrategyVO levelPromotionStrategyVO) {
+<b class="fc"><i class="no-highlight">59</i>&nbsp;        LevelPromotionStrategyPO levelPromotionStrategyPO = new LevelPromotionStrategyPO(levelPromotionStrategyVO);</b>
+<b class="fc"><i class="no-highlight">60</i>&nbsp;        List&lt;PresentInfoPO&gt; lst = levelPromotionStrategyVO.getPresentInfoList();</b>
+<b class="fc"><i class="no-highlight">61</i>&nbsp;        if(lst != null) {</b>
+<b class="nc"><i class="no-highlight">62</i>&nbsp;            for (PresentInfoPO pip : lst) {</b>
+<b class="nc"><i class="no-highlight">63</i>&nbsp;                if(&quot;&quot;.equals(pip.getPid()))continue;</b>
+<b class="nc"><i class="no-highlight">64</i>&nbsp;                if (pip.getId() == null) presentInfoDao.insertOne(pip);</b>
+<b class="nc"><i class="no-highlight">65</i>&nbsp;                else presentInfoDao.updateOne(pip);</b>
+<b class="nc"><i class="no-highlight">66</i>&nbsp;            }</b>
+<i class="no-highlight">67</i>&nbsp;        }
+<b class="fc"><i class="no-highlight">68</i>&nbsp;        levelStrategyDao.updateOne(levelPromotionStrategyPO);</b>
+<i class="no-highlight">69</i>&nbsp;    }
+<i class="no-highlight">70</i>&nbsp;
+<i class="no-highlight">71</i>&nbsp;    @Override
+<i class="no-highlight">72</i>&nbsp;    public List&lt;PresentInfoPO&gt; findPresentInfoByLevel(Integer level) {
+<b class="fc"><i class="no-highlight">73</i>&nbsp;        return presentInfoDao.findPresentInfoByLevel(level);</b>
+<i class="no-highlight">74</i>&nbsp;    }
+<i class="no-highlight">75</i>&nbsp;
+<i class="no-highlight">76</i>&nbsp;    private List&lt;LevelPromotionStrategyVO&gt; match(List&lt;LevelPromotionStrategyPO&gt; levelPromotionStrategyPOList, List&lt;PresentInfoPO&gt; presentInfoPOList){
+<b class="fc"><i class="no-highlight">77</i>&nbsp;        List&lt;LevelPromotionStrategyVO&gt; levelPromotionStrategyVOList = new ArrayList&lt;&gt;();</b>
+<i class="no-highlight">78</i>&nbsp;        //???????????
+<b class="fc"><i class="no-highlight">79</i>&nbsp;        for (LevelPromotionStrategyPO lpsp : levelPromotionStrategyPOList){</b>
+<b class="fc"><i class="no-highlight">80</i>&nbsp;            LevelPromotionStrategyVO lpsv = new LevelPromotionStrategyVO(lpsp);</b>
+<b class="fc"><i class="no-highlight">81</i>&nbsp;            List&lt;PresentInfoPO&gt; lst = new ArrayList&lt;&gt;();</b>
+<i class="no-highlight">82</i>&nbsp;            //???????????
+<b class="fc"><i class="no-highlight">83</i>&nbsp;            for (PresentInfoPO pip : presentInfoPOList){</b>
+<b class="fc"><i class="no-highlight">84</i>&nbsp;                if(pip.getLevel() == lpsv.getLevel()){</b>
+<b class="fc"><i class="no-highlight">85</i>&nbsp;                    lst.add(pip);</b>
+<i class="no-highlight">86</i>&nbsp;                }
+<b class="fc"><i class="no-highlight">87</i>&nbsp;            }</b>
+<b class="fc"><i class="no-highlight">88</i>&nbsp;            if(lst.size() &gt; 0)lpsv.setPresentInfoList(lst);</b>
+<b class="fc"><i class="no-highlight">89</i>&nbsp;            levelPromotionStrategyVOList.add(lpsv);</b>
+<b class="fc"><i class="no-highlight">90</i>&nbsp;        }</b>
+<i class="no-highlight">91</i>&nbsp;
+<b class="fc"><i class="no-highlight">92</i>&nbsp;        return levelPromotionStrategyVOList;</b>
+<i class="no-highlight">93</i>&nbsp;    }
+<i class="no-highlight">94</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-10 04:16</div>
+</div>
+</body>
+</html>

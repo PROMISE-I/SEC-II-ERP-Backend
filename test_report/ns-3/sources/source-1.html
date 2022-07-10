@@ -1,0 +1,408 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > SalaryServiceImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.nju.edu.erp.service.Impl.finance.salary</a>
+</div>
+
+<h1>Coverage Summary for Class: SalaryServiceImpl (com.nju.edu.erp.service.Impl.finance.salary)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SalaryServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    14.3%
+  </span>
+  <span class="absValue">
+    (2/14)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    10.4%
+  </span>
+  <span class="absValue">
+    (11/106)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">SalaryServiceImpl$$EnhancerBySpringCGLIB$$16e0685e</td>
+  </tr>
+  <tr>
+    <td class="name">SalaryServiceImpl$$EnhancerBySpringCGLIB$$16f79f75</td>
+  </tr>
+  <tr>
+    <td class="name">SalaryServiceImpl$$EnhancerBySpringCGLIB$$188e54d8</td>
+  </tr>
+  <tr>
+    <td class="name">SalaryServiceImpl$$EnhancerBySpringCGLIB$$286f1677</td>
+  </tr>
+  <tr>
+    <td class="name">SalaryServiceImpl$$EnhancerBySpringCGLIB$$34b1a111</td>
+  </tr>
+  <tr>
+    <td class="name">SalaryServiceImpl$$EnhancerBySpringCGLIB$$3b4be8d2</td>
+  </tr>
+  <tr>
+    <td class="name">SalaryServiceImpl$$EnhancerBySpringCGLIB$$555bf505</td>
+  </tr>
+  <tr>
+    <td class="name">SalaryServiceImpl$$EnhancerBySpringCGLIB$$555bf505$$FastClassBySpringCGLIB$$1eef68ef</td>
+  </tr>
+  <tr>
+    <td class="name">SalaryServiceImpl$$EnhancerBySpringCGLIB$$5b858f2b</td>
+  </tr>
+  <tr>
+    <td class="name">SalaryServiceImpl$$EnhancerBySpringCGLIB$$73a43cd8</td>
+  </tr>
+  <tr>
+    <td class="name">SalaryServiceImpl$$EnhancerBySpringCGLIB$$74b4b822</td>
+  </tr>
+  <tr>
+    <td class="name">SalaryServiceImpl$$EnhancerBySpringCGLIB$$9144a2ed</td>
+  </tr>
+  <tr>
+    <td class="name">SalaryServiceImpl$$EnhancerBySpringCGLIB$$a502e9e6</td>
+  </tr>
+  <tr>
+    <td class="name">SalaryServiceImpl$$EnhancerBySpringCGLIB$$d6933c6b</td>
+  </tr>
+  <tr>
+    <td class="name">SalaryServiceImpl$$EnhancerBySpringCGLIB$$e6fb331a</td>
+  </tr>
+  <tr>
+    <td class="name">SalaryServiceImpl$$EnhancerBySpringCGLIB$$ff61b676</td>
+  </tr>
+  <tr>
+    <td class="name">SalaryServiceImpl$$FastClassBySpringCGLIB$$6cb1f26b</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    14.3%
+  </span>
+  <span class="absValue">
+    (2/14)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    10.4%
+  </span>
+  <span class="absValue">
+    (11/106)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.nju.edu.erp.service.Impl.finance.salary;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.nju.edu.erp.dao.finance.salary.SalaryDao;
+<i class="no-highlight">4</i>&nbsp;import com.nju.edu.erp.enums.sheet_state.finance.SalarySheetState;
+<i class="no-highlight">5</i>&nbsp;import com.nju.edu.erp.model.po.staff.PositionInfoPO;
+<i class="no-highlight">6</i>&nbsp;import com.nju.edu.erp.model.po.staff.StaffPO;
+<i class="no-highlight">7</i>&nbsp;import com.nju.edu.erp.model.po.finance.salary.SalarySheetPO;
+<i class="no-highlight">8</i>&nbsp;import com.nju.edu.erp.model.vo.finance.salary.SalarySheetVO;
+<i class="no-highlight">9</i>&nbsp;import com.nju.edu.erp.service.Impl.strategy.salary.calculate.FactorySalaryCalculateStrategy;
+<i class="no-highlight">10</i>&nbsp;import com.nju.edu.erp.service.Impl.strategy.salary.calculate.StaffSalaryCalculateStrategy;
+<i class="no-highlight">11</i>&nbsp;import com.nju.edu.erp.service.Impl.strategy.salary.calculate.StaffInfo;
+<i class="no-highlight">12</i>&nbsp;import com.nju.edu.erp.service.Interface.finance.bank_account.BankAccountService;
+<i class="no-highlight">13</i>&nbsp;import com.nju.edu.erp.service.Interface.sale_purchase.sale.SaleReturnsService;
+<i class="no-highlight">14</i>&nbsp;import com.nju.edu.erp.service.Interface.sale_purchase.sale.SaleService;
+<i class="no-highlight">15</i>&nbsp;import com.nju.edu.erp.service.Interface.staff.AttendanceService;
+<i class="no-highlight">16</i>&nbsp;import com.nju.edu.erp.service.Interface.staff.PositionService;
+<i class="no-highlight">17</i>&nbsp;import com.nju.edu.erp.service.Interface.staff.StaffService;
+<i class="no-highlight">18</i>&nbsp;import com.nju.edu.erp.service.Interface.finance.salary.SalaryService;
+<i class="no-highlight">19</i>&nbsp;import com.nju.edu.erp.service.Interface.finance.salary.YearEndAwardsService;
+<i class="no-highlight">20</i>&nbsp;import com.nju.edu.erp.utils.DateHelper;
+<i class="no-highlight">21</i>&nbsp;import com.nju.edu.erp.utils.IdGenerator;
+<i class="no-highlight">22</i>&nbsp;import com.nju.edu.erp.utils.TaxCalculator;
+<i class="no-highlight">23</i>&nbsp;import org.springframework.beans.BeanUtils;
+<i class="no-highlight">24</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i class="no-highlight">25</i>&nbsp;import org.springframework.stereotype.Service;
+<i class="no-highlight">26</i>&nbsp;import org.springframework.transaction.annotation.Transactional;
+<i class="no-highlight">27</i>&nbsp;
+<i class="no-highlight">28</i>&nbsp;import java.math.BigDecimal;
+<i class="no-highlight">29</i>&nbsp;import java.util.ArrayList;
+<i class="no-highlight">30</i>&nbsp;import java.util.Date;
+<i class="no-highlight">31</i>&nbsp;import java.util.List;
+<i class="no-highlight">32</i>&nbsp;
+<i class="no-highlight">33</i>&nbsp;@Service
+<i class="no-highlight">34</i>&nbsp;public class SalaryServiceImpl implements SalaryService {
+<i class="no-highlight">35</i>&nbsp;
+<i class="no-highlight">36</i>&nbsp;    private final SalaryDao salaryDao;
+<i class="no-highlight">37</i>&nbsp;
+<i class="no-highlight">38</i>&nbsp;    private final BankAccountService bankAccountService;
+<i class="no-highlight">39</i>&nbsp;
+<i class="no-highlight">40</i>&nbsp;    private final StaffService staffService;
+<i class="no-highlight">41</i>&nbsp;
+<i class="no-highlight">42</i>&nbsp;    private final PositionService positionService;
+<i class="no-highlight">43</i>&nbsp;
+<i class="no-highlight">44</i>&nbsp;    private final SaleService saleService;
+<i class="no-highlight">45</i>&nbsp;
+<i class="no-highlight">46</i>&nbsp;    private final SaleReturnsService saleReturnsService;
+<i class="no-highlight">47</i>&nbsp;
+<i class="no-highlight">48</i>&nbsp;    private final AttendanceService attendanceService;
+<i class="no-highlight">49</i>&nbsp;
+<i class="no-highlight">50</i>&nbsp;    private final YearEndAwardsService yearEndAwardsService;
+<i class="no-highlight">51</i>&nbsp;
+<i class="no-highlight">52</i>&nbsp;    @Autowired
+<b class="fc"><i class="no-highlight">53</i>&nbsp;    public SalaryServiceImpl(SalaryDao salaryDao, BankAccountService bankAccountService, StaffService staffService, PositionService positionService, SaleService saleService, SaleReturnsService saleReturnsService, AttendanceService attendanceService, YearEndAwardsService yearEndAwardsService) {</b>
+<b class="fc"><i class="no-highlight">54</i>&nbsp;        this.salaryDao = salaryDao;</b>
+<b class="fc"><i class="no-highlight">55</i>&nbsp;        this.bankAccountService = bankAccountService;</b>
+<b class="fc"><i class="no-highlight">56</i>&nbsp;        this.staffService = staffService;</b>
+<b class="fc"><i class="no-highlight">57</i>&nbsp;        this.positionService = positionService;</b>
+<b class="fc"><i class="no-highlight">58</i>&nbsp;        this.saleService = saleService;</b>
+<b class="fc"><i class="no-highlight">59</i>&nbsp;        this.saleReturnsService = saleReturnsService;</b>
+<b class="fc"><i class="no-highlight">60</i>&nbsp;        this.attendanceService = attendanceService;</b>
+<b class="fc"><i class="no-highlight">61</i>&nbsp;        this.yearEndAwardsService = yearEndAwardsService;</b>
+<i class="no-highlight">62</i>&nbsp;    }
+<i class="no-highlight">63</i>&nbsp;
+<i class="no-highlight">64</i>&nbsp;    @Override
+<i class="no-highlight">65</i>&nbsp;    @Transactional
+<i class="no-highlight">66</i>&nbsp;    public void makeSalarySheet(int employeeId, int companyBankAccountId) {
+<b class="fc"><i class="no-highlight">67</i>&nbsp;        SalarySheetPO salarySheet = new SalarySheetPO();</b>
+<b class="fc"><i class="no-highlight">68</i>&nbsp;        String employeeName = staffService.getNameByStaffId(employeeId);</b>
+<i class="no-highlight">69</i>&nbsp;        //??????
+<b class="nc"><i class="no-highlight">70</i>&nbsp;        BigDecimal yearEndAwards = getYearEndAwards(employeeId);</b>
+<b class="nc"><i class="no-highlight">71</i>&nbsp;        BigDecimal rawSalary = calculateRawSalary(employeeId).add(yearEndAwards);</b>
+<b class="nc"><i class="no-highlight">72</i>&nbsp;        BigDecimal tax = TaxCalculator.calculateTax(rawSalary);</b>
+<b class="nc"><i class="no-highlight">73</i>&nbsp;        BigDecimal actualSalary = rawSalary.subtract(tax);</b>
+<i class="no-highlight">74</i>&nbsp;
+<b class="nc"><i class="no-highlight">75</i>&nbsp;        String id = IdGenerator.generateSalarySheetId(employeeId);</b>
+<b class="nc"><i class="no-highlight">76</i>&nbsp;        salarySheet.setId(id);</b>
+<b class="nc"><i class="no-highlight">77</i>&nbsp;        salarySheet.setStaffId(employeeId);</b>
+<b class="nc"><i class="no-highlight">78</i>&nbsp;        salarySheet.setStaffName(employeeName);</b>
+<b class="nc"><i class="no-highlight">79</i>&nbsp;        salarySheet.setCompanyBankAccountId(companyBankAccountId);</b>
+<b class="nc"><i class="no-highlight">80</i>&nbsp;        salarySheet.setRawSalary(rawSalary);</b>
+<b class="nc"><i class="no-highlight">81</i>&nbsp;        salarySheet.setTax(tax);</b>
+<b class="nc"><i class="no-highlight">82</i>&nbsp;        salarySheet.setActualSalary(actualSalary);</b>
+<b class="nc"><i class="no-highlight">83</i>&nbsp;        salarySheet.setState(SalarySheetState.PENDING_LEVEL_1);</b>
+<b class="nc"><i class="no-highlight">84</i>&nbsp;        salarySheet.setCreateTime(new Date());</b>
+<i class="no-highlight">85</i>&nbsp;
+<b class="nc"><i class="no-highlight">86</i>&nbsp;        salaryDao.saveSheet(salarySheet);</b>
+<i class="no-highlight">87</i>&nbsp;    }
+<i class="no-highlight">88</i>&nbsp;
+<i class="no-highlight">89</i>&nbsp;    @Override
+<i class="no-highlight">90</i>&nbsp;    public BigDecimal getSalaryByEmployeeId(int employeeId) {
+<b class="nc"><i class="no-highlight">91</i>&nbsp;        Date date = new Date();</b>
+<b class="nc"><i class="no-highlight">92</i>&nbsp;        SalarySheetPO sheet = salaryDao.findSheetByEmployeeIdAndDate(employeeId, date);</b>
+<b class="nc"><i class="no-highlight">93</i>&nbsp;        if (sheet == null) {</b>
+<i class="no-highlight">94</i>&nbsp;            //???????
+<b class="nc"><i class="no-highlight">95</i>&nbsp;            BigDecimal rawSalary = calculateRawSalary(employeeId);</b>
+<b class="nc"><i class="no-highlight">96</i>&nbsp;            BigDecimal tax = TaxCalculator.calculateTax(rawSalary);</b>
+<b class="nc"><i class="no-highlight">97</i>&nbsp;            return rawSalary.subtract(tax);</b>
+<i class="no-highlight">98</i>&nbsp;        } else {
+<b class="nc"><i class="no-highlight">99</i>&nbsp;            return sheet.getActualSalary();</b>
+<i class="no-highlight">100</i>&nbsp;        }
+<i class="no-highlight">101</i>&nbsp;    }
+<i class="no-highlight">102</i>&nbsp;
+<i class="no-highlight">103</i>&nbsp;    @Override
+<i class="no-highlight">104</i>&nbsp;    public List&lt;SalarySheetVO&gt; getSalarySheetByState(SalarySheetState state) {
+<i class="no-highlight">105</i>&nbsp;        List&lt;SalarySheetPO&gt; all;
+<b class="nc"><i class="no-highlight">106</i>&nbsp;        if (state == null) {</b>
+<b class="nc"><i class="no-highlight">107</i>&nbsp;            all = salaryDao.findAllSheet();</b>
+<i class="no-highlight">108</i>&nbsp;        } else {
+<b class="nc"><i class="no-highlight">109</i>&nbsp;            all = salaryDao.findAllSheetByState(state);</b>
+<i class="no-highlight">110</i>&nbsp;        }
+<i class="no-highlight">111</i>&nbsp;
+<b class="nc"><i class="no-highlight">112</i>&nbsp;        return getSalarySheetVOS(all);</b>
+<i class="no-highlight">113</i>&nbsp;    }
+<i class="no-highlight">114</i>&nbsp;
+<i class="no-highlight">115</i>&nbsp;    @Override
+<i class="no-highlight">116</i>&nbsp;    public Date getLatestDateByEmployeeId(int employeeId) {
+<b class="nc"><i class="no-highlight">117</i>&nbsp;        SalarySheetPO sheet = salaryDao.findLatestByEmployeeId(employeeId);</b>
+<b class="nc"><i class="no-highlight">118</i>&nbsp;        return sheet == null ? null : sheet.getCreateTime();</b>
+<i class="no-highlight">119</i>&nbsp;    }
+<i class="no-highlight">120</i>&nbsp;
+<i class="no-highlight">121</i>&nbsp;    @Override
+<i class="no-highlight">122</i>&nbsp;    @Transactional
+<i class="no-highlight">123</i>&nbsp;    public void approval(String salarySheetId, SalarySheetState state) {
+<b class="nc"><i class="no-highlight">124</i>&nbsp;        if (state.equals(SalarySheetState.FAILURE)) {</b>
+<b class="nc"><i class="no-highlight">125</i>&nbsp;            SalarySheetPO salarySheetPO = salaryDao.findSheetById(salarySheetId);</b>
+<b class="nc"><i class="no-highlight">126</i>&nbsp;            if (salarySheetPO.getState() == SalarySheetState.SUCCESS) throw new RuntimeException(&quot;??????&quot;);</b>
+<b class="nc"><i class="no-highlight">127</i>&nbsp;            int effectLines = salaryDao.updateSheetState(salarySheetId, state);</b>
+<b class="nc"><i class="no-highlight">128</i>&nbsp;            if (effectLines == 0) throw new RuntimeException(&quot;??????&quot;);</b>
+<b class="nc"><i class="no-highlight">129</i>&nbsp;        } else {</b>
+<i class="no-highlight">130</i>&nbsp;            SalarySheetState prevState;
+<b class="nc"><i class="no-highlight">131</i>&nbsp;            if (state.equals(SalarySheetState.PENDING_LEVEL_2)) {</b>
+<b class="nc"><i class="no-highlight">132</i>&nbsp;                prevState = SalarySheetState.PENDING_LEVEL_1;</b>
+<b class="nc"><i class="no-highlight">133</i>&nbsp;            } else if (state.equals(SalarySheetState.SUCCESS)) {</b>
+<b class="nc"><i class="no-highlight">134</i>&nbsp;                prevState = SalarySheetState.PENDING_LEVEL_2;</b>
+<i class="no-highlight">135</i>&nbsp;            } else {
+<b class="nc"><i class="no-highlight">136</i>&nbsp;                throw new RuntimeException(&quot;??????&quot;);</b>
+<i class="no-highlight">137</i>&nbsp;            }
+<i class="no-highlight">138</i>&nbsp;
+<b class="nc"><i class="no-highlight">139</i>&nbsp;            int effectLines = salaryDao.updateSheetStateOnPrev(salarySheetId, prevState, state);</b>
+<b class="nc"><i class="no-highlight">140</i>&nbsp;            if (effectLines == 0) throw new RuntimeException(&quot;??????&quot;);</b>
+<i class="no-highlight">141</i>&nbsp;
+<b class="nc"><i class="no-highlight">142</i>&nbsp;            if (state.equals(SalarySheetState.SUCCESS)) {</b>
+<b class="nc"><i class="no-highlight">143</i>&nbsp;                SalarySheetPO salarySheetPO = salaryDao.findSheetById(salarySheetId);</b>
+<b class="nc"><i class="no-highlight">144</i>&nbsp;                Integer companyBankAccountId = salarySheetPO.getCompanyBankAccountId();</b>
+<b class="nc"><i class="no-highlight">145</i>&nbsp;                BigDecimal actualSalary = salarySheetPO.getActualSalary();</b>
+<i class="no-highlight">146</i>&nbsp;
+<b class="nc"><i class="no-highlight">147</i>&nbsp;                BigDecimal amount = bankAccountService.getAmountByAccountId(companyBankAccountId);</b>
+<b class="nc"><i class="no-highlight">148</i>&nbsp;                if (amount.compareTo(actualSalary) &gt;= 0) {</b>
+<b class="nc"><i class="no-highlight">149</i>&nbsp;                    bankAccountService.spendAtAccountId(companyBankAccountId, actualSalary);</b>
+<b class="nc"><i class="no-highlight">150</i>&nbsp;                    staffService.addBalanceByStaffId(actualSalary, salarySheetPO.getStaffId());</b>
+<i class="no-highlight">151</i>&nbsp;                } else {
+<b class="nc"><i class="no-highlight">152</i>&nbsp;                    throw new RuntimeException(&quot;?????????????&quot;);</b>
+<i class="no-highlight">153</i>&nbsp;                }
+<i class="no-highlight">154</i>&nbsp;            }
+<i class="no-highlight">155</i>&nbsp;        }
+<i class="no-highlight">156</i>&nbsp;    }
+<i class="no-highlight">157</i>&nbsp;
+<i class="no-highlight">158</i>&nbsp;    @Override
+<i class="no-highlight">159</i>&nbsp;    public List&lt;SalarySheetVO&gt; findAllSalarySheets() {
+<b class="nc"><i class="no-highlight">160</i>&nbsp;        List&lt;SalarySheetPO&gt; allSheets = salaryDao.findAllSheet();</b>
+<b class="nc"><i class="no-highlight">161</i>&nbsp;        return getSalarySheetVOS(allSheets);</b>
+<i class="no-highlight">162</i>&nbsp;    }
+<i class="no-highlight">163</i>&nbsp;
+<i class="no-highlight">164</i>&nbsp;    @Override
+<i class="no-highlight">165</i>&nbsp;    public void redInkOffsetSheetMake(SalarySheetVO salarySheetVO) {
+<b class="nc"><i class="no-highlight">166</i>&nbsp;        SalarySheetPO toSave = new SalarySheetPO();</b>
+<i class="no-highlight">167</i>&nbsp;
+<b class="nc"><i class="no-highlight">168</i>&nbsp;        BeanUtils.copyProperties(salarySheetVO, toSave);</b>
+<b class="nc"><i class="no-highlight">169</i>&nbsp;        toSave.setState(SalarySheetState.PENDING_LEVEL_1);</b>
+<b class="nc"><i class="no-highlight">170</i>&nbsp;        toSave.setCreateTime(new Date());</b>
+<i class="no-highlight">171</i>&nbsp;
+<b class="nc"><i class="no-highlight">172</i>&nbsp;        salaryDao.saveSheet(toSave);</b>
+<i class="no-highlight">173</i>&nbsp;    }
+<i class="no-highlight">174</i>&nbsp;
+<i class="no-highlight">175</i>&nbsp;    @Override
+<i class="no-highlight">176</i>&nbsp;    public BigDecimal getTotalAmountBeforeNovember(int staffId) {
+<b class="nc"><i class="no-highlight">177</i>&nbsp;        int year = DateHelper.getLastYear();</b>
+<b class="nc"><i class="no-highlight">178</i>&nbsp;        BigDecimal totalRawAmount = BigDecimal.ZERO;</b>
+<i class="no-highlight">179</i>&nbsp;
+<b class="nc"><i class="no-highlight">180</i>&nbsp;        for (int month = 2; month &lt;= 12; month++) {</b>
+<b class="nc"><i class="no-highlight">181</i>&nbsp;            SalarySheetPO sheet = salaryDao.findSheetByStaffIdAndYearAndMonth(staffId, year, month);</b>
+<b class="nc"><i class="no-highlight">182</i>&nbsp;            if (sheet != null) {</b>
+<b class="nc"><i class="no-highlight">183</i>&nbsp;                totalRawAmount = totalRawAmount.add(sheet.getRawSalary());</b>
+<i class="no-highlight">184</i>&nbsp;            }
+<i class="no-highlight">185</i>&nbsp;        }
+<i class="no-highlight">186</i>&nbsp;
+<b class="nc"><i class="no-highlight">187</i>&nbsp;        return totalRawAmount;</b>
+<i class="no-highlight">188</i>&nbsp;    }
+<i class="no-highlight">189</i>&nbsp;
+<i class="no-highlight">190</i>&nbsp;    @Override
+<i class="no-highlight">191</i>&nbsp;    public boolean isSheetExists(String sheetId) {
+<b class="nc"><i class="no-highlight">192</i>&nbsp;        return salaryDao.findSheetById(sheetId) != null;</b>
+<i class="no-highlight">193</i>&nbsp;    }
+<i class="no-highlight">194</i>&nbsp;
+<i class="no-highlight">195</i>&nbsp;    private BigDecimal calculateRawSalary(int staffId) {
+<b class="nc"><i class="no-highlight">196</i>&nbsp;        StaffInfo staffInfo = getStaffInfo(staffId);</b>
+<b class="nc"><i class="no-highlight">197</i>&nbsp;        StaffSalaryCalculateStrategy strategy = FactorySalaryCalculateStrategy.productStrategy(staffInfo);</b>
+<b class="nc"><i class="no-highlight">198</i>&nbsp;        return strategy.calculate();</b>
+<i class="no-highlight">199</i>&nbsp;    }
+<i class="no-highlight">200</i>&nbsp;
+<i class="no-highlight">201</i>&nbsp;    private StaffInfo getStaffInfo(int staffId) {
+<b class="nc"><i class="no-highlight">202</i>&nbsp;        StaffInfo staffInfo = new StaffInfo();</b>
+<b class="nc"><i class="no-highlight">203</i>&nbsp;        StaffPO staff = staffService.findStaffById(staffId);</b>
+<b class="nc"><i class="no-highlight">204</i>&nbsp;        PositionInfoPO position = positionService.findOneByTitle(staff.getPosition());</b>
+<b class="nc"><i class="no-highlight">205</i>&nbsp;        int year = DateHelper.getYearInLastMonth();</b>
+<b class="nc"><i class="no-highlight">206</i>&nbsp;        int month = DateHelper.getMonthInLastMonth();</b>
+<b class="nc"><i class="no-highlight">207</i>&nbsp;        String salesman = staff.getName();</b>
+<b class="nc"><i class="no-highlight">208</i>&nbsp;        BigDecimal saleAmount = saleService.getTotalSaleAmountByMonthAndYearAndSalesman(year, month, salesman);</b>
+<b class="nc"><i class="no-highlight">209</i>&nbsp;        BigDecimal saleReturnsAmount = saleReturnsService.getTotalSaleReturnsAmountByMonthAndYearAndSalesman(year, month, salesman);</b>
+<b class="nc"><i class="no-highlight">210</i>&nbsp;        BigDecimal checkInTimeMonthly = BigDecimal.valueOf(attendanceService.getAttendanceTime(staffId, year, month));</b>
+<i class="no-highlight">211</i>&nbsp;
+<b class="nc"><i class="no-highlight">212</i>&nbsp;        staffInfo.setBasicSalary(position.getBaseSalary());</b>
+<b class="nc"><i class="no-highlight">213</i>&nbsp;        staffInfo.setSpecialSalary(position.getSpecialSalary());</b>
+<b class="nc"><i class="no-highlight">214</i>&nbsp;        staffInfo.setSalaryCalculateMethod(position.getSalaryCalculateMethod());</b>
+<b class="nc"><i class="no-highlight">215</i>&nbsp;        staffInfo.setTotalSaleAmount(saleAmount.subtract(saleReturnsAmount));</b>
+<b class="nc"><i class="no-highlight">216</i>&nbsp;        staffInfo.setCheckInTimeMonthly(checkInTimeMonthly);</b>
+<i class="no-highlight">217</i>&nbsp;
+<b class="nc"><i class="no-highlight">218</i>&nbsp;        return staffInfo;</b>
+<i class="no-highlight">219</i>&nbsp;    }
+<i class="no-highlight">220</i>&nbsp;
+<i class="no-highlight">221</i>&nbsp;    private List&lt;SalarySheetVO&gt; getSalarySheetVOS(List&lt;SalarySheetPO&gt; sheets) {
+<b class="nc"><i class="no-highlight">222</i>&nbsp;        List&lt;SalarySheetVO&gt; res = new ArrayList&lt;&gt;();</b>
+<b class="nc"><i class="no-highlight">223</i>&nbsp;        for (SalarySheetPO salarySheetPO : sheets) {</b>
+<b class="nc"><i class="no-highlight">224</i>&nbsp;            SalarySheetVO salarySheetVO = new SalarySheetVO();</b>
+<b class="nc"><i class="no-highlight">225</i>&nbsp;            BeanUtils.copyProperties(salarySheetPO, salarySheetVO);</b>
+<b class="nc"><i class="no-highlight">226</i>&nbsp;            res.add(salarySheetVO);</b>
+<b class="nc"><i class="no-highlight">227</i>&nbsp;        }</b>
+<b class="nc"><i class="no-highlight">228</i>&nbsp;        return res;</b>
+<i class="no-highlight">229</i>&nbsp;    }
+<i class="no-highlight">230</i>&nbsp;
+<i class="no-highlight">231</i>&nbsp;    /**
+<i class="no-highlight">232</i>&nbsp;     * ?1??????????????????0
+<i class="no-highlight">233</i>&nbsp;     * @param staffId ????
+<i class="no-highlight">234</i>&nbsp;     * @return ?????
+<i class="no-highlight">235</i>&nbsp;     */
+<i class="no-highlight">236</i>&nbsp;    private BigDecimal getYearEndAwards(int staffId) {
+<b class="nc"><i class="no-highlight">237</i>&nbsp;        int year = DateHelper.getYearInLastMonth();</b>
+<b class="nc"><i class="no-highlight">238</i>&nbsp;        int month = DateHelper.getMonthInLastMonth();</b>
+<b class="nc"><i class="no-highlight">239</i>&nbsp;        if (month == 12) {</b>
+<b class="nc"><i class="no-highlight">240</i>&nbsp;            return yearEndAwardsService.getYearEndAwardsByStaffId(staffId, year);</b>
+<i class="no-highlight">241</i>&nbsp;        } else {
+<b class="nc"><i class="no-highlight">242</i>&nbsp;            return BigDecimal.ZERO;</b>
+<i class="no-highlight">243</i>&nbsp;        }
+<i class="no-highlight">244</i>&nbsp;    }
+<i class="no-highlight">245</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-10 04:16</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,164 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > CustomerServiceImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.nju.edu.erp.service.Impl.sale_purchase.customer</a>
+</div>
+
+<h1>Coverage Summary for Class: CustomerServiceImpl (com.nju.edu.erp.service.Impl.sale_purchase.customer)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CustomerServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    33.3%
+  </span>
+  <span class="absValue">
+    (2/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    42.9%
+  </span>
+  <span class="absValue">
+    (3/7)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.nju.edu.erp.service.Impl.sale_purchase.customer;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.nju.edu.erp.dao.sale_purchase.customer.CustomerDao;
+<i class="no-highlight">4</i>&nbsp;import com.nju.edu.erp.enums.customer.CustomerType;
+<i class="no-highlight">5</i>&nbsp;import com.nju.edu.erp.model.po.sale_purchase.customer.CustomerPO;
+<i class="no-highlight">6</i>&nbsp;import com.nju.edu.erp.service.Interface.sale_purchase.customer.CustomerService;
+<i class="no-highlight">7</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i class="no-highlight">8</i>&nbsp;import org.springframework.stereotype.Service;
+<i class="no-highlight">9</i>&nbsp;
+<i class="no-highlight">10</i>&nbsp;import java.util.List;
+<i class="no-highlight">11</i>&nbsp;
+<i class="no-highlight">12</i>&nbsp;@Service
+<i class="no-highlight">13</i>&nbsp;public class CustomerServiceImpl implements CustomerService {
+<i class="no-highlight">14</i>&nbsp;
+<i class="no-highlight">15</i>&nbsp;    private final CustomerDao customerDao;
+<i class="no-highlight">16</i>&nbsp;
+<i class="no-highlight">17</i>&nbsp;    @Autowired
+<b class="fc"><i class="no-highlight">18</i>&nbsp;    public CustomerServiceImpl(CustomerDao customerDao) {</b>
+<b class="fc"><i class="no-highlight">19</i>&nbsp;        this.customerDao = customerDao;</b>
+<i class="no-highlight">20</i>&nbsp;    }
+<i class="no-highlight">21</i>&nbsp;
+<i class="no-highlight">22</i>&nbsp;    /**
+<i class="no-highlight">23</i>&nbsp;     * ??id??????
+<i class="no-highlight">24</i>&nbsp;     *
+<i class="no-highlight">25</i>&nbsp;     * @param customerPO ????
+<i class="no-highlight">26</i>&nbsp;     */
+<i class="no-highlight">27</i>&nbsp;    @Override
+<i class="no-highlight">28</i>&nbsp;    public void updateCustomer(CustomerPO customerPO) {
+<b class="nc"><i class="no-highlight">29</i>&nbsp;        customerDao.updateOne(customerPO);</b>
+<i class="no-highlight">30</i>&nbsp;    }
+<i class="no-highlight">31</i>&nbsp;
+<i class="no-highlight">32</i>&nbsp;    /**
+<i class="no-highlight">33</i>&nbsp;     * ??type?????????
+<i class="no-highlight">34</i>&nbsp;     *
+<i class="no-highlight">35</i>&nbsp;     * @param type ????
+<i class="no-highlight">36</i>&nbsp;     * @return ????
+<i class="no-highlight">37</i>&nbsp;     */
+<i class="no-highlight">38</i>&nbsp;    @Override
+<i class="no-highlight">39</i>&nbsp;    public List&lt;CustomerPO&gt; getCustomersByType(CustomerType type) {
+<i class="no-highlight">40</i>&nbsp;
+<b class="nc"><i class="no-highlight">41</i>&nbsp;        return customerDao.findAllByType(type);</b>
+<i class="no-highlight">42</i>&nbsp;    }
+<i class="no-highlight">43</i>&nbsp;
+<i class="no-highlight">44</i>&nbsp;    @Override
+<i class="no-highlight">45</i>&nbsp;    public CustomerPO findCustomerById(Integer supplier) {
+<b class="fc"><i class="no-highlight">46</i>&nbsp;        return customerDao.findOneById(supplier);</b>
+<i class="no-highlight">47</i>&nbsp;    }
+<i class="no-highlight">48</i>&nbsp;
+<i class="no-highlight">49</i>&nbsp;    @Override
+<i class="no-highlight">50</i>&nbsp;    public void addCustomer(CustomerPO customerPO) {
+<b class="nc"><i class="no-highlight">51</i>&nbsp;        customerDao.addOne(customerPO);</b>
+<i class="no-highlight">52</i>&nbsp;    }
+<i class="no-highlight">53</i>&nbsp;
+<i class="no-highlight">54</i>&nbsp;    @Override
+<i class="no-highlight">55</i>&nbsp;    public void deleteOne(int id) {
+<b class="nc"><i class="no-highlight">56</i>&nbsp;        customerDao.deleteByIdInt(id);</b>
+<i class="no-highlight">57</i>&nbsp;    }
+<i class="no-highlight">58</i>&nbsp;
+<i class="no-highlight">59</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-10 04:16</div>
+</div>
+</body>
+</html>

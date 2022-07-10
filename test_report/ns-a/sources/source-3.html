@@ -1,0 +1,258 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > StaffServiceImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.nju.edu.erp.service.Impl.staff</a>
+</div>
+
+<h1>Coverage Summary for Class: StaffServiceImpl (com.nju.edu.erp.service.Impl.staff)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">StaffServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    70%
+  </span>
+  <span class="absValue">
+    (7/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    88.9%
+  </span>
+  <span class="absValue">
+    (24/27)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">StaffServiceImpl$$EnhancerBySpringCGLIB$$125c80e9</td>
+  </tr>
+  <tr>
+    <td class="name">StaffServiceImpl$$EnhancerBySpringCGLIB$$18f6c8aa</td>
+  </tr>
+  <tr>
+    <td class="name">StaffServiceImpl$$EnhancerBySpringCGLIB$$3306d4dd</td>
+  </tr>
+  <tr>
+    <td class="name">StaffServiceImpl$$EnhancerBySpringCGLIB$$3306d4dd$$FastClassBySpringCGLIB$$d880701c</td>
+  </tr>
+  <tr>
+    <td class="name">StaffServiceImpl$$EnhancerBySpringCGLIB$$39306f03</td>
+  </tr>
+  <tr>
+    <td class="name">StaffServiceImpl$$EnhancerBySpringCGLIB$$514f1cb0</td>
+  </tr>
+  <tr>
+    <td class="name">StaffServiceImpl$$EnhancerBySpringCGLIB$$525f97fa</td>
+  </tr>
+  <tr>
+    <td class="name">StaffServiceImpl$$EnhancerBySpringCGLIB$$619f64f</td>
+  </tr>
+  <tr>
+    <td class="name">StaffServiceImpl$$EnhancerBySpringCGLIB$$6eef82c5</td>
+  </tr>
+  <tr>
+    <td class="name">StaffServiceImpl$$EnhancerBySpringCGLIB$$82adc9be</td>
+  </tr>
+  <tr>
+    <td class="name">StaffServiceImpl$$EnhancerBySpringCGLIB$$b43e1c43</td>
+  </tr>
+  <tr>
+    <td class="name">StaffServiceImpl$$EnhancerBySpringCGLIB$$c4a612f2</td>
+  </tr>
+  <tr>
+    <td class="name">StaffServiceImpl$$EnhancerBySpringCGLIB$$dd0c964e</td>
+  </tr>
+  <tr>
+    <td class="name">StaffServiceImpl$$EnhancerBySpringCGLIB$$f48b4836</td>
+  </tr>
+  <tr>
+    <td class="name">StaffServiceImpl$$EnhancerBySpringCGLIB$$f48b4836$$FastClassBySpringCGLIB$$cf3fa205</td>
+  </tr>
+  <tr>
+    <td class="name">StaffServiceImpl$$EnhancerBySpringCGLIB$$f4a27f4d</td>
+  </tr>
+  <tr>
+    <td class="name">StaffServiceImpl$$EnhancerBySpringCGLIB$$f63934b0</td>
+  </tr>
+  <tr>
+    <td class="name">StaffServiceImpl$$FastClassBySpringCGLIB$$bb80d8b3</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    70%
+  </span>
+  <span class="absValue">
+    (7/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    88.9%
+  </span>
+  <span class="absValue">
+    (24/27)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.nju.edu.erp.service.Impl.staff;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.nju.edu.erp.dao.staff.StaffDao;
+<i class="no-highlight">4</i>&nbsp;import com.nju.edu.erp.dao.user.UserDao;
+<i class="no-highlight">5</i>&nbsp;import com.nju.edu.erp.dao.staff.UserToStaffDao;
+<i class="no-highlight">6</i>&nbsp;import com.nju.edu.erp.enums.user.Role;
+<i class="no-highlight">7</i>&nbsp;import com.nju.edu.erp.model.po.staff.StaffPO;
+<i class="no-highlight">8</i>&nbsp;import com.nju.edu.erp.model.po.user.User;
+<i class="no-highlight">9</i>&nbsp;import com.nju.edu.erp.service.Interface.staff.StaffService;
+<i class="no-highlight">10</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i class="no-highlight">11</i>&nbsp;import org.springframework.stereotype.Service;
+<i class="no-highlight">12</i>&nbsp;import org.springframework.transaction.annotation.Transactional;
+<i class="no-highlight">13</i>&nbsp;
+<i class="no-highlight">14</i>&nbsp;import java.math.BigDecimal;
+<i class="no-highlight">15</i>&nbsp;import java.util.List;
+<i class="no-highlight">16</i>&nbsp;
+<i class="no-highlight">17</i>&nbsp;@Service
+<i class="no-highlight">18</i>&nbsp;public class StaffServiceImpl implements StaffService {
+<i class="no-highlight">19</i>&nbsp;    private final StaffDao staffDao;
+<i class="no-highlight">20</i>&nbsp;    private final UserDao userDao;
+<i class="no-highlight">21</i>&nbsp;    private final UserToStaffDao userToStaffDao;
+<i class="no-highlight">22</i>&nbsp;
+<i class="no-highlight">23</i>&nbsp;    @Autowired
+<b class="fc"><i class="no-highlight">24</i>&nbsp;    public StaffServiceImpl(StaffDao staffDao, UserDao userDao, UserToStaffDao userToStaffDao){</b>
+<b class="fc"><i class="no-highlight">25</i>&nbsp;        this.staffDao = staffDao;</b>
+<b class="fc"><i class="no-highlight">26</i>&nbsp;        this.userDao = userDao;</b>
+<b class="fc"><i class="no-highlight">27</i>&nbsp;        this.userToStaffDao = userToStaffDao;</b>
+<i class="no-highlight">28</i>&nbsp;    }
+<i class="no-highlight">29</i>&nbsp;
+<i class="no-highlight">30</i>&nbsp;    @Transactional
+<i class="no-highlight">31</i>&nbsp;    @Override
+<i class="no-highlight">32</i>&nbsp;    public int createStaff(StaffPO staffPO) {
+<b class="fc"><i class="no-highlight">33</i>&nbsp;        int affected = staffDao.createStaff(staffPO);</b>
+<b class="fc"><i class="no-highlight">34</i>&nbsp;        String userName = staffPO.getName() + staffPO.getId();</b>
+<b class="fc"><i class="no-highlight">35</i>&nbsp;        User user = new User(null, userName,&quot;123456&quot;, staffPO.getPosition());</b>
+<b class="fc"><i class="no-highlight">36</i>&nbsp;        userDao.createUser(user);</b>
+<b class="fc"><i class="no-highlight">37</i>&nbsp;        int userId = user.getId();</b>
+<b class="fc"><i class="no-highlight">38</i>&nbsp;        int staffId = staffPO.getId();</b>
+<b class="fc"><i class="no-highlight">39</i>&nbsp;        userToStaffDao.insertRecord(userId, staffId);</b>
+<i class="no-highlight">40</i>&nbsp;
+<b class="fc"><i class="no-highlight">41</i>&nbsp;        return affected;</b>
+<i class="no-highlight">42</i>&nbsp;    }
+<i class="no-highlight">43</i>&nbsp;
+<i class="no-highlight">44</i>&nbsp;    @Override
+<i class="no-highlight">45</i>&nbsp;    @Transactional
+<i class="no-highlight">46</i>&nbsp;    public int deleteStaffById(Integer staffId) {
+<b class="fc"><i class="no-highlight">47</i>&nbsp;        int userId = userToStaffDao.findUserIdByStaffId(staffId);</b>
+<b class="fc"><i class="no-highlight">48</i>&nbsp;        userDao.deleteById(userId);</b>
+<b class="fc"><i class="no-highlight">49</i>&nbsp;        int affected = staffDao.deleteOneById(staffId);</b>
+<b class="fc"><i class="no-highlight">50</i>&nbsp;        return affected;</b>
+<i class="no-highlight">51</i>&nbsp;    }
+<i class="no-highlight">52</i>&nbsp;
+<i class="no-highlight">53</i>&nbsp;    @Override
+<i class="no-highlight">54</i>&nbsp;    public List&lt;StaffPO&gt; findAll() {
+<b class="nc"><i class="no-highlight">55</i>&nbsp;        return staffDao.findAll();</b>
+<i class="no-highlight">56</i>&nbsp;    }
+<i class="no-highlight">57</i>&nbsp;
+<i class="no-highlight">58</i>&nbsp;    @Override
+<i class="no-highlight">59</i>&nbsp;    public int updateOne(StaffPO staffPO) {
+<b class="nc"><i class="no-highlight">60</i>&nbsp;        return staffDao.updateOne(staffPO);</b>
+<i class="no-highlight">61</i>&nbsp;    }
+<i class="no-highlight">62</i>&nbsp;
+<i class="no-highlight">63</i>&nbsp;    @Override
+<i class="no-highlight">64</i>&nbsp;    public Role getRoleByEmployeeId(int employeeId) {
+<b class="fc"><i class="no-highlight">65</i>&nbsp;        StaffPO staff = staffDao.getStaffById(employeeId);</b>
+<b class="fc"><i class="no-highlight">66</i>&nbsp;        return staff.getPosition();</b>
+<i class="no-highlight">67</i>&nbsp;    }
+<i class="no-highlight">68</i>&nbsp;
+<i class="no-highlight">69</i>&nbsp;    @Override
+<i class="no-highlight">70</i>&nbsp;    public String getNameByStaffId(int staffId) {
+<b class="fc"><i class="no-highlight">71</i>&nbsp;        StaffPO staff = staffDao.getStaffById(staffId);</b>
+<b class="fc"><i class="no-highlight">72</i>&nbsp;        return staff.getName();</b>
+<i class="no-highlight">73</i>&nbsp;    }
+<i class="no-highlight">74</i>&nbsp;
+<i class="no-highlight">75</i>&nbsp;    @Override
+<i class="no-highlight">76</i>&nbsp;    public StaffPO findStaffById(Integer staffId) {
+<i class="no-highlight">77</i>&nbsp;
+<b class="fc"><i class="no-highlight">78</i>&nbsp;        return staffDao.getStaffById(staffId);</b>
+<i class="no-highlight">79</i>&nbsp;    }
+<i class="no-highlight">80</i>&nbsp;
+<i class="no-highlight">81</i>&nbsp;    @Override
+<i class="no-highlight">82</i>&nbsp;    public void addBalanceByStaffId(BigDecimal amount, int staffId) {
+<b class="fc"><i class="no-highlight">83</i>&nbsp;        StaffPO staff = staffDao.getStaffById(staffId);</b>
+<b class="fc"><i class="no-highlight">84</i>&nbsp;        staff.setBalance(staff.getBalance().add(amount));</b>
+<b class="fc"><i class="no-highlight">85</i>&nbsp;        staffDao.updateOne(staff);</b>
+<i class="no-highlight">86</i>&nbsp;    }
+<i class="no-highlight">87</i>&nbsp;
+<i class="no-highlight">88</i>&nbsp;    @Override
+<i class="no-highlight">89</i>&nbsp;    public List&lt;StaffPO&gt; findAllExceptGM() {
+<b class="nc"><i class="no-highlight">90</i>&nbsp;        return staffDao.findAllExceptGM();</b>
+<i class="no-highlight">91</i>&nbsp;    }
+<i class="no-highlight">92</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-10 04:16</div>
+</div>
+</body>
+</html>

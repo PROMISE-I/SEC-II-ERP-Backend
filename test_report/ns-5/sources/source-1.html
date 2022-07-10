@@ -1,0 +1,255 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > CombinatorialServiceImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.nju.edu.erp.service.Impl.promotion</a>
+</div>
+
+<h1>Coverage Summary for Class: CombinatorialServiceImpl (com.nju.edu.erp.service.Impl.promotion)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CombinatorialServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    33.3%
+  </span>
+  <span class="absValue">
+    (2/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    35.5%
+  </span>
+  <span class="absValue">
+    (11/31)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">CombinatorialServiceImpl$$EnhancerBySpringCGLIB$$10992005</td>
+  </tr>
+  <tr>
+    <td class="name">CombinatorialServiceImpl$$EnhancerBySpringCGLIB$$10b0571c</td>
+  </tr>
+  <tr>
+    <td class="name">CombinatorialServiceImpl$$EnhancerBySpringCGLIB$$12470c7f</td>
+  </tr>
+  <tr>
+    <td class="name">CombinatorialServiceImpl$$EnhancerBySpringCGLIB$$2227ce1e</td>
+  </tr>
+  <tr>
+    <td class="name">CombinatorialServiceImpl$$EnhancerBySpringCGLIB$$2e6a58b8</td>
+  </tr>
+  <tr>
+    <td class="name">CombinatorialServiceImpl$$EnhancerBySpringCGLIB$$3504a079</td>
+  </tr>
+  <tr>
+    <td class="name">CombinatorialServiceImpl$$EnhancerBySpringCGLIB$$4f14acac</td>
+  </tr>
+  <tr>
+    <td class="name">CombinatorialServiceImpl$$EnhancerBySpringCGLIB$$553e46d2</td>
+  </tr>
+  <tr>
+    <td class="name">CombinatorialServiceImpl$$EnhancerBySpringCGLIB$$553e46d2$$FastClassBySpringCGLIB$$51253623</td>
+  </tr>
+  <tr>
+    <td class="name">CombinatorialServiceImpl$$EnhancerBySpringCGLIB$$6d5cf47f</td>
+  </tr>
+  <tr>
+    <td class="name">CombinatorialServiceImpl$$EnhancerBySpringCGLIB$$6d5cf47f$$FastClassBySpringCGLIB$$72af73fa</td>
+  </tr>
+  <tr>
+    <td class="name">CombinatorialServiceImpl$$EnhancerBySpringCGLIB$$6e6d6fc9</td>
+  </tr>
+  <tr>
+    <td class="name">CombinatorialServiceImpl$$EnhancerBySpringCGLIB$$8afd5a94</td>
+  </tr>
+  <tr>
+    <td class="name">CombinatorialServiceImpl$$EnhancerBySpringCGLIB$$8afd5a94$$FastClassBySpringCGLIB$$f7550caf</td>
+  </tr>
+  <tr>
+    <td class="name">CombinatorialServiceImpl$$EnhancerBySpringCGLIB$$9ebba18d</td>
+  </tr>
+  <tr>
+    <td class="name">CombinatorialServiceImpl$$EnhancerBySpringCGLIB$$d04bf412</td>
+  </tr>
+  <tr>
+    <td class="name">CombinatorialServiceImpl$$EnhancerBySpringCGLIB$$d04bf412$$FastClassBySpringCGLIB$$5c9e89ca</td>
+  </tr>
+  <tr>
+    <td class="name">CombinatorialServiceImpl$$EnhancerBySpringCGLIB$$e0b3eac1</td>
+  </tr>
+  <tr>
+    <td class="name">CombinatorialServiceImpl$$EnhancerBySpringCGLIB$$f91a6e1d</td>
+  </tr>
+  <tr>
+    <td class="name">CombinatorialServiceImpl$$EnhancerBySpringCGLIB$$f91a6e1d$$FastClassBySpringCGLIB$$3373dc6</td>
+  </tr>
+  <tr>
+    <td class="name">CombinatorialServiceImpl$$FastClassBySpringCGLIB$$b8b5a398</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    33.3%
+  </span>
+  <span class="absValue">
+    (2/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    35.5%
+  </span>
+  <span class="absValue">
+    (11/31)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.nju.edu.erp.service.Impl.promotion;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.nju.edu.erp.dao.promotion.strategy.CombinatorialPromotionDao;
+<i class="no-highlight">4</i>&nbsp;import com.nju.edu.erp.model.po.promotion.strategy.combinatorial.CombinatorialDiscountPO;
+<i class="no-highlight">5</i>&nbsp;import com.nju.edu.erp.model.vo.promotion.combinatorial.CombinatorialDiscountVO;
+<i class="no-highlight">6</i>&nbsp;import com.nju.edu.erp.service.Interface.promotion.CombinatorialPromotionService;
+<i class="no-highlight">7</i>&nbsp;import com.nju.edu.erp.service.Interface.warehouse.product.ProductService;
+<i class="no-highlight">8</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i class="no-highlight">9</i>&nbsp;import org.springframework.stereotype.Service;
+<i class="no-highlight">10</i>&nbsp;import org.springframework.transaction.annotation.Transactional;
+<i class="no-highlight">11</i>&nbsp;
+<i class="no-highlight">12</i>&nbsp;import java.util.ArrayList;
+<i class="no-highlight">13</i>&nbsp;import java.util.List;
+<i class="no-highlight">14</i>&nbsp;
+<i class="no-highlight">15</i>&nbsp;@Service
+<i class="no-highlight">16</i>&nbsp;public class CombinatorialServiceImpl implements CombinatorialPromotionService {
+<i class="no-highlight">17</i>&nbsp;
+<i class="no-highlight">18</i>&nbsp;    private final CombinatorialPromotionDao combinatorialPromotionDao;
+<i class="no-highlight">19</i>&nbsp;    private final ProductService productService;
+<i class="no-highlight">20</i>&nbsp;
+<i class="no-highlight">21</i>&nbsp;    @Autowired
+<b class="fc"><i class="no-highlight">22</i>&nbsp;    public CombinatorialServiceImpl(CombinatorialPromotionDao combinatorialPromotionDao, ProductService productService){</b>
+<b class="fc"><i class="no-highlight">23</i>&nbsp;        this.combinatorialPromotionDao = combinatorialPromotionDao;</b>
+<b class="fc"><i class="no-highlight">24</i>&nbsp;        this.productService = productService;</b>
+<i class="no-highlight">25</i>&nbsp;    }
+<i class="no-highlight">26</i>&nbsp;
+<i class="no-highlight">27</i>&nbsp;    @Override
+<i class="no-highlight">28</i>&nbsp;    public List&lt;CombinatorialDiscountVO&gt; findAll() {
+<i class="no-highlight">29</i>&nbsp;        //???????? PO
+<b class="nc"><i class="no-highlight">30</i>&nbsp;        List&lt;CombinatorialDiscountPO&gt; combinatorialDiscountPOList = combinatorialPromotionDao.findAll();</b>
+<b class="nc"><i class="no-highlight">31</i>&nbsp;        List&lt;CombinatorialDiscountVO&gt; combinatorialDiscountVOList = new ArrayList&lt;&gt;();</b>
+<i class="no-highlight">32</i>&nbsp;        //?????? PO, ????????????
+<b class="nc"><i class="no-highlight">33</i>&nbsp;        for(CombinatorialDiscountPO cp : combinatorialDiscountPOList){</b>
+<b class="nc"><i class="no-highlight">34</i>&nbsp;            CombinatorialDiscountVO cv = new CombinatorialDiscountVO(cp);</b>
+<b class="nc"><i class="no-highlight">35</i>&nbsp;            String pid1 = cp.getProductOneId();</b>
+<b class="nc"><i class="no-highlight">36</i>&nbsp;            String pid2 = cp.getProductTwoId();</b>
+<b class="nc"><i class="no-highlight">37</i>&nbsp;            String pName1 = productService.getOneProductByPid(pid1).getName();</b>
+<b class="nc"><i class="no-highlight">38</i>&nbsp;            String pName2 = productService.getOneProductByPid(pid2).getName();</b>
+<b class="nc"><i class="no-highlight">39</i>&nbsp;            cv.setProductOneName(pName1);</b>
+<b class="nc"><i class="no-highlight">40</i>&nbsp;            cv.setProductTwoName(pName2);</b>
+<b class="nc"><i class="no-highlight">41</i>&nbsp;            combinatorialDiscountVOList.add(cv);</b>
+<b class="nc"><i class="no-highlight">42</i>&nbsp;        }</b>
+<b class="nc"><i class="no-highlight">43</i>&nbsp;        return combinatorialDiscountVOList;</b>
+<i class="no-highlight">44</i>&nbsp;    }
+<i class="no-highlight">45</i>&nbsp;
+<i class="no-highlight">46</i>&nbsp;    @Override
+<i class="no-highlight">47</i>&nbsp;    public CombinatorialDiscountVO findByPair(String productOneId, String productTwoId) {
+<i class="no-highlight">48</i>&nbsp;        //?? pair ?? PO ??
+<b class="fc"><i class="no-highlight">49</i>&nbsp;        String pName1 = productService.getOneProductByPid(productOneId).getName();</b>
+<b class="fc"><i class="no-highlight">50</i>&nbsp;        String pName2 = productService.getOneProductByPid(productTwoId).getName();</b>
+<b class="fc"><i class="no-highlight">51</i>&nbsp;        CombinatorialDiscountPO cp = combinatorialPromotionDao.findByPair(productOneId, productTwoId);</b>
+<b class="fc"><i class="no-highlight">52</i>&nbsp;        if(cp == null)return null;</b>
+<b class="fc"><i class="no-highlight">53</i>&nbsp;        CombinatorialDiscountVO cv = new CombinatorialDiscountVO(cp);</b>
+<i class="no-highlight">54</i>&nbsp;        //? VO ??????????????
+<b class="fc"><i class="no-highlight">55</i>&nbsp;        cv.setProductOneName(pName1);</b>
+<b class="fc"><i class="no-highlight">56</i>&nbsp;        cv.setProductTwoName(pName2);</b>
+<b class="fc"><i class="no-highlight">57</i>&nbsp;        return cv;</b>
+<i class="no-highlight">58</i>&nbsp;    }
+<i class="no-highlight">59</i>&nbsp;
+<i class="no-highlight">60</i>&nbsp;    @Override
+<i class="no-highlight">61</i>&nbsp;    @Transactional
+<i class="no-highlight">62</i>&nbsp;    public int createOne(CombinatorialDiscountVO combinatorialDiscountVO) {
+<b class="nc"><i class="no-highlight">63</i>&nbsp;        CombinatorialDiscountPO cp = new CombinatorialDiscountPO(combinatorialDiscountVO);</b>
+<b class="nc"><i class="no-highlight">64</i>&nbsp;        int affected = combinatorialPromotionDao.createOne(cp);</b>
+<b class="nc"><i class="no-highlight">65</i>&nbsp;        return affected;</b>
+<i class="no-highlight">66</i>&nbsp;    }
+<i class="no-highlight">67</i>&nbsp;
+<i class="no-highlight">68</i>&nbsp;    @Override
+<i class="no-highlight">69</i>&nbsp;    @Transactional
+<i class="no-highlight">70</i>&nbsp;    public int updateOne(CombinatorialDiscountVO combinatorialDiscountVO) {
+<b class="nc"><i class="no-highlight">71</i>&nbsp;        CombinatorialDiscountPO cp = new CombinatorialDiscountPO(combinatorialDiscountVO);</b>
+<b class="nc"><i class="no-highlight">72</i>&nbsp;        int affected = combinatorialPromotionDao.updateOne(cp);</b>
+<b class="nc"><i class="no-highlight">73</i>&nbsp;        return affected;</b>
+<i class="no-highlight">74</i>&nbsp;    }
+<i class="no-highlight">75</i>&nbsp;
+<i class="no-highlight">76</i>&nbsp;    @Override
+<i class="no-highlight">77</i>&nbsp;    public int deleteOne(Integer id) {
+<b class="nc"><i class="no-highlight">78</i>&nbsp;        return combinatorialPromotionDao.deleteOne(id);</b>
+<i class="no-highlight">79</i>&nbsp;    }
+<i class="no-highlight">80</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-10 04:16</div>
+</div>
+</body>
+</html>
