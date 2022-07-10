@@ -850,11 +850,11 @@ CREATE TABLE `promotion`  (
 -- ----------------------------
 -- Records of promotion
 -- ----------------------------
-INSERT INTO `promotion` VALUES (1, 1, 0.00, 0.00, '1970-01-01', '1970-01-01');
-INSERT INTO `promotion` VALUES (2, 2, 0.00, 0.00, '1970-01-01', '1970-01-01');
-INSERT INTO `promotion` VALUES (3, 3, 0.00, 0.00, '1970-01-01', '1970-01-01');
-INSERT INTO `promotion` VALUES (4, 4, 0.00, 0.00, '1970-01-01', '1970-01-01');
-INSERT INTO `promotion` VALUES (5, 5, 0.00, 0.00, '1970-01-01', '1970-01-01');
+INSERT INTO `promotion` VALUES (1, 1, 1.00, 0.00, '1970-01-01', '2030-01-01');
+INSERT INTO `promotion` VALUES (2, 2, 1.00, 0.00, '1970-01-01', '2030-01-01');
+INSERT INTO `promotion` VALUES (3, 3, 1.00, 0.00, '1970-01-01', '2030-01-01');
+INSERT INTO `promotion` VALUES (4, 4, 1.00, 0.00, '1970-01-01', '2030-01-01');
+INSERT INTO `promotion` VALUES (5, 5, 1.00, 0.00, '1970-01-01', '2030-01-01');
 
 -- ----------------------------
 -- Table structure for purchase_returns_sheet
