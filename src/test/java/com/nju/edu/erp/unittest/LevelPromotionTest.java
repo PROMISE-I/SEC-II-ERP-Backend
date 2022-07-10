@@ -6,7 +6,6 @@ import com.nju.edu.erp.model.po.promotion.gifts.PresentInfoPO;
 import com.nju.edu.erp.model.po.promotion.strategy.level.LevelPromotionStrategyPO;
 import com.nju.edu.erp.model.vo.promotion.level.LevelPromotionStrategyVO;
 import com.nju.edu.erp.service.Impl.promotion.LevelPromotionServiceImpl;
-import com.nju.edu.erp.service.Interface.promotion.LevelPromotionService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -13,6 +13,10 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 承载制定根据用户级别的促销策略的职责
+ * @author SUNLIFAN
+ */
 @Service
 public class LevelPromotionServiceImpl implements LevelPromotionService {
     private final PresentInfoDao presentInfoDao;
@@ -53,11 +57,16 @@ public class LevelPromotionServiceImpl implements LevelPromotionService {
         return match(levelPromotionStrategyPOList, presentInfoPOList).get(0);
     }
 
+    /**
+     * 更新促销策略
+     * @param levelPromotionStrategyVO
+     */
     @Transactional
     @Override
     public void updateOne(LevelPromotionStrategyVO levelPromotionStrategyVO) {
         LevelPromotionStrategyPO levelPromotionStrategyPO = new LevelPromotionStrategyPO(levelPromotionStrategyVO);
         List<PresentInfoPO> lst = levelPromotionStrategyVO.getPresentInfoList();
+        //更新赠品信息
         if(lst != null) {
             for (PresentInfoPO pip : lst) {
                 if("".equals(pip.getPid()))continue;
@@ -68,6 +77,11 @@ public class LevelPromotionServiceImpl implements LevelPromotionService {
         levelStrategyDao.updateOne(levelPromotionStrategyPO);
     }
 
+    /**
+     * 根据用户级别查找促销策略信息
+     * @param level
+     * @return
+     */
     @Override
     public List<PresentInfoPO> findPresentInfoByLevel(Integer level) {
         return presentInfoDao.findPresentInfoByLevel(level);

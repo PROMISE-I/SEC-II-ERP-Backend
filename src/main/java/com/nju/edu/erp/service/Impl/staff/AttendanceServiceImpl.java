@@ -14,11 +14,22 @@ public class AttendanceServiceImpl implements AttendanceService {
     public AttendanceServiceImpl(AttendanceDao attendanceDao){
         this.attendanceDao = attendanceDao;
     }
+
+    /**
+     * 员工打卡，增加打卡记录
+     * @param attendanceRecordPO
+     * @return
+     */
     @Override
     public int insertAttendanceRecord(AttendanceRecordPO attendanceRecordPO) {
         return attendanceDao.insertAttendanceRecord(attendanceRecordPO);
     }
 
+    /**
+     * 查询员工在某日是否打卡
+     * @param attendanceRecordPO
+     * @return
+     */
     @Override
     public Boolean checkAttendance(AttendanceRecordPO attendanceRecordPO) {
         //根据日期和员工号查询的结果不为 null 则说明已经打卡成功

@@ -27,13 +27,21 @@ public class StaffServiceImpl implements StaffService {
         this.userToStaffDao = userToStaffDao;
     }
 
+    /**
+     * 创建员工，同时会分配账号
+     * @param staffPO
+     * @return
+     */
     @Transactional
     @Override
     public int createStaff(StaffPO staffPO) {
+        //创建员工
         int affected = staffDao.createStaff(staffPO);
+        //创建账号
         String userName = staffPO.getName() + staffPO.getId();
         User user = new User(null, userName,"123456", staffPO.getPosition());
         userDao.createUser(user);
+        //记录 员工-账号映射
         int userId = user.getId();
         int staffId = staffPO.getId();
         userToStaffDao.insertRecord(userId, staffId);
