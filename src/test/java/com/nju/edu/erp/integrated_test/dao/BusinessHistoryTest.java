@@ -1,4 +1,4 @@
-package com.nju.edu.erp.dao;
+package com.nju.edu.erp.integrated_test.dao;
 
 import com.nju.edu.erp.dao.finance.sheets_counting.BusinessHistoryDao;
 import com.nju.edu.erp.model.po.sale_purchase.sale.returns.SaleReturnsSheetPO;

@@ -1,4 +1,4 @@
-package com.nju.edu.erp.unittest;
+package com.nju.edu.erp.unit_test;
 
 import com.nju.edu.erp.dao.promotion.strategy.CombinatorialPromotionDao;
 import com.nju.edu.erp.model.po.promotion.strategy.combinatorial.CombinatorialDiscountPO;

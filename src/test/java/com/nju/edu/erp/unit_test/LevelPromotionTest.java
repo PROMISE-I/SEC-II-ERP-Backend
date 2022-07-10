@@ -1,4 +1,4 @@
-package com.nju.edu.erp.unittest;
+package com.nju.edu.erp.unit_test;
 
 import com.nju.edu.erp.dao.promotion.gifts.PresentInfoDao;
 import com.nju.edu.erp.dao.promotion.strategy.LevelStrategyDao;

@@ -1,4 +1,4 @@
-package com.nju.edu.erp.service;
+package com.nju.edu.erp.integrated_test.service;
 
 import com.nju.edu.erp.dao.finance.ReceiveMoneyDao;
 import com.nju.edu.erp.enums.sheet_state.finance.ReceiveMoneySheetState;

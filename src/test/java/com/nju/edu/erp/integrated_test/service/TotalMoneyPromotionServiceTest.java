@@ -1,4 +1,4 @@
-package com.nju.edu.erp.service;
+package com.nju.edu.erp.integrated_test.service;
 
 import com.nju.edu.erp.dao.promotion.strategy.TotalPricePromotionDao;
 import com.nju.edu.erp.enums.user.Role;
