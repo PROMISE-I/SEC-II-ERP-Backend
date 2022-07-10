@@ -15,7 +15,7 @@
     <select id="findAll" resultType="com.nju.edu.erp.model.po.promotion.gifts.PresentInfoPO" resultMap="presentInfo">
         select * from present_info
     </select>
-    <select id="findPresentInfoByLevel" resultType="com.nju.edu.erp.model.po.promotion.gifts.PresentInfoPO">
+    <select id="findPresentInfoByLevel" resultType="com.nju.edu.erp.model.po.promotion.gifts.PresentInfoPO" resultMap="presentInfo">
         select * from present_info
         where level = #{level}
     </select>

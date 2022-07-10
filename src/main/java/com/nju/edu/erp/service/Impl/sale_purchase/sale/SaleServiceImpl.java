@@ -13,6 +13,7 @@ import com.nju.edu.erp.model.po.sale_purchase.sale.io_detail.SaleIODetailPO;
 import com.nju.edu.erp.model.po.sale_purchase.sale.SaleSheetContentPO;
 import com.nju.edu.erp.model.po.sale_purchase.sale.SaleSheetPO;
 import com.nju.edu.erp.model.po.warehouse.product.ProductPO;
+import com.nju.edu.erp.model.vo.promotion.combinatorial.CombinatorialDiscountVO;
 import com.nju.edu.erp.model.vo.warehouse.product.ProductInfoVO;
 import com.nju.edu.erp.model.vo.promotion.level.LevelPromotionStrategyVO;
 import com.nju.edu.erp.model.vo.sale_purchase.sale.io_detail.SaleIODetailFilterConditionVO;
@@ -366,7 +367,9 @@ public class SaleServiceImpl implements SaleService {
             for(int j = i + 1; j < saleSheetContentPOList.size(); j ++){
                 String productOneId = saleSheetContentPOList.get(i).getPid();
                 String productTwoId = saleSheetContentPOList.get(j).getPid();
-                BigDecimal temp = combinatorialPromotionService.findByPair(productOneId, productTwoId).getDiscountAmount();
+                BigDecimal temp = BigDecimal.ZERO;
+                CombinatorialDiscountVO combinatorialDiscountVO = combinatorialPromotionService.findByPair(productOneId, productTwoId);
+                if(combinatorialDiscountVO != null)temp = combinatorialDiscountVO.getDiscountAmount();
                 if(temp.compareTo(voucherAmount) > 0)voucherAmount = temp;
             }
         }
