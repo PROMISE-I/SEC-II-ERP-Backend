@@ -1,4 +1,4 @@
-package com.nju.edu.erp.CategoryTest;
+package com.nju.edu.erp.unittest;
 
 import com.nju.edu.erp.dao.warehouse.product.CategoryDao;
 import com.nju.edu.erp.model.po.warehouse.product.CategoryPO;
