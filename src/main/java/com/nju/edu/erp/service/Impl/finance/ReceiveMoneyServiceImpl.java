@@ -44,7 +44,6 @@ public class ReceiveMoneyServiceImpl implements ReceiveMoneyService {
         ReceiveMoneySheetPO receiveMoneySheetPO = new ReceiveMoneySheetPO();
         BeanUtils.copyProperties(receiveMoneySheetVO, receiveMoneySheetPO);
         // 此处根据制定单据人员确定操作员
-        receiveMoneySheetPO.setOperator(userVO.getName());
         receiveMoneySheetPO.setCreateTime(new Date());
         ReceiveMoneySheetPO latest = receiveMoneyDao.getLatest();
         String id = receiveMoneySheetVO.getId();
