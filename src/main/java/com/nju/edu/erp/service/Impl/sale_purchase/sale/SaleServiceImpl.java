@@ -77,8 +77,6 @@ public class SaleServiceImpl implements SaleService {
     private final CombinatorialPromotionService combinatorialPromotionService;
 
 
-
-
     @Autowired
     public SaleServiceImpl(CombinatorialPromotionService combinatorialPromotionService, SaleSheetDao saleSheetDao, ProductDao productDao, CustomerDao customerDao, ProductService productService, CustomerService customerService, WarehouseService warehouseService, TotalPricePromotionService totalPricePromotionService, GiveAwayService giveAwayService, LevelPromotionService levelPromotionService) {
         this.saleSheetDao = saleSheetDao;
@@ -107,11 +105,12 @@ public class SaleServiceImpl implements SaleService {
         String id = saleSheetVO.getId();
         //如果id为null说明是新建单据，否则为红冲或红冲并复制
         if (id == null) {
-            id = IdGenerator.generateSheetId(latest == null? null : latest.getId(), "XSD");
+            id = IdGenerator.generateSheetId(latest == null ? null : latest.getId(), "XSD");
         }
         saleSheetPO.setId(id);
         saleSheetPO.setState(SaleSheetState.PENDING_LEVEL_1);
         BigDecimal totalAmount = BigDecimal.ZERO;
+        //装填 content PO
         List<SaleSheetContentPO> saleSheetContentPOList = new ArrayList<>();
         for (SaleSheetContentVO saleSheetContentVO : saleSheetVO.getSaleSheetContent()) {
             SaleSheetContentPO saleSheetContentPO = new SaleSheetContentPO();
@@ -127,17 +126,19 @@ public class SaleServiceImpl implements SaleService {
             saleSheetContentPOList.add(saleSheetContentPO);
             totalAmount = totalAmount.add(saleSheetContentPO.getTotalPrice());
         }
-
+        //保存 content PO
         saleSheetDao.saveBatchSheetContent(saleSheetContentPOList);
         saleSheetPO.setRawTotalAmount(totalAmount);
 
-        //TODO 促销策略的折扣和优惠券作用地方
+        //促销策略的折扣和优惠券作用地方
         Integer customer = saleSheetPO.getSupplier();
         Integer level = customerService.findCustomerById(customer).getLevel();
         saleSheetPO.setDiscount(getDiscount(level));
         saleSheetPO.setVoucherAmount(getVoucherAmount(saleSheetPO));
+        //生成赠品单
         makeGiveAway(saleSheetPO);
 
+        //计算优惠后的价格: 总价 × 折让 - 代金券
         BigDecimal finalAmount = totalAmount.multiply(saleSheetPO.getDiscount()).subtract(saleSheetPO.getVoucherAmount());
         saleSheetPO.setFinalAmount(finalAmount);
         saleSheetDao.saveSheet(saleSheetPO);
@@ -256,22 +257,23 @@ public class SaleServiceImpl implements SaleService {
 
     /**
      * 获取某个销售人员某段时间内消费总金额最大的客户(不考虑退货情况,销售单不需要审批通过,如果这样的客户有多个，仅保留一个)
-     * @param salesman 销售人员的名字
+     *
+     * @param salesman     销售人员的名字
      * @param beginDateStr 开始时间字符串
-     * @param endDateStr 结束时间字符串
+     * @param endDateStr   结束时间字符串
      * @return
      */
-    public CustomerPurchaseAmountPO getMaxAmountCustomerOfSalesmanByTime(String salesman, String beginDateStr, String endDateStr){
-        DateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        try{
-            Date beginTime =dateFormat.parse(beginDateStr);
-            Date endTime=dateFormat.parse(endDateStr);
-            if(beginTime.compareTo(endTime)>0){
+    public CustomerPurchaseAmountPO getMaxAmountCustomerOfSalesmanByTime(String salesman, String beginDateStr, String endDateStr) {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try {
+            Date beginTime = dateFormat.parse(beginDateStr);
+            Date endTime = dateFormat.parse(endDateStr);
+            if (beginTime.compareTo(endTime) > 0) {
                 return null;
-            }else{
-                return saleSheetDao.getMaxAmountCustomerOfSalesmanByTime(salesman,beginTime,endTime);
+            } else {
+                return saleSheetDao.getMaxAmountCustomerOfSalesmanByTime(salesman, beginTime, endTime);
             }
-        }catch (ParseException e) {
+        } catch (ParseException e) {
             e.printStackTrace();
         }
         return null;
@@ -279,18 +281,19 @@ public class SaleServiceImpl implements SaleService {
 
     /**
      * 根据销售单Id搜索销售单信息
+     *
      * @param saleSheetId 销售单Id
      * @return 销售单全部信息
      */
     @Override
     public SaleSheetVO getSaleSheetById(String saleSheetId) {
         SaleSheetPO saleSheetPO = saleSheetDao.findSheetById(saleSheetId);
-        if(saleSheetPO == null) return null;
+        if (saleSheetPO == null) return null;
         List<SaleSheetContentPO> contentPO = saleSheetDao.findContentBySheetId(saleSheetId);
         SaleSheetVO sVO = new SaleSheetVO();
         BeanUtils.copyProperties(saleSheetPO, sVO);
         List<SaleSheetContentVO> saleSheetContentVOList = new ArrayList<>();
-        for (SaleSheetContentPO content:
+        for (SaleSheetContentPO content :
                 contentPO) {
             SaleSheetContentVO sContentVO = new SaleSheetContentVO();
             BeanUtils.copyProperties(content, sContentVO);
@@ -301,7 +304,7 @@ public class SaleServiceImpl implements SaleService {
     }
 
     @Override
-    public List<SaleIODetailPO> getSaleDetailByCondition(SaleIODetailFilterConditionVO condition) throws ParseException{
+    public List<SaleIODetailPO> getSaleDetailByCondition(SaleIODetailFilterConditionVO condition) throws ParseException {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         SaleIODetailFilterConditionPO conditionPO = new SaleIODetailFilterConditionPO();
 
@@ -323,7 +326,7 @@ public class SaleServiceImpl implements SaleService {
 
     @Override
     public BigDecimal getTotalSaleAmountByMonthAndYearAndSalesman(Integer year, Integer month, String salesman) {
-        BigDecimal totalSaleAmount =  saleSheetDao.getTotalSaleAmountByMonthAndYearAndSalesman(year, month, salesman);
+        BigDecimal totalSaleAmount = saleSheetDao.getTotalSaleAmountByMonthAndYearAndSalesman(year, month, salesman);
         return totalSaleAmount == null ? BigDecimal.ZERO : totalSaleAmount;
     }
 
@@ -332,14 +335,21 @@ public class SaleServiceImpl implements SaleService {
         return saleSheetDao.findSheetById(sheetId) != null;
     }
 
+    /**
+     * 计算折让比例
+     *
+     * @param level
+     * @return 折让比例
+     */
     private BigDecimal getDiscount(Integer level) {
         BigDecimal totalDiscount = BigDecimal.ONE;
         List<DiscountStrategy> strategies = new ArrayList<>();
-        //TODO 定义自己的构造函数并在这边修改，如果需要额外参数可以在这个函数的参数列表中加
+        //目前只有根据用户级别的促销策略, 如果之后还有别的可以在这里扩展
         LevelPromotionStrategyVO levelPromotionStrategyVO = levelPromotionService.findByLevel(level);
         LevelPromotionDiscountStrategy levelPromotionDiscountStrategy = new LevelPromotionDiscountStrategy(levelPromotionStrategyVO.getDiscount());
         strategies.add(levelPromotionDiscountStrategy);
 
+        //计算最终折让比例 (所有折让相乘)
         for (DiscountStrategy strategy : strategies) {
             totalDiscount = totalDiscount.multiply(strategy.getDiscount());
         }
@@ -347,52 +357,67 @@ public class SaleServiceImpl implements SaleService {
         return totalDiscount;
     }
 
-    private BigDecimal getVoucherAmount(SaleSheetPO saleSheetPO) {
-        BigDecimal totalVoucherAmount  = BigDecimal.ZERO;
-        List<VoucherStrategy> strategies = new ArrayList<>();
 
+    /**
+     * 计算代金券额度
+     *
+     * @param saleSheetPO
+     * @return 代金券额度
+     */
+    private BigDecimal getVoucherAmount(SaleSheetPO saleSheetPO) {
+        BigDecimal totalVoucherAmount = BigDecimal.ZERO;
+        List<VoucherStrategy> strategies = new ArrayList<>();
+        //基于总价的优惠策略
         TotalPricePromotionVoucherStrategy totalPricePromotionVoucherStrategy = new TotalPricePromotionVoucherStrategy(totalPricePromotionService, saleSheetPO);
         strategies.add(totalPricePromotionVoucherStrategy);
-        //TODO 定义自己的构造函数并在这边修改，如果需要额外参数可以在这个函数的参数列表中加
+
         Integer customer = saleSheetPO.getSupplier();
         Integer level = customerService.findCustomerById(customer).getLevel();
         BigDecimal voucher = levelPromotionService.findByLevel(level).getCoupon();
         LevelPromotionVoucherStrategy levelPromotionVoucherStrategy = new LevelPromotionVoucherStrategy(voucher);
         strategies.add(levelPromotionVoucherStrategy);
-        //TODO 定义自己的构造函数并在这边修改，如果需要额外参数可以在这个函数的参数列表中加
+
+        //基于组合的优惠策略
         String saleSheetId = saleSheetPO.getId();
         List<SaleSheetContentPO> saleSheetContentPOList = saleSheetDao.findContentBySheetId(saleSheetId);
         BigDecimal voucherAmount = BigDecimal.ZERO;
-        for(int i = 0; i < saleSheetContentPOList.size(); i ++){
-            for(int j = i + 1; j < saleSheetContentPOList.size(); j ++){
+        for (int i = 0; i < saleSheetContentPOList.size(); i++) {
+            for (int j = i + 1; j < saleSheetContentPOList.size(); j++) {
                 String productOneId = saleSheetContentPOList.get(i).getPid();
                 String productTwoId = saleSheetContentPOList.get(j).getPid();
                 BigDecimal temp = BigDecimal.ZERO;
                 CombinatorialDiscountVO combinatorialDiscountVO = combinatorialPromotionService.findByPair(productOneId, productTwoId);
-                if(combinatorialDiscountVO != null)temp = combinatorialDiscountVO.getDiscountAmount();
-                if(temp.compareTo(voucherAmount) > 0)voucherAmount = temp;
+                if (combinatorialDiscountVO != null) temp = combinatorialDiscountVO.getDiscountAmount();
+                if (temp.compareTo(voucherAmount) > 0) voucherAmount = temp;
             }
         }
         CombinatorialPromotionVoucherStrategy combinatorialPromotionVoucherStrategy = new CombinatorialPromotionVoucherStrategy(voucherAmount);
         strategies.add(combinatorialPromotionVoucherStrategy);
-
+        //目前只有基于总价和基于组合的优惠策略有代金券，扩展的类型可以加到strategies 里面, 调用统一的接口季孙代金券额度
         for (VoucherStrategy strategy : strategies) {
             totalVoucherAmount = totalVoucherAmount.add(strategy.getVoucherAmount());
         }
+
         return totalVoucherAmount;
     }
 
+    /**
+     * 生成赠送单
+     *
+     * @param saleSheetPO
+     */
     private void makeGiveAway(SaleSheetPO saleSheetPO) {
         List<GiveAwayStrategy> strategies = new ArrayList<>();
-
+        //根据总价的赠品策略
         TotalPricePromotionGiveAwayStrategy totalPricePromotionGiveAwayStrategy = new TotalPricePromotionGiveAwayStrategy(totalPricePromotionService, giveAwayService, saleSheetPO);
         strategies.add(totalPricePromotionGiveAwayStrategy);
-        //TODO 定义自己的构造函数并在这边修改，如果需要额外参数可以在这个函数的参数列表中加
+
+        //根据用户级别的赠品策略
         Integer customer = saleSheetPO.getSupplier();
         Integer level = customerService.findCustomerById(customer).getLevel();
         LevelPromotionGiveAwayStrategy levelPromotionGiveAwayStrategy = new LevelPromotionGiveAwayStrategy(giveAwayService, levelPromotionService.findPresentInfoByLevel(level), saleSheetPO.getId(), productService);
         strategies.add(levelPromotionGiveAwayStrategy);
-
+        //目前只有两种涉及赠品的优惠策略，之后可以在这里扩展
         for (GiveAwayStrategy strategy : strategies) {
             strategy.makeGiveAwaySheet();
         }
