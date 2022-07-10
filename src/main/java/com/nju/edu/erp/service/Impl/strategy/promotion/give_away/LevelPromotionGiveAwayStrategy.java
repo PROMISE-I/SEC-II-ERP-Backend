@@ -14,7 +14,7 @@ import java.util.List;
  * @author WFS
  * @date 2022/7/9 16:25
  */
-//TODO 根据促销策略内容制定赠送单
+//根据促销策略内容制定赠送单
 public class LevelPromotionGiveAwayStrategy implements GiveAwayStrategy{
 
     private GiveAwayService giveAwayService;

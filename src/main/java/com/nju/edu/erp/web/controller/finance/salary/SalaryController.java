@@ -132,7 +132,7 @@ public class SalaryController {
             salaryService.approval(salarySheetId, state);
             return Response.buildSuccess();
         } else {
-            return Response.buildFailed("000000", "操作失败");//TODO change error code!
+            return Response.buildFailed("000000", "操作失败");
         }
     }
 

@@ -171,7 +171,7 @@ public class SaleReturnsServiceImpl implements SaleReturnsService {
             int effectLines = saleReturnsSheetDao.updateStateV2(saleReturnsSheetId, prevState, state);
             if (effectLines == 0) throw new RuntimeException("状态更新失败");
             if (state.equals(SaleReturnsSheetState.SUCCESS)) {
-                // TODO 审批完成, 修改一系列状态
+                //审批完成, 修改一系列状态
                 // 销售退货单id， 关联的销售单id 【   销售退货单id->销售单id->出库单id->好多批次id】
                 List<SaleReturnsSheetContentPO> saleReturnsSheetContentPOS = saleReturnsSheetDao.findContentBySaleReturnsSheetId(saleReturnsSheetId);
 

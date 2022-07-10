@@ -41,6 +41,5 @@ public interface BusinessHistoryDao {
 
     List<SalarySheetPO> findAllSalarySheetByInterval(@Param("begin") String begin, @Param("end") String end);
     //库存类
-    //TODO: ADD INTERFACES FOR PRESENT SHEET
 
 }

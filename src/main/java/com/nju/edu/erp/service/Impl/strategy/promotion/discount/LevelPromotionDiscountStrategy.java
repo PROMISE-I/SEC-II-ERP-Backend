@@ -6,7 +6,7 @@ import java.math.BigDecimal;
  * @author WFS
  * @date 2022/7/9 16:26
  */
-//TODO 返回折扣
+//返回折扣
 public class LevelPromotionDiscountStrategy implements DiscountStrategy{
     private BigDecimal discount;
 

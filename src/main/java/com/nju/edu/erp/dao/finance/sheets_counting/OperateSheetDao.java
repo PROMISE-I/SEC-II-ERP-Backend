@@ -17,7 +17,7 @@ public interface OperateSheetDao {
     public BigDecimal findDiscountedAmount(@Param("begin") String begin, @Param("end") String end);
 
     public BigDecimal findSaleReturnCost(@Param("begin") String begin, @Param("end") String end);
-    //TODO: add sql in xml
+
     public BigDecimal findProductPresentCost(@Param("begin") String begin, @Param("end") String end);
 
     public BigDecimal findHumanResourceCost(@Param("begin") String begin, @Param("end") String end);
