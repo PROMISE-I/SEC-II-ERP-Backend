@@ -10,7 +10,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.Calendar;
 import java.util.Date;
 
-@SpringBootTest
 @RunWith(SpringRunner.class)
 public class DateHelperTest {
     @Test
