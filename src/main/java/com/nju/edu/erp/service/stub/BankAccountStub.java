@@ -7,10 +7,6 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author WFS
- * @date 2022/7/10 2:04
- */
 public class BankAccountStub implements BankAccountService {
 
     @Override

@@ -9,10 +9,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * @author WFS
- * @date 2022/7/10 2:16
- */
 public class SalaryServiceStub implements SalaryService {
     @Override
     public void makeSalarySheet(int employeeId, int companyBankAccountId) {

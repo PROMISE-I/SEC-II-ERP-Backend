@@ -8,10 +8,6 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author WFS
- * @date 2022/7/10 2:25
- */
 public class StaffServiceStub implements StaffService {
     @Override
     public int createStaff(StaffPO staffPO) {

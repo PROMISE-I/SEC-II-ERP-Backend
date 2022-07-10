@@ -8,10 +8,6 @@ import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author WFS
- * @date 2022/7/10 2:20
- */
 public class YearEndAwardsServiceStub implements YearEndAwardsService {
     @Override
     public void makeYearEndAwards(YearEndAwardsVO yearEndAwardsVO) {}

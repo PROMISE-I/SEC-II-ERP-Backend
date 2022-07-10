@@ -10,10 +10,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.Calendar;
 import java.util.Date;
 
-/**
- * @author WFS
- * @date 2022/7/10 11:59
- */
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class DateHelperTest {

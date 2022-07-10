@@ -18,10 +18,6 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author WFS
- * @date 2022/7/10 14:15
- */
 @RunWith(MockitoJUnitRunner.class)
 public class CustomerTest {
 

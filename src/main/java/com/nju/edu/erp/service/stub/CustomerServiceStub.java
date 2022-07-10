@@ -8,10 +8,6 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author WFS
- * @date 2022/7/10 2:29
- */
 public class CustomerServiceStub implements CustomerService {
     @Override
     public void updateCustomer(CustomerPO customerPO) {

@@ -9,10 +9,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
 
-/**
- * @author WFS
- * @date 2022/7/10 11:51
- */
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class TaxCalculatorTest {

@@ -1,4 +1,4 @@
-package com.nju.edu.erp.unit_test.utils;
+package com.nju.edu.erp.unit_test;
 
 import com.nju.edu.erp.dao.finance.salary.SalaryDao;
 import com.nju.edu.erp.enums.sheet_state.finance.SalarySheetState;
@@ -18,10 +18,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * @author WFS
- * @date 2022/7/10 14:24
- */
 @RunWith(MockitoJUnitRunner.class)
 public class SalaryTest {
 
