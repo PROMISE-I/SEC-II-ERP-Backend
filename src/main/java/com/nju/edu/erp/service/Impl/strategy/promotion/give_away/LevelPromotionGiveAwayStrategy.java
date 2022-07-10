@@ -30,21 +30,23 @@ public class LevelPromotionGiveAwayStrategy implements GiveAwayStrategy{
     }
     @Override
     public void makeGiveAwaySheet() {
-        String saleSheetId = this.saleSheetId;
-        String remark = saleSheetId + " 对应的赠品单.";
-        List<GiveAwaySheetContentVO> giveAwaySheetContentVOList = new ArrayList<>();
-        for(PresentInfoPO presentInfo: presentInfoPOList){
-            GiveAwaySheetContentVO giveAwaySheetContentVO = new GiveAwaySheetContentVO();
-            giveAwaySheetContentVO.setPid(presentInfo.getPid());
-            giveAwaySheetContentVO.setQuantity(presentInfo.getQuantity());
-            giveAwaySheetContentVO.setUnitPrice(productService.getOneProductByPid(presentInfo.getPid()).getPurchasePrice());
-            giveAwaySheetContentVO.setTotalPrice(giveAwaySheetContentVO.getUnitPrice().multiply(BigDecimal.valueOf(giveAwaySheetContentVO.getQuantity())));
-            giveAwaySheetContentVOList.add(giveAwaySheetContentVO);
+        if(!presentInfoPOList.isEmpty()) {
+            String saleSheetId = this.saleSheetId;
+            String remark = saleSheetId + " 对应的赠品单.";
+            List<GiveAwaySheetContentVO> giveAwaySheetContentVOList = new ArrayList<>();
+            for(PresentInfoPO presentInfo: presentInfoPOList){
+                GiveAwaySheetContentVO giveAwaySheetContentVO = new GiveAwaySheetContentVO();
+                giveAwaySheetContentVO.setPid(presentInfo.getPid());
+                giveAwaySheetContentVO.setQuantity(presentInfo.getQuantity());
+                giveAwaySheetContentVO.setUnitPrice(productService.getOneProductByPid(presentInfo.getPid()).getPurchasePrice());
+                giveAwaySheetContentVO.setTotalPrice(giveAwaySheetContentVO.getUnitPrice().multiply(BigDecimal.valueOf(giveAwaySheetContentVO.getQuantity())));
+                giveAwaySheetContentVOList.add(giveAwaySheetContentVO);
+            }
+            GiveAwaySheetVO giveAwaySheetVO = new GiveAwaySheetVO();
+            giveAwaySheetVO.setSaleSheetId(saleSheetId);
+            giveAwaySheetVO.setRemark(remark);
+            giveAwaySheetVO.setContentVOList(giveAwaySheetContentVOList);
+            giveAwayService.makeSheet(null, giveAwaySheetVO);
         }
-        GiveAwaySheetVO giveAwaySheetVO = new GiveAwaySheetVO();
-        giveAwaySheetVO.setSaleSheetId(saleSheetId);
-        giveAwaySheetVO.setRemark(remark);
-        giveAwaySheetVO.setContentVOList(giveAwaySheetContentVOList);
-        giveAwayService.makeSheet(null, giveAwaySheetVO);
-    }
+        }
 }
