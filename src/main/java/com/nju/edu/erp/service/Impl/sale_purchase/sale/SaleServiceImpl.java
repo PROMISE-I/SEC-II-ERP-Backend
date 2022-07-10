@@ -99,7 +99,6 @@ public class SaleServiceImpl implements SaleService {
         SaleSheetPO saleSheetPO = new SaleSheetPO();
         BeanUtils.copyProperties(saleSheetVO, saleSheetPO);
 
-        saleSheetPO.setOperator(userVO.getName());
         saleSheetPO.setCreateTime(new Date());
         SaleSheetPO latest = saleSheetDao.getLatestSheet();
         String id = saleSheetVO.getId();
