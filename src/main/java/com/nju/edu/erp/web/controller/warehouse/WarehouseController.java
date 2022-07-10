@@ -162,6 +162,7 @@ public class WarehouseController {
      * @param endDateStr   格式：“yyyy-MM-dd HH:mm:ss”，如“2022-05-12 11:38:30”
      * @return
      */
+    //EXPORT: 库存查看
     @GetMapping("/outputSheet/time/quantity")
     @Authorized(roles = {Role.ADMIN,Role.INVENTORY_MANAGER})
     public Response getWarehouseOutputProductQuantityByTime(@RequestParam String beginDateStr,@RequestParam String endDateStr) throws ParseException{
@@ -176,6 +177,7 @@ public class WarehouseController {
      * 要求可以导出Excel
      *
      */
+    //EXPORT: 库存盘点
     @GetMapping("/warehouse/counting")
     @Authorized(roles = {Role.ADMIN,Role.INVENTORY_MANAGER})
     public Response getWarehouseCounting() {
