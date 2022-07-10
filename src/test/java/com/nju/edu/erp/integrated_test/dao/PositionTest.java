@@ -1,4 +1,4 @@
-package com.nju.edu.erp.dao;
+package com.nju.edu.erp.integrated_test.dao;
 
 import com.nju.edu.erp.dao.staff.PositionDao;
 import com.nju.edu.erp.enums.user.Role;

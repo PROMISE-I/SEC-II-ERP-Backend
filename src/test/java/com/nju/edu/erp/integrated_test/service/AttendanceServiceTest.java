@@ -1,4 +1,4 @@
-package com.nju.edu.erp.service;
+package com.nju.edu.erp.integrated_test.service;
 
 import com.nju.edu.erp.model.po.staff.AttendanceRecordPO;
 import com.nju.edu.erp.service.Interface.staff.AttendanceService;

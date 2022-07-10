@@ -1,6 +1,6 @@
-package com.nju.edu.erp.utils;
+package com.nju.edu.erp.unit_test.utils;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.nju.edu.erp.utils.IdGenerator;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;

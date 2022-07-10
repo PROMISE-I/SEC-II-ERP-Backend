@@ -1,4 +1,4 @@
-package com.nju.edu.erp.service;
+package com.nju.edu.erp.integrated_test.service;
 
 import com.nju.edu.erp.dao.sale_purchase.sale.SaleReturnsSheetDao;
 import com.nju.edu.erp.dao.sale_purchase.sale.SaleSheetDao;
