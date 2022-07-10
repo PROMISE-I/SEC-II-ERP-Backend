@@ -1,0 +1,1088 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --mermaid-theme: default; --mermaid-sequence-numbers: off; --mermaid-flowchart-curve: linear; --mermaid--gantt-left-padding: 75; --sequence-theme: simple; }
+
+
+:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* greek-ext */
+
+/* greek */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* greek-ext */
+
+/* greek */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* greek-ext */
+
+/* greek */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* greek-ext */
+
+/* greek */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+@font-face {
+    font-family: 'Source Han SerifCN';
+    src: local('Source Han SerifCN Bold'), local('SourceHanSerifCN-Bold'), url('file:///C://Users//37756//AppData//Roaming//Typora/themes/zj/SourceHanSerifCN-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+}/* 如有不懂，参看 https://theme.typora.io/doc/zh/Write-Custom-Theme/ */
+
+@import '';
+
+:root {
+    --side-bar-bg-color: #fff;
+    --control-text-color: #777;
+    /* --font-sans-serif: 'PingFangSC-Regular', 'Microsoft YaHei', , 'Source Sans Pro', sans-serif !important; */
+    --font-sans-serif: 'Source Han SerifCN', 'Microsoft YaHei', sans-serif !important;
+    --font-monospace: 'Consolas', monospace, 'Courier New', 'Roboto Mono', 'Source Sans Pro', 'Microsoft YaHei' !important;
+    /* 主题色 */
+    --main-1: #fff3f0;
+    --main-2: #ffd4cc;
+    --main-3: #ffafa3;
+    --main-4: #ff887a;
+    --main-5: #ff5d52;
+    --main-6: #f22f27;
+    --main-7: #cc1616;
+    --main-8: #a60a0f;
+    --main-9: #80010a;
+    --main-10: #590009;
+}
+
+html {
+    font-size: 17px;
+}
+
+body {
+    font-family: var(--font-sans-serif);
+    color: black;
+    line-height: 1.6rem;
+    /* 	裁剪溢出内容 */
+    overflow-x: hidden;
+    /* 字母间距 */
+    letter-spacing: 0;
+    margin: 0;
+}
+
+/* #write 为写入区域 */
+#write {
+    max-width: 860px;
+    padding: 30px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+    #write {
+        max-width: 1024px;
+    }
+}
+
+@media only screen and (min-width: 1800px) {
+    #write {
+        max-width: 1200px;
+    }
+}
+
+/* 正常文字 */
+#write p {
+    line-height: 1.6rem;
+    word-spacing: .05rem;
+    color: black;
+}
+
+#write>ul:first-child,
+#write>ol:first-child {
+    margin-top: 30px;
+}
+
+/* 链接 */
+a {
+    padding: 0 2px;
+    color: #0366d6;
+}
+
+/* 加粗 */
+strong {
+    padding: 0.1em;
+    /* color: #E91E63; */
+    font-weight: bold;
+}
+
+/* 斜体强调 */
+em {
+    font-style: normal;
+    background-color: #EBFFEB;
+    border-radius: 2px;
+    padding: 2px 4px;
+    margin: 0 2px;
+    color: black;
+}
+
+/* 行内数学公式变蓝 */
+.md-inline-math {
+    color: blue;
+    font-size: 100%;
+}
+
+/* 行间数学公式 */
+[mdtype="math_block"] {
+    font-size: 1.1rem;
+}
+
+/* 标题编号初始化 */
+/* 首先全局进行一次reset，这样即使不添加h1标题也可以使用较低级别的标题 */
+#write {
+    counter-reset: h2 0 h3 0 h4 0 h5 0 h6 0
+}
+
+h1 {
+    counter-reset: h2
+}
+
+h2 {
+    counter-reset: h3
+}
+
+h3 {
+    counter-reset: h4
+}
+
+h4 {
+    counter-reset: h5
+}
+
+h5 {
+    counter-reset: h6
+}
+
+/** put counter result into headings */
+#write h1:before {
+    counter-increment: h1;
+}
+
+#write h2:before {
+    counter-increment: h2;
+    content: counter(h2) ". "
+}
+
+#write h3:before,
+h3.md-focus.md-heading:before {
+    counter-increment: h3;
+    content: counter(h2) "."counter(h3) " "
+}
+
+#write h4:before,
+h4.md-focus.md-heading:before {
+    counter-increment: h4;
+    content: counter(h2) "."counter(h3) "."counter(h4) " "
+}
+
+#write h5:before,
+h5.md-focus.md-heading:before {
+    counter-increment: h5;
+    content: counter(h2) "."counter(h3) "."counter(h4) "."counter(h5) " "
+}
+
+#write h6:before,
+h6.md-focus.md-heading:before {
+    counter-increment: h6;
+    content: counter(h2) "."counter(h3) "."counter(h4) "."counter(h5) "."counter(h6) " "
+}
+
+/** override the default style for focused headings */
+#write>h3.md-focus:before,
+#write>h4.md-focus:before,
+#write>h5.md-focus:before,
+#write>h6.md-focus:before,
+h3.md-focus:before,
+h4.md-focus:before,
+h5.md-focus:before,
+h6.md-focus:before {
+    color: inherit;
+    border: inherit;
+    border-radius: inherit;
+    position: inherit;
+    left: initial;
+    float: none;
+    top: initial;
+    font-size: inherit;
+    padding-left: inherit;
+    padding-right: inherit;
+    vertical-align: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+
+h1 {
+    text-align: center;
+    padding-bottom: .2em;
+    /* font-size: 2.25em; */
+    line-height: 1.2;
+}
+
+h2 {
+    padding-bottom: .2em;
+    padding-top: .5em;
+    /* font-size: 1.75em; */
+    line-height: 1.225;
+    border-bottom: 1px solid #b7b7b7;
+}
+
+h3 {
+    padding-top: .1em;
+    /* font-size: 1.5em; */
+    line-height: 1.43;
+    margin-left: 0.5em;
+}
+
+h4 {
+    padding-top: .1em;
+    /* font-size: 1.25em; */
+    margin-left: 0.7em;
+}
+
+h5 {
+    margin-left: 0.9em;
+}
+
+h6 {
+    margin-left: 0.9em;
+    color: #777;
+}
+
+p,
+blockquote,
+ul,
+ol,
+dl,
+table {
+    margin: 0.8em 0;
+}
+
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+/* 列表环境 */
+#write ol>li,
+#write ul>li {
+    color: #f50057;
+    font-weight: bold;
+}
+
+#write ol>li>*,
+#write ul>li>* {
+    color: #333;
+    font-weight: normal;
+}
+
+#write ol>li>*:not(ol):not(ul),
+#write ul>li>*:not(ol):not(ul) {
+    /* padding-left: .25rem; */
+    padding-left: 0;
+}
+
+#write ul {
+    list-style-type: disc;
+}
+
+blockquote {
+    border-left: 4px solid rgb(239, 112, 96);
+    padding: 0px 15px;
+    color: #3f3f3f;
+    background-color: #fff9f9;
+}
+
+blockquote blockquote {
+    padding-right: 0;
+}
+
+table {
+    padding: 0;
+    word-break: initial;
+}
+
+/* tr元素定义表格行 */
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+
+table tr:nth-child(2n),
+thead {
+    background-color: #F6F8FA;
+}
+
+/* th元素定义表头 */
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+/* td元素定义表格单元格 */
+table tr td {
+    border: 1px solid #dfe2e5;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+/* 行号 */
+.cm-s-inner .CodeMirror-linenumber {
+    /*width: 2ch !important;*/
+    /*font-size: 0.7rem;*/
+    color: rgba(0, 92, 197, 0.8);
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0, 28, 36, .3);
+    border-top: 1px solid #eef2f2;
+}
+
+/* 代码框 */
+#write .md-fences {
+    -webkit-font-smoothing: initial;
+    margin: 0.8rem 0 !important;
+    padding: 0.3rem 0 !important;
+    line-height: 1.43rem;
+    background-color: #f6f8fa !important;
+    border-radius: 2px;
+    font-family: var(--font-monospace);
+    font-size: 0.9rem;
+    word-wrap: normal;
+}
+
+#write .CodeMirror-wrap .CodeMirror-code pre {
+    padding-left: 12px;
+}
+
+/* 代码框中光标颜色 */
+#write .CodeMirror-cursors .CodeMirror-cursor {
+    border-left: 2px solid var(--main-4);
+}
+
+/* 行内代码 */
+#write code,
+tt {
+    padding: 2px 4px 0px 4px;
+    border-radius: 2px;
+    font-family: var(--font-monospace);
+    color: #FF0000;
+    background-color: #FAEAEB;
+}
+
+tt {
+    margin: 0 2px;
+}
+
+#write .md-footnote {
+    background-color: #f8f8f8;
+    color: #e96900;
+}
+
+/* 任务列表小方框 */
+.md-task-list-item>input {
+    margin-left: -1.3em;
+}
+
+#write del {
+    padding: 1px 2px;
+}
+
+#write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+    bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+.md-image>.md-meta {
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc {
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+/**************************************
+* Header Counters in TOC
+**************************************/
+/* No link underlines in TOC */
+.md-toc-inner {
+    text-decoration: none;
+}
+
+.md-toc-content {
+    /* counter-reset: h1toc */
+    counter-reset: h2toc h3toc h4toc;
+    /*修复缺失上级标题时无法递增*/
+}
+
+.md-toc-h1 {
+    margin-left: 0;
+    font-size: 1.5rem;
+    display: none;
+    counter-reset: h2toc
+}
+
+.md-toc-h2 {
+    font-size: 1.1rem;
+    margin-left: 2rem;
+    counter-reset: h3toc
+}
+
+.md-toc-h3 {
+    margin-left: 3rem;
+    font-size: .9rem;
+    counter-reset: h4toc
+}
+
+.md-toc-h4 {
+    margin-left: 4rem;
+    font-size: .85rem;
+    counter-reset: h5toc
+}
+
+.md-toc-h5 {
+    margin-left: 5rem;
+    font-size: .8rem;
+    counter-reset: h6toc
+}
+
+.md-toc-h6 {
+    margin-left: 6rem;
+    font-size: .75rem;
+}
+
+.md-toc-h1:before {
+    color: black;
+    counter-increment: h1toc;
+}
+
+.md-toc-h1 .md-toc-inner {
+    margin-left: 0;
+}
+
+.md-toc-h2:before {
+    color: black;
+    counter-increment: h2toc;
+    content: counter(h2toc) ". "
+}
+
+.md-toc-h2 .md-toc-inner {
+    margin-left: 0;
+}
+
+.md-toc-h3:before {
+    color: black;
+    counter-increment: h3toc;
+    content: counter(h2toc) ". "counter(h3toc) " "
+}
+
+.md-toc-h3 .md-toc-inner {
+    margin-left: 0;
+}
+
+.md-toc-h4:before {
+    color: black;
+    counter-increment: h4toc;
+    content: counter(h2toc) ". "counter(h3toc) ". "counter(h4toc) " "
+}
+
+.md-toc-h4 .md-toc-inner {
+    margin-left: 0;
+}
+
+.md-toc-h5:before {
+    color: black;
+    counter-increment: h5toc;
+    content: counter(h2toc) ". "counter(h3toc) ". "counter(h4toc) ". "counter(h5toc) " "
+}
+
+.md-toc-h5 .md-toc-inner {
+    margin-left: 0;
+}
+
+.md-toc-h6:before {
+    color: black;
+    counter-increment: h6toc;
+    content: counter(h2toc) ". "counter(h3toc) ". "counter(h4toc) ". "counter(h5toc) ". "counter(h6toc) " "
+}
+
+.md-toc-h6 .md-toc-inner {
+    margin-left: 0;
+}
+
+
+/* 侧栏自动编号 */
+.sidebar-content {
+    counter-reset: h2 0 h3 0 h4 0 h5 0 h6 0
+}
+
+.outline-h1 {
+    counter-reset: h2
+}
+
+.outline-h2 {
+    counter-reset: h3
+}
+
+.outline-h3 {
+    counter-reset: h4
+}
+
+.outline-h4 {
+    counter-reset: h5
+}
+
+.outline-h5 {
+    counter-reset: h6
+}
+
+.outline-h1>.outline-item>.outline-label:before {
+    counter-increment: h1;
+    /* content: counter(h1) ". " */
+}
+
+.outline-h2>.outline-item>.outline-label:before {
+    counter-increment: h2;
+    content: counter(h2) ". "
+}
+
+.outline-h3>.outline-item>.outline-label:before {
+    counter-increment: h3;
+    content: counter(h2) "."counter(h3) " "
+}
+
+.outline-h4>.outline-item>.outline-label:before {
+    counter-increment: h4;
+    content: counter(h2) "."counter(h3) "."counter(h4) " "
+}
+
+.outline-h5>.outline-item>.outline-label:before {
+    counter-increment: h5;
+    content: counter(h2) "."counter(h3) "."counter(h4) "."counter(h5) " "
+}
+
+.outline-h6>.outline-item>.outline-label:before {
+    counter-increment: h6;
+    content: counter(h2) "."counter(h3) "."counter(h4) "."counter(h5) "."counter(h6) " "
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header,
+.context-menu,
+.megamenu-content,
+footer {
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+
+/* 打印成PDF */
+@media print {
+    /* .typora-export * {
+        -webkit-print-color-adjust: exact;
+    } */
+
+    html {
+        font-size: 15px !important;
+    }
+
+    body {
+        font-family: var(--font-sans-serif);
+        color: #000000 !important;
+    }
+
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+ .typora-export li, .typora-export p, .typora-export,  .footnote-line {white-space: normal;} 
+</style><title>NJU-ERP系统体系结构文档v2</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=' first-line-indent'><h1 id='nju-erp-系统体系结构文档v2'><span>NJU-ERP 系统体系结构文档v2</span></h1><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#nju-erp-系统体系结构文档v2">NJU-ERP 系统体系结构文档v2</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n3"><a class="md-toc-inner" href="#引言">引言</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n4"><a class="md-toc-inner" href="#编制目的">编制目的</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n7"><a class="md-toc-inner" href="#参考资料">参考资料</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n15"><a class="md-toc-inner" href="#产品概述">产品概述</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n17"><a class="md-toc-inner" href="#体系结构模型">体系结构模型</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n18"><a class="md-toc-inner" href="#整体架构描述">整体架构描述</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n19"><a class="md-toc-inner" href="#逻辑视角">逻辑视角</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n25"><a class="md-toc-inner" href="#组合视角">组合视角</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n26"><a class="md-toc-inner" href="#开发包图">开发包图</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n152"><a class="md-toc-inner" href="#运行时进程">运行时进程</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n156"><a class="md-toc-inner" href="#物理部署">物理部署</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n161"><a class="md-toc-inner" href="#接口视角">接口视角</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n162"><a class="md-toc-inner" href="#模块的职责">模块的职责</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n198"><a class="md-toc-inner" href="#用户界面层的分解">用户界面层的分解</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n205"><a class="md-toc-inner" href="#用户界面模块的职责">用户界面模块的职责</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n214"><a class="md-toc-inner" href="#用户界面模块的接口规范">用户界面模块的接口规范</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n241"><a class="md-toc-inner" href="#用户界面模块设计原理">用户界面模块设计原理</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n243"><a class="md-toc-inner" href="#业务逻辑层的分解">业务逻辑层的分解</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n246"><a class="md-toc-inner" href="#业务逻辑层模块的职责">业务逻辑层模块的职责</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n258"><a class="md-toc-inner" href="#业务逻辑层模块的接口规范">业务逻辑层模块的接口规范</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n259"><a class="md-toc-inner" href="#warehousebl-模块的接口规范">WarehouseBL 模块的接口规范</a></span><span role="listitem" class="md-toc-item md-toc-h6" data-ref="n390"><a class="md-toc-inner" href="#salesbl模块的接口规范">SalesBL模块的接口规范</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n494"><a class="md-toc-inner" href="#数据层的分解">数据层的分解</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n500"><a class="md-toc-inner" href="#数据层模块的职责">数据层模块的职责</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n512"><a class="md-toc-inner" href="#数据层模块的接口规范">数据层模块的接口规范</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n755"><a class="md-toc-inner" href="#信息视角">信息视角</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n756"><a class="md-toc-inner" href="#数据持久化对象">数据持久化对象</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n801"><a class="md-toc-inner" href="#数据库表">数据库表</a></span></p></div><h2 id='引言'><span>引言</span></h2><h3 id='编制目的'><span>编制目的</span></h3><p><span>本报告详细完成对 NJU-ERP 系统的体系结构设计，达到指导详细设计和开发的目的，同时实现和测试人员及用户的沟通。</span></p><p><span>本报告面向开发人员、测试人员及最终用户而编写，是了解系统的导航。</span></p><h3 id='参考资料'><span>参考资料</span></h3><ol start='' ><li><span>IEEE1471-2000</span></li><li><span>NJU-ERP 系统用例文档v1</span></li><li><span>NJU-ERP 系统软件需求规格说明文档v1</span></li></ol><h2 id='产品概述'><span>产品概述</span></h2><p><span>参考《NJU-ERP系统用例文档》和《NJU-ERP系统软件需求规格说明文档》中对产品的概括描述。</span></p><h2 id='体系结构模型'><span>体系结构模型</span></h2><h3 id='整体架构描述'><span>整体架构描述</span></h3><h3 id='逻辑视角'><span>逻辑视角</span></h3><p><span>NJU-ERP 系统中，选择了分层体系结构风格，将系统分为 3 层（展示层、业务逻辑层、数据层）能够很好地示意整个高层抽象。展示层包括 GUI 页面的实现，业务逻辑层包含业务逻辑处理的实现，数据层负责数据的持久化和访问。分层体系结构的逻辑视角和逻辑设计方案如图所示。</span></p><p><span>图 1：参照体系结构风格的包图表达逻辑视角（</span><a href='https://processon.com/diagraming/62709109079129397f2ee488' target='_blank' class='url'>https://processon.com/diagraming/62709109079129397f2ee488</a><span>）</span></p><p><img src="NJU-ERP%E7%B3%BB%E7%BB%9F%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E6%96%87%E6%A1%A3v2/image-20220710010828725.png" referrerpolicy="no-referrer" alt="参照体系结构风格的包图表达逻辑视角"></p><p><span>图 2：软件体系结构逻辑设计方案（</span><a href='https://processon.com/diagraming/6270b2955653bb5be570b723' target='_blank' class='url'>https://processon.com/diagraming/6270b2955653bb5be570b723</a><span>）</span></p><p><img src="NJU-ERP%E7%B3%BB%E7%BB%9F%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E6%96%87%E6%A1%A3v2/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%A1%88.png" referrerpolicy="no-referrer" alt="软件体系结构逻辑设计方案"></p><h3 id='组合视角'><span>组合视角</span></h3><h4 id='开发包图'><span>开发包图</span></h4><p><span>NJU-ERP 系统的最终开发包设计如下表所示：</span></p><figure><table><thead><tr><th><span>开发包</span></th><th><span>依赖的其他包</span></th></tr></thead><tbody><tr><td><span>mainui</span></td><td><span>inventoryui, salesui, financeui, hrui, clientui, approvalui, strategyui, vo</span></td></tr><tr><td><span>inventoryui</span></td><td><span>inventoryblservice, 界面类库包, vo</span></td></tr><tr><td><span>inventoryblservice</span></td><td>&nbsp;</td></tr><tr><td><span>inventorybl</span></td><td><span>inventoryblservice, inventorydataservice, po, utilitybl, salesbl</span></td></tr><tr><td><span>inventorydataservice</span></td><td>&nbsp;</td></tr><tr><td><span>inventorydata</span></td><td><span>inventorydataservice, databaseutility</span></td></tr><tr><td><span>salesui</span></td><td><span>salesblservice, 界面类库包, vo</span></td></tr><tr><td><span>salesblservice</span></td><td>&nbsp;</td></tr><tr><td><span>salesbl</span></td><td><span>salesblservice, salesdataservice, po, utilitybl</span></td></tr><tr><td><span>salesdataservice</span></td><td>&nbsp;</td></tr><tr><td><span>salesdata</span></td><td><span>salesdataservice, databaseutility</span></td></tr><tr><td><span>financeui</span></td><td><span>financeblservice, 界面类库包, vo</span></td></tr><tr><td><span>financeblservice</span></td><td>&nbsp;</td></tr><tr><td><span>financebl</span></td><td><span>financeblservice, financedataservice, po, utilitybl, salesbl</span></td></tr><tr><td><span>financedataservice</span></td><td>&nbsp;</td></tr><tr><td><span>financedata</span></td><td><span>financedataservice, databaseutility</span></td></tr><tr><td><span>hrui</span></td><td><span>hrblservice, 界面类库包, vo</span></td></tr><tr><td><span>hrblservice</span></td><td>&nbsp;</td></tr><tr><td><span>hrbl</span></td><td><span>hrblservice, hrdataservice, po, utilitybl, financebl</span></td></tr><tr><td><span>hrdataservice</span></td><td>&nbsp;</td></tr><tr><td><span>hrdata</span></td><td><span>hrdataservice, databaseutility</span></td></tr><tr><td><span>clientui</span></td><td><span>clientblservice, 界面类库包, vo</span></td></tr><tr><td><span>clientblservice</span></td><td>&nbsp;</td></tr><tr><td><span>clientbl</span></td><td><span>clientblservice, clientdataservice, po, utilitybl, salesbl</span></td></tr><tr><td><span>clientdataservice</span></td><td>&nbsp;</td></tr><tr><td><span>clientdata</span></td><td><span>clientdataservice, databaseutility</span></td></tr><tr><td><span>approvalui</span></td><td><span>approvalblservice, 界面类库包, vo</span></td></tr><tr><td><span>approvalblservice</span></td><td>&nbsp;</td></tr><tr><td><span>approvalbl</span></td><td><span>approvalblservice, approvaldataservice, po, utilitybl, inventorybl, salesbl, financebl</span></td></tr><tr><td><span>approvaldataservice</span></td><td>&nbsp;</td></tr><tr><td><span>approvaldata</span></td><td><span>approvaldataservice, databaseutility</span></td></tr><tr><td><span>strategyui</span></td><td><span>strategyblservice, 界面类库包, vo</span></td></tr><tr><td><span>strategyblservice</span></td><td>&nbsp;</td></tr><tr><td><span>strategybl</span></td><td><span>strategyblservice, strategydataservice, po, utilitybl</span></td></tr><tr><td><span>strategydataservice</span></td><td>&nbsp;</td></tr><tr><td><span>strategydata</span></td><td><span>strategydataservice, databaseutility</span></td></tr><tr><td><span>vo</span></td><td>&nbsp;</td></tr><tr><td><span>po</span></td><td>&nbsp;</td></tr><tr><td><span>databaseutility</span></td><td>&nbsp;</td></tr></tbody></table></figure><p><span>NJU-ERP 系统的最终开发包图如下图所示</span></p><p><span>NJU-ERP 系统开发包图（</span><a href='https://processon.com/diagraming/627093086376891e1c2106c1' target='_blank' class='url'>https://processon.com/diagraming/627093086376891e1c2106c1</a><span>）</span></p><p><img src="NJU-ERP%E7%B3%BB%E7%BB%9F%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E6%96%87%E6%A1%A3v2/ERP%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E5%8C%85%E5%9B%BE.png" referrerpolicy="no-referrer" alt="ERP系统开发包图"></p><h4 id='运行时进程'><span>运行时进程</span></h4><p><span>在系统中，会有多个客户端进程（浏览器）和一个服务器进程，其进程图如下。结合部署图，客户端进程是在客户端机器商运行，服务器进程是在服务器端机器上运行。</span></p><p><span>进程图（</span><a href='https://processon.com/diagraming/627c71cff346fb64d55adc0f' target='_blank' class='url'>https://processon.com/diagraming/627c71cff346fb64d55adc0f</a><span>）</span></p><p><img src="NJU-ERP%E7%B3%BB%E7%BB%9F%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E6%96%87%E6%A1%A3v2/image-20220710010946184.png" referrerpolicy="no-referrer" alt="进程图"></p><h4 id='物理部署'><span>物理部署</span></h4><p><span>NJU-ERP 系统前端采用 Vue 框架，后端采用 SpringBoot 框架，使用 Mybatis框架范根数据库。</span></p><p><span>部署时需要在服务器端放置服务器端构件，其中包括 Vue 框架、Springboot 框架和 Mybatis 框架；不需要在客户端部署任何构件，客户端通过网络在浏览器中访问该系统。</span></p><p><span>部署图（</span><a href='https://processon.com/diagraming/6242da841e0853078939ac2c' target='_blank' class='url'>https://processon.com/diagraming/6242da841e0853078939ac2c</a><span>）</span></p><p><img src="NJU-ERP%E7%B3%BB%E7%BB%9F%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E6%96%87%E6%A1%A3v2/image-20220710011004599.png" referrerpolicy="no-referrer" alt="部署图"></p><h3 id='接口视角'><span>接口视角</span></h3><h4 id='模块的职责'><span>模块的职责</span></h4><p><span>服务端模块的视图如下图所示，服务端各层的职责分别如下表所示。</span></p><p><img src="NJU-ERP%E7%B3%BB%E7%BB%9F%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E6%96%87%E6%A1%A3v1/201250127-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%A8%A1%E5%9D%97%E8%A7%86%E5%9B%BE.jpg" referrerpolicy="no-referrer" alt="服务器模块视图"></p><figure><table><thead><tr><th><span>层</span></th><th><span>职责</span></th></tr></thead><tbody><tr><td><span>启动模块</span></td><td><span>负责初始化网络通信机制，启动用户界面</span></td></tr><tr><td><span>服务器网络模块</span></td><td><span>负责响应网络通信请求</span></td></tr><tr><td><span>用户界面层</span></td><td><span>基于网络页面的 ERP 系统用户界面</span></td></tr><tr><td><span>业务逻辑层</span></td><td><span>对于用户的操作进行响应并进行业务逻辑处理</span></td></tr><tr><td><span>数据层</span></td><td><span>负责数据的持久化及数据访问接口</span></td></tr></tbody></table></figure><p><span>每一层只是使用下方直接接触的层。层与层之间仅仅是通过接口的调用来完成的。层之间调用的接口如下表所示。</span></p><figure><table><thead><tr><th><span>接口</span></th><th><span>服务调用方</span></th><th><span>服务提供方</span></th></tr></thead><tbody><tr><td><span>CategoryServiceImpl </span><br><span>ProductServiceImpl </span><br><span>WarehouseServiceimpl </span><br><span> ...</span></td><td><span>用户界面层</span></td><td><span>业务逻辑层</span></td></tr><tr><td><span>CategoryDao </span><br><span> ProductDao </span><br><span> WarehouseDao </span><br><span> WarehouseInputSheetDao </span><br><span> WarehouseOutputSheetDao </span><br><span> CustomerDao </span><br><span> RestockSheetDao </span><br><span> RestockReturnedGoodsSheetDao </span><br><span> SalesSheetDao </span><br><span> SalesReturnedGoodsSheetDao</span></td><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><h4 id='用户界面层的分解'><span>用户界面层的分解</span></h4><p><span>根据需求，系统存在以下界面：登陆界面、商品分类管理界面、商品管理界面、库存管理界面、库存查看界面、库存盘点界面、进货管理界面、进货退货管理界面、销售管理界面、销售退货管理界面、客户管理界面、审批界面。</span></p><p><span>除了登陆界面外，所有界面根据使用的用户分成五个模块，</span><strong><span>每个模块内部页面可相互跳转</span></strong><span>。</span></p><p><span>界面跳转如下图所示：</span></p><div class="md-diagram-panel md-fences-adv-panel"><svg id="mermaidChart0" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="667.5494384765625" style="max-width: 1579.037109375px;" viewBox="0.000003814697265625 0 1579.037109375 667.5494384765625"><style>#mermaidChart0 {font-family:sans-serif;font-size:16px;fill:#333;}#mermaidChart0 .error-icon{fill:#552222;}#mermaidChart0 .error-text{fill:#552222;stroke:#552222;}#mermaidChart0 .edge-thickness-normal{stroke-width:2px;}#mermaidChart0 .edge-thickness-thick{stroke-width:3.5px;}#mermaidChart0 .edge-pattern-solid{stroke-dasharray:0;}#mermaidChart0 .edge-pattern-dashed{stroke-dasharray:3;}#mermaidChart0 .edge-pattern-dotted{stroke-dasharray:2;}#mermaidChart0 .marker{fill:#333333;stroke:#333333;}#mermaidChart0 .marker.cross{stroke:#333333;}#mermaidChart0 svg{font-family:sans-serif;font-size:16px;}#mermaidChart0 .label{font-family:sans-serif;color:#333;}#mermaidChart0 .cluster-label text{fill:#333;}#mermaidChart0 .cluster-label span{color:#333;}#mermaidChart0 .label text,#mermaidChart0 span{fill:#333;color:#333;}#mermaidChart0 .node rect,#mermaidChart0 .node circle,#mermaidChart0 .node ellipse,#mermaidChart0 .node polygon,#mermaidChart0 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaidChart0 .node .label{text-align:center;}#mermaidChart0 .node.clickable{cursor:pointer;}#mermaidChart0 .arrowheadPath{fill:#333333;}#mermaidChart0 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaidChart0 .flowchart-link{stroke:#333333;fill:none;}#mermaidChart0 .edgeLabel{background-color:#e8e8e8;text-align:center;}#mermaidChart0 .edgeLabel rect{opacity:0.5;background-color:#e8e8e8;fill:#e8e8e8;}#mermaidChart0 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaidChart0 .cluster text{fill:#333;}#mermaidChart0 .cluster span{color:#333;}#mermaidChart0 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:sans-serif;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaidChart0 :root{--mermaid-font-family:sans-serif;}#mermaidChart0 :root{--mermaid-alt-font-family:sans-serif;}</style><g><g class="output"><g class="clusters"><g class="cluster" id="flowchart-企业经营管理-72" transform="translate(817.0250473022461,65.15494728088379)" style="opacity: 1;"><rect width="1094.0136413574219" height="114.30989456176758" x="-547.0068206787109" y="-57.15494728088379"></rect><g class="label" transform="translate(0, -43.154945373535156)" id="mermaidChart0Text"><g transform="translate(-47.999671936035156,-12.154947280883789)"><foreignObject width="95.99934387207031" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">企业经营管理</div></foreignObject></g></g></g><g class="cluster" id="flowchart-财务管理-73" transform="translate(920.5276489257812,602.3945255279541)" style="opacity: 1;"><rect width="1301.0188446044922" height="114.30989456176758" x="-650.5094223022461" y="-57.15494728088379"></rect><g class="label" transform="translate(0, -43.154945373535156)" id="mermaidChart0Text"><g transform="translate(-32.00520706176758,-12.154947280883789)"><foreignObject width="64.01041412353516" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">财务管理</div></foreignObject></g></g></g><g class="cluster" id="flowchart-人事管理-74" transform="translate(519.0172424316406,199.46484184265137)" style="opacity: 1;"><rect width="497.99803161621094" height="114.30989456176758" x="-248.99901580810547" y="-57.15494728088379"></rect><g class="label" transform="translate(0, -43.154945373535156)" id="mermaidChart0Text"><g transform="translate(-32.00520706176758,-12.154947280883789)"><foreignObject width="64.01041412353516" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">人事管理</div></foreignObject></g></g></g><g class="cluster" id="flowchart-进货销售管理-75" transform="translate(713.5224456787109,333.77473640441895)" style="opacity: 1;"><rect width="887.0084381103516" height="114.30989456176758" x="-443.5042190551758" y="-57.15494728088379"></rect><g class="label" transform="translate(0, -43.154945373535156)" id="mermaidChart0Text"><g transform="translate(-47.999671936035156,-12.154947280883789)"><foreignObject width="95.99934387207031" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">进货销售管理</div></foreignObject></g></g></g><g class="cluster" id="flowchart-库存管理-76" transform="translate(713.5224456787109,468.0846309661865)" style="opacity: 1;"><rect width="887.0084381103516" height="114.30989456176758" x="-443.5042190551758" y="-57.15494728088379"></rect><g class="label" transform="translate(0, -43.154945373535156)" id="mermaidChart0Text"><g transform="translate(-32.00520706176758,-12.154947280883789)"><foreignObject width="64.01041412353516" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">库存管理</div></foreignObject></g></g></g></g><g class="edgePaths"><g class="edgePath LS-Login LE-1.5" id="L-Login-1.5" style="opacity: 1;"><path class="path" d="M71.61567744600808,355.92968368530273L181.01432037353516,468.0846309661865L270.01822662353516,468.0846309661865L295.01822662353516,468.0846309661865" marker-end="url(#arrowhead221)" style="fill:none"></path><defs><marker id="arrowhead221" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-1.5 LE-1.6" id="L-1.5-1.6" style="opacity: 1;"><path class="path" d="M411.01757049560547,468.0846309661865L436.01757049560547,468.0846309661865L477.01203536987305,468.0846309661865" marker-end="url(#arrowhead222)" style="fill:none"></path><defs><marker id="arrowhead222" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 0 0 L 0 0 z" style="fill: #333"></path></marker></defs></g><g class="edgePath LS-1.6 LE-1.1" id="L-1.6-1.1" style="opacity: 1;"><path class="path" d="M561.0224494934082,468.0846309661865L602.0169143676758,468.0846309661865L643.0113792419434,468.0846309661865" marker-end="url(#arrowhead223)" style="fill:none"></path><defs><marker id="arrowhead223" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 0 0 L 0 0 z" style="fill: #333"></path></marker></defs></g><g class="edgePath LS-1.1 LE-1.4" id="L-1.1-1.4" style="opacity: 1;"><path class="path" d="M727.0217933654785,468.0846309661865L768.0162582397461,468.0846309661865L793.0162582397461,468.0846309661865L842.0136528015137,468.0846309661865" marker-end="url(#arrowhead224)" style="fill:none"></path><defs><marker id="arrowhead224" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 0 0 L 0 0 z" style="fill: #333"></path></marker></defs></g><g class="edgePath LS-1.4 LE-1.3" id="L-1.4-1.3" style="opacity: 1;"><path class="path" d="M926.0240669250488,468.0846309661865L975.0214614868164,468.0846309661865L1024.018856048584,468.0846309661865" marker-end="url(#arrowhead225)" style="fill:none"></path><defs><marker id="arrowhead225" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 0 0 L 0 0 z" style="fill: #333"></path></marker></defs></g><g class="edgePath LS-Login LE-2.1" id="L-Login-2.1" style="opacity: 1;"><path class="path" d="M92.01041412353516,333.77473640441895L181.01432037353516,333.77473640441895L270.01822662353516,333.77473640441895L311.01269149780273,333.77473640441895" marker-end="url(#arrowhead226)" style="fill:none"></path><defs><marker id="arrowhead226" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-2.1 LE-2.2" id="L-2.1-2.2" style="opacity: 1;"><path class="path" d="M395.0231056213379,333.77473640441895L436.01757049560547,333.77473640441895L461.01757049560547,333.77473640441895" marker-end="url(#arrowhead227)" style="fill:none"></path><defs><marker id="arrowhead227" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 0 0 L 0 0 z" style="fill: #333"></path></marker></defs></g><g class="edgePath LS-2.2 LE-2.3" id="L-2.2-2.3" style="opacity: 1;"><path class="path" d="M577.0169143676758,333.77473640441895L602.0169143676758,333.77473640441895L643.0113792419434,333.77473640441895" marker-end="url(#arrowhead228)" style="fill:none"></path><defs><marker id="arrowhead228" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 0 0 L 0 0 z" style="fill: #333"></path></marker></defs></g><g class="edgePath LS-2.3 LE-2.4" id="L-2.3-2.4" style="opacity: 1;"><path class="path" d="M727.0217933654785,333.77473640441895L768.0162582397461,333.77473640441895L793.0162582397461,333.77473640441895L826.0191879272461,333.77473640441895" marker-end="url(#arrowhead229)" style="fill:none"></path><defs><marker id="arrowhead229" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 0 0 L 0 0 z" style="fill: #333"></path></marker></defs></g><g class="edgePath LS-2.4 LE-2.5" id="L-2.4-2.5" style="opacity: 1;"><path class="path" d="M942.0185317993164,333.77473640441895L975.0214614868164,333.77473640441895L1024.018856048584,333.77473640441895" marker-end="url(#arrowhead230)" style="fill:none"></path><defs><marker id="arrowhead230" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 0 0 L 0 0 z" style="fill: #333"></path></marker></defs></g><g class="edgePath LS-Login LE-4.1" id="L-Login-4.1" style="opacity: 1;"><path class="path" d="M71.61567744600808,311.61978912353516L181.01432037353516,199.46484184265137L270.01822662353516,199.46484184265137L311.01269149780273,199.46484184265137" marker-end="url(#arrowhead231)" style="fill:none"></path><defs><marker id="arrowhead231" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-4.1 LE-4.2" id="L-4.1-4.2" style="opacity: 1;"><path class="path" d="M395.0231056213379,199.46484184265137L436.01757049560547,199.46484184265137L477.01203536987305,199.46484184265137" marker-end="url(#arrowhead232)" style="fill:none"></path><defs><marker id="arrowhead232" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 0 0 L 0 0 z" style="fill: #333"></path></marker></defs></g><g class="edgePath LS-4.2 LE-4.3" id="L-4.2-4.3" style="opacity: 1;"><path class="path" d="M561.0224494934082,199.46484184265137L602.0169143676758,199.46484184265137L627.0169143676758,199.46484184265137" marker-end="url(#arrowhead233)" style="fill:none"></path><defs><marker id="arrowhead233" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 0 0 L 0 0 z" style="fill: #333"></path></marker></defs></g><g class="edgePath LS-Login LE-3.1" id="L-Login-3.1" style="opacity: 1;"><path class="path" d="M60.81044225388783,355.92968368530273L181.01432037353516,602.3945255279541L270.01822662353516,602.3945255279541L311.01269149780273,602.3945255279541" marker-end="url(#arrowhead234)" style="fill:none"></path><defs><marker id="arrowhead234" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-3.1 LE-3.2" id="L-3.1-3.2" style="opacity: 1;"><path class="path" d="M395.0231056213379,602.3945255279541L436.01757049560547,602.3945255279541L493.01463890075684,602.3945255279541" marker-end="url(#arrowhead235)" style="fill:none"></path><defs><marker id="arrowhead235" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 0 0 L 0 0 z" style="fill: #333"></path></marker></defs></g><g class="edgePath LS-3.2 LE-3.3" id="L-3.2-3.3" style="opacity: 1;"><path class="path" d="M545.0198459625244,602.3945255279541L602.0169143676758,602.3945255279541L659.0139827728271,602.3945255279541" marker-end="url(#arrowhead236)" style="fill:none"></path><defs><marker id="arrowhead236" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 0 0 L 0 0 z" style="fill: #333"></path></marker></defs></g><g class="edgePath LS-3.3 LE-3.4" id="L-3.3-3.4" style="opacity: 1;"><path class="path" d="M711.0191898345947,602.3945255279541L768.0162582397461,602.3945255279541L793.0162582397461,602.3945255279541L842.0136528015137,602.3945255279541" marker-end="url(#arrowhead237)" style="fill:none"></path><defs><marker id="arrowhead237" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 0 0 L 0 0 z" style="fill: #333"></path></marker></defs></g><g class="edgePath LS-3.4 LE-3.5" id="L-3.4-3.5" style="opacity: 1;"><path class="path" d="M926.0240669250488,602.3945255279541L975.0214614868164,602.3945255279541L1000.0214614868164,602.3945255279541" marker-end="url(#arrowhead238)" style="fill:none"></path><defs><marker id="arrowhead238" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 0 0 L 0 0 z" style="fill: #333"></path></marker></defs></g><g class="edgePath LS-3.5 LE-3.6" id="L-3.5-3.6" style="opacity: 1;"><path class="path" d="M1132.0266647338867,602.3945255279541L1157.0266647338867,602.3945255279541L1182.0266647338867,602.3945255279541L1207.0266647338867,602.3945255279541" marker-end="url(#arrowhead239)" style="fill:none"></path><defs><marker id="arrowhead239" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 0 0 L 0 0 z" style="fill: #333"></path></marker></defs></g><g class="edgePath LS-3.6 LE-3.7" id="L-3.6-3.7" style="opacity: 1;"><path class="path" d="M1339.031867980957,602.3945255279541L1364.031867980957,602.3945255279541L1389.031867980957,602.3945255279541L1414.031867980957,602.3945255279541" marker-end="url(#arrowhead240)" style="fill:none"></path><defs><marker id="arrowhead240" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 0 0 L 0 0 z" style="fill: #333"></path></marker></defs></g><g class="edgePath LS-Login LE-5.1" id="L-Login-5.1" style="opacity: 1;"><path class="path" d="M60.81044225388783,311.61978912353516L181.01432037353516,65.15494728088379L270.01822662353516,65.15494728088379L327.0152950286865,65.15494728088379" marker-end="url(#arrowhead241)" style="fill:none"></path><defs><marker id="arrowhead241" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath LS-5.1 LE-5.2" id="L-5.1-5.2" style="opacity: 1;"><path class="path" d="M379.0205020904541,65.15494728088379L436.01757049560547,65.15494728088379L461.01757049560547,65.15494728088379" marker-end="url(#arrowhead242)" style="fill:none"></path><defs><marker id="arrowhead242" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 0 0 L 0 0 z" style="fill: #333"></path></marker></defs></g><g class="edgePath LS-5.2 LE-5.3" id="L-5.2-5.3" style="opacity: 1;"><path class="path" d="M577.0169143676758,65.15494728088379L602.0169143676758,65.15494728088379L635.0165863037109,65.15494728088379" marker-end="url(#arrowhead243)" style="fill:none"></path><defs><marker id="arrowhead243" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 0 0 L 0 0 z" style="fill: #333"></path></marker></defs></g><g class="edgePath LS-5.3 LE-5.4" id="L-5.3-5.4" style="opacity: 1;"><path class="path" d="M735.0165863037109,65.15494728088379L768.0162582397461,65.15494728088379L793.0162582397461,65.15494728088379L818.0162582397461,65.15494728088379" marker-end="url(#arrowhead244)" style="fill:none"></path><defs><marker id="arrowhead244" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 0 0 L 0 0 z" style="fill: #333"></path></marker></defs></g><g class="edgePath LS-5.4 LE-5.5" id="L-5.4-5.5" style="opacity: 1;"><path class="path" d="M950.0214614868164,65.15494728088379L975.0214614868164,65.15494728088379L1000.0214614868164,65.15494728088379" marker-end="url(#arrowhead245)" style="fill:none"></path><defs><marker id="arrowhead245" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 0 0 L 0 0 z" style="fill: #333"></path></marker></defs></g><g class="edgePath LS-5.5 LE-5.6" id="L-5.5-5.6" style="opacity: 1;"><path class="path" d="M1132.0266647338867,65.15494728088379L1157.0266647338867,65.15494728088379L1182.0266647338867,65.15494728088379L1207.0266647338867,65.15494728088379" marker-end="url(#arrowhead246)" style="fill:none"></path><defs><marker id="arrowhead246" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 0 0 L 0 0 z" style="fill: #333"></path></marker></defs></g></g><g class="edgeLabels"><g class="edgeLabel" transform="translate(181.01432037353516,468.0846309661865)" style="opacity: 1;"><g transform="translate(-64.00390625,-12.154947280883789)" class="label"><rect rx="0" ry="0" width="128.0078125" height="24.309894561767578"></rect><foreignObject width="128.0078125" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-Login-1.5" class="edgeLabel L-LS-Login' L-LE-1.5">库存管理人员认证</span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-1.5-1.6" class="edgeLabel L-LS-1.5' L-LE-1.6"></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-1.6-1.1" class="edgeLabel L-LS-1.6' L-LE-1.1"></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-1.1-1.4" class="edgeLabel L-LS-1.1' L-LE-1.4"></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-1.4-1.3" class="edgeLabel L-LS-1.4' L-LE-1.3"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(181.01432037353516,333.77473640441895)" style="opacity: 1;"><g transform="translate(-40,-12.154947280883789)" class="label"><rect rx="0" ry="0" width="80" height="24.309894561767578"></rect><foreignObject width="80" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-Login-2.1" class="edgeLabel L-LS-Login' L-LE-2.1">销售员认证</span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-2.1-2.2" class="edgeLabel L-LS-2.1' L-LE-2.2"></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-2.2-2.3" class="edgeLabel L-LS-2.2' L-LE-2.3"></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-2.3-2.4" class="edgeLabel L-LS-2.3' L-LE-2.4"></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-2.4-2.5" class="edgeLabel L-LS-2.4' L-LE-2.5"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(181.01432037353516,199.46484184265137)" style="opacity: 1;"><g transform="translate(-64.00390625,-12.154947280883789)" class="label"><rect rx="0" ry="0" width="128.0078125" height="24.309894561767578"></rect><foreignObject width="128.0078125" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-Login-4.1" class="edgeLabel L-LS-Login' L-LE-4.1">人力资源人员认证</span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-4.1-4.2" class="edgeLabel L-LS-4.1' L-LE-4.2"></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-4.2-4.3" class="edgeLabel L-LS-4.2' L-LE-4.3"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(181.01432037353516,602.3945255279541)" style="opacity: 1;"><g transform="translate(-47.999671936035156,-12.154947280883789)" class="label"><rect rx="0" ry="0" width="95.99934387207031" height="24.309894561767578"></rect><foreignObject width="95.99934387207031" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-Login-3.1" class="edgeLabel L-LS-Login' L-LE-3.1">财务人员认证</span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-3.1-3.2" class="edgeLabel L-LS-3.1' L-LE-3.2"></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-3.2-3.3" class="edgeLabel L-LS-3.2' L-LE-3.3"></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-3.3-3.4" class="edgeLabel L-LS-3.3' L-LE-3.4"></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-3.4-3.5" class="edgeLabel L-LS-3.4' L-LE-3.5"></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-3.5-3.6" class="edgeLabel L-LS-3.5' L-LE-3.6"></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-3.6-3.7" class="edgeLabel L-LS-3.6' L-LE-3.7"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(181.01432037353516,65.15494728088379)" style="opacity: 1;"><g transform="translate(-40,-12.154947280883789)" class="label"><rect rx="0" ry="0" width="80" height="24.309894561767578"></rect><foreignObject width="80" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-Login-5.1" class="edgeLabel L-LS-Login' L-LE-5.1">总经理认证</span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-5.1-5.2" class="edgeLabel L-LS-5.1' L-LE-5.2"></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-5.2-5.3" class="edgeLabel L-LS-5.2' L-LE-5.3"></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-5.3-5.4" class="edgeLabel L-LS-5.3' L-LE-5.4"></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-5.4-5.5" class="edgeLabel L-LS-5.4' L-LE-5.5"></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-5.5-5.6" class="edgeLabel L-LS-5.5' L-LE-5.6"></span></div></foreignObject></g></g></g><g class="nodes"><g class="node default" id="flowchart-5.6-71" transform="translate(1273.0292663574219,65.15494728088379)" style="opacity: 1;"><rect rx="5" ry="5" x="-66.00260162353516" y="-22.15494728088379" width="132.0052032470703" height="44.30989456176758" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-56.002601623535156,-12.154947280883789)"><foreignObject width="112.00520324707031" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">查看经营情况表</div></foreignObject></g></g></g><g class="node default" id="flowchart-5.5-70" transform="translate(1066.0240631103516,65.15494728088379)" style="opacity: 1;"><rect rx="5" ry="5" x="-66.00260162353516" y="-22.15494728088379" width="132.0052032470703" height="44.30989456176758" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-56.002601623535156,-12.154947280883789)"><foreignObject width="112.00520324707031" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">查看经营历程表</div></foreignObject></g></g></g><g class="node default" id="flowchart-5.4-69" transform="translate(884.0188598632812,65.15494728088379)" style="opacity: 1;"><rect rx="5" ry="5" x="-66.00260162353516" y="-22.15494728088379" width="132.0052032470703" height="44.30989456176758" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-56.002601623535156,-12.154947280883789)"><foreignObject width="112.00520324707031" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">查看销售明细表</div></foreignObject></g></g></g><g class="node default" id="flowchart-5.3-68" transform="translate(685.0165863037109,65.15494728088379)" style="opacity: 1;"><rect rx="5" ry="5" x="-50" y="-22.15494728088379" width="100" height="44.30989456176758" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-40,-12.154947280883789)"><foreignObject width="80" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">制定年终奖</div></foreignObject></g></g></g><g class="node default" id="flowchart-5.2-67" transform="translate(519.0172424316406,65.15494728088379)" style="opacity: 1;"><rect rx="5" ry="5" x="-57.999671936035156" y="-22.15494728088379" width="115.99934387207031" height="44.30989456176758" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-47.999671936035156,-12.154947280883789)"><foreignObject width="95.99934387207031" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">制定促销策略</div></foreignObject></g></g></g><g class="node default" id="flowchart-5.1-65" transform="translate(353.0178985595703,65.15494728088379)" style="opacity: 1;"><rect rx="5" ry="5" x="-26.00260353088379" y="-22.15494728088379" width="52.00520706176758" height="44.30989456176758" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-16.00260353088379,-12.154947280883789)"><foreignObject width="32.00520706176758" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">审批</div></foreignObject></g></g></g><g class="node default" id="flowchart-3.7-63" transform="translate(1480.0344696044922,602.3945255279541)" style="opacity: 1;"><rect rx="5" ry="5" x="-66.00260162353516" y="-22.15494728088379" width="132.0052032470703" height="44.30989456176758" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-56.002601623535156,-12.154947280883789)"><foreignObject width="112.00520324707031" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">查看经营情况表</div></foreignObject></g></g></g><g class="node default" id="flowchart-3.6-62" transform="translate(1273.0292663574219,602.3945255279541)" style="opacity: 1;"><rect rx="5" ry="5" x="-66.00260162353516" y="-22.15494728088379" width="132.0052032470703" height="44.30989456176758" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-56.002601623535156,-12.154947280883789)"><foreignObject width="112.00520324707031" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">查看经营历程表</div></foreignObject></g></g></g><g class="node default" id="flowchart-3.5-61" transform="translate(1066.0240631103516,602.3945255279541)" style="opacity: 1;"><rect rx="5" ry="5" x="-66.00260162353516" y="-22.15494728088379" width="132.0052032470703" height="44.30989456176758" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-56.002601623535156,-12.154947280883789)"><foreignObject width="112.00520324707031" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">查看销售明细表</div></foreignObject></g></g></g><g class="node default" id="flowchart-3.4-60" transform="translate(884.0188598632812,602.3945255279541)" style="opacity: 1;"><rect rx="5" ry="5" x="-42.00520706176758" y="-22.15494728088379" width="84.01041412353516" height="44.30989456176758" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-32.00520706176758,-12.154947280883789)"><foreignObject width="64.01041412353516" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">工资发放</div></foreignObject></g></g></g><g class="node default" id="flowchart-3.3-59" transform="translate(685.0165863037109,602.3945255279541)" style="opacity: 1;"><rect rx="5" ry="5" x="-26.00260353088379" y="-22.15494728088379" width="52.00520706176758" height="44.30989456176758" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-16.00260353088379,-12.154947280883789)"><foreignObject width="32.00520706176758" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">付款</div></foreignObject></g></g></g><g class="node default" id="flowchart-3.2-58" transform="translate(519.0172424316406,602.3945255279541)" style="opacity: 1;"><rect rx="5" ry="5" x="-26.00260353088379" y="-22.15494728088379" width="52.00520706176758" height="44.30989456176758" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-16.00260353088379,-12.154947280883789)"><foreignObject width="32.00520706176758" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">收款</div></foreignObject></g></g></g><g class="node default" id="flowchart-3.1-56" transform="translate(353.0178985595703,602.3945255279541)" style="opacity: 1;"><rect rx="5" ry="5" x="-42.00520706176758" y="-22.15494728088379" width="84.01041412353516" height="44.30989456176758" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-32.00520706176758,-12.154947280883789)"><foreignObject width="64.01041412353516" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">账户管理</div></foreignObject></g></g></g><g class="node default" id="flowchart-4.3-54" transform="translate(685.0165863037109,199.46484184265137)" style="opacity: 1;"><rect rx="5" ry="5" x="-57.999671936035156" y="-22.15494728088379" width="115.99934387207031" height="44.30989456176758" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-47.999671936035156,-12.154947280883789)"><foreignObject width="95.99934387207031" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">薪酬规则制定</div></foreignObject></g></g></g><g class="node default" id="flowchart-4.2-53" transform="translate(519.0172424316406,199.46484184265137)" style="opacity: 1;"><rect rx="5" ry="5" x="-42.00520706176758" y="-22.15494728088379" width="84.01041412353516" height="44.30989456176758" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-32.00520706176758,-12.154947280883789)"><foreignObject width="64.01041412353516" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">员工打卡</div></foreignObject></g></g></g><g class="node default" id="flowchart-4.1-51" transform="translate(353.0178985595703,199.46484184265137)" style="opacity: 1;"><rect rx="5" ry="5" x="-42.00520706176758" y="-22.15494728088379" width="84.01041412353516" height="44.30989456176758" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-32.00520706176758,-12.154947280883789)"><foreignObject width="64.01041412353516" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">员工管理</div></foreignObject></g></g></g><g class="node default" id="flowchart-2.5-49" transform="translate(1066.0240631103516,333.77473640441895)" style="opacity: 1;"><rect rx="5" ry="5" x="-42.00520706176758" y="-22.15494728088379" width="84.01041412353516" height="44.30989456176758" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-32.00520706176758,-12.154947280883789)"><foreignObject width="64.01041412353516" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">客户管理</div></foreignObject></g></g></g><g class="node default" id="flowchart-2.4-48" transform="translate(884.0188598632812,333.77473640441895)" style="opacity: 1;"><rect rx="5" ry="5" x="-57.999671936035156" y="-22.15494728088379" width="115.99934387207031" height="44.30989456176758" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-47.999671936035156,-12.154947280883789)"><foreignObject width="95.99934387207031" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">销售退货管理</div></foreignObject></g></g></g><g class="node default" id="flowchart-2.3-47" transform="translate(685.0165863037109,333.77473640441895)" style="opacity: 1;"><rect rx="5" ry="5" x="-42.00520706176758" y="-22.15494728088379" width="84.01041412353516" height="44.30989456176758" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-32.00520706176758,-12.154947280883789)"><foreignObject width="64.01041412353516" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">销售管理</div></foreignObject></g></g></g><g class="node default" id="flowchart-2.2-46" transform="translate(519.0172424316406,333.77473640441895)" style="opacity: 1;"><rect rx="5" ry="5" x="-57.999671936035156" y="-22.15494728088379" width="115.99934387207031" height="44.30989456176758" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-47.999671936035156,-12.154947280883789)"><foreignObject width="95.99934387207031" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">进货退货管理</div></foreignObject></g></g></g><g class="node default" id="flowchart-2.1-44" transform="translate(353.0178985595703,333.77473640441895)" style="opacity: 1;"><rect rx="5" ry="5" x="-42.00520706176758" y="-22.15494728088379" width="84.01041412353516" height="44.30989456176758" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-32.00520706176758,-12.154947280883789)"><foreignObject width="64.01041412353516" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">进货管理</div></foreignObject></g></g></g><g class="node default" id="flowchart-1.3-42" transform="translate(1066.0240631103516,468.0846309661865)" style="opacity: 1;"><rect rx="5" ry="5" x="-42.00520706176758" y="-22.15494728088379" width="84.01041412353516" height="44.30989456176758" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-32.00520706176758,-12.154947280883789)"><foreignObject width="64.01041412353516" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">库存盘点</div></foreignObject></g></g></g><g class="node default" id="flowchart-1.4-41" transform="translate(884.0188598632812,468.0846309661865)" style="opacity: 1;"><rect rx="5" ry="5" x="-42.00520706176758" y="-22.15494728088379" width="84.01041412353516" height="44.30989456176758" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-32.00520706176758,-12.154947280883789)"><foreignObject width="64.01041412353516" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">库存查看</div></foreignObject></g></g></g><g class="node default" id="flowchart-1.1-40" transform="translate(685.0165863037109,468.0846309661865)" style="opacity: 1;"><rect rx="5" ry="5" x="-42.00520706176758" y="-22.15494728088379" width="84.01041412353516" height="44.30989456176758" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-32.00520706176758,-12.154947280883789)"><foreignObject width="64.01041412353516" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">库存管理</div></foreignObject></g></g></g><g class="node default" id="flowchart-1.6-39" transform="translate(519.0172424316406,468.0846309661865)" style="opacity: 1;"><rect rx="5" ry="5" x="-42.00520706176758" y="-22.15494728088379" width="84.01041412353516" height="44.30989456176758" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-32.00520706176758,-12.154947280883789)"><foreignObject width="64.01041412353516" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">商品管理</div></foreignObject></g></g></g><g class="node default" id="flowchart-1.5-37" transform="translate(353.0178985595703,468.0846309661865)" style="opacity: 1;"><rect rx="5" ry="5" x="-57.999671936035156" y="-22.15494728088379" width="115.99934387207031" height="44.30989456176758" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-47.999671936035156,-12.154947280883789)"><foreignObject width="95.99934387207031" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">商品分类管理</div></foreignObject></g></g></g><g class="node default" id="flowchart-Login-36" transform="translate(50.00520706176758,333.77473640441895)" style="opacity: 1;"><rect rx="5" ry="5" x="-42.00520706176758" y="-22.15494728088379" width="84.01041412353516" height="44.30989456176758" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-32.00520706176758,-12.154947280883789)"><foreignObject width="64.01041412353516" height="24.309894561767578"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">登录界面</div></foreignObject></g></g></g></g></g></g></svg></div><p><span>用户界面类如下图所示。</span></p><p><img src="NJU-ERP%E7%B3%BB%E7%BB%9F%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E6%96%87%E6%A1%A3v1/201250127-%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2%E7%B1%BB.png" referrerpolicy="no-referrer" alt="用户界面类图"></p><h5 id='用户界面模块的职责'><span>用户界面模块的职责</span></h5><p><span>下表为用户界面层模块的职责。</span></p><figure><table><thead><tr><th><span>模块</span></th><th><span>职责</span></th></tr></thead><tbody><tr><td><span>MainFrame</span></td><td><span>界面 Frame，负责界面的显示和界面的跳转</span></td></tr></tbody></table></figure><h5 id='用户界面模块的接口规范'><span>用户界面模块的接口规范</span></h5><p><span>下表为用户界面层的接口规范。</span></p><figure><table><thead><tr><th><span>接口名称</span></th><th><span>语法</span></th><th><span>前置条件</span></th><th><span>后置条件</span></th></tr></thead><tbody><tr><td><span>Mainframe.init</span></td><td><span>Mainframe.init(Strings[] args)</span></td><td><span>无</span></td><td><span>正确显示Frame</span></td></tr></tbody></table></figure><p><span>用户界面层需要的服务接口如下表所示。</span></p><figure><table><thead><tr><th><span>服务名</span></th><th><span>服务</span></th></tr></thead><tbody><tr><td><span>CategoryServiceImpl.getUIInfo</span></td><td><span>取得商品分类的 UI 内容</span></td></tr><tr><td><span>ProductServiceImpl.getUIInfo</span></td><td><span>取得商品信息的 UI 内容</span></td></tr><tr><td><span>WarehouseServiceImpl.getUIInfo</span></td><td><span>取得库存信息的 UI 内容</span></td></tr></tbody></table></figure><h5 id='用户界面模块设计原理'><span>用户界面模块设计原理</span></h5><p><span>用户界面利用 Vue 框架设计和实现。</span></p><h4 id='业务逻辑层的分解'><span>业务逻辑层的分解</span></h4><p><span>业务逻辑层包括多个针对界面的业务逻辑处理对象。例如，SalesServiceImpl 对象负责处理销售界面的部分业务逻辑；ProductServiceImpl 负责处理库存界面的部分业务逻辑。业务逻辑层的设计图如下所示：</span></p><p><img src="NJU-ERP%E7%B3%BB%E7%BB%9F%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E6%96%87%E6%A1%A3v1/201250181-logicalServiceDesc.png" referrerpolicy="no-referrer"></p><h5 id='业务逻辑层模块的职责'><span>业务逻辑层模块的职责</span></h5><p><span>业务逻辑层模块的职责如下表所示。</span></p><figure><table><thead><tr><th><span>模块</span></th><th><span>职责</span></th></tr></thead><tbody><tr><td><span>WarehouseBL</span></td><td><span>负责实现库存管理界面所需要的服务</span></td></tr><tr><td><span>SalesBL</span></td><td><span>负责实现销售界面所需要的服务。</span></td></tr></tbody></table></figure><h5 id='业务逻辑层模块的接口规范'><span>业务逻辑层模块的接口规范</span></h5><h6 id='warehousebl-模块的接口规范'><span>WarehouseBL 模块的接口规范</span></h6><p><span>提供的服务（供接口）</span></p><figure><table><thead><tr><th style='text-align:left;' ><span>接口名称</span></th><th><span>语法</span></th><th><span>前置条件</span></th><th><span>后置条件</span></th></tr></thead><tbody><tr><td style='text-align:left;' ><span>CategoryServiceImpl.createCategory</span></td><td><span>public CategoryVO createCategory(Integer parentId, String name)</span></td><td><span>需要新增一个商品分类</span></td><td><span>增加新增的商品分类信息</span></td></tr><tr><td style='text-align:left;' ><span>CategoryServiceImpl.queryAllCategory</span></td><td><span>public List</span><span>&lt;</span><span>CategoryVO</span><span>&gt;</span><span> queryAllCategory()</span></td><td><span>需要查询商品分类</span></td><td><span>返回所有的商品分类</span></td></tr><tr><td style='text-align:left;' ><span>CategoryServiceImpl.updateCategory</span></td><td><span>public CategoryVO updateCategory(Integer id, String name)</span></td><td><span>需要更新商品分类</span></td><td><span>更新商品分类信息</span></td></tr><tr><td style='text-align:left;' ><span>CategoryServiceImpl.deleteCategory</span></td><td><span>public void deleteCategory(Integer id)</span></td><td><span>需要删除一个商品分类</span></td><td><span>删除指定 Id 的商品分类</span></td></tr><tr><td style='text-align:left;' ><span>CategoryServiceImpl.getUIInfo</span></td><td><span>public String[] getUIInfo(String[] args)</span></td><td><span>需要获取 UI 界面内容</span></td><td><span>返回所需的 UI 内容</span></td></tr><tr><td style='text-align:left;' ><span>ProductServiceImpl.createProduct</span></td><td><span>public ProductInfoVO createProduct(CreateProductVO inputVO）</span></td><td><span>需要新增一个商品</span></td><td><span>增加新增的商品信息</span></td></tr><tr><td style='text-align:left;' ><span>ProductServiceImpl.updateProduct</span></td><td><span>public ProductInfoVO updateProduct(ProductInfoVO productInfoVO)</span></td><td><span>需要更新商品信息</span></td><td><span>更新指定的商品信息</span></td></tr><tr><td style='text-align:left;' ><span>ProductServiceImpl.queryAllProduct</span></td><td><span>public List</span><span>&lt;</span><span>ProductInfoVO</span><span>&gt;</span><span> queryAllProduct()</span></td><td><span>需要查询商品信息</span></td><td><span>返回所有商品信息</span></td></tr><tr><td style='text-align:left;' ><span>ProductServiceImpl.deleteById</span></td><td><span>public void deleteById(String id)</span></td><td><span>需要删除商品信息</span></td><td><span>删除指定 Id 的商品信息</span></td></tr><tr><td style='text-align:left;' ><span>ProductServiceImpl.getUIInfo</span></td><td><span>public String[] getUIInfo(String[] args)</span></td><td><span>需要获取 UI 界面内容</span></td><td><span>返回所需的 UI 内容</span></td></tr><tr><td style='text-align:left;' ><span>WarehouseServiceImpl.productWarehousing</span></td><td><span>public void productWarehousing(WarehouseInputFormVO warehouseInputFormVO)</span></td><td><span>需要入库商品</span></td><td><span>更新库存中的商品信息(增加库存)</span></td></tr><tr><td style='text-align:left;' ><span>WarehouseServiceImpl.getUIInfo</span></td><td><span>public String[] getUIInfo(String[] args)</span></td><td><span>需要获取 UI 界面内容</span></td><td><span>返回所需的 UI 内容</span></td></tr></tbody></table></figure><p><span>需要的服务(需接口)</span></p><figure><table><thead><tr><th><span>服务名</span></th><th><span>服务</span></th></tr></thead><tbody><tr><td><span>CategoryDao.findByCategoryId(Integer categoryId)</span></td><td><span>根据 Id 得到 CategoryPO 对象</span></td></tr><tr><td><span>CategoryDao.createCategory(CategoryPO categoryPO)</span></td><td><span>向数据库中插入 CategoryPO对象</span></td></tr><tr><td><span>CategoryDao.updateById(CategoryPO categoryPO)</span></td><td><span>更新数据库中的 CategoryPO 对象</span></td></tr><tr><td><span>CategoryDao.findAll()</span></td><td><span>查询所有 CategoryPO 对象</span></td></tr><tr><td><span>CategoryDao.deleteById(Integer id)</span></td><td><span>删除数据库中指定 Id 的CategotyPO对象</span></td></tr><tr><td><span>ProductDao.createProduct(ProductPO productPO)</span></td><td><span>向数据库中插入 ProductPO 对象</span></td></tr><tr><td><span>ProductDao.updateById(ProductPO productPO)</span></td><td><span>更新数据库中的 ProductPO 对象</span></td></tr><tr><td><span>ProductDao.findById(String id)</span></td><td><span>根据 Id 查找 ProductPO 对象</span></td></tr><tr><td><span>ProductDao.findAll()</span></td><td><span>查询所有 ProductPO 对象</span></td></tr><tr><td><span>ProductDao.deleteById(String id)</span></td><td><span>删除数据库中指定 Id 的 ProductDao 对象</span></td></tr><tr><td><span>WarehouseDao.saveBatch(List</span><span>&lt;</span><span>WarehousePO</span><span>&gt;</span><span> warehousePOList)</span></td><td><span>向数据库中插入一批 WarehousePO 对象</span></td></tr><tr><td><span>WarehouseDao.deductQuantity(WarehousePO warehousePO)</span></td><td><span>减少一批商品的库存数量</span></td></tr><tr><td><span>WarehouseDao.findAllNotZeroByPidSortedByBatchId(String pid)</span></td><td><span>按 pid 查询一批商品，按 batchId 排序</span></td></tr><tr><td><span>WarehouseInputSheetDao.getLatest()</span></td><td><span>查询最近一条入库单(WarehouseInputSheetPO)</span></td></tr><tr><td><span>WarehouseInputSheetDao.save(WarehouseInputSheetPO toSave)</span></td><td><span>存入一条入库单记录(WarehouseInputSheetPO)</span></td></tr><tr><td><span>WarehouseInputSheetDao.saveBatch(List</span><span>&lt;</span><span>WarehouseInputSheetContentPO&gt; warehouseInputListPOSheetContent)</span></td><td><span>把入库单上的具体内容存入数据库</span></td></tr><tr><td><span>WarehouseOutputSheetDao.getLatest()</span></td><td><span>查询最近一条出库单(WarehouseOutputSheetPO)</span></td></tr><tr><td><span>WarehouseOutputSheetDao.save(WarehouseOutputSheetPO toSave)</span></td><td><span>存入一条出库单记录(WarehouseOutputSheetPO)</span></td></tr><tr><td><span>WarehouseOutputSheetDao.saveBatch(List</span><span>&lt;</span><span>WarehouseOutputSheetContentPO&gt; warehouseOutputListPOSheetContent)</span></td><td><span>把出库单上的具体内容存入数据库</span></td></tr></tbody></table></figure><h6 id='salesbl模块的接口规范'><span>SalesBL模块的接口规范</span></h6><p><span>提供的服务（供接口）</span></p><figure><table><thead><tr><th style='text-align:left;' ><span>接口名称</span></th><th><span>语法</span></th><th><span>前置条件</span></th><th><span>后置条件</span></th></tr></thead><tbody><tr><td style='text-align:left;' ><span>CustomerServiceImpl.createCustomer</span></td><td><span>public CustomerVO createCustomer(CustomerInfoVO customerInfoVO)</span></td><td><span>新增一个客户</span></td><td><span>增加新增的客户信息</span></td></tr><tr><td style='text-align:left;' ><span>CustomerServiceImpl.updateCustomer</span></td><td><span>public CustomerVO updateCustomer(CustomerInfoVO customerInfoVO)</span></td><td><span>需要更新客户信息</span></td><td><span>更新客户信息</span></td></tr><tr><td style='text-align:left;' ><span>CustomerServiceImpl.deleteCustomer</span></td><td><span>public void deleteCustomer(CustomerInfoVO customerInfoVO)</span></td><td><span>需要删除一个客户</span></td><td><span>删除和关键字段信息匹配的客户的信息</span></td></tr><tr><td style='text-align:left;' ><span>CustomerServiceImpl.getLargestInPeriod</span></td><td><span>public CustomerVO getLargestInPeriod(Date startDate, Date endDate)</span></td><td><span>需要查询交易</span></td><td><span>返回 startDate - endDate 日期内交易额最大的客户</span></td></tr><tr><td style='text-align:left;' ><span>SalesServiceImpl.deliverGoods</span></td><td><span>public SalesSheetVO deliverGoods(SalesSheetInfoVO salesSheetInfoVO)</span></td><td><span>需要出货</span></td><td><span>更新本次出货涉及的库存和客户信息</span></td></tr><tr><td style='text-align:left;' ><span>SalesServiceImpl.returnGoods</span></td><td><span>public SalesReturnedGoodsSheetVO returnGoods(SalesReturnedGoodsSheetInfoVO salesReturnedGoodsInfoVO)</span></td><td><span>(顾客)需要退货</span></td><td><span>更新本次退货涉及到的客户和库存信息</span></td></tr><tr><td style='text-align:left;' ><span>StockServiceImpl.restock</span></td><td><span>public RestockSheetVO  restock(RestockSheetInfoVO restockSheetInfoVO)</span></td><td><span>需要进货</span></td><td><span>更新库存信息</span></td></tr><tr><td style='text-align:left;' ><span>StockServiceImpl.returnStock</span></td><td><span>public RestockReturnedGoodsSheetVO returnStock(RestockReturnedGoodsSheetInfoVO restockReturnedGoodsSheetInfoVO)</span></td><td><span>需要退货(给供应商)</span></td><td><span>更新库存信息</span></td></tr></tbody></table></figure><p><span>需要的服务（需接口）</span></p><figure><table><thead><tr><th><span>服务名</span></th><th><span>服务</span></th></tr></thead><tbody><tr><td><span>CustomerDao.createCustomer(CustomerPO customerPO)</span></td><td><span>在数据库中插入一个新的CustomerPO</span></td></tr><tr><td><span>CustomerDao.updateById(CustomerPO customerPO)</span></td><td><span>更新一个 CustomerPO</span></td></tr><tr><td><span>CustomerDao.findById(String Id)</span></td><td><span>返回指定 Id 的 CustomerPO</span></td></tr><tr><td><span>CustomerDao.deleteById(String Id)</span></td><td><span>删除指定 Id 的 CustomerPO</span></td></tr><tr><td><span>RestockSheetDao.getLatest()</span></td><td><span>获得最近的上一个 restockSheetPO 用于计算编号</span></td></tr><tr><td><span>RestockSheetDao.save(RestockSheetPO toSave)</span></td><td><span>向数据库中插入一个 RestockSheetPO</span></td></tr><tr><td><span>RestockSheetDao.saveContent(List</span><span>&lt;</span><span>WarehouseInputSheetContentPO &gt; warehouseInputSheetContentPO)</span></td><td><span>向数据库中插入一些WarehouseInputSheetContentPO</span></td></tr><tr><td><span>SalesSheetDao.getLatest()</span></td><td><span>获得最近的上一个 SalesSheetPO 用于计算编号</span></td></tr><tr><td><span>SalesSheetDao.save(SalesSheetPO toSave)</span></td><td><span>向数据库插入一个 SalesSheetPO</span></td></tr><tr><td><span>SalesSheetDao.findAllByOperatorByFromTimeByToTime(String operator, Date fromTime, Date toTime)</span></td><td><span>按操作员和时间区间查找返回许多SalesSheetPO</span></td></tr><tr><td><span>SalesReturnedGoodsSheetDao.getLatest()</span></td><td><span>获得最近的上一个 SalesReturnedGoodsSheetPO 用于计算编号</span></td></tr><tr><td><span>SalesReturnedGoodsSheetDao.save(SalesReturnedGoodsSheetPO toSave)</span></td><td><span>向数据库中插入一个 SalesReturnedGoodsSheetPO</span></td></tr><tr><td><span>SalesReturnedGoodsSheetDao.saveContent(List</span><span>&lt;</span><span>WarehouseInputSheetContentPO&gt; warehouseInputSheetContentPO)</span></td><td><span>向数据库中插入一些 WarehouseInputSheetContentPO</span></td></tr><tr><td><span>SalesReturnedGoodsSheetDao.findAllByOperatorByFromTimeByToTime(String operator, Date fromTime, Date toTime)</span></td><td><span>按操作员和时间区间查找返回许多 SalesReturnedGoodsSheetPO</span></td></tr><tr><td><span>RestockReturnedGoodsSheetDao.getLatest()</span></td><td><span>获得最近的上一个 RestockReturnedGoodsSheetPO 用于计算编号</span></td></tr><tr><td><span>RestockReturnedGoodsSheetDao.save(RestockReturnedGoodsSheetPO toSave)</span></td><td><span>向数据库插入一个 RestockReturnedGoodsSheetPO</span></td></tr><tr><td><span>RestockReturnedGoodsSheetDao.saveContent(List</span><span>&lt;</span><span>WarehouseOutputSheetContentPO&gt; warehouseOutputSheetContentPO)</span></td><td><span>向数据库中插入一些 WarehouseOutputSheetContentPO</span></td></tr></tbody></table></figure><h4 id='数据层的分解'><span>数据层的分解</span></h4><p><span>数据层主要为业务逻辑层提供数据访问服务，包括对可持久化对象的增删改查。</span></p><p><span>数据层主要给业务逻辑层提供数据访问服务，包括对于持久化数据的增、删、改、查。</span></p><p><span>Inventory 业务逻辑、Sales 业务逻辑需要的服务有 CategoryDao、ProductDao、UserDao、WarehouseDao、WarehouseInputSheetDao、WarehouseOutputSheetDao、CustomerDao、RestockReturnedGoodsSheetDao、RestockSheetDao、SalesReturnedGoodsSheetDao、SalesSheetDao接口提供。</span></p><p><span>在ERP系统中采用数据库来进行持久化数据的保存，借助Mybatis框架和Mapper映射文件完成数据层的具体实现。数据层模块的描述具体如下图所示。</span></p><p><img src="NJU-ERP%E7%B3%BB%E7%BB%9F%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E6%96%87%E6%A1%A3v1/201250185-%E6%95%B0%E6%8D%AE%E5%B1%82%E6%A8%A1%E5%9D%97%E7%9A%84%E6%8F%8F%E8%BF%B0.png" referrerpolicy="no-referrer" alt="数据层模块的描述"></p><h5 id='数据层模块的职责'><span>数据层模块的职责</span></h5><p><span>数据层模块的职责如下表所示。</span></p><figure><table><thead><tr><th style='text-align:left;' ><span>模块</span></th><th style='text-align:left;' ><span>职责</span></th></tr></thead><tbody><tr><td style='text-align:left;' ><span>*Dao</span></td><td style='text-align:left;' ><span>持久化数据库的接口，提供集体载入、集体保存、增、删、改、查服务</span></td></tr><tr><td style='text-align:left;' ><span>*Mapper.xml</span></td><td style='text-align:left;' ><span>基于 Mybatis 框架的相应持久化数据库接口的实现，提供集体载入、集体保存、增、删、改、查服务</span></td></tr></tbody></table></figure><h5 id='数据层模块的接口规范'><span>数据层模块的接口规范</span></h5><p><span>数据层模块的接口规范如下表所示。</span></p><figure><table><thead><tr><th style='text-align:left;' ><span>接口名称</span></th><th><span>语法</span></th><th style='text-align:left;' ><span>前置条件</span></th><th style='text-align:left;' ><span>后置条件</span></th></tr></thead><tbody><tr><td style='text-align:left;' ><strong><span>CategoryDao</span></strong></td><td>&nbsp;</td><td style='text-align:left;' >&nbsp;</td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:left;' ><span>CategoryDao.createCategory</span></td><td><span>int createCategory(CategoryPO categoryPO);</span></td><td style='text-align:left;' ><span>同样分类ID的PO在数据库中不存在</span></td><td style='text-align:left;' ><span>在数据库中增加一个PO</span></td></tr><tr><td style='text-align:left;' ><span>CategoryDao.findByCategoryId</span></td><td><span>CategoryPO findByCategoryId(Integer categoryId);</span></td><td style='text-align:left;' ><span>无</span></td><td style='text-align:left;' ><span>按照ID进行查找返回相应的CategoryPO结果</span></td></tr><tr><td style='text-align:left;' ><span>CategoryDao.findAll</span></td><td><span>List</span><span>&lt;</span><span>CategoryPO&gt; findAll();</span></td><td style='text-align:left;' ><span>无</span></td><td style='text-align:left;' ><span>查找返回所有的CategoryPO结果</span></td></tr><tr><td style='text-align:left;' ><span>CategoryDao.updateById</span></td><td><span>int updateById(CategoryPO categoryPO);</span></td><td style='text-align:left;' ><span>在数据库中存在同样ID的PO</span></td><td style='text-align:left;' ><span>更新一个PO</span></td></tr><tr><td style='text-align:left;' ><span>CategoryDao.deleteById</span></td><td><span>int deleteById(Integer id);</span></td><td style='text-align:left;' ><span>在数据库中存在同样ID的PO</span></td><td style='text-align:left;' ><span>删除一个PO</span></td></tr><tr><td style='text-align:left;' ><strong><span>ProductDao</span></strong></td><td>&nbsp;</td><td style='text-align:left;' >&nbsp;</td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:left;' ><span>ProductDao.createProduct</span></td><td><span>int createProduct(ProductPO productPO);</span></td><td style='text-align:left;' ><span>同样商品ID的PO在数据库中不存在</span></td><td style='text-align:left;' ><span>在数据库中增加一个PO</span></td></tr><tr><td style='text-align:left;' ><span>ProductDao.updateById</span></td><td><span>int updateById(ProductPO productPO);</span></td><td style='text-align:left;' ><span>在数据库中存在同样ID的PO</span></td><td style='text-align:left;' ><span>更新一个PO</span></td></tr><tr><td style='text-align:left;' ><span>ProductDao.findById</span></td><td><span>findById(String id);</span></td><td style='text-align:left;' ><span>无</span></td><td style='text-align:left;' ><span>按照ID进行查找返回相应的ProductPO</span></td></tr><tr><td style='text-align:left;' ><span>ProductDao.findAll</span></td><td><span>List</span><span>&lt;</span><span>ProductPO&gt; findAll();</span></td><td style='text-align:left;' ><span>无</span></td><td style='text-align:left;' ><span>查找返回全部的ProductPO</span></td></tr><tr><td style='text-align:left;' ><span>ProductDao.deleteById</span></td><td><span>int deleteById(String id);</span></td><td style='text-align:left;' ><span>在数据库中存在同样ID的PO</span></td><td style='text-align:left;' ><span>删除一个PO</span></td></tr><tr><td style='text-align:left;' ><strong><span>WarehouseDao</span></strong></td><td>&nbsp;</td><td style='text-align:left;' >&nbsp;</td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:left;' ><span>WarehouseDao.saveBatch</span></td><td><span>void saveBatch(List</span><span>&lt;</span><span>WarehousePO&gt; warehousePOList);</span></td><td style='text-align:left;' ><span>同样库存ID的PO在数据库中不存在</span></td><td style='text-align:left;' ><span>在数据库中增加许多PO</span></td></tr><tr><td style='text-align:left;' ><span>WarehouseDao.deductQuantity</span></td><td><span>void deductQuantity(WarehousePO warehousePO);</span></td><td style='text-align:left;' ><span>在数据库中存在同样库存ID的PO</span></td><td style='text-align:left;' ><span>更新一个PO</span></td></tr><tr><td style='text-align:left;' ><span>WarehouseDao. findAllNotZeroByPidSortedByBatchId</span></td><td><span>List</span><span>&lt;</span><span>WarehousePO&gt; findAllNotZeroByPidSortedByBatchId(String pid);</span></td><td style='text-align:left;' ><span>在数据库中存在同样批次ID</span></td><td style='text-align:left;' ><span>按照批次ID进行查找返回全部WarehousePO</span></td></tr><tr><td style='text-align:left;' ><strong><span>WarehouseInputSheetDao</span></strong></td><td>&nbsp;</td><td style='text-align:left;' >&nbsp;</td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:left;' ><span>WarehouseInputSheetDao.getLatest</span></td><td><span>WarehouseInputSheetPO getLatest();</span></td><td style='text-align:left;' ><span>在数据库中存在至少一个WarehouseInputSheetPO</span></td><td style='text-align:left;' ><span>查找返回updateTime最大的WarehouseInputSheetPO</span></td></tr><tr><td style='text-align:left;' ><span>WarehouseInputSheetDao.save</span></td><td><span>int save(WarehouseInputSheetPO toSave);</span></td><td style='text-align:left;' ><span>同样入库单ID的PO在数据库中不存在</span></td><td style='text-align:left;' ><span>在数据库中增加一个PO记录</span></td></tr><tr><td style='text-align:left;' ><span>WarehouseInputSheetDao.saveBatch</span></td><td><span>void saveBatch(List</span><span>&lt;</span><span>WarehouseInputSheetContentPO&gt; warehouseInputListPOSheetContent);</span></td><td style='text-align:left;' ><span>同样入库商品列表ID在数据库中不存在</span></td><td style='text-align:left;' ><span>在数据库中增加许多PO</span></td></tr><tr><td style='text-align:left;' ><strong><span>WarehouseOutputSheetDao</span></strong></td><td>&nbsp;</td><td style='text-align:left;' >&nbsp;</td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:left;' ><span>WarehouseOutputSheetDao.getLatest</span></td><td><span>WarehouseOutputSheetPO getLatest();</span></td><td style='text-align:left;' ><span>在数据库中存在至少一个WarehouseOutputSheetPO</span></td><td style='text-align:left;' ><span>查找返回updateTime最大的WarehouseOutputSheetPO</span></td></tr><tr><td style='text-align:left;' ><span>WarehouseOutputSheetDao.save</span></td><td><span>void save(WarehouseOutputSheetPO toSave);</span></td><td style='text-align:left;' ><span>同样出库单ID的PO在数据库中不存在</span></td><td style='text-align:left;' ><span>在数据库中增加一个PO记录</span></td></tr><tr><td style='text-align:left;' ><span>WarehouseOutputSheetDao.saveBatch</span></td><td><span>void saveBatch(List</span><span>&lt;</span><span>WarehouseOutputSheetContentPO&gt; warehouseOutputListPOSheetContent);</span></td><td style='text-align:left;' ><span>同样出库商品列表ID在数据库中不存在</span></td><td style='text-align:left;' ><span>在数据库中增加许多PO</span></td></tr><tr><td style='text-align:left;' ><strong><span>CustomerDao</span></strong></td><td>&nbsp;</td><td style='text-align:left;' >&nbsp;</td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:left;' ><span>CustomerDao.createCustomer</span></td><td><span>int createCustomer(CustomerPO customerPO);</span></td><td style='text-align:left;' ><span>同样ID的PO在数据库中不存在</span></td><td style='text-align:left;' ><span>在数据库中增加一个PO</span></td></tr><tr><td style='text-align:left;' ><span>CustomerDao.updateById</span></td><td><span>int updateById(CustomerPO customerPO);</span></td><td style='text-align:left;' ><span>在数据库中存在同样ID的PO</span></td><td style='text-align:left;' ><span>更新一个PO</span></td></tr><tr><td style='text-align:left;' ><span>CustomerDao.findById</span></td><td><span>CustomerPO findById(String id);</span></td><td style='text-align:left;' ><span>无</span></td><td style='text-align:left;' ><span>按ID进行查找返回相应的CustomerPO结果</span></td></tr><tr><td style='text-align:left;' ><span>CustomerDao.deleteById</span></td><td><span>int deleteById(String id);</span></td><td style='text-align:left;' ><span>在数据库中存在相同ID的PO</span></td><td style='text-align:left;' ><span>删除一个PO</span></td></tr><tr><td style='text-align:left;' ><strong><span>RestockSheetDao</span></strong></td><td>&nbsp;</td><td style='text-align:left;' >&nbsp;</td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:left;' ><span>RestockSheetDao.getLatest</span></td><td><span>RestockSheetPO getLatest();</span></td><td style='text-align:left;' ><span>在数据库中存在至少一个RestockSheetPO</span></td><td style='text-align:left;' ><span>查找返回updateTime最大的RestockSheetPO</span></td></tr><tr><td style='text-align:left;' ><span>RestockSheetDao.save</span></td><td><span>int save(RestockSheetPO toSave);</span></td><td style='text-align:left;' ><span>同样进货单ID的PO在数据库中不存在</span></td><td style='text-align:left;' ><span>在数据库中增加一个PO</span></td></tr><tr><td style='text-align:left;' ><span>RestockSheetDao.saveContent</span></td><td><span>void saveContent(List</span><span>&lt;</span><span>WarehouseInputSheetContentPO &gt; warehouseInputSheetContentPO);</span></td><td style='text-align:left;' ><span>同样入库商品列表ID在数据库中不存在</span></td><td style='text-align:left;' ><span>在数据库中增加许多PO</span></td></tr><tr><td style='text-align:left;' ><strong><span>RestockReturnedGoodsSheetDao</span></strong></td><td>&nbsp;</td><td style='text-align:left;' >&nbsp;</td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:left;' ><span>RestockReturnedGoodsSheetDao.getLatest</span></td><td><span>RestockReturnedGoodsSheetPO getLatest();</span></td><td style='text-align:left;' ><span>在数据库中存在至少一个RestockReturnedGoodsSheetPO</span></td><td style='text-align:left;' ><span>查找返回updateTime最大的RestockReturnedGoodsSheetPO</span></td></tr><tr><td style='text-align:left;' ><span>RestockReturnedGoodsSheetDao.save</span></td><td><span>int save(RestockReturnedGoodsSheetPO toSave);</span></td><td style='text-align:left;' ><span>同样进货退货单ID的PO在数据库中不存在</span></td><td style='text-align:left;' ><span>在数据库中增加一个PO</span></td></tr><tr><td style='text-align:left;' ><span>RestockReturnedGoodsSheetDao.saveContent</span></td><td><span>void saveContent(List</span><span>&lt;</span><span>WarehouseOutputSheetContentPO&gt; warehouseOutputSheetContentPO);</span></td><td style='text-align:left;' ><span>同样出库商品列表ID在数据库中不存在</span></td><td style='text-align:left;' ><span>在数据库中增加许多PO</span></td></tr><tr><td style='text-align:left;' ><strong><span>SalesSheetDao</span></strong></td><td>&nbsp;</td><td style='text-align:left;' >&nbsp;</td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:left;' ><span>SalesSheetDao.getLatest</span></td><td><span>SalesSheetPO getLatest();</span></td><td style='text-align:left;' ><span>在数据库中存在至少一个SalesSheetPO</span></td><td style='text-align:left;' ><span>查找返回updateTime最大的SalesSheetPO</span></td></tr><tr><td style='text-align:left;' ><span>SalesSheetDao.save</span></td><td><span>int save(SalesSheetPO toSave);</span></td><td style='text-align:left;' ><span>同样销售单ID的PO在数据库中不存在</span></td><td style='text-align:left;' ><span>在数据库中增加一个PO</span></td></tr><tr><td style='text-align:left;' ><span>SalesSheetDao.saveContent</span></td><td><span>void saveContent(List</span><span>&lt;</span><span>WarehouseOutputSheetContentPO&gt; warehouseOutputSheetContentPO);</span></td><td style='text-align:left;' ><span>同样出库商品列表ID在数据库中不存在</span></td><td style='text-align:left;' ><span>在数据库中增加许多PO</span></td></tr><tr><td style='text-align:left;' ><span>SalesSheetDao.findAllByOperatorByFromTimeByToTime</span></td><td><span>List</span><span>&lt;</span><span>SalesSheetPO&gt; findAllByOperatorByFromTimeByToTime(String operator, Date fromTime, Date toTime);</span></td><td style='text-align:left;' ><span>无</span></td><td style='text-align:left;' ><span>按操作员和时间区间查找返回许多PO</span></td></tr><tr><td style='text-align:left;' ><strong><span>SalesReturnedGoodsSheetDao</span></strong></td><td>&nbsp;</td><td style='text-align:left;' >&nbsp;</td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:left;' ><span>SalesReturnedGoodsSheetDao.getLatest</span></td><td><span>SalesReturnedGoodsSheetPO getLatest();</span></td><td style='text-align:left;' ><span>在数据库中存在至少一个SalesReturnedGoodsSheetPO</span></td><td style='text-align:left;' ><span>查找返回updateTime最大的SalesReturnedGoodsSheetPO</span></td></tr><tr><td style='text-align:left;' ><span>SalesReturnedGoodsSheetDao.save</span></td><td><span>int save(SalesReturnedGoodsSheetPO toSave);</span></td><td style='text-align:left;' ><span>同样销售退货单ID的PO在数据库中不存在</span></td><td style='text-align:left;' ><span>在数据库中增加一个PO</span></td></tr><tr><td style='text-align:left;' ><span>SalesReturnedGoodsSheetDao.saveContent</span></td><td><span>void saveContent(List</span><span>&lt;</span><span>WarehouseInputSheetContentPO&gt; warehouseInputSheetContentPO);</span></td><td style='text-align:left;' ><span>同样入库商品列表ID在数据库中不存在</span></td><td style='text-align:left;' ><span>在数据库中增加许多PO</span></td></tr><tr><td style='text-align:left;' ><span>SalesReturnedGoodsSheetDao.findAllByOperatorByFromTimeByToTime</span></td><td><span>List</span><span>&lt;</span><span>SalesReturnedGoodsSheetPO&gt; findAllByOperatorByFromTimeByToTime(String operator, Date fromTime, Date toTime);</span></td><td style='text-align:left;' ><span>无</span></td><td style='text-align:left;' ><span>按操作员和时间区间查找返回许多PO</span></td></tr></tbody></table></figure><h3 id='信息视角'><span>信息视角</span></h3><h4 id='数据持久化对象'><span>数据持久化对象</span></h4><p><span>系统中的 PO 类就是对应的相关的实体类，ERP 系统设计如下 PO。</span></p><figure><table><thead><tr><th><span>PO 类</span></th><th><span>描述</span></th></tr></thead><tbody><tr><td><span>CategoryPO</span></td><td><span>包含分类 id、分类名、父分类 ID、是否为叶节点、商品数量、下一个商品 index 属性。</span></td></tr><tr><td><span>ProductPO</span></td><td><span>包含商品 id、商品名、分类 ID、商品型号、商品数量、进价、零售价、最近进价、最近零售价属性。</span></td></tr><tr><td><span>User</span></td><td><span>包含用户 ID、用户姓名、用户密码、用户身份属性。</span></td></tr><tr><td><span>WarehouseInputSheetContentPO</span></td><td><span>包含入库商品列表 id、入库单编号、商品id、商品数量、单价、出厂日期、备注、来源单据类型、来源单据编号属性。</span></td></tr><tr><td><span>WarehouseInputSheetPO</span></td><td><span>包含入库单编号、批次、操作员、操作时间属性。</span></td></tr><tr><td><span>WarehouseOutputSheetContentPO</span></td><td><span>包含出库商品列表id、商品id、出库单编号、批次、商品数量、单价备注、来源单据类型、来源单据编号属性。</span></td></tr><tr><td><span>WarehouseOutputSheetPO</span></td><td><span>包含出库单编号、操作员、操作时间属性。</span></td></tr><tr><td><span>WarehousePO</span></td><td><span>包含库存id、商品编号、数量、进价、批次、出厂日期属性。</span></td></tr><tr><td><span>CustomerPO</span></td><td><span>包含编号、分类、级别、姓名、电话、地址、邮编、电子邮箱、应收额度、应收、应付、默认业务员属性。</span></td></tr><tr><td><span>RestockSheetPO</span></td><td><span>包含进货单编号、供应商、仓库、操作员、备注、总额合计、操作时间属性。</span></td></tr><tr><td><span>RestockReturnedGoodsSheetPO</span></td><td><span>包含退货单编号、供应商、仓库、操作员、备注、总额合计、操作时间、对应的进货单编号属性。</span></td></tr><tr><td><span>SalesSheetPO</span></td><td><span>包含单据编号、客户、业务员、操作员、仓库、折让前总额、折让、使用代金卷金额、折让后总额、备注、操作时间属性。</span></td></tr><tr><td><span>SalesReturnedGoodsSheetPO</span></td><td><span>包含单据编号、客户、业务员、操作员、仓库、折让前总额、折让、使用代金卷金额、折让后总额、备注、操作时间、对应的销售单编号属性。</span></td></tr></tbody></table></figure><h4 id='数据库表'><span>数据库表</span></h4><figure><table><thead><tr><th><span>表名</span></th><th><span>描述</span></th></tr></thead><tbody><tr><td><span>attendence</span></td><td><span>员工打卡签到</span></td></tr><tr><td><span>bank_account</span></td><td><span>银行账户</span></td></tr><tr><td><span>category</span></td><td><span>商品分类</span></td></tr><tr><td><span>combinatorial_discount</span></td><td><span>组合降价策略</span></td></tr><tr><td><span>customer</span></td><td><span>客户</span></td></tr><tr><td><span>pay_money_sheet</span></td><td><span>付款单</span></td></tr><tr><td><span>pay_money_transfer_list</span></td><td><span>收款单转账列表</span></td></tr><tr><td><span>position</span></td><td><span>岗位</span></td></tr><tr><td><span>present_info</span></td><td><span>礼物信息</span></td></tr><tr><td><span>product</span></td><td><span>商品</span></td></tr><tr><td><span>promotion</span></td><td><span>促销</span></td></tr><tr><td><span>purchase_returns_sheet</span></td><td><span>进货退货单</span></td></tr><tr><td><span>purchase_returns_sheet_content</span></td><td><span>进货退货单内容</span></td></tr><tr><td><span>purchase_sheet</span></td><td><span>进货单</span></td></tr><tr><td><span>purchase_sheet_content</span></td><td><span>进货单内容</span></td></tr><tr><td><span>receive_money_sheet</span></td><td><span>收款单</span></td></tr><tr><td><span>receive_money_transfer_list</span></td><td><span>收款单内容</span></td></tr><tr><td><span>salary_calculate_type</span></td><td><span>薪资计算类型</span></td></tr><tr><td><span>salary_send_type</span></td><td><span>薪资发放类型</span></td></tr><tr><td><span>salary_sheet</span></td><td><span>工资单</span></td></tr><tr><td><span>sale_returns_sheet</span></td><td><span>销售退货单</span></td></tr><tr><td><span>sale_returns_sheet_content</span></td><td><span>销售退货单内容</span></td></tr><tr><td><span>sale_sheet</span></td><td><span>销售单</span></td></tr><tr><td><span>sale_sheet_content</span></td><td><span>销售单内容</span></td></tr><tr><td><span>staff</span></td><td><span>员工</span></td></tr><tr><td><span>staff_user</span></td><td><span>员工和用户的关联关系</span></td></tr><tr><td><span>user</span></td><td><span>系统用户</span></td></tr><tr><td><span>warehouse</span></td><td><span>库存</span></td></tr><tr><td><span>warehouse_input_sheet</span></td><td><span>入库单</span></td></tr><tr><td><span>warehouse_input_sheet_content</span></td><td><span>入库单内容</span></td></tr><tr><td><span>warehouse_output_sheet</span></td><td><span>出库单</span></td></tr><tr><td><span>warehouse_output_sheet_content</span></td><td><span>出库单内容</span></td></tr></tbody></table></figure></div></div>
+</body>
+</html>

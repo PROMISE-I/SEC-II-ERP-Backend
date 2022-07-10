@@ -1,0 +1,1004 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* greek-ext */
+
+/* greek */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* greek-ext */
+
+/* greek */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* greek-ext */
+
+/* greek */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* greek-ext */
+
+/* greek */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+@font-face {
+    font-family: 'Source Han SerifCN';
+    src: local('Source Han SerifCN Bold'), local('SourceHanSerifCN-Bold'), url('file:///C://Users//37756//AppData//Roaming//Typora/themes/zj/SourceHanSerifCN-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+}/* 如有不懂，参看 https://theme.typora.io/doc/zh/Write-Custom-Theme/ */
+
+@import '';
+
+:root {
+    --side-bar-bg-color: #fff;
+    --control-text-color: #777;
+    /* --font-sans-serif: 'PingFangSC-Regular', 'Microsoft YaHei', , 'Source Sans Pro', sans-serif !important; */
+    --font-sans-serif: 'Source Han SerifCN', 'Microsoft YaHei', sans-serif !important;
+    --font-monospace: 'Consolas', monospace, 'Courier New', 'Roboto Mono', 'Source Sans Pro', 'Microsoft YaHei' !important;
+    /* 主题色 */
+    --main-1: #fff3f0;
+    --main-2: #ffd4cc;
+    --main-3: #ffafa3;
+    --main-4: #ff887a;
+    --main-5: #ff5d52;
+    --main-6: #f22f27;
+    --main-7: #cc1616;
+    --main-8: #a60a0f;
+    --main-9: #80010a;
+    --main-10: #590009;
+}
+
+html {
+    font-size: 17px;
+}
+
+body {
+    font-family: var(--font-sans-serif);
+    color: black;
+    line-height: 1.6rem;
+    /* 	裁剪溢出内容 */
+    overflow-x: hidden;
+    /* 字母间距 */
+    letter-spacing: 0;
+    margin: 0;
+}
+
+/* #write 为写入区域 */
+#write {
+    max-width: 860px;
+    padding: 30px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+    #write {
+        max-width: 1024px;
+    }
+}
+
+@media only screen and (min-width: 1800px) {
+    #write {
+        max-width: 1200px;
+    }
+}
+
+/* 正常文字 */
+#write p {
+    line-height: 1.6rem;
+    word-spacing: .05rem;
+    color: black;
+}
+
+#write>ul:first-child,
+#write>ol:first-child {
+    margin-top: 30px;
+}
+
+/* 链接 */
+a {
+    padding: 0 2px;
+    color: #0366d6;
+}
+
+/* 加粗 */
+strong {
+    padding: 0.1em;
+    /* color: #E91E63; */
+    font-weight: bold;
+}
+
+/* 斜体强调 */
+em {
+    font-style: normal;
+    background-color: #EBFFEB;
+    border-radius: 2px;
+    padding: 2px 4px;
+    margin: 0 2px;
+    color: black;
+}
+
+/* 行内数学公式变蓝 */
+.md-inline-math {
+    color: blue;
+    font-size: 100%;
+}
+
+/* 行间数学公式 */
+[mdtype="math_block"] {
+    font-size: 1.1rem;
+}
+
+/* 标题编号初始化 */
+/* 首先全局进行一次reset，这样即使不添加h1标题也可以使用较低级别的标题 */
+#write {
+    counter-reset: h2 0 h3 0 h4 0 h5 0 h6 0
+}
+
+h1 {
+    counter-reset: h2
+}
+
+h2 {
+    counter-reset: h3
+}
+
+h3 {
+    counter-reset: h4
+}
+
+h4 {
+    counter-reset: h5
+}
+
+h5 {
+    counter-reset: h6
+}
+
+/** put counter result into headings */
+#write h1:before {
+    counter-increment: h1;
+}
+
+#write h2:before {
+    counter-increment: h2;
+    content: counter(h2) ". "
+}
+
+#write h3:before,
+h3.md-focus.md-heading:before {
+    counter-increment: h3;
+    content: counter(h2) "."counter(h3) " "
+}
+
+#write h4:before,
+h4.md-focus.md-heading:before {
+    counter-increment: h4;
+    content: counter(h2) "."counter(h3) "."counter(h4) " "
+}
+
+#write h5:before,
+h5.md-focus.md-heading:before {
+    counter-increment: h5;
+    content: counter(h2) "."counter(h3) "."counter(h4) "."counter(h5) " "
+}
+
+#write h6:before,
+h6.md-focus.md-heading:before {
+    counter-increment: h6;
+    content: counter(h2) "."counter(h3) "."counter(h4) "."counter(h5) "."counter(h6) " "
+}
+
+/** override the default style for focused headings */
+#write>h3.md-focus:before,
+#write>h4.md-focus:before,
+#write>h5.md-focus:before,
+#write>h6.md-focus:before,
+h3.md-focus:before,
+h4.md-focus:before,
+h5.md-focus:before,
+h6.md-focus:before {
+    color: inherit;
+    border: inherit;
+    border-radius: inherit;
+    position: inherit;
+    left: initial;
+    float: none;
+    top: initial;
+    font-size: inherit;
+    padding-left: inherit;
+    padding-right: inherit;
+    vertical-align: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+
+h1 {
+    text-align: center;
+    padding-bottom: .2em;
+    /* font-size: 2.25em; */
+    line-height: 1.2;
+}
+
+h2 {
+    padding-bottom: .2em;
+    padding-top: .5em;
+    /* font-size: 1.75em; */
+    line-height: 1.225;
+    border-bottom: 1px solid #b7b7b7;
+}
+
+h3 {
+    padding-top: .1em;
+    /* font-size: 1.5em; */
+    line-height: 1.43;
+    margin-left: 0.5em;
+}
+
+h4 {
+    padding-top: .1em;
+    /* font-size: 1.25em; */
+    margin-left: 0.7em;
+}
+
+h5 {
+    margin-left: 0.9em;
+}
+
+h6 {
+    margin-left: 0.9em;
+    color: #777;
+}
+
+p,
+blockquote,
+ul,
+ol,
+dl,
+table {
+    margin: 0.8em 0;
+}
+
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+/* 列表环境 */
+#write ol>li,
+#write ul>li {
+    color: #f50057;
+    font-weight: bold;
+}
+
+#write ol>li>*,
+#write ul>li>* {
+    color: #333;
+    font-weight: normal;
+}
+
+#write ol>li>*:not(ol):not(ul),
+#write ul>li>*:not(ol):not(ul) {
+    /* padding-left: .25rem; */
+    padding-left: 0;
+}
+
+#write ul {
+    list-style-type: disc;
+}
+
+blockquote {
+    border-left: 4px solid rgb(239, 112, 96);
+    padding: 0px 15px;
+    color: #3f3f3f;
+    background-color: #fff9f9;
+}
+
+blockquote blockquote {
+    padding-right: 0;
+}
+
+table {
+    padding: 0;
+    word-break: initial;
+}
+
+/* tr元素定义表格行 */
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+
+table tr:nth-child(2n),
+thead {
+    background-color: #F6F8FA;
+}
+
+/* th元素定义表头 */
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+/* td元素定义表格单元格 */
+table tr td {
+    border: 1px solid #dfe2e5;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+/* 行号 */
+.cm-s-inner .CodeMirror-linenumber {
+    /*width: 2ch !important;*/
+    /*font-size: 0.7rem;*/
+    color: rgba(0, 92, 197, 0.8);
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0, 28, 36, .3);
+    border-top: 1px solid #eef2f2;
+}
+
+/* 代码框 */
+#write .md-fences {
+    -webkit-font-smoothing: initial;
+    margin: 0.8rem 0 !important;
+    padding: 0.3rem 0 !important;
+    line-height: 1.43rem;
+    background-color: #f6f8fa !important;
+    border-radius: 2px;
+    font-family: var(--font-monospace);
+    font-size: 0.9rem;
+    word-wrap: normal;
+}
+
+#write .CodeMirror-wrap .CodeMirror-code pre {
+    padding-left: 12px;
+}
+
+/* 代码框中光标颜色 */
+#write .CodeMirror-cursors .CodeMirror-cursor {
+    border-left: 2px solid var(--main-4);
+}
+
+/* 行内代码 */
+#write code,
+tt {
+    padding: 2px 4px 0px 4px;
+    border-radius: 2px;
+    font-family: var(--font-monospace);
+    color: #FF0000;
+    background-color: #FAEAEB;
+}
+
+tt {
+    margin: 0 2px;
+}
+
+#write .md-footnote {
+    background-color: #f8f8f8;
+    color: #e96900;
+}
+
+/* 任务列表小方框 */
+.md-task-list-item>input {
+    margin-left: -1.3em;
+}
+
+#write del {
+    padding: 1px 2px;
+}
+
+#write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+    bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+.md-image>.md-meta {
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc {
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+/**************************************
+* Header Counters in TOC
+**************************************/
+/* No link underlines in TOC */
+.md-toc-inner {
+    text-decoration: none;
+}
+
+.md-toc-content {
+    /* counter-reset: h1toc */
+    counter-reset: h2toc h3toc h4toc;
+    /*修复缺失上级标题时无法递增*/
+}
+
+.md-toc-h1 {
+    margin-left: 0;
+    font-size: 1.5rem;
+    display: none;
+    counter-reset: h2toc
+}
+
+.md-toc-h2 {
+    font-size: 1.1rem;
+    margin-left: 2rem;
+    counter-reset: h3toc
+}
+
+.md-toc-h3 {
+    margin-left: 3rem;
+    font-size: .9rem;
+    counter-reset: h4toc
+}
+
+.md-toc-h4 {
+    margin-left: 4rem;
+    font-size: .85rem;
+    counter-reset: h5toc
+}
+
+.md-toc-h5 {
+    margin-left: 5rem;
+    font-size: .8rem;
+    counter-reset: h6toc
+}
+
+.md-toc-h6 {
+    margin-left: 6rem;
+    font-size: .75rem;
+}
+
+.md-toc-h1:before {
+    color: black;
+    counter-increment: h1toc;
+}
+
+.md-toc-h1 .md-toc-inner {
+    margin-left: 0;
+}
+
+.md-toc-h2:before {
+    color: black;
+    counter-increment: h2toc;
+    content: counter(h2toc) ". "
+}
+
+.md-toc-h2 .md-toc-inner {
+    margin-left: 0;
+}
+
+.md-toc-h3:before {
+    color: black;
+    counter-increment: h3toc;
+    content: counter(h2toc) ". "counter(h3toc) " "
+}
+
+.md-toc-h3 .md-toc-inner {
+    margin-left: 0;
+}
+
+.md-toc-h4:before {
+    color: black;
+    counter-increment: h4toc;
+    content: counter(h2toc) ". "counter(h3toc) ". "counter(h4toc) " "
+}
+
+.md-toc-h4 .md-toc-inner {
+    margin-left: 0;
+}
+
+.md-toc-h5:before {
+    color: black;
+    counter-increment: h5toc;
+    content: counter(h2toc) ". "counter(h3toc) ". "counter(h4toc) ". "counter(h5toc) " "
+}
+
+.md-toc-h5 .md-toc-inner {
+    margin-left: 0;
+}
+
+.md-toc-h6:before {
+    color: black;
+    counter-increment: h6toc;
+    content: counter(h2toc) ". "counter(h3toc) ". "counter(h4toc) ". "counter(h5toc) ". "counter(h6toc) " "
+}
+
+.md-toc-h6 .md-toc-inner {
+    margin-left: 0;
+}
+
+
+/* 侧栏自动编号 */
+.sidebar-content {
+    counter-reset: h2 0 h3 0 h4 0 h5 0 h6 0
+}
+
+.outline-h1 {
+    counter-reset: h2
+}
+
+.outline-h2 {
+    counter-reset: h3
+}
+
+.outline-h3 {
+    counter-reset: h4
+}
+
+.outline-h4 {
+    counter-reset: h5
+}
+
+.outline-h5 {
+    counter-reset: h6
+}
+
+.outline-h1>.outline-item>.outline-label:before {
+    counter-increment: h1;
+    /* content: counter(h1) ". " */
+}
+
+.outline-h2>.outline-item>.outline-label:before {
+    counter-increment: h2;
+    content: counter(h2) ". "
+}
+
+.outline-h3>.outline-item>.outline-label:before {
+    counter-increment: h3;
+    content: counter(h2) "."counter(h3) " "
+}
+
+.outline-h4>.outline-item>.outline-label:before {
+    counter-increment: h4;
+    content: counter(h2) "."counter(h3) "."counter(h4) " "
+}
+
+.outline-h5>.outline-item>.outline-label:before {
+    counter-increment: h5;
+    content: counter(h2) "."counter(h3) "."counter(h4) "."counter(h5) " "
+}
+
+.outline-h6>.outline-item>.outline-label:before {
+    counter-increment: h6;
+    content: counter(h2) "."counter(h3) "."counter(h4) "."counter(h5) "."counter(h6) " "
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header,
+.context-menu,
+.megamenu-content,
+footer {
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+
+/* 打印成PDF */
+@media print {
+    /* .typora-export * {
+        -webkit-print-color-adjust: exact;
+    } */
+
+    html {
+        font-size: 15px !important;
+    }
+
+    body {
+        font-family: var(--font-sans-serif);
+        color: #000000 !important;
+    }
+
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+ .typora-export li, .typora-export p, .typora-export,  .footnote-line {white-space: normal;} 
+</style><title>NJU-ERP系统详细设计文档v1</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=' first-line-indent'><h1 id='nju-erp-系统详细设计文档v1'><span>NJU-ERP 系统详细设计文档v1</span></h1><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#nju-erp-系统详细设计文档v1">NJU-ERP 系统详细设计文档v1</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n3"><a class="md-toc-inner" href="#引言">引言</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n4"><a class="md-toc-inner" href="#编制目的">编制目的</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n7"><a class="md-toc-inner" href="#参考资料">参考资料</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n17"><a class="md-toc-inner" href="#产品概述">产品概述</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n19"><a class="md-toc-inner" href="#体系结构设计概述">体系结构设计概述</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n21"><a class="md-toc-inner" href="#结构视角">结构视角</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n23"><a class="md-toc-inner" href="#业务逻辑层的分解">业务逻辑层的分解</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n25"><a class="md-toc-inner" href="#库存模块">库存模块</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n26"><a class="md-toc-inner" href="#模块概述-1">模块概述</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n30"><a class="md-toc-inner" href="#整体结构-1">整体结构</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n32"><a class="md-toc-inner" href="#接口规范-1">接口规范</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n163"><a class="md-toc-inner" href="#业务逻辑层的动态模型-1">业务逻辑层的动态模型</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n168"><a class="md-toc-inner" href="#进货销售模块">进货销售模块</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n169"><a class="md-toc-inner" href="#模块概述-2">模块概述</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n173"><a class="md-toc-inner" href="#整体结构-2">整体结构</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n175"><a class="md-toc-inner" href="#接口规范-2">接口规范</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n279"><a class="md-toc-inner" href="#业务逻辑层的动态模型-2">业务逻辑层的动态模型</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n286"><a class="md-toc-inner" href="#财务模块">财务模块</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n287"><a class="md-toc-inner" href="#模块概述-3">模块概述</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n291"><a class="md-toc-inner" href="#整体结构-3">整体结构</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n293"><a class="md-toc-inner" href="#业务逻辑层的动态模型-3">业务逻辑层的动态模型</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n304"><a class="md-toc-inner" href="#人力资源模块">人力资源模块</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n305"><a class="md-toc-inner" href="#模块概述-4">模块概述</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n309"><a class="md-toc-inner" href="#整体结构-4">整体结构</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n322"><a class="md-toc-inner" href="#业务逻辑层的动态模型-4">业务逻辑层的动态模型</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n325"><a class="md-toc-inner" href="#企业经营管理模块">企业经营管理模块</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n326"><a class="md-toc-inner" href="#模块概述-5">模块概述</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n330"><a class="md-toc-inner" href="#整体结构-5">整体结构</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n332"><a class="md-toc-inner" href="#业务逻辑层的动态模型-5">业务逻辑层的动态模型</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n335"><a class="md-toc-inner" href="#数据层的分解">数据层的分解</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n336"><a class="md-toc-inner" href="#数据层概述">数据层概述</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n342"><a class="md-toc-inner" href="#数据层模块的职责">数据层模块的职责</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n354"><a class="md-toc-inner" href="#数据层模块的接口规范">数据层模块的接口规范</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n597"><a class="md-toc-inner" href="#依赖视角">依赖视角</a></span></p></div><h2 id='引言'><span>引言</span></h2><h3 id='编制目的'><span>编制目的</span></h3><p><span>本报告详细完成对 NJU-ERP 系统的详细设计，达到指导后续软件构造的目的，同时实现和测试人员及用户的沟通。</span></p><p><span>本报告面向开发人员、测试人员及最终用户而编写，是了解系统的导航。</span></p><h3 id='参考资料'><span>参考资料</span></h3><ol start='' ><li><span>IEEE1471-2000</span></li><li><span>NJU-ERP 系统用例文档v1</span></li><li><span>NJU-ERP 系统软件需求规格说明文档v1</span></li><li><span>NJU-ERP 系统体系结构文档v1</span></li></ol><h2 id='产品概述'><span>产品概述</span></h2><p><span>参考《NJU-ERP系统用例文档》和《NJU-ERP系统软件需求规格说明文档》中对产品的概括描述。</span></p><h2 id='体系结构设计概述'><span>体系结构设计概述</span></h2><p><span>参考《NJU-ERP系统体系结构设计文档》中对体系结构设计的概述。</span></p><h2 id='结构视角'><span>结构视角</span></h2><p><span>根据体系结构的设计，我们将软件系统分为展示层、业务逻辑层和数据层。每一层之间为了增加灵活性，我们会添加接口。</span></p><h3 id='业务逻辑层的分解'><span>业务逻辑层的分解</span></h3><p><span>业务逻辑层的开发包图见体系结构文档。</span></p><h4 id='库存模块'><span>库存模块</span></h4><h5 id='模块概述-1'><span>模块概述</span></h5><p><span>该模块包括商品分类管理、商品管理等功能。该模块主要参与者是库存管理人员和总经理。</span></p><p><span>该模块承担的需求参见需求规格说明文档功能需求及相关非功能需求。</span></p><p><span>模块的职责和接口参加软件体系结构文档。</span></p><h5 id='整体结构-1'><span>整体结构</span></h5><p><img src="NJU-ERP%E7%B3%BB%E7%BB%9F%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3v1/%E5%BA%93%E5%AD%98%E6%A8%A1%E5%9D%97%E7%B1%BB%E5%9B%BE.png" referrerpolicy="no-referrer" alt="库存模块类图"></p><h5 id='接口规范-1'><span>接口规范</span></h5><p><span>提供的服务（供接口）</span></p><figure><table><thead><tr><th style='text-align:left;' ><span>接口名称</span></th><th><span>语法</span></th><th><span>前置条件</span></th><th><span>后置条件</span></th></tr></thead><tbody><tr><td style='text-align:left;' ><span>CategoryServiceImpl.createCategory</span></td><td><span>public CategoryVO createCategory(Integer parentId, String name)</span></td><td><span>需要新增一个商品分类</span></td><td><span>增加新增的商品分类信息</span></td></tr><tr><td style='text-align:left;' ><span>CategoryServiceImpl.queryAllCategory</span></td><td><span>public List</span><span>&lt;</span><span>CategoryVO</span><span>&gt;</span><span> queryAllCategory()</span></td><td><span>需要查询商品分类</span></td><td><span>返回所有的商品分类</span></td></tr><tr><td style='text-align:left;' ><span>CategoryServiceImpl.updateCategory</span></td><td><span>public CategoryVO updateCategory(Integer id, String name)</span></td><td><span>需要更新商品分类</span></td><td><span>更新商品分类信息</span></td></tr><tr><td style='text-align:left;' ><span>CategoryServiceImpl.deleteCategory</span></td><td><span>public void deleteCategory(Integer id)</span></td><td><span>需要删除一个商品分类</span></td><td><span>删除指定 Id 的商品分类</span></td></tr><tr><td style='text-align:left;' ><span>CategoryServiceImpl.getUIInfo</span></td><td><span>public String[] getUIInfo(String[] args)</span></td><td><span>需要获取 UI 界面内容</span></td><td><span>返回所需的 UI 内容</span></td></tr><tr><td style='text-align:left;' ><span>ProductServiceImpl.createProduct</span></td><td><span>public ProductInfoVO createProduct(CreateProductVO inputVO）</span></td><td><span>需要新增一个商品</span></td><td><span>增加新增的商品信息</span></td></tr><tr><td style='text-align:left;' ><span>ProductServiceImpl.updateProduct</span></td><td><span>public ProductInfoVO updateProduct(ProductInfoVO productInfoVO)</span></td><td><span>需要更新商品信息</span></td><td><span>更新指定的商品信息</span></td></tr><tr><td style='text-align:left;' ><span>ProductServiceImpl.queryAllProduct</span></td><td><span>public List</span><span>&lt;</span><span>ProductInfoVO</span><span>&gt;</span><span> queryAllProduct()</span></td><td><span>需要查询商品信息</span></td><td><span>返回所有商品信息</span></td></tr><tr><td style='text-align:left;' ><span>ProductServiceImpl.deleteById</span></td><td><span>public void deleteById(String id)</span></td><td><span>需要删除商品信息</span></td><td><span>删除指定 Id 的商品信息</span></td></tr><tr><td style='text-align:left;' ><span>ProductServiceImpl.getUIInfo</span></td><td><span>public String[] getUIInfo(String[] args)</span></td><td><span>需要获取 UI 界面内容</span></td><td><span>返回所需的 UI 内容</span></td></tr><tr><td style='text-align:left;' ><span>WarehouseServiceImpl.productWarehousing</span></td><td><span>public void productWarehousing(WarehouseInputFormVO warehouseInputFormVO)</span></td><td><span>需要入库商品</span></td><td><span>更新库存中的商品信息(增加库存)</span></td></tr><tr><td style='text-align:left;' ><span>WarehouseServiceImpl.getUIInfo</span></td><td><span>public String[] getUIInfo(String[] args)</span></td><td><span>需要获取 UI 界面内容</span></td><td><span>返回所需的 UI 内容</span></td></tr></tbody></table></figure><p><span>需要的服务(需接口)</span></p><figure><table><thead><tr><th><span>服务名</span></th><th><span>服务</span></th></tr></thead><tbody><tr><td><span>CategoryDao.findByCategoryId(Integer categoryId)</span></td><td><span>根据 Id 得到 CategoryPO 对象</span></td></tr><tr><td><span>CategoryDao.createCategory(CategoryPO categoryPO)</span></td><td><span>向数据库中插入 CategoryPO对象</span></td></tr><tr><td><span>CategoryDao.updateById(CategoryPO categoryPO)</span></td><td><span>更新数据库中的 CategoryPO 对象</span></td></tr><tr><td><span>CategoryDao.findAll()</span></td><td><span>查询所有 CategoryPO 对象</span></td></tr><tr><td><span>CategoryDao.deleteById(Integer id)</span></td><td><span>删除数据库中指定 Id 的CategotyPO对象</span></td></tr><tr><td><span>ProductDao.createProduct(ProductPO productPO)</span></td><td><span>向数据库中插入 ProductPO 对象</span></td></tr><tr><td><span>ProductDao.updateById(ProductPO productPO)</span></td><td><span>更新数据库中的 ProductPO 对象</span></td></tr><tr><td><span>ProductDao.findById(String id)</span></td><td><span>根据 Id 查找 ProductPO 对象</span></td></tr><tr><td><span>ProductDao.findAll()</span></td><td><span>查询所有 ProductPO 对象</span></td></tr><tr><td><span>ProductDao.deleteById(String id)</span></td><td><span>删除数据库中指定 Id 的 ProductDao 对象</span></td></tr><tr><td><span>WarehouseDao.saveBatch(List</span><span>&lt;</span><span>WarehousePO</span><span>&gt;</span><span> warehousePOList)</span></td><td><span>向数据库中插入一批 WarehousePO 对象</span></td></tr><tr><td><span>WarehouseDao.deductQuantity(WarehousePO warehousePO)</span></td><td><span>减少一批商品的库存数量</span></td></tr><tr><td><span>WarehouseDao.findAllNotZeroByPidSortedByBatchId(String pid)</span></td><td><span>按 pid 查询一批商品，按 batchId 排序</span></td></tr><tr><td><span>WarehouseInputSheetDao.getLatest()</span></td><td><span>查询最近一条入库单(WarehouseInputSheetPO)</span></td></tr><tr><td><span>WarehouseInputSheetDao.save(WarehouseInputSheetPO toSave)</span></td><td><span>存入一条入库单记录(WarehouseInputSheetPO)</span></td></tr><tr><td><span>WarehouseInputSheetDao.saveBatch(List</span><span>&lt;</span><span>WarehouseInputSheetContentPO&gt; warehouseInputListPOSheetContent)</span></td><td><span>把入库单上的具体内容存入数据库</span></td></tr><tr><td><span>WarehouseOutputSheetDao.getLatest()</span></td><td><span>查询最近一条出库单(WarehouseOutputSheetPO)</span></td></tr><tr><td><span>WarehouseOutputSheetDao.save(WarehouseOutputSheetPO toSave)</span></td><td><span>存入一条出库单记录(WarehouseOutputSheetPO)</span></td></tr><tr><td><span>WarehouseOutputSheetDao.saveBatch(List</span><span>&lt;</span><span>WarehouseOutputSheetContentPO&gt; warehouseOutputListPOSheetContent)</span></td><td><span>把出库单上的具体内容存入数据库</span></td></tr></tbody></table></figure><h5 id='业务逻辑层的动态模型-1'><span>业务逻辑层的动态模型</span></h5><p><span>新增商品顺序图：</span></p><p><img src="NJU-ERP%E7%B3%BB%E7%BB%9F%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3v1/%E6%96%B0%E5%A2%9E%E5%95%86%E5%93%81%E9%A1%BA%E5%BA%8F%E5%9B%BE.png" referrerpolicy="no-referrer" alt="新增商品顺序图"></p><p><span>库存盘点顺序图：</span></p><p><img src="NJU-ERP%E7%B3%BB%E7%BB%9F%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3v1/%E5%BA%93%E5%AD%98%E7%9B%98%E7%82%B9%E9%A1%BA%E5%BA%8F%E5%9B%BE.png" referrerpolicy="no-referrer" alt="库存盘点顺序图"></p><h4 id='进货销售模块'><span>进货销售模块</span></h4><h5 id='模块概述-2'><span>模块概述</span></h5><p><span>该模块包括进货、进货退货、销售、销售退货、客户管理等功能。主要参与者是销售经理、销售管理人员和总经理。</span></p><p><span>该模块承担的需求参见需求规格说明文档功能需求及相关非功能需求。</span></p><p><span>模块的职责和接口参加软件体系结构文档。</span></p><h5 id='整体结构-2'><span>整体结构</span></h5><p><img src="NJU-ERP%E7%B3%BB%E7%BB%9F%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3v1/%E5%BA%93%E5%AD%98%E6%A8%A1%E5%9D%97%E7%B1%BB%E5%9B%BE.png" referrerpolicy="no-referrer" alt="库存模块类图"></p><h5 id='接口规范-2'><span>接口规范</span></h5><p><span>提供的服务（供接口）</span></p><figure><table><thead><tr><th style='text-align:left;' ><span>接口名称</span></th><th><span>语法</span></th><th><span>前置条件</span></th><th><span>后置条件</span></th></tr></thead><tbody><tr><td style='text-align:left;' ><span>CustomerServiceImpl.createCustomer</span></td><td><span>public CustomerVO createCustomer(CustomerInfoVO customerInfoVO)</span></td><td><span>新增一个客户</span></td><td><span>增加新增的客户信息</span></td></tr><tr><td style='text-align:left;' ><span>CustomerServiceImpl.updateCustomer</span></td><td><span>public CustomerVO updateCustomer(CustomerInfoVO customerInfoVO)</span></td><td><span>需要更新客户信息</span></td><td><span>更新客户信息</span></td></tr><tr><td style='text-align:left;' ><span>CustomerServiceImpl.deleteCustomer</span></td><td><span>public void deleteCustomer(CustomerInfoVO customerInfoVO)</span></td><td><span>需要删除一个客户</span></td><td><span>删除和关键字段信息匹配的客户的信息</span></td></tr><tr><td style='text-align:left;' ><span>CustomerServiceImpl.getLargestInPeriod</span></td><td><span>public CustomerVO getLargestInPeriod(Date startDate, Date endDate)</span></td><td><span>需要查询交易</span></td><td><span>返回 startDate - endDate 日期内交易额最大的客户</span></td></tr><tr><td style='text-align:left;' ><span>SalesServiceImpl.deliverGoods</span></td><td><span>public SalesSheetVO deliverGoods(SalesSheetInfoVO salesSheetInfoVO)</span></td><td><span>需要出货</span></td><td><span>更新本次出货涉及的库存和客户信息</span></td></tr><tr><td style='text-align:left;' ><span>SalesServiceImpl.returnGoods</span></td><td><span>public SalesReturnedGoodsSheetVO returnGoods(SalesReturnedGoodsSheetInfoVO salesReturnedGoodsInfoVO)</span></td><td><span>(顾客)需要退货</span></td><td><span>更新本次退货涉及到的客户和库存信息</span></td></tr><tr><td style='text-align:left;' ><span>StockServiceImpl.restock</span></td><td><span>public RestockSheetVO  restock(RestockSheetInfoVO restockSheetInfoVO)</span></td><td><span>需要进货</span></td><td><span>更新库存信息</span></td></tr><tr><td style='text-align:left;' ><span>StockServiceImpl.returnStock</span></td><td><span>public RestockReturnedGoodsSheetVO returnStock(RestockReturnedGoodsSheetInfoVO restockReturnedGoodsSheetInfoVO)</span></td><td><span>需要退货(给供应商)</span></td><td><span>更新库存信息</span></td></tr></tbody></table></figure><p><span>需要的服务（需接口）</span></p><figure><table><thead><tr><th><span>服务名</span></th><th><span>服务</span></th></tr></thead><tbody><tr><td><span>CustomerDao.createCustomer(CustomerPO customerPO)</span></td><td><span>在数据库中插入一个新的CustomerPO</span></td></tr><tr><td><span>CustomerDao.updateById(CustomerPO customerPO)</span></td><td><span>更新一个 CustomerPO</span></td></tr><tr><td><span>CustomerDao.findById(String Id)</span></td><td><span>返回指定 Id 的 CustomerPO</span></td></tr><tr><td><span>CustomerDao.deleteById(String Id)</span></td><td><span>删除指定 Id 的 CustomerPO</span></td></tr><tr><td><span>RestockSheetDao.getLatest()</span></td><td><span>获得最近的上一个 restockSheetPO 用于计算编号</span></td></tr><tr><td><span>RestockSheetDao.save(RestockSheetPO toSave)</span></td><td><span>向数据库中插入一个 RestockSheetPO</span></td></tr><tr><td><span>RestockSheetDao.saveContent(List</span><span>&lt;</span><span>WarehouseInputSheetContentPO &gt; warehouseInputSheetContentPO)</span></td><td><span>向数据库中插入一些WarehouseInputSheetContentPO</span></td></tr><tr><td><span>SalesSheetDao.getLatest()</span></td><td><span>获得最近的上一个 SalesSheetPO 用于计算编号</span></td></tr><tr><td><span>SalesSheetDao.save(SalesSheetPO toSave)</span></td><td><span>向数据库插入一个 SalesSheetPO</span></td></tr><tr><td><span>SalesSheetDao.findAllByOperatorByFromTimeByToTime(String operator, Date fromTime, Date toTime)</span></td><td><span>按操作员和时间区间查找返回许多SalesSheetPO</span></td></tr><tr><td><span>SalesReturnedGoodsSheetDao.getLatest()</span></td><td><span>获得最近的上一个 SalesReturnedGoodsSheetPO 用于计算编号</span></td></tr><tr><td><span>SalesReturnedGoodsSheetDao.save(SalesReturnedGoodsSheetPO toSave)</span></td><td><span>向数据库中插入一个 SalesReturnedGoodsSheetPO</span></td></tr><tr><td><span>SalesReturnedGoodsSheetDao.saveContent(List</span><span>&lt;</span><span>WarehouseInputSheetContentPO&gt; warehouseInputSheetContentPO)</span></td><td><span>向数据库中插入一些 WarehouseInputSheetContentPO</span></td></tr><tr><td><span>SalesReturnedGoodsSheetDao.findAllByOperatorByFromTimeByToTime(String operator, Date fromTime, Date toTime)</span></td><td><span>按操作员和时间区间查找返回许多 SalesReturnedGoodsSheetPO</span></td></tr><tr><td><span>RestockReturnedGoodsSheetDao.getLatest()</span></td><td><span>获得最近的上一个 RestockReturnedGoodsSheetPO 用于计算编号</span></td></tr><tr><td><span>RestockReturnedGoodsSheetDao.save(RestockReturnedGoodsSheetPO toSave)</span></td><td><span>向数据库插入一个 RestockReturnedGoodsSheetPO</span></td></tr><tr><td><span>RestockReturnedGoodsSheetDao.saveContent(List</span><span>&lt;</span><span>WarehouseOutputSheetContentPO&gt; warehouseOutputSheetContentPO)</span></td><td><span>向数据库中插入一些 WarehouseOutputSheetContentPO</span></td></tr></tbody></table></figure><h5 id='业务逻辑层的动态模型-2'><span>业务逻辑层的动态模型</span></h5><p><span>新增客户顺序图：</span></p><p><img src="NJU-ERP%E7%B3%BB%E7%BB%9F%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3v1/%E6%96%B0%E5%A2%9E%E5%AE%A2%E6%88%B7%E9%A1%BA%E5%BA%8F%E5%9B%BE.png" referrerpolicy="no-referrer" alt="新增客户顺序图"></p><p><span>制定收款单顺序图：</span></p><p><img src="NJU-ERP%E7%B3%BB%E7%BB%9F%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3v1/%E5%88%B6%E5%AE%9A%E6%94%B6%E6%AC%BE%E5%8D%95%E9%A1%BA%E5%BA%8F%E5%9B%BE.png" referrerpolicy="no-referrer" alt="制定收款单顺序图"></p><p><span>进货销售模块的单据状态图：</span></p><p><img src="NJU-ERP%E7%B3%BB%E7%BB%9F%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3v1/201250127-status-diagram.jpg" referrerpolicy="no-referrer" alt="单据状态图"></p><h4 id='财务模块'><span>财务模块</span></h4><h5 id='模块概述-3'><span>模块概述</span></h5><p><span>该模块包括账户管理、收款、付款、工资发放、查看销售明细表、查看经营历程表、查看经营情况表等功能。</span></p><p><span>该模块承担的需求参见需求规格说明文档功能需求及相关非功能需求。</span></p><p><span>模块的职责和接口参加软件体系结构文档。</span></p><h5 id='整体结构-3'><span>整体结构</span></h5><p><img src="NJU-ERP%E7%B3%BB%E7%BB%9F%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3v1/%E8%B4%A2%E5%8A%A1%E6%A8%A1%E5%9D%97%E7%B1%BB%E5%9B%BE.png" referrerpolicy="no-referrer" alt="财务模块类图"></p><h5 id='业务逻辑层的动态模型-3'><span>业务逻辑层的动态模型</span></h5><p><span>制定收款单顺序图：</span></p><p><img src="NJU-ERP%E7%B3%BB%E7%BB%9F%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3v1/%E5%88%B6%E5%AE%9A%E6%94%B6%E6%AC%BE%E5%8D%95%E9%A1%BA%E5%BA%8F%E5%9B%BE.png" referrerpolicy="no-referrer" alt="制定收款单顺序图"></p><p><span>查看销售明表顺序图：</span></p><p><img src="NJU-ERP%E7%B3%BB%E7%BB%9F%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3v1/%E6%9F%A5%E7%9C%8B%E9%94%80%E5%94%AE%E6%98%8E%E7%BB%86%E8%A1%A8%E9%A1%BA%E5%BA%8F%E5%9B%BE.png" referrerpolicy="no-referrer" alt="查看销售明细表顺序图"></p><p><span>制定工资单顺序图：</span></p><p><img src="NJU-ERP%E7%B3%BB%E7%BB%9F%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3v1/%E5%88%B6%E5%AE%9A%E5%B7%A5%E8%B5%84%E5%8D%95%E9%A1%BA%E5%BA%8F%E5%9B%BE.png" referrerpolicy="no-referrer" alt="制定工资单顺序图"></p><p><span>查看经营历程表的系统顺序图：</span></p><p><img src="NJU-ERP%E7%B3%BB%E7%BB%9F%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3v1/%E6%9F%A5%E7%9C%8B%E7%BB%8F%E8%90%A5%E5%8E%86%E7%A8%8B%E8%A1%A8%E9%A1%BA%E5%BA%8F%E5%9B%BE.png" referrerpolicy="no-referrer" alt="查看经营历程表顺序图"></p><p><span>财务单据状态图：</span></p><p><img src="NJU-ERP%E7%B3%BB%E7%BB%9F%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3v1/201250127-status-diagram.jpg" referrerpolicy="no-referrer" alt="单据状态图"></p><h4 id='人力资源模块'><span>人力资源模块</span></h4><h5 id='模块概述-4'><span>模块概述</span></h5><p><span>该模块包括员工管理、员工打卡、薪酬规则指定等功能。该模块主要参与者是人力资源人员和总经理。</span></p><p><span>该模块承担的需求参见需求规格说明文档功能需求及相关非功能需求。</span></p><p><span>模块的职责和接口参加软件体系结构文档。</span></p><h5 id='整体结构-4'><span>整体结构</span></h5><p><span>根据体系结构的设计，我们将系统分为展示层，业务逻辑层，数据层。每层之间为了增加灵活性，我们会添加接口。比如展示层和业务逻辑层之间，我们添加了 PositionService, StaffService 接口。业务逻辑层和数据层之间添加了 PositionDao, StaffDao 等接口。为了隔离业务逻辑职责和逻辑控制职责，我们增加了 StaffController 控制器, 这样 StaffController 会把员工管理的职责委托给 StaffServiceImpl 对象, 增加了 PositionController, 它会把岗位管理的职责委托给 PositionServiceImpl 对象。StaffPO, PositionInfoPO 是员工信息持久化对象和岗位信息持久化对象。</span></p><p><img src="NJU-ERP%E7%B3%BB%E7%BB%9F%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3v1/%E4%BA%BA%E5%8A%9B%E8%B5%84%E6%BA%90%E6%A8%A1%E5%9D%97%E7%B1%BB%E5%9B%BE.png" referrerpolicy="no-referrer" alt="人力资源模块类图"></p><figure><table><thead><tr><th><span>类名</span></th><th><span>描述</span></th></tr></thead><tbody><tr><td><span>SalarySendType</span></td><td><span>工资发放类型（年薪、月薪）</span></td></tr><tr><td><span>PositionController</span></td><td><span>实现岗位信息及其修改服务</span></td></tr></tbody></table></figure><h5 id='业务逻辑层的动态模型-4'><span>业务逻辑层的动态模型</span></h5><p><span>员工打卡顺序图：</span></p><p><img src="NJU-ERP%E7%B3%BB%E7%BB%9F%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3v1/%E5%91%98%E5%B7%A5%E6%89%93%E5%8D%A1%E9%A1%BA%E5%BA%8F%E5%9B%BE.png" referrerpolicy="no-referrer" alt="员工打卡顺序图"></p><h4 id='企业经营管理模块'><span>企业经营管理模块</span></h4><h5 id='模块概述-5'><span>模块概述</span></h5><p><span>该模块包括制定促销策略、制定年终奖。该模块主要参与者是总经理。</span></p><p><span>该模块承担的需求参见需求规格说明文档功能需求及相关非功能需求。</span></p><p><span>模块的职责和接口参加软件体系结构文档。</span></p><h5 id='整体结构-5'><span>整体结构</span></h5><p><img src="NJU-ERP%E7%B3%BB%E7%BB%9F%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3v1/%E7%BB%8F%E8%90%A5%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97%E7%B1%BB%E5%9B%BE.png" referrerpolicy="no-referrer" alt="经营管理模块类图"></p><h5 id='业务逻辑层的动态模型-5'><span>业务逻辑层的动态模型</span></h5><p><span>创建基于总价的促销策略顺序图：</span></p><p><img src="NJU-ERP%E7%B3%BB%E7%BB%9F%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3v1/%E5%88%9B%E5%BB%BA%E5%9F%BA%E4%BA%8E%E6%80%BB%E4%BB%B7%E7%9A%84%E4%BF%83%E9%94%80%E7%AD%96%E7%95%A5%E9%A1%BA%E5%BA%8F%E5%9B%BE.png" referrerpolicy="no-referrer" alt="创建基于总价的促销策略顺序图"></p><h3 id='数据层的分解'><span>数据层的分解</span></h3><h4 id='数据层概述'><span>数据层概述</span></h4><p><span>数据层主要为业务逻辑层提供数据访问服务，包括对可持久化对象的增删改查。</span></p><p><span>数据层主要给业务逻辑层提供数据访问服务，包括对于持久化数据的增、删、改、查。</span></p><p><span>Inventory 业务逻辑、Sales 业务逻辑需要的服务有 CategoryDao、ProductDao、UserDao、WarehouseDao、WarehouseInputSheetDao、WarehouseOutputSheetDao、CustomerDao、RestockReturnedGoodsSheetDao、RestockSheetDao、SalesReturnedGoodsSheetDao、SalesSheetDao接口提供。</span></p><p><span>在ERP系统中采用数据库来进行持久化数据的保存，借助Mybatis框架和Mapper映射文件完成数据层的具体实现。数据层模块的描述具体如下图所示。</span></p><p><img src="NJU-ERP%E7%B3%BB%E7%BB%9F%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3v1/201250185-%E6%95%B0%E6%8D%AE%E5%B1%82%E6%A8%A1%E5%9D%97%E7%9A%84%E6%8F%8F%E8%BF%B0.png" referrerpolicy="no-referrer" alt="数据层模块的描述"></p><h4 id='数据层模块的职责'><span>数据层模块的职责</span></h4><p><span>数据层模块的职责如下表所示。</span></p><figure><table><thead><tr><th style='text-align:left;' ><span>模块</span></th><th style='text-align:left;' ><span>职责</span></th></tr></thead><tbody><tr><td style='text-align:left;' ><span>*Dao</span></td><td style='text-align:left;' ><span>持久化数据库的接口，提供集体载入、集体保存、增、删、改、查服务</span></td></tr><tr><td style='text-align:left;' ><span>*Mapper.xml</span></td><td style='text-align:left;' ><span>基于 Mybatis 框架的相应持久化数据库接口的实现，提供集体载入、集体保存、增、删、改、查服务</span></td></tr></tbody></table></figure><h5 id='数据层模块的接口规范'><span>数据层模块的接口规范</span></h5><p><span>数据层模块的接口规范如下表所示。</span></p><figure><table><thead><tr><th style='text-align:left;' ><span>接口名称</span></th><th><span>语法</span></th><th style='text-align:left;' ><span>前置条件</span></th><th style='text-align:left;' ><span>后置条件</span></th></tr></thead><tbody><tr><td style='text-align:left;' ><strong><span>CategoryDao</span></strong></td><td>&nbsp;</td><td style='text-align:left;' >&nbsp;</td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:left;' ><span>CategoryDao.createCategory</span></td><td><span>int createCategory(CategoryPO categoryPO);</span></td><td style='text-align:left;' ><span>同样分类ID的PO在数据库中不存在</span></td><td style='text-align:left;' ><span>在数据库中增加一个PO</span></td></tr><tr><td style='text-align:left;' ><span>CategoryDao.findByCategoryId</span></td><td><span>CategoryPO findByCategoryId(Integer categoryId);</span></td><td style='text-align:left;' ><span>无</span></td><td style='text-align:left;' ><span>按照ID进行查找返回相应的CategoryPO结果</span></td></tr><tr><td style='text-align:left;' ><span>CategoryDao.findAll</span></td><td><span>List</span><span>&lt;</span><span>CategoryPO&gt; findAll();</span></td><td style='text-align:left;' ><span>无</span></td><td style='text-align:left;' ><span>查找返回所有的CategoryPO结果</span></td></tr><tr><td style='text-align:left;' ><span>CategoryDao.updateById</span></td><td><span>int updateById(CategoryPO categoryPO);</span></td><td style='text-align:left;' ><span>在数据库中存在同样ID的PO</span></td><td style='text-align:left;' ><span>更新一个PO</span></td></tr><tr><td style='text-align:left;' ><span>CategoryDao.deleteById</span></td><td><span>int deleteById(Integer id);</span></td><td style='text-align:left;' ><span>在数据库中存在同样ID的PO</span></td><td style='text-align:left;' ><span>删除一个PO</span></td></tr><tr><td style='text-align:left;' ><strong><span>ProductDao</span></strong></td><td>&nbsp;</td><td style='text-align:left;' >&nbsp;</td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:left;' ><span>ProductDao.createProduct</span></td><td><span>int createProduct(ProductPO productPO);</span></td><td style='text-align:left;' ><span>同样商品ID的PO在数据库中不存在</span></td><td style='text-align:left;' ><span>在数据库中增加一个PO</span></td></tr><tr><td style='text-align:left;' ><span>ProductDao.updateById</span></td><td><span>int updateById(ProductPO productPO);</span></td><td style='text-align:left;' ><span>在数据库中存在同样ID的PO</span></td><td style='text-align:left;' ><span>更新一个PO</span></td></tr><tr><td style='text-align:left;' ><span>ProductDao.findById</span></td><td><span>findById(String id);</span></td><td style='text-align:left;' ><span>无</span></td><td style='text-align:left;' ><span>按照ID进行查找返回相应的ProductPO</span></td></tr><tr><td style='text-align:left;' ><span>ProductDao.findAll</span></td><td><span>List</span><span>&lt;</span><span>ProductPO&gt; findAll();</span></td><td style='text-align:left;' ><span>无</span></td><td style='text-align:left;' ><span>查找返回全部的ProductPO</span></td></tr><tr><td style='text-align:left;' ><span>ProductDao.deleteById</span></td><td><span>int deleteById(String id);</span></td><td style='text-align:left;' ><span>在数据库中存在同样ID的PO</span></td><td style='text-align:left;' ><span>删除一个PO</span></td></tr><tr><td style='text-align:left;' ><strong><span>WarehouseDao</span></strong></td><td>&nbsp;</td><td style='text-align:left;' >&nbsp;</td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:left;' ><span>WarehouseDao.saveBatch</span></td><td><span>void saveBatch(List</span><span>&lt;</span><span>WarehousePO&gt; warehousePOList);</span></td><td style='text-align:left;' ><span>同样库存ID的PO在数据库中不存在</span></td><td style='text-align:left;' ><span>在数据库中增加许多PO</span></td></tr><tr><td style='text-align:left;' ><span>WarehouseDao.deductQuantity</span></td><td><span>void deductQuantity(WarehousePO warehousePO);</span></td><td style='text-align:left;' ><span>在数据库中存在同样库存ID的PO</span></td><td style='text-align:left;' ><span>更新一个PO</span></td></tr><tr><td style='text-align:left;' ><span>WarehouseDao. findAllNotZeroByPidSortedByBatchId</span></td><td><span>List</span><span>&lt;</span><span>WarehousePO&gt; findAllNotZeroByPidSortedByBatchId(String pid);</span></td><td style='text-align:left;' ><span>在数据库中存在同样批次ID</span></td><td style='text-align:left;' ><span>按照批次ID进行查找返回全部WarehousePO</span></td></tr><tr><td style='text-align:left;' ><strong><span>WarehouseInputSheetDao</span></strong></td><td>&nbsp;</td><td style='text-align:left;' >&nbsp;</td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:left;' ><span>WarehouseInputSheetDao.getLatest</span></td><td><span>WarehouseInputSheetPO getLatest();</span></td><td style='text-align:left;' ><span>在数据库中存在至少一个WarehouseInputSheetPO</span></td><td style='text-align:left;' ><span>查找返回updateTime最大的WarehouseInputSheetPO</span></td></tr><tr><td style='text-align:left;' ><span>WarehouseInputSheetDao.save</span></td><td><span>int save(WarehouseInputSheetPO toSave);</span></td><td style='text-align:left;' ><span>同样入库单ID的PO在数据库中不存在</span></td><td style='text-align:left;' ><span>在数据库中增加一个PO记录</span></td></tr><tr><td style='text-align:left;' ><span>WarehouseInputSheetDao.saveBatch</span></td><td><span>void saveBatch(List</span><span>&lt;</span><span>WarehouseInputSheetContentPO&gt; warehouseInputListPOSheetContent);</span></td><td style='text-align:left;' ><span>同样入库商品列表ID在数据库中不存在</span></td><td style='text-align:left;' ><span>在数据库中增加许多PO</span></td></tr><tr><td style='text-align:left;' ><strong><span>WarehouseOutputSheetDao</span></strong></td><td>&nbsp;</td><td style='text-align:left;' >&nbsp;</td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:left;' ><span>WarehouseOutputSheetDao.getLatest</span></td><td><span>WarehouseOutputSheetPO getLatest();</span></td><td style='text-align:left;' ><span>在数据库中存在至少一个WarehouseOutputSheetPO</span></td><td style='text-align:left;' ><span>查找返回updateTime最大的WarehouseOutputSheetPO</span></td></tr><tr><td style='text-align:left;' ><span>WarehouseOutputSheetDao.save</span></td><td><span>void save(WarehouseOutputSheetPO toSave);</span></td><td style='text-align:left;' ><span>同样出库单ID的PO在数据库中不存在</span></td><td style='text-align:left;' ><span>在数据库中增加一个PO记录</span></td></tr><tr><td style='text-align:left;' ><span>WarehouseOutputSheetDao.saveBatch</span></td><td><span>void saveBatch(List</span><span>&lt;</span><span>WarehouseOutputSheetContentPO&gt; warehouseOutputListPOSheetContent);</span></td><td style='text-align:left;' ><span>同样出库商品列表ID在数据库中不存在</span></td><td style='text-align:left;' ><span>在数据库中增加许多PO</span></td></tr><tr><td style='text-align:left;' ><strong><span>CustomerDao</span></strong></td><td>&nbsp;</td><td style='text-align:left;' >&nbsp;</td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:left;' ><span>CustomerDao.createCustomer</span></td><td><span>int createCustomer(CustomerPO customerPO);</span></td><td style='text-align:left;' ><span>同样ID的PO在数据库中不存在</span></td><td style='text-align:left;' ><span>在数据库中增加一个PO</span></td></tr><tr><td style='text-align:left;' ><span>CustomerDao.updateById</span></td><td><span>int updateById(CustomerPO customerPO);</span></td><td style='text-align:left;' ><span>在数据库中存在同样ID的PO</span></td><td style='text-align:left;' ><span>更新一个PO</span></td></tr><tr><td style='text-align:left;' ><span>CustomerDao.findById</span></td><td><span>CustomerPO findById(String id);</span></td><td style='text-align:left;' ><span>无</span></td><td style='text-align:left;' ><span>按ID进行查找返回相应的CustomerPO结果</span></td></tr><tr><td style='text-align:left;' ><span>CustomerDao.deleteById</span></td><td><span>int deleteById(String id);</span></td><td style='text-align:left;' ><span>在数据库中存在相同ID的PO</span></td><td style='text-align:left;' ><span>删除一个PO</span></td></tr><tr><td style='text-align:left;' ><strong><span>RestockSheetDao</span></strong></td><td>&nbsp;</td><td style='text-align:left;' >&nbsp;</td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:left;' ><span>RestockSheetDao.getLatest</span></td><td><span>RestockSheetPO getLatest();</span></td><td style='text-align:left;' ><span>在数据库中存在至少一个RestockSheetPO</span></td><td style='text-align:left;' ><span>查找返回updateTime最大的RestockSheetPO</span></td></tr><tr><td style='text-align:left;' ><span>RestockSheetDao.save</span></td><td><span>int save(RestockSheetPO toSave);</span></td><td style='text-align:left;' ><span>同样进货单ID的PO在数据库中不存在</span></td><td style='text-align:left;' ><span>在数据库中增加一个PO</span></td></tr><tr><td style='text-align:left;' ><span>RestockSheetDao.saveContent</span></td><td><span>void saveContent(List</span><span>&lt;</span><span>WarehouseInputSheetContentPO &gt; warehouseInputSheetContentPO);</span></td><td style='text-align:left;' ><span>同样入库商品列表ID在数据库中不存在</span></td><td style='text-align:left;' ><span>在数据库中增加许多PO</span></td></tr><tr><td style='text-align:left;' ><strong><span>RestockReturnedGoodsSheetDao</span></strong></td><td>&nbsp;</td><td style='text-align:left;' >&nbsp;</td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:left;' ><span>RestockReturnedGoodsSheetDao.getLatest</span></td><td><span>RestockReturnedGoodsSheetPO getLatest();</span></td><td style='text-align:left;' ><span>在数据库中存在至少一个RestockReturnedGoodsSheetPO</span></td><td style='text-align:left;' ><span>查找返回updateTime最大的RestockReturnedGoodsSheetPO</span></td></tr><tr><td style='text-align:left;' ><span>RestockReturnedGoodsSheetDao.save</span></td><td><span>int save(RestockReturnedGoodsSheetPO toSave);</span></td><td style='text-align:left;' ><span>同样进货退货单ID的PO在数据库中不存在</span></td><td style='text-align:left;' ><span>在数据库中增加一个PO</span></td></tr><tr><td style='text-align:left;' ><span>RestockReturnedGoodsSheetDao.saveContent</span></td><td><span>void saveContent(List</span><span>&lt;</span><span>WarehouseOutputSheetContentPO&gt; warehouseOutputSheetContentPO);</span></td><td style='text-align:left;' ><span>同样出库商品列表ID在数据库中不存在</span></td><td style='text-align:left;' ><span>在数据库中增加许多PO</span></td></tr><tr><td style='text-align:left;' ><strong><span>SalesSheetDao</span></strong></td><td>&nbsp;</td><td style='text-align:left;' >&nbsp;</td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:left;' ><span>SalesSheetDao.getLatest</span></td><td><span>SalesSheetPO getLatest();</span></td><td style='text-align:left;' ><span>在数据库中存在至少一个SalesSheetPO</span></td><td style='text-align:left;' ><span>查找返回updateTime最大的SalesSheetPO</span></td></tr><tr><td style='text-align:left;' ><span>SalesSheetDao.save</span></td><td><span>int save(SalesSheetPO toSave);</span></td><td style='text-align:left;' ><span>同样销售单ID的PO在数据库中不存在</span></td><td style='text-align:left;' ><span>在数据库中增加一个PO</span></td></tr><tr><td style='text-align:left;' ><span>SalesSheetDao.saveContent</span></td><td><span>void saveContent(List</span><span>&lt;</span><span>WarehouseOutputSheetContentPO&gt; warehouseOutputSheetContentPO);</span></td><td style='text-align:left;' ><span>同样出库商品列表ID在数据库中不存在</span></td><td style='text-align:left;' ><span>在数据库中增加许多PO</span></td></tr><tr><td style='text-align:left;' ><span>SalesSheetDao.findAllByOperatorByFromTimeByToTime</span></td><td><span>List</span><span>&lt;</span><span>SalesSheetPO&gt; findAllByOperatorByFromTimeByToTime(String operator, Date fromTime, Date toTime);</span></td><td style='text-align:left;' ><span>无</span></td><td style='text-align:left;' ><span>按操作员和时间区间查找返回许多PO</span></td></tr><tr><td style='text-align:left;' ><strong><span>SalesReturnedGoodsSheetDao</span></strong></td><td>&nbsp;</td><td style='text-align:left;' >&nbsp;</td><td style='text-align:left;' >&nbsp;</td></tr><tr><td style='text-align:left;' ><span>SalesReturnedGoodsSheetDao.getLatest</span></td><td><span>SalesReturnedGoodsSheetPO getLatest();</span></td><td style='text-align:left;' ><span>在数据库中存在至少一个SalesReturnedGoodsSheetPO</span></td><td style='text-align:left;' ><span>查找返回updateTime最大的SalesReturnedGoodsSheetPO</span></td></tr><tr><td style='text-align:left;' ><span>SalesReturnedGoodsSheetDao.save</span></td><td><span>int save(SalesReturnedGoodsSheetPO toSave);</span></td><td style='text-align:left;' ><span>同样销售退货单ID的PO在数据库中不存在</span></td><td style='text-align:left;' ><span>在数据库中增加一个PO</span></td></tr><tr><td style='text-align:left;' ><span>SalesReturnedGoodsSheetDao.saveContent</span></td><td><span>void saveContent(List</span><span>&lt;</span><span>WarehouseInputSheetContentPO&gt; warehouseInputSheetContentPO);</span></td><td style='text-align:left;' ><span>同样入库商品列表ID在数据库中不存在</span></td><td style='text-align:left;' ><span>在数据库中增加许多PO</span></td></tr><tr><td style='text-align:left;' ><span>SalesReturnedGoodsSheetDao.findAllByOperatorByFromTimeByToTime</span></td><td><span>List</span><span>&lt;</span><span>SalesReturnedGoodsSheetPO&gt; findAllByOperatorByFromTimeByToTime(String operator, Date fromTime, Date toTime);</span></td><td style='text-align:left;' ><span>无</span></td><td style='text-align:left;' ><span>按操作员和时间区间查找返回许多PO</span></td></tr></tbody></table></figure><h2 id='依赖视角'><span>依赖视角</span></h2><p><span>NJU-ERP 系统开发包图（</span><a href='https://processon.com/diagraming/627093086376891e1c2106c1' target='_blank' class='url'>https://processon.com/diagraming/627093086376891e1c2106c1</a><span>）</span></p><p><img src="NJU-ERP%E7%B3%BB%E7%BB%9F%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3v1/ERP%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E5%8C%85%E5%9B%BE.png" referrerpolicy="no-referrer" alt="ERP系统开发包图"></p></div></div>
+</body>
+</html>

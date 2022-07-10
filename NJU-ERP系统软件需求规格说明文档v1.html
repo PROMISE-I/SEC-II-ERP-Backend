@@ -1,0 +1,1005 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* greek-ext */
+
+/* greek */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* greek-ext */
+
+/* greek */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* greek-ext */
+
+/* greek */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* greek-ext */
+
+/* greek */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+@font-face {
+    font-family: 'Source Han SerifCN';
+    src: local('Source Han SerifCN Bold'), local('SourceHanSerifCN-Bold'), url('file:///C://Users//37756//AppData//Roaming//Typora/themes/zj/SourceHanSerifCN-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+}/* 如有不懂，参看 https://theme.typora.io/doc/zh/Write-Custom-Theme/ */
+
+@import '';
+
+:root {
+    --side-bar-bg-color: #fff;
+    --control-text-color: #777;
+    /* --font-sans-serif: 'PingFangSC-Regular', 'Microsoft YaHei', , 'Source Sans Pro', sans-serif !important; */
+    --font-sans-serif: 'Source Han SerifCN', 'Microsoft YaHei', sans-serif !important;
+    --font-monospace: 'Consolas', monospace, 'Courier New', 'Roboto Mono', 'Source Sans Pro', 'Microsoft YaHei' !important;
+    /* 主题色 */
+    --main-1: #fff3f0;
+    --main-2: #ffd4cc;
+    --main-3: #ffafa3;
+    --main-4: #ff887a;
+    --main-5: #ff5d52;
+    --main-6: #f22f27;
+    --main-7: #cc1616;
+    --main-8: #a60a0f;
+    --main-9: #80010a;
+    --main-10: #590009;
+}
+
+html {
+    font-size: 17px;
+}
+
+body {
+    font-family: var(--font-sans-serif);
+    color: black;
+    line-height: 1.6rem;
+    /* 	裁剪溢出内容 */
+    overflow-x: hidden;
+    /* 字母间距 */
+    letter-spacing: 0;
+    margin: 0;
+}
+
+/* #write 为写入区域 */
+#write {
+    max-width: 860px;
+    padding: 30px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+    #write {
+        max-width: 1024px;
+    }
+}
+
+@media only screen and (min-width: 1800px) {
+    #write {
+        max-width: 1200px;
+    }
+}
+
+/* 正常文字 */
+#write p {
+    line-height: 1.6rem;
+    word-spacing: .05rem;
+    color: black;
+}
+
+#write>ul:first-child,
+#write>ol:first-child {
+    margin-top: 30px;
+}
+
+/* 链接 */
+a {
+    padding: 0 2px;
+    color: #0366d6;
+}
+
+/* 加粗 */
+strong {
+    padding: 0.1em;
+    /* color: #E91E63; */
+    font-weight: bold;
+}
+
+/* 斜体强调 */
+em {
+    font-style: normal;
+    background-color: #EBFFEB;
+    border-radius: 2px;
+    padding: 2px 4px;
+    margin: 0 2px;
+    color: black;
+}
+
+/* 行内数学公式变蓝 */
+.md-inline-math {
+    color: blue;
+    font-size: 100%;
+}
+
+/* 行间数学公式 */
+[mdtype="math_block"] {
+    font-size: 1.1rem;
+}
+
+/* 标题编号初始化 */
+/* 首先全局进行一次reset，这样即使不添加h1标题也可以使用较低级别的标题 */
+#write {
+    counter-reset: h2 0 h3 0 h4 0 h5 0 h6 0
+}
+
+h1 {
+    counter-reset: h2
+}
+
+h2 {
+    counter-reset: h3
+}
+
+h3 {
+    counter-reset: h4
+}
+
+h4 {
+    counter-reset: h5
+}
+
+h5 {
+    counter-reset: h6
+}
+
+/** put counter result into headings */
+#write h1:before {
+    counter-increment: h1;
+}
+
+#write h2:before {
+    counter-increment: h2;
+    content: counter(h2) ". "
+}
+
+#write h3:before,
+h3.md-focus.md-heading:before {
+    counter-increment: h3;
+    content: counter(h2) "."counter(h3) " "
+}
+
+#write h4:before,
+h4.md-focus.md-heading:before {
+    counter-increment: h4;
+    content: counter(h2) "."counter(h3) "."counter(h4) " "
+}
+
+#write h5:before,
+h5.md-focus.md-heading:before {
+    counter-increment: h5;
+    content: counter(h2) "."counter(h3) "."counter(h4) "."counter(h5) " "
+}
+
+#write h6:before,
+h6.md-focus.md-heading:before {
+    counter-increment: h6;
+    content: counter(h2) "."counter(h3) "."counter(h4) "."counter(h5) "."counter(h6) " "
+}
+
+/** override the default style for focused headings */
+#write>h3.md-focus:before,
+#write>h4.md-focus:before,
+#write>h5.md-focus:before,
+#write>h6.md-focus:before,
+h3.md-focus:before,
+h4.md-focus:before,
+h5.md-focus:before,
+h6.md-focus:before {
+    color: inherit;
+    border: inherit;
+    border-radius: inherit;
+    position: inherit;
+    left: initial;
+    float: none;
+    top: initial;
+    font-size: inherit;
+    padding-left: inherit;
+    padding-right: inherit;
+    vertical-align: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+
+h1 {
+    text-align: center;
+    padding-bottom: .2em;
+    /* font-size: 2.25em; */
+    line-height: 1.2;
+}
+
+h2 {
+    padding-bottom: .2em;
+    padding-top: .5em;
+    /* font-size: 1.75em; */
+    line-height: 1.225;
+    border-bottom: 1px solid #b7b7b7;
+}
+
+h3 {
+    padding-top: .1em;
+    /* font-size: 1.5em; */
+    line-height: 1.43;
+    margin-left: 0.5em;
+}
+
+h4 {
+    padding-top: .1em;
+    /* font-size: 1.25em; */
+    margin-left: 0.7em;
+}
+
+h5 {
+    margin-left: 0.9em;
+}
+
+h6 {
+    margin-left: 0.9em;
+    color: #777;
+}
+
+p,
+blockquote,
+ul,
+ol,
+dl,
+table {
+    margin: 0.8em 0;
+}
+
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+/* 列表环境 */
+#write ol>li,
+#write ul>li {
+    color: #f50057;
+    font-weight: bold;
+}
+
+#write ol>li>*,
+#write ul>li>* {
+    color: #333;
+    font-weight: normal;
+}
+
+#write ol>li>*:not(ol):not(ul),
+#write ul>li>*:not(ol):not(ul) {
+    /* padding-left: .25rem; */
+    padding-left: 0;
+}
+
+#write ul {
+    list-style-type: disc;
+}
+
+blockquote {
+    border-left: 4px solid rgb(239, 112, 96);
+    padding: 0px 15px;
+    color: #3f3f3f;
+    background-color: #fff9f9;
+}
+
+blockquote blockquote {
+    padding-right: 0;
+}
+
+table {
+    padding: 0;
+    word-break: initial;
+}
+
+/* tr元素定义表格行 */
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+
+table tr:nth-child(2n),
+thead {
+    background-color: #F6F8FA;
+}
+
+/* th元素定义表头 */
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+/* td元素定义表格单元格 */
+table tr td {
+    border: 1px solid #dfe2e5;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+/* 行号 */
+.cm-s-inner .CodeMirror-linenumber {
+    /*width: 2ch !important;*/
+    /*font-size: 0.7rem;*/
+    color: rgba(0, 92, 197, 0.8);
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0, 28, 36, .3);
+    border-top: 1px solid #eef2f2;
+}
+
+/* 代码框 */
+#write .md-fences {
+    -webkit-font-smoothing: initial;
+    margin: 0.8rem 0 !important;
+    padding: 0.3rem 0 !important;
+    line-height: 1.43rem;
+    background-color: #f6f8fa !important;
+    border-radius: 2px;
+    font-family: var(--font-monospace);
+    font-size: 0.9rem;
+    word-wrap: normal;
+}
+
+#write .CodeMirror-wrap .CodeMirror-code pre {
+    padding-left: 12px;
+}
+
+/* 代码框中光标颜色 */
+#write .CodeMirror-cursors .CodeMirror-cursor {
+    border-left: 2px solid var(--main-4);
+}
+
+/* 行内代码 */
+#write code,
+tt {
+    padding: 2px 4px 0px 4px;
+    border-radius: 2px;
+    font-family: var(--font-monospace);
+    color: #FF0000;
+    background-color: #FAEAEB;
+}
+
+tt {
+    margin: 0 2px;
+}
+
+#write .md-footnote {
+    background-color: #f8f8f8;
+    color: #e96900;
+}
+
+/* 任务列表小方框 */
+.md-task-list-item>input {
+    margin-left: -1.3em;
+}
+
+#write del {
+    padding: 1px 2px;
+}
+
+#write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+    bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+.md-image>.md-meta {
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc {
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+/**************************************
+* Header Counters in TOC
+**************************************/
+/* No link underlines in TOC */
+.md-toc-inner {
+    text-decoration: none;
+}
+
+.md-toc-content {
+    /* counter-reset: h1toc */
+    counter-reset: h2toc h3toc h4toc;
+    /*修复缺失上级标题时无法递增*/
+}
+
+.md-toc-h1 {
+    margin-left: 0;
+    font-size: 1.5rem;
+    display: none;
+    counter-reset: h2toc
+}
+
+.md-toc-h2 {
+    font-size: 1.1rem;
+    margin-left: 2rem;
+    counter-reset: h3toc
+}
+
+.md-toc-h3 {
+    margin-left: 3rem;
+    font-size: .9rem;
+    counter-reset: h4toc
+}
+
+.md-toc-h4 {
+    margin-left: 4rem;
+    font-size: .85rem;
+    counter-reset: h5toc
+}
+
+.md-toc-h5 {
+    margin-left: 5rem;
+    font-size: .8rem;
+    counter-reset: h6toc
+}
+
+.md-toc-h6 {
+    margin-left: 6rem;
+    font-size: .75rem;
+}
+
+.md-toc-h1:before {
+    color: black;
+    counter-increment: h1toc;
+}
+
+.md-toc-h1 .md-toc-inner {
+    margin-left: 0;
+}
+
+.md-toc-h2:before {
+    color: black;
+    counter-increment: h2toc;
+    content: counter(h2toc) ". "
+}
+
+.md-toc-h2 .md-toc-inner {
+    margin-left: 0;
+}
+
+.md-toc-h3:before {
+    color: black;
+    counter-increment: h3toc;
+    content: counter(h2toc) ". "counter(h3toc) " "
+}
+
+.md-toc-h3 .md-toc-inner {
+    margin-left: 0;
+}
+
+.md-toc-h4:before {
+    color: black;
+    counter-increment: h4toc;
+    content: counter(h2toc) ". "counter(h3toc) ". "counter(h4toc) " "
+}
+
+.md-toc-h4 .md-toc-inner {
+    margin-left: 0;
+}
+
+.md-toc-h5:before {
+    color: black;
+    counter-increment: h5toc;
+    content: counter(h2toc) ". "counter(h3toc) ". "counter(h4toc) ". "counter(h5toc) " "
+}
+
+.md-toc-h5 .md-toc-inner {
+    margin-left: 0;
+}
+
+.md-toc-h6:before {
+    color: black;
+    counter-increment: h6toc;
+    content: counter(h2toc) ". "counter(h3toc) ". "counter(h4toc) ". "counter(h5toc) ". "counter(h6toc) " "
+}
+
+.md-toc-h6 .md-toc-inner {
+    margin-left: 0;
+}
+
+
+/* 侧栏自动编号 */
+.sidebar-content {
+    counter-reset: h2 0 h3 0 h4 0 h5 0 h6 0
+}
+
+.outline-h1 {
+    counter-reset: h2
+}
+
+.outline-h2 {
+    counter-reset: h3
+}
+
+.outline-h3 {
+    counter-reset: h4
+}
+
+.outline-h4 {
+    counter-reset: h5
+}
+
+.outline-h5 {
+    counter-reset: h6
+}
+
+.outline-h1>.outline-item>.outline-label:before {
+    counter-increment: h1;
+    /* content: counter(h1) ". " */
+}
+
+.outline-h2>.outline-item>.outline-label:before {
+    counter-increment: h2;
+    content: counter(h2) ". "
+}
+
+.outline-h3>.outline-item>.outline-label:before {
+    counter-increment: h3;
+    content: counter(h2) "."counter(h3) " "
+}
+
+.outline-h4>.outline-item>.outline-label:before {
+    counter-increment: h4;
+    content: counter(h2) "."counter(h3) "."counter(h4) " "
+}
+
+.outline-h5>.outline-item>.outline-label:before {
+    counter-increment: h5;
+    content: counter(h2) "."counter(h3) "."counter(h4) "."counter(h5) " "
+}
+
+.outline-h6>.outline-item>.outline-label:before {
+    counter-increment: h6;
+    content: counter(h2) "."counter(h3) "."counter(h4) "."counter(h5) "."counter(h6) " "
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header,
+.context-menu,
+.megamenu-content,
+footer {
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+
+/* 打印成PDF */
+@media print {
+    /* .typora-export * {
+        -webkit-print-color-adjust: exact;
+    } */
+
+    html {
+        font-size: 15px !important;
+    }
+
+    body {
+        font-family: var(--font-sans-serif);
+        color: #000000 !important;
+    }
+
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+ .typora-export li, .typora-export p, .typora-export,  .footnote-line {white-space: normal;} 
+</style><title>NJU-ERP系统软件需求规格说明文档v1</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=' first-line-indent'><h1 id='nju-erp-系统软件需求规格说明文档v1'><span>NJU-ERP 系统软件需求规格说明文档v1</span></h1><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#nju-erp-系统软件需求规格说明文档v1">NJU-ERP 系统软件需求规格说明文档v1</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n3"><a class="md-toc-inner" href="#引言">引言</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n4"><a class="md-toc-inner" href="#目的">目的</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n7"><a class="md-toc-inner" href="#范围">范围</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n10"><a class="md-toc-inner" href="#参考文献">参考文献</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n16"><a class="md-toc-inner" href="#总体描述">总体描述</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n17"><a class="md-toc-inner" href="#商品前景">商品前景</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n18"><a class="md-toc-inner" href="#背景与机遇">背景与机遇</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n21"><a class="md-toc-inner" href="#业务需求">业务需求</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n29"><a class="md-toc-inner" href="#商品功能">商品功能</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n37"><a class="md-toc-inner" href="#用户特征">用户特征</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n60"><a class="md-toc-inner" href="#约束-1">约束</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n65"><a class="md-toc-inner" href="#假设和依赖">假设和依赖</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n69"><a class="md-toc-inner" href="#详细需求描述">详细需求描述</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n70"><a class="md-toc-inner" href="#对外接口需求">对外接口需求</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n71"><a class="md-toc-inner" href="#用户界面">用户界面</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n74"><a class="md-toc-inner" href="#硬件接口">硬件接口</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n76"><a class="md-toc-inner" href="#软件接口">软件接口</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n78"><a class="md-toc-inner" href="#通信接口">通信接口</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n80"><a class="md-toc-inner" href="#功能需求">功能需求</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n81"><a class="md-toc-inner" href="#处理收款">处理收款</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n82"><a class="md-toc-inner" href="#特性描述-1">特性描述</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n84"><a class="md-toc-inner" href="#刺激响应序列-1">刺激/响应序列</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n95"><a class="md-toc-inner" href="#相关功能需求-1">相关功能需求</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n130"><a class="md-toc-inner" href="#处理付款">处理付款</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n131"><a class="md-toc-inner" href="#特性描述-2">特性描述</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n133"><a class="md-toc-inner" href="#刺激响应序列-2">刺激/响应序列</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n144"><a class="md-toc-inner" href="#相关功能需求-2">相关功能需求</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n179"><a class="md-toc-inner" href="#处理工资发放">处理工资发放</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n180"><a class="md-toc-inner" href="#特性描述-3">特性描述</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n182"><a class="md-toc-inner" href="#刺激响应序列-3">刺激/响应序列</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n193"><a class="md-toc-inner" href="#相关功能需求-3">相关功能需求</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n219"><a class="md-toc-inner" href="#查看销售明细表">查看销售明细表</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n220"><a class="md-toc-inner" href="#特性描述-4">特性描述</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n222"><a class="md-toc-inner" href="#刺激响应序列-4">刺激/响应序列</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n233"><a class="md-toc-inner" href="#相关功能需求-4">相关功能需求</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n256"><a class="md-toc-inner" href="#查看经营历程表">查看经营历程表</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n257"><a class="md-toc-inner" href="#特性描述-5">特性描述</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n269"><a class="md-toc-inner" href="#刺激响应序列-5">刺激/响应序列</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n277"><a class="md-toc-inner" href="#相关功能需求-5">相关功能需求</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n294"><a class="md-toc-inner" href="#查看经营情况表">查看经营情况表</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n295"><a class="md-toc-inner" href="#特性描述-6">特性描述</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n304"><a class="md-toc-inner" href="#刺激响应序列-6">刺激/响应序列</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n307"><a class="md-toc-inner" href="#相关功能需求-6">相关功能需求</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n321"><a class="md-toc-inner" href="#员工打卡">员工打卡</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n322"><a class="md-toc-inner" href="#特性描述-7">特性描述</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n324"><a class="md-toc-inner" href="#刺激响应序列-7">刺激/响应序列</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n329"><a class="md-toc-inner" href="#相关功能需求-7">相关功能需求</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n340"><a class="md-toc-inner" href="#岗位管理">岗位管理</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n341"><a class="md-toc-inner" href="#特性描述-8">特性描述</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n343"><a class="md-toc-inner" href="#刺激响应序列-8">刺激/响应序列</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n350"><a class="md-toc-inner" href="#相关功能需求-8">相关功能需求</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n373"><a class="md-toc-inner" href="#制定促销策略">制定促销策略</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n374"><a class="md-toc-inner" href="#特性描述-9">特性描述</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n383"><a class="md-toc-inner" href="#刺激响应序列-9">刺激/响应序列</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n407"><a class="md-toc-inner" href="#相关功能需求-9">相关功能需求</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n442"><a class="md-toc-inner" href="#制定年终奖">制定年终奖</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n443"><a class="md-toc-inner" href="#特性描述-10">特性描述</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n445"><a class="md-toc-inner" href="#刺激响应序列-10">刺激/响应序列</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n454"><a class="md-toc-inner" href="#相关功能需求-10">相关功能需求</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n474"><a class="md-toc-inner" href="#非功能需求">非功能需求</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n475"><a class="md-toc-inner" href="#安全性">安全性</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n479"><a class="md-toc-inner" href="#可维护性">可维护性</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n482"><a class="md-toc-inner" href="#易用性">易用性</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n485"><a class="md-toc-inner" href="#可靠性">可靠性</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n488"><a class="md-toc-inner" href="#业务规则">业务规则</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n498"><a class="md-toc-inner" href="#约束-2">约束</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n500"><a class="md-toc-inner" href="#数据需求">数据需求</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n501"><a class="md-toc-inner" href="#数据定义">数据定义</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n504"><a class="md-toc-inner" href="#默认数据">默认数据</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n513"><a class="md-toc-inner" href="#数据格式要求">数据格式要求</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n520"><a class="md-toc-inner" href="#其他需求">其他需求</a></span></p></div><h2 id='引言'><span>引言</span></h2><h3 id='目的'><span>目的</span></h3><p><span>本文档描述了 NJU-ERP 系统的功能需求和非功能需求。开发小组的软件系统实现与验证工作都以此文档为依据。</span></p><p><span>除特殊说明外，本文档所包含的需求都是高优先级需求。</span></p><h3 id='范围'><span>范围</span></h3><p><span>NJU-ERP 系统是为某民营企业开发的企业资源计划（ERP）系统，开发的目标是帮助该企业处理日常的重点业务，包括库存管理、销售管理、财务管理、人事管理和企业经营管理。</span></p><p><span>期望在系统上线 6 个月后，减少积压的库存，增加销售额，提高财务人员和人力资源人员工作效率，为经理的决策做支持。</span></p><h3 id='参考文献'><span>参考文献</span></h3><ol start='' ><li><span>IEEE830-1998</span></li><li><span>NJU-ERP 系统用例文档v1</span></li></ol><h2 id='总体描述'><span>总体描述</span></h2><h3 id='商品前景'><span>商品前景</span></h3><h4 id='背景与机遇'><span>背景与机遇</span></h4><p><span>一民营企业专业从事灯具开关行业，是某著名开关品牌的南京地区总代理，主要在南京负责品牌的推广及项目的落地销售、分销的批发等工作，服务对象包括项目业主、施工单位、 分销商、设计院、终端用户等。</span></p><p><span>现公司规模扩大，企业业务量、办公场所、员工数都发生增长，为适应新的环境，提高工作效率和用户满意度，该公司聘南鲸软件科技公司开发一套 ERP 系统。该系统主要包括库存管理、销售管理、财务管理、人事管理和企业经营管理。</span></p><h4 id='业务需求'><span>业务需求</span></h4><p><span>BR1：在系统上线 6 个月后，库存积压减少 30%。</span></p><p><span>BR2：在系统上线 6 个月后，销售额增加 20%。</span></p><p><span>BR3：在系统上线 6 个月后，运营成本要降低 20%。</span></p><p><span>  ​</span><span>	</span><span>范围：人力成本和库存成本。</span></p><p><span>  ​</span><span>	</span><span>度量：检查员工数量和单位销售额的平均库存成本。</span></p><p><span>BR4：在系统上线 6 个月后，财务人员和人力资源人员工作效率提高 50%。</span></p><h3 id='商品功能'><span>商品功能</span></h3><p><span>SF1：分析商品库存，发现可能存在的商品积压、缺货和报废现象。</span></p><p><span>SF2：根据市场变化调整销售的商品。</span></p><p><span>SF3：制定促销手段，处理挤压商品。</span></p><p><span>SF4：制定促销手段促进销售竞争。</span></p><p><span>SF5：掌握员工变动和授权情况。</span></p><p><span>SF6：处理商品的入库与出库。</span></p><p><span>SF7：帮助销售人员处理进货销售及相应退货业务。</span></p><h3 id='用户特征'><span>用户特征</span></h3><figure><table><thead><tr><th><span>用户</span></th><th><span>特征</span></th></tr></thead><tbody><tr><td><span>库存管理人员</span></td><td><span>1 到 2 名。负责对商品分类和商品的信息的管理。能够简单使用办公信息化系统。对新系统基本持支持态度。不希望增加现有工作量。</span><br><span>工作细节包括商品分类管理、商品管理、库存查看、库存盘点、确认商品出入库等内容。</span></td></tr><tr><td><span>进货销售人员</span></td><td><span>4 到 8 名。负责完成进货单和销售单。对新系统基本持积极态度。不希望增加现有工作量。</span><br><span>销售人员分为销售员和销售经理</span><br><span>工作细节包括客户管理、制定进货单、制定进货退货单、制定销售单、制定销售退货单。</span><br><span>进货相关单据先有销售经理进行一级审批，再由总经理进行二级审批。</span></td></tr><tr><td><span>财务人员</span></td><td><span>1 到 2 名。使用办公信息化系统能力较强。对新系统持积极态度。不希望增加现有工作量。</span><br><span>工作细节包括账户管理、制定收款单、制定付款单、制定工资单、查看销售明细表、查看经营历程表、查看经营情况表、期初建账等内容。</span><br><span>财务相关的单据由总经理审批。</span></td></tr><tr><td><span>人力资源人员</span></td><td><span>1 到 2 名。使用办公信息化系统能力较强。对新系统持积极态度。不希望增加现有工作量。</span><br><span>工作细节包括员工管理、员工打卡、薪酬规则制定等内容。</span></td></tr><tr><td><span>总经理</span></td><td><span>2 名。能够熟练使用办公信息化系统。对新系统持积极态度。</span><br><span>工作细节包括制定促销策略、制定年终奖、查看销售明细表、查看经营历程表、查看经营情况表。</span></td></tr><tr><td><span>系统管理员</span></td><td><span>1 名。系统管理员是计算机专业维护人员，计算机技能很好。</span><br><span>系统管理员拥有所有用户的权限。</span></td></tr></tbody></table></figure><h3 id='约束-1'><span>约束</span></h3><p><span>CON1：系统将运行在 Windows 10 系统上。</span></p><p><span>CON2：系统不使用图形化界面，而是使用 Web 界面。</span></p><p><span>CON3：项目要使用持续集成方法进行开发。</span></p><p><span>CON4：在开发中，开发者要提交软件需求规格说明文档、设计描述文档和测试报告。</span></p><h3 id='假设和依赖'><span>假设和依赖</span></h3><p><span>AE1：在将上一批入库商品出库 90 %之前，下一批同类型商品不会被入库。</span></p><p><span>AE2：新一批商品的每天出库量与上一批商品每天出库量基本相同，商品出库情况比较稳定。</span></p><p><span>AE3：一个额度的赠送促销会自动包含所有比它小的额度的促销赠送商品。</span></p><h2 id='详细需求描述'><span>详细需求描述</span></h2><h3 id='对外接口需求'><span>对外接口需求</span></h3><h4 id='用户界面'><span>用户界面</span></h4><p><span>用户使用 Web 界面，而不是图形化界面。</span></p><p><span>用户功能模块使用树状结构组织并展示。</span></p><h4 id='硬件接口'><span>硬件接口</span></h4><p><span>系统对硬件接口无特殊需求。</span></p><h4 id='软件接口'><span>软件接口</span></h4><p><span>系统对软件接口无特殊需求。</span></p><h4 id='通信接口'><span>通信接口</span></h4><p><span>CI：客户端使与服务器使用 REST 接口进行通信。</span></p><h3 id='功能需求'><span>功能需求</span></h3><h4 id='处理收款'><span>处理收款</span></h4><h5 id='特性描述-1'><span>特性描述</span></h5><p><span>对银行账户进行转账时制定收款单，交由总经理审核。</span></p><h5 id='刺激响应序列-1'><span>刺激/响应序列</span></h5><p><span>刺激：财务人员选择客户</span></p><p><span>响应：系统记录选择的客户</span></p><p><span>刺激：财务人员选择账户，输入转入金额，填写备注</span></p><p><span>响应：系统记录选择的账户、转入金额和备注</span></p><p><span>刺激：财务人员添加银行账户</span></p><p><span>响应：系统显示新的转账输入框</span></p><p><span>刺激：财务人员确认创建收款单</span></p><p><span>响应：系统存储收款单并等待审批</span></p><p><span>刺激：总经理审批或拒绝收款单</span></p><p><span>响应：系统记录收款单审批完成或失败</span></p><h5 id='相关功能需求-1'><span>相关功能需求</span></h5><figure><table><thead><tr><th><span>需求 ID</span></th><th><span>需求描述</span></th></tr></thead><tbody><tr><td><span>Collection.Input</span></td><td><span>系统应该允许财务人员使用键盘输入</span></td></tr><tr><td><span>Collection.Input.Member</span></td><td><span>系统应该允许财务人员选择收款单对应的客户</span></td></tr><tr><td><span>Collection.Input.Account</span></td><td><span>系统应该允许财务人员选择收款单对应的银行账户</span></td></tr><tr><td><span>Collection.Input.Amount</span></td><td><span>系统应该允许财务人员选择收款单对应的金额</span></td></tr><tr><td><span>Collection.Input.AddBankAccount</span></td><td><span>系统应该允许财务人员增加银行账户</span></td></tr><tr><td><span>Collection.Input.DeleteBankAccount</span></td><td><span>系统应该允许财务人员删除银行账户，但至少要保留一个银行账户</span></td></tr><tr><td><span>Collection.Input.Cancel</span></td><td><span>系统应当允许财务人员创建收款单过程中取消创建</span></td></tr><tr><td><span>Collection.Input.Done</span></td><td><span>财务人员确认创建收款单后，系统应当保留相关信息，并交由总经理审批</span></td></tr><tr><td><span>Collection.Approval</span></td><td><span>系统应当允许总经理审批收款单</span></td></tr><tr><td><span>Collection.Update</span></td><td><span>系统应当在完成创建和审批时更新收款单状态</span></td></tr></tbody></table></figure><h4 id='处理付款'><span>处理付款</span></h4><h5 id='特性描述-2'><span>特性描述</span></h5><p><span>对银行账户进行转账时制定付款单，交由总经理审核。</span></p><h5 id='刺激响应序列-2'><span>刺激/响应序列</span></h5><p><span>刺激：财务人员选择客户</span></p><p><span>响应：系统记录选择的客户</span></p><p><span>刺激：财务人员选择账户，输入转出金额，填写备注</span></p><p><span>响应：系统记录选择的账户、转出金额和备注</span></p><p><span>刺激：财务人员添加银行账户</span></p><p><span>响应：系统显示新的转账输入框</span></p><p><span>刺激：财务人员确认创建付款</span></p><p><span>响应：系统存储付款单并等待审批</span></p><p><span>刺激：总经理审批或拒绝付款单</span></p><p><span>响应：系统记录付款单审批完成或失败</span></p><h5 id='相关功能需求-2'><span>相关功能需求</span></h5><figure><table><thead><tr><th><span>需求 ID</span></th><th><span>需求描述</span></th></tr></thead><tbody><tr><td><span>Receipt.Input</span></td><td><span>系统应该允许财务人员使用键盘输入</span></td></tr><tr><td><span>Receipt.Input.Member</span></td><td><span>系统应该允许财务人员选择付款单对应的客户</span></td></tr><tr><td><span>Receipt.Input.Account</span></td><td><span>系统应该允许财务人员选择付款单对应的银行账户</span></td></tr><tr><td><span>Receipt.Input.Amount</span></td><td><span>系统应该允许财务人员选择付款单对应的金额</span></td></tr><tr><td><span>Receipt.Input.AddBankAccount</span></td><td><span>系统应该允许财务人员增加银行账户</span></td></tr><tr><td><span>Receipt.Input.DeleteBankAccount</span></td><td><span>系统应该允许财务人员删除银行账户，但至少要保留一个银行账户</span></td></tr><tr><td><span>Receipt.Input.Cancel</span></td><td><span>系统应当允许财务人员创建付款单过程中取消创建</span></td></tr><tr><td><span>Receipt.Input.Done</span></td><td><span>财务人员确认创建付款单后，系统应当保留相关信息，并交由总经理审批</span></td></tr><tr><td><span>Receipt.Approval</span></td><td><span>系统应当允许总经理审批付款单</span></td></tr><tr><td><span>Receipt.Update</span></td><td><span>系统应当在完成创建和审批时更新付款单状态</span></td></tr></tbody></table></figure><h4 id='处理工资发放'><span>处理工资发放</span></h4><h5 id='特性描述-3'><span>特性描述</span></h5><p><span>使用银行账户向员工发放工资时，进行工资单制定和审批。</span></p><h5 id='刺激响应序列-3'><span>刺激/响应序列</span></h5><p><span>刺激：人力资源人员选择员工</span></p><p><span>响应：系统记录选择的员工</span></p><p><span>刺激：人力资源人员选择账户</span></p><p><span>响应：系统记录选择的账户</span></p><p><span>刺激：人力资源人员添加银行账户</span></p><p><span>响应：系统显示新的转账输入框</span></p><p><span>刺激：人力资源人员确认创建付款</span></p><p><span>响应：系统存储付款单并等待审批</span></p><p><span>刺激：总经理审批或拒绝付款单</span></p><p><span>响应：系统记录付款单审批完成或失败</span></p><h5 id='相关功能需求-3'><span>相关功能需求</span></h5><figure><table><thead><tr><th><span>需求 ID</span></th><th><span>需求描述</span></th></tr></thead><tbody><tr><td><span>Salary.Input</span></td><td><span>系统应该允许财务人员使用键盘输入</span></td></tr><tr><td><span>Salary.Input.Staff</span></td><td><span>系统应该允许财务人员选择工资单对应的员工</span></td></tr><tr><td><span>Salary.Input.BankAccount</span></td><td><span>系统应该允许财务人员选择工资单对应的银行账户</span></td></tr><tr><td><span>Salary.Input.Cancel</span></td><td><span>系统应当允许财务人员创建工资单过程中取消创建</span></td></tr><tr><td><span>Salary.Input.Done</span></td><td><span>财务人员确认创建工资单后，系统应当保留相关信息，并交由总经理审批</span></td></tr><tr><td><span>Salary.Approval</span></td><td><span>系统应当允许总经理审批工资单</span></td></tr><tr><td><span>Salary.Update</span></td><td><span>系统应当在完成创建和审批时更新工资单状态</span></td></tr></tbody></table></figure><h4 id='查看销售明细表'><span>查看销售明细表</span></h4><h5 id='特性描述-4'><span>特性描述</span></h5><p><span>查看销售明细表（统计一段时间内商品的销售情况（包括销售和销售后退货），筛 选条件有：时间区间，商品名，客户，业务员，仓库。显示符合上述条件的所有商 品销售记录，以列表形式显示，列表中包含如下信息：时间（精确到天），商品名，</span>
+<span>型号，数量，单价，总额。需要支持导出数据。）</span></p><h5 id='刺激响应序列-4'><span>刺激/响应序列</span></h5><p><span>刺激：用户选择时间段</span></p><p><span>响应：系统记录选择的时间段</span></p><p><span>刺激：用户选择商品名</span></p><p><span>响应：系统记录选择的商品名</span></p><p><span>刺激：用户选择客户</span></p><p><span>响应：系统记录选择的客户</span></p><p><span>刺激：用户选择操作员</span></p><p><span>响应：系统记录选择的操作员</span></p><p><span>刺激：用户确认查询</span></p><p><span>响应：系统显示查询的销售记录合计、销售退货数量合计、出入库商品信息</span></p><h5 id='相关功能需求-4'><span>相关功能需求</span></h5><figure><table><thead><tr><th><span>需求 ID</span></th><th><span>需求描述</span></th></tr></thead><tbody><tr><td><span>SalesDetails.Input</span></td><td><span>系统应该允许财务人员使用键盘输入</span></td></tr><tr><td><span>SalesDetails.Input.Period</span></td><td><span>系统应该允许财务人员选择查看的时间段</span></td></tr><tr><td><span>SalesDetails.Input.ProductName</span></td><td><span>系统应该允许财务人员选择查看的商品名</span></td></tr><tr><td><span>SalesDetails.Input.Client</span></td><td><span>系统应该允许财务人员选择查看的客户</span></td></tr><tr><td><span>SalesDetails.Input.Operator</span></td><td><span>系统应该允许财务人员选择查看的操作员</span></td></tr><tr><td><span>SalesDetails.Input.Done</span></td><td><span>财务人员确认查询销售明细表后，系统应该显示销售明细</span></td></tr></tbody></table></figure><h4 id='查看经营历程表'><span>查看经营历程表</span></h4><h5 id='特性描述-5'><span>特性描述</span></h5><p><span>查看经营历程表，查看一段时间里的所有单据，单据分为：</span></p><ol start='' ><li><span>销售类单据（销售出 货单，销售退货单）</span></li><li><span>进货类单据（进货单，进货退货单）</span></li><li><span>财务类单据（付款单，收款单，现金费用单，工资单）</span></li><li><span>库存类单据（报溢单，报损单，赠送单）。</span></li></ol><p><span> 筛选条件为：时间区间，单据类型，客户，业务员，仓库。显示出符合条件的单据后，可以对单据进行查看操作，但是不可修改和删除。</span></p><h5 id='刺激响应序列-5'><span>刺激/响应序列</span></h5><p><span>刺激：用户选择时间段</span></p><p><span>响应：系统记录选择的时间段</span></p><p><span>刺激：用户选择单据类型</span></p><p><span>响应：系统记录选择的单据类型，并提示用户选择相应筛选信息</span></p><p><span>刺激：用户选择相应筛选信息</span></p><p><span>刺激：用户确认查询</span></p><p><span>响应：系统显示查询的单据合计和具体单据信息。</span></p><h5 id='相关功能需求-5'><span>相关功能需求</span></h5><figure><table><thead><tr><th><span>需求 ID</span></th><th><span>需求描述</span></th></tr></thead><tbody><tr><td><span>BusinessHistory.Input</span></td><td><span>系统应该允许财务人员使用键盘输入</span></td></tr><tr><td><span>BusinessHistory.Input.Period</span></td><td><span>系统应该允许财务人员选择查看的时间段</span></td></tr><tr><td><span>BusinessHistory.Input.SheetType</span></td><td><span>系统应该允许财务人员选择单据类型</span></td></tr><tr><td><span>BusinessHistory.Input.Done</span></td><td><span>财务人员确认查询销售明细表后，系统应该显示经营历程</span></td></tr></tbody></table></figure><h4 id='查看经营情况表'><span>查看经营情况表</span></h4><h5 id='特性描述-6'><span>特性描述</span></h5><p><span>查看经营情况表，统计显示一段时间内的经营收支状况和利润。经营收入显示为折 让后，并显示出折让了多少。显示信息：</span></p><ol start='' ><li><span>收入类：销售收入、商品类收入（商品报溢收入成本调价收入进货退货差价代金券与实际收款差额收入）。收入类显示折让后总收入，并显示折让了多少。</span></li><li><span>支出类：销售成本、商品类支出（商品报损 商品赠出）、人力成本。支出类显示总支出。</span></li><li><span>利润：折让后总收入-总支出。</span></li></ol><h5 id='刺激响应序列-6'><span>刺激/响应序列</span></h5><p><span>刺激：用户选择时间段。</span></p><p><span>响应：系统显示查询的折让后总收入合计、折让总额合计、总支出合计、利润合计。</span></p><h5 id='相关功能需求-6'><span>相关功能需求</span></h5><figure><table><thead><tr><th><span>需求 ID</span></th><th><span>需求描述</span></th></tr></thead><tbody><tr><td><span>BusinessConditions.Input</span></td><td><span>系统应该允许财务人员使用键盘输入</span></td></tr><tr><td><span>BusinessConditions.Input.Period</span></td><td><span>系统应该允许财务人员选择查看的时间段</span></td></tr><tr><td><span>BusinessConditions.Display</span></td><td><span>财务人员查看经营情况时，系统应当显示折让后总收入、折让总额、总支出合计、利润合计</span></td></tr></tbody></table></figure><h4 id='员工打卡'><span>员工打卡</span></h4><h5 id='特性描述-7'><span>特性描述</span></h5><p><span>所有员工，每天需要登录系统进行打卡。缺席扣除基本工资的 1/30。总经理不参与打卡。</span></p><h5 id='刺激响应序列-7'><span>刺激/响应序列</span></h5><p><span>刺激：用户请求“今日打卡”</span></p><p><span>响应：系统记录该用户今日打卡</span></p><p><span>刺激：用户重复请求“今日打卡”</span></p><p><span>响应：系统提示“今天已经打过卡了，明天再来吧~”</span></p><h5 id='相关功能需求-7'><span>相关功能需求</span></h5><figure><table><thead><tr><th><span>需求 ID</span></th><th><span>需求描述</span></th></tr></thead><tbody><tr><td><span>CheckIn.CheckIn</span></td><td><span>系统应该允许并记录员工每日首次打卡</span></td></tr><tr><td><span>CheckIn.RecheckIn</span></td><td><span>系统应该提示并忽略员工每日重复打卡</span></td></tr></tbody></table></figure><h4 id='岗位管理'><span>岗位管理</span></h4><h5 id='特性描述-8'><span>特性描述</span></h5><p><span>人力资源人员设置岗位对应的基本工资、岗位工资、岗位级别、薪资计算方式、薪资发放方式、扣税信息等制度信息。</span></p><h5 id='刺激响应序列-8'><span>刺激/响应序列</span></h5><p><span>刺激：人力资源人员请求编辑岗位信息</span></p><p><span>响应：系统显示岗位名称、基本工资、岗位工资、岗位级别、薪资计算方式、薪资发放方式、扣税信息</span></p><p><span>刺激：人力资源人员修改基本工资、岗位工资、岗位级别、扣税信息</span></p><p><span>响应：系统记录人力资源人员的修改</span></p><p><span>刺激：人力资源人员确认修改</span></p><p><span>响应：系统记录人力资源人员的修改</span></p><h5 id='相关功能需求-8'><span>相关功能需求</span></h5><figure><table><thead><tr><th><span>需求 ID</span></th><th><span>需求描述</span></th></tr></thead><tbody><tr><td><span>Post.Input</span></td><td><span>系统应该允许人力资源人员使用键盘输入</span></td></tr><tr><td><span>Post.Input.BasedSalary</span></td><td><span>系统应该允许人力资源人员编辑基本工资</span></td></tr><tr><td><span>Post.Input.PostSalary</span></td><td><span>系统应该允许人力资源人员编辑岗位工资</span></td></tr><tr><td><span>Post.Input.PostLevel</span></td><td><span>系统应该允许人力资源人员编辑岗位级别</span></td></tr><tr><td><span>Post.Input.Tax</span></td><td><span>系统应该允许人力资源人员编辑扣税信息</span></td></tr><tr><td><span>Post.Input.Done</span></td><td><span>人力资源人员确认修改岗位信息后，系统应当保存人力资源人员的修改</span></td></tr></tbody></table></figure><h4 id='制定促销策略'><span>制定促销策略</span></h4><h5 id='特性描述-9'><span>特性描述</span></h5><p><span>制定促销策略：</span></p><ol start='' ><li><span>总经理可以针对不同级别的用户制定促销策略（赠品、价格折让、赠送代金劵）。</span></li><li><span>总经理可以制定特价包（组合商品降价）。</span></li><li><span>总经理可以制定 针对不同总价的促销策略（赠品、赠送代金卷）。所有促销策略都有其实时间和间隔时间。所有赠品条件促发后，系统会自动建立库存赠送单，由总经理审批通过后，发送消息给库存管理员发放赠品。）</span></li></ol><h5 id='刺激响应序列-9'><span>刺激/响应序列</span></h5><p><strong><span>制定基于总价的促销策略</span></strong></p><p><span>刺激：人力资源人员请求制定基于总价的促销策略</span></p><p><span>响应：系统提示总经理选择促销时间段、输入总价阈值、输入优惠券金额</span></p><p><span>刺激：总经理选择促销时间段、输入总价阈值、输入优惠券金额</span></p><p><span>响应：系统提示总经理选择赠品的商品 id、商品数量、商品单价、赠品备注</span></p><p><span>刺激：总经理选择赠品的商品 id、商品数量、商品单价、赠品备注</span></p><p><span>响应：系统提示总经理填写促销策略备注</span></p><p><span>刺激：总经理确认创建基于总价的促销策略</span></p><p><span>响应：系统记录创建的基于总价的促销策略</span></p><p><strong><span>制定基于组合的促销策略</span></strong></p><p><span>刺激：总经理请求制定新的促销策略</span></p><p><span>响应：系统提示总经理选择促销时间段、折让金额、商品</span></p><p><span>刺激：总经理选择促销时间段、折让金额、商品</span></p><p><span>刺激：总经理确认创建基于总价的促销策略</span></p><p><span>响应：系统记录创建的基于总价的促销策略</span></p><p><strong><span>制定基于用户级别的促销策略</span></strong></p><p><span>刺激：总经理请求编辑某用户级别对应的促销策略</span></p><p><span>响应：系统提示总经理选择促销时间段、输入折让比例、输入代金券、选择赠品并输入数量</span></p><p><span>刺激：总经理选择促销时间段、输入折让比例、输入代金券、选择赠品并输入数量</span></p><p><span>刺激：若有多种赠品，总经理请求添加赠品</span></p><p><span>响应：系统提示选择新的赠品并输入新的赠品数量</span></p><p><span>刺激：总经理确认修改用户级别促销策略</span></p><p><span>响应：系统保存本次修改</span></p><h5 id='相关功能需求-9'><span>相关功能需求</span></h5><figure><table><thead><tr><th><span>需求 ID</span></th><th><span>需求描述</span></th></tr></thead><tbody><tr><td><span>Promotion.Input</span></td><td><span>系统应该允许总经理使用键盘输入</span></td></tr><tr><td><span>Promotion.Input.Period</span></td><td><span>系统应该允许总经理选择促销时间段</span></td></tr><tr><td><span>Promotion.Input.Threshold</span></td><td><span>系统应该允许总经理输入基于总价的促销策略的总价阈值</span></td></tr><tr><td><span>Promotion.Input.Coupon</span></td><td><span>系统应该允许总经理输入基于总价的促销策略和基于用户级别的促销策略的优惠券金额</span></td></tr><tr><td><span>Promotion.Input.Gift</span></td><td><span>系统应该允许总经理输入基于总价的促销策略和基于用户级别的促销策略的赠品</span></td></tr><tr><td><span>Promotion.Input.DiscountAmount</span></td><td><span>系统应该允许总经理输入基于组合的促销策略的折让金额</span></td></tr><tr><td><span>Promotion.Input.ProductCombination</span></td><td><span>系统应该允许总经理输入基于组合的促销策略的商品组合</span></td></tr><tr><td><span>Promotion.Input.DiscountRatio</span></td><td><span>系统应该允许总经理输入基于用户级别的促销策略的折让比例</span></td></tr><tr><td><span>Promotion.Input.Remark</span></td><td><span>系统应该允许总经理输入促销策略的备注</span></td></tr><tr><td><span>Promotion.Input.Done</span></td><td><span>人力资源人员确认修改岗位信息后，系统应当保存人力资源人员的修改</span></td></tr></tbody></table></figure><h4 id='制定年终奖'><span>制定年终奖</span></h4><h5 id='特性描述-10'><span>特性描述</span></h5><p><span>根据个人每年综合表现制定年终奖。可以查看之前 11 个月的工资收入总和，避免 陷入税务陷阱（发的多，但由于税率提高，拿的少）。</span></p><h5 id='刺激响应序列-10'><span>刺激/响应序列</span></h5><p><span>刺激：总经理选择员工</span></p><p><span>响应：系统记录选择的员工</span></p><p><span>刺激：总经理查询前 11 月工资</span></p><p><span>响应：系统显示前 11 月工资</span></p><p><span>刺激：总经理输入年终奖金额</span></p><p><span>响应：系统记录年终奖金额</span></p><p><span>刺激：总经理确认制定年终奖</span></p><p><span>响应：系统保存年终奖</span></p><h5 id='相关功能需求-10'><span>相关功能需求</span></h5><figure><table><thead><tr><th><span>需求 ID</span></th><th><span>需求描述</span></th></tr></thead><tbody><tr><td><span>Awards.Input</span></td><td><span>系统应该允许总经理使用键盘输入</span></td></tr><tr><td><span>Awards.Input.Staff</span></td><td><span>系统应该允许总经理选择员工</span></td></tr><tr><td><span>Awards.Input.AwardAmount</span></td><td><span>系统应该允许总经理输入年终奖金额</span></td></tr><tr><td><span>Awards.Input.QuerySalary</span></td><td><span>系统应该允许总经理查询员工前 11 月工资</span></td></tr><tr><td><span>Awards.Input.Done</span></td><td><span>总经理确认制定年终奖后，系统应当保存并做出更改</span></td></tr></tbody></table></figure><h3 id='非功能需求'><span>非功能需求</span></h3><h4 id='安全性'><span>安全性</span></h4><p><span>Safety1：系统应该只允许经过验证和授权的用户访问。</span></p><p><span>Safety2：系统应该按照用户身份验证用户的访问权限。</span></p><p><span>Safety3：系统中有一个默认的管理员账户，该账户只允许管理员用户修改口令。</span></p><h4 id='可维护性'><span>可维护性</span></h4><p><span>Modifiability1：如果系统要增加新的促销策略，要能够在 0.25 个人月内完成。</span></p><p><span>Modifiability2：如果系统要增加新的或修改原有的薪酬规则，要求能够在 0.25 个人月内完成。</span></p><h4 id='易用性'><span>易用性</span></h4><p><span>Usability1：用户能够在使用系统 3 天后熟练操作系统，出错率降低到 1% 以下。</span></p><p><span>Usability2：库存管理页面能够以可视化的形式展示商品库存。</span></p><h4 id='可靠性'><span>可靠性</span></h4><p><span>Reliability1：因网络故障而不能正常和服务器通信时，用户能够被告知请求的操作未被应答。</span></p><p><span>Reliability2：网络故障恢复后，系统应当继续未完成的工作。</span></p><h4 id='业务规则'><span>业务规则</span></h4><ol start='' ><li><span>年终奖金额由总经理根据员工综合表现决定。</span></li><li><span>基于总价的促销策略：一定时间段内，总价达到某一阈值后，赠送优惠券和赠品。</span></li><li><span>基于组合的促销策略：购买包含一定商品的特价包时，组合商品降价。</span></li><li><span>基于用户级别的促销策略：针对不同级别的客户，提供不同级别的赠品、价格折让、赠送代金券等促销策略。</span></li></ol><h4 id='约束-2'><span>约束</span></h4><p><span>IC：系统前后端要部署在同一个服务器。</span></p><h3 id='数据需求'><span>数据需求</span></h3><h4 id='数据定义'><span>数据定义</span></h4><p><span>DR1：系统需要存储的数据参见体系结构文档。</span></p><p><span>DR2：系统需要存储 1 年内的进货记录和销售记录。</span></p><h4 id='默认数据'><span>默认数据</span></h4><p><span>默认数据用于以下情况：</span></p><ol start='' ><li><span>系统新增加未初始化数据时。</span></li><li><span>编辑数据时将相关数据内容清空时。</span></li></ol><p><span>默认数据内容为：</span></p><p><span>Default1：年终奖的年份默认为服务器时间的上一个 12 月所在的年份</span></p><h4 id='数据格式要求'><span>数据格式要求</span></h4><p><span>Format1：进货单编号为：JHD-yyyyMMdd-xxxxx，后五位从 1 开始编号。</span></p><p><span>Format2：进货退货单编号为：JHTHD-yyyyMMdd-xxxxx，后五位从 1 开始编号。</span></p><p><span>Format3：销售单编号为：XSD-yyyyMMdd-xxxxx，后五位从 1 开始编号。</span></p><p><span>Format4：销售退货单编号为：XSTHD-yyyyMMdd-xxxxx，后五位从 1 开始编号。</span></p><p><span>Format5：收款单编号为：SKD-yyyyMMdd-xxxxx，后五位从 1 开始编号。</span></p><p><span>Format6：工资单编号为：GZD-yyyyMMdd-xxxxx，后五位从 1 开始编号。</span></p><h4 id='其他需求'><span>其他需求</span></h4><p><span>系统无其他需求。</span></p></div></div>
+</body>
+</html>
