@@ -45,7 +45,6 @@ public class PayMoneyServiceImpl implements PayMoneyService {
         PayMoneySheetPO payMoneySheetPO = new PayMoneySheetPO();
         BeanUtils.copyProperties(payMoneySheetVO, payMoneySheetPO);
         // 此处根据制定单据人员确定操作员
-        payMoneySheetPO.setOperator(userVO.getName());
         payMoneySheetPO.setCreateTime(new Date());
         PayMoneySheetPO latest = payMoneyDao.getLatest();
         String id = payMoneySheetVO.getId();
